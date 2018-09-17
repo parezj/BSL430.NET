@@ -35,6 +35,7 @@ MSP430 FR211x<br>
 MSP432 P401R<br>
 
 ## ILibrary
+```C#
 Status Scan<Tdev>(out List<Tdev> device_list) where Tdev : Bsl430NetDevice;<br>
 StatusEx Upload(Bsl430NetDevice device, string firmware_path, out byte[] version);  <br>
 StatusEx Upload(Bsl430NetDevice device, byte[] password, string firmware_path, out byte[] version);<br>
@@ -43,3 +44,4 @@ StatusEx Download(Bsl430NetDevice device, byte[] password, uint addr_start, int 
 Status SetBaudRate(BaudRate baud_rate);<br>
 Status SetInvokeMechanism(InvokeMechanism invoke_mechanism);<br>
 Status SetMCU(MCU mcu);<br>
+```
