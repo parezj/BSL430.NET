@@ -5,11 +5,9 @@ Texas Instrument MSP430 USB/UART multiplatform tools (library, console, WPF) to 
 
 ## Projects
 <pre>
-<span style="font-size:large">
 BSL430.NET lib     - .NET Standard 2.0      - Windows, Linux, macOS
 BSL430.NET Console - .NET Core 2.0          - Windows, Linux, macOS
 BSL430.NET WPF     - .NET Framework 4.6.1   - Windows
-</span>
 </pre>
 
 ## Modes:
