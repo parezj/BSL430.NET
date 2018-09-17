@@ -1,7 +1,7 @@
 # BSL430.NET
 Texas Instrument MSP430 USB/UART multiplatform tools (library, console, WPF) to download/upload memory<br>
 
-<center>[![BSL430.NET](https://1iq.cz/img/C9a2k/j9vCu.png)](https://1iq.cz/img/C9a2k/j9vCu.png)</center>
+<p align="center">[![BSL430.NET](https://1iq.cz/img/C9a2k/j9vCu.png)](https://1iq.cz/img/C9a2k/j9vCu.png)</p>
 
 ## Projects
 BSL430.NET lib     - .NET Standard 2.0      - Windows, Linux, macOS
