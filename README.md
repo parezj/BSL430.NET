@@ -36,12 +36,12 @@ MSP432 P401R<br>
 
 ## ILibrary
 ```C#
-Status Scan<Tdev>(out List<Tdev> device_list) where Tdev : Bsl430NetDevice;<br>
-StatusEx Upload(Bsl430NetDevice device, string firmware_path, out byte[] version);  <br>
-StatusEx Upload(Bsl430NetDevice device, byte[] password, string firmware_path, out byte[] version);<br>
-StatusEx Download(Bsl430NetDevice device, byte[] password, uint addr_start, int data_size, out List<byte> data, out byte[] version);<br>
-<br>
-Status SetBaudRate(BaudRate baud_rate);<br>
-Status SetInvokeMechanism(InvokeMechanism invoke_mechanism);<br>
-Status SetMCU(MCU mcu);<br>
+Status Scan<Tdev>(out List<Tdev> device_list) where Tdev : Bsl430NetDevice;
+StatusEx Upload(Bsl430NetDevice device, string firmware_path, out byte[] version);
+StatusEx Upload(Bsl430NetDevice device, byte[] password, string firmware_path, out byte[] version);
+StatusEx Download(Bsl430NetDevice device, byte[] password, uint addr_start, int data_size, out List<byte> data, out byte[] version);
+
+Status SetBaudRate(BaudRate baud_rate);
+Status SetInvokeMechanism(InvokeMechanism invoke_mechanism);
+Status SetMCU(MCU mcu);
 ```
