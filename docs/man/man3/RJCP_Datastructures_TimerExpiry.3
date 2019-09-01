@@ -1,0 +1,99 @@
+.TH "RJCP.Datastructures.TimerExpiry" 3 "Sat Jun 22 2019" "Version 1.2.1" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+RJCP.Datastructures.TimerExpiry \- A class to maintain how much time is remaining since the last reset, until expiry\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTimerExpiry\fP (int milliseconds)"
+.br
+.RI "Constructor\&. Initialise expiry based on the current time\&. "
+.ti -1c
+.RI "int \fBRemainingTime\fP ()"
+.br
+.RI "Estimate the amount of time (ms) remaining from when this function is called until expiry\&. "
+.ti -1c
+.RI "void \fBReset\fP ()"
+.br
+.RI "Reset the time out so it occurs with the given \fBTimeout\fP\&. "
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBTimeout\fP\fC [get, set]\fP"
+.br
+.RI "The time for expiry on the next reset\&. System\&.Threading\&.Timeout\&.Infinite indicates no expiry\&. "
+.ti -1c
+.RI "bool \fBExpired\fP\fC [get]\fP"
+.br
+.RI "Test if the timer expiry has expired\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A class to maintain how much time is remaining since the last reset, until expiry\&. 
+
+This class is useful when implementing time outs in other methods\&. It can provide the remaining time, in units of milliseconds, that can be used with many Operating \fBSystem\fP calls as an expiry time\&. 
+.PP
+One example is the M:System\&.Threading\&.WaitHandle\&.WaitOne method which expects a time out parameter\&. Either instantiate the \fBTimerExpiry\fP class at the beginning immediately before its use, or call the \fBReset\fP method at the beginning of the time out operation\&. Then on return of the function, if no other operation occurred, the method \fBRemainingTime\fP should return 0 indicating that the timer has expired\&.
+.PP
+Another thread can be programmed to \fBReset\fP the timer class during a time out operation, so that even if the result of Wait operation by the Operating system resulted in a time out, a \fBReset\fP, which results in the \fBRemainingTime\fP being more than 0 milliseconds, indicates that another wait operation should occur\&.
+.PP
+Even if no expiry is to occur, but the Operating \fBSystem\fP function returns early, you can opt to restart the time out operation which will then take into account the current time and reduce the time out so that the operation ends as expected\&.
+.PP
+As an example, say you need to wait for data by calling a method which waits for the first set of data within a time out\&. But your method must wait for at least two elements of data within the time out\&. This can be implemented as follows:
+.PP
+public true MyFunc(int timeOut) { \fBTimerExpiry\fP myExpiry = new TimerExpiry(timeOut); int elements = 0; do { elements += GetData(myExpiry\&.RemainingTime()); } while (elements < 2 && !myExpiry\&.Expired);
+.PP
+if (elements >=2) return true; return false; } 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "RJCP\&.Datastructures\&.TimerExpiry\&.TimerExpiry (int milliseconds)"
+
+.PP
+Constructor\&. Initialise expiry based on the current time\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImilliseconds\fP The initial time out in milliseconds\&.
+.RE
+.PP
+.PP
+The constructor sets the initial time out that should be used\&. On construction of the new object, the timer is automatically started\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "int RJCP\&.Datastructures\&.TimerExpiry\&.RemainingTime ()"
+
+.PP
+Estimate the amount of time (ms) remaining from when this function is called until expiry\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The time to expiry in milliseconds\&.
+.RE
+.PP
+
+.SS "void RJCP\&.Datastructures\&.TimerExpiry\&.Reset ()"
+
+.PP
+Reset the time out so it occurs with the given \fBTimeout\fP\&. 
+.SH "Property Documentation"
+.PP 
+.SS "bool RJCP\&.Datastructures\&.TimerExpiry\&.Expired\fC [get]\fP"
+
+.PP
+Test if the timer expiry has expired\&. 
+.SS "int RJCP\&.Datastructures\&.TimerExpiry\&.Timeout\fC [get]\fP, \fC [set]\fP"
+
+.PP
+The time for expiry on the next reset\&. System\&.Threading\&.Timeout\&.Infinite indicates no expiry\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

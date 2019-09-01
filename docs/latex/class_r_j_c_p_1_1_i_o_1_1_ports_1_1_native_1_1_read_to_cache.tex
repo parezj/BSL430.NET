@@ -1,0 +1,162 @@
+\hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_read_to_cache}{}\section{R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Read\+To\+Cache Class Reference}
+\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_read_to_cache}\index{RJCP.IO.Ports.Native.ReadToCache@{RJCP.IO.Ports.Native.ReadToCache}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_read_to_cache_adf52a6068959c7d847f84941b8adfe16}{Read}} (\mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_serial_buffer}{Serial\+Buffer}} sbuffer, char\mbox{[}$\,$\mbox{]} cbuffer, int offset, int count)
+\begin{DoxyCompactList}\small\item\em Reads characters from the byte buffer into the character buffer, consuming data from the byte buffer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_read_to_cache_acc82ffe4361a14b6206220918cb18ed5}{Read\+Char}} (\mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_serial_buffer}{Serial\+Buffer}} sbuffer)
+\begin{DoxyCompactList}\small\item\em Synchronously reads one character from the \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_serial_port_stream}{Serial\+Port\+Stream}} input buffer. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_read_to_cache_a57a77a7d1da2574cb05400c5745613c2}{Read\+To}} (\mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_serial_buffer}{Serial\+Buffer}} sbuffer, string text, out string line)
+\begin{DoxyCompactList}\small\item\em Reads from the cached and byte stream looking for the text specified. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_read_to_cache_adece0a8b0b5c4bc5f33275c93fadc45c}{Read\+To\+Wait\+For\+New\+Data}} (\mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_serial_buffer}{Serial\+Buffer}} sbuffer, int timeout)
+\begin{DoxyCompactList}\small\item\em Waits for new data to arrive that can be used to recheck for new data. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_read_to_cache_af047055e3cd758c4c52a893c1458c35d}{Read\+Existing}} (\mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_serial_buffer}{Serial\+Buffer}} sbuffer)
+\begin{DoxyCompactList}\small\item\em Reads all immediately available bytes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_read_to_cache_ada7cbbcfb8b96ab3d096ac034eb0c94b}{Reset}} (bool with\+Overflow)
+\begin{DoxyCompactList}\small\item\em Resets the cache, taking optionally into account a previous overflow. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+Encoding \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_read_to_cache_a4ddb8704e3d3d39b40bba23183885700}{Encoding}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the byte encoding for pre-\/ and post-\/transmission conversion of text. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_read_to_cache_adf52a6068959c7d847f84941b8adfe16}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_read_to_cache_adf52a6068959c7d847f84941b8adfe16}} 
+\index{RJCP.IO.Ports.Native.ReadToCache@{RJCP.IO.Ports.Native.ReadToCache}!Read@{Read}}
+\index{Read@{Read}!RJCP.IO.Ports.Native.ReadToCache@{RJCP.IO.Ports.Native.ReadToCache}}
+\subsubsection{\texorpdfstring{Read()}{Read()}}
+{\footnotesize\ttfamily int R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Read\+To\+Cache.\+Read (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_serial_buffer}{Serial\+Buffer}}}]{sbuffer,  }\item[{char \mbox{[}$\,$\mbox{]}}]{cbuffer,  }\item[{int}]{offset,  }\item[{int}]{count }\end{DoxyParamCaption})}
+
+
+
+Reads characters from the byte buffer into the character buffer, consuming data from the byte buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sbuffer} & The byte buffer to read from.\\
+\hline
+{\em cbuffer} & The character buffer to write to.\\
+\hline
+{\em offset} & The offset to write to in {\itshape cbuffer} .\\
+\hline
+{\em count} & The number of characters to read into {\itshape cbuffer} .\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of bytes read into {\itshape cbuffer} .
+\end{DoxyReturn}
+
+
+Data is read from the read byte buffer kept in {\itshape sbuffer} , converted using the decoder into {\itshape cbuffer} . As data is read from sbuffer, it is consumed. \mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_read_to_cache_acc82ffe4361a14b6206220918cb18ed5}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_read_to_cache_acc82ffe4361a14b6206220918cb18ed5}} 
+\index{RJCP.IO.Ports.Native.ReadToCache@{RJCP.IO.Ports.Native.ReadToCache}!ReadChar@{ReadChar}}
+\index{ReadChar@{ReadChar}!RJCP.IO.Ports.Native.ReadToCache@{RJCP.IO.Ports.Native.ReadToCache}}
+\subsubsection{\texorpdfstring{ReadChar()}{ReadChar()}}
+{\footnotesize\ttfamily int R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Read\+To\+Cache.\+Read\+Char (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_serial_buffer}{Serial\+Buffer}}}]{sbuffer }\end{DoxyParamCaption})}
+
+
+
+Synchronously reads one character from the \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_serial_port_stream}{Serial\+Port\+Stream}} input buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sbuffer} & The byte buffer to read from.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The character that was read. -\/1 indicates no data was available within the time out.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_read_to_cache_af047055e3cd758c4c52a893c1458c35d}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_read_to_cache_af047055e3cd758c4c52a893c1458c35d}} 
+\index{RJCP.IO.Ports.Native.ReadToCache@{RJCP.IO.Ports.Native.ReadToCache}!ReadExisting@{ReadExisting}}
+\index{ReadExisting@{ReadExisting}!RJCP.IO.Ports.Native.ReadToCache@{RJCP.IO.Ports.Native.ReadToCache}}
+\subsubsection{\texorpdfstring{ReadExisting()}{ReadExisting()}}
+{\footnotesize\ttfamily string R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Read\+To\+Cache.\+Read\+Existing (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_serial_buffer}{Serial\+Buffer}}}]{sbuffer }\end{DoxyParamCaption})}
+
+
+
+Reads all immediately available bytes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sbuffer} & The byte buffer to read from.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The contents of the stream and the input buffer of the \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_serial_port_stream}{Serial\+Port\+Stream}}.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_read_to_cache_a57a77a7d1da2574cb05400c5745613c2}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_read_to_cache_a57a77a7d1da2574cb05400c5745613c2}} 
+\index{RJCP.IO.Ports.Native.ReadToCache@{RJCP.IO.Ports.Native.ReadToCache}!ReadTo@{ReadTo}}
+\index{ReadTo@{ReadTo}!RJCP.IO.Ports.Native.ReadToCache@{RJCP.IO.Ports.Native.ReadToCache}}
+\subsubsection{\texorpdfstring{ReadTo()}{ReadTo()}}
+{\footnotesize\ttfamily bool R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Read\+To\+Cache.\+Read\+To (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_serial_buffer}{Serial\+Buffer}}}]{sbuffer,  }\item[{string}]{text,  }\item[{out string}]{line }\end{DoxyParamCaption})}
+
+
+
+Reads from the cached and byte stream looking for the text specified. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sbuffer} & The byte buffer to read from.\\
+\hline
+{\em text} & The text to indicate where the read operation stops.\\
+\hline
+{\em line} & On success, contains the line up to the text string requested.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if a line was found; {\ttfamily false} otherwise.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_read_to_cache_adece0a8b0b5c4bc5f33275c93fadc45c}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_read_to_cache_adece0a8b0b5c4bc5f33275c93fadc45c}} 
+\index{RJCP.IO.Ports.Native.ReadToCache@{RJCP.IO.Ports.Native.ReadToCache}!ReadToWaitForNewData@{ReadToWaitForNewData}}
+\index{ReadToWaitForNewData@{ReadToWaitForNewData}!RJCP.IO.Ports.Native.ReadToCache@{RJCP.IO.Ports.Native.ReadToCache}}
+\subsubsection{\texorpdfstring{ReadToWaitForNewData()}{ReadToWaitForNewData()}}
+{\footnotesize\ttfamily bool R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Read\+To\+Cache.\+Read\+To\+Wait\+For\+New\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_serial_buffer}{Serial\+Buffer}}}]{sbuffer,  }\item[{int}]{timeout }\end{DoxyParamCaption})}
+
+
+
+Waits for new data to arrive that can be used to recheck for new data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sbuffer} & The byte buffer to read from.\\
+\hline
+{\em timeout} & The time out in milliseconds.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if one more byte is available since the last \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_read_to_cache_a57a77a7d1da2574cb05400c5745613c2}{Read\+To}} call; {\ttfamily false} otherwise
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_read_to_cache_ada7cbbcfb8b96ab3d096ac034eb0c94b}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_read_to_cache_ada7cbbcfb8b96ab3d096ac034eb0c94b}} 
+\index{RJCP.IO.Ports.Native.ReadToCache@{RJCP.IO.Ports.Native.ReadToCache}!Reset@{Reset}}
+\index{Reset@{Reset}!RJCP.IO.Ports.Native.ReadToCache@{RJCP.IO.Ports.Native.ReadToCache}}
+\subsubsection{\texorpdfstring{Reset()}{Reset()}}
+{\footnotesize\ttfamily void R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Read\+To\+Cache.\+Reset (\begin{DoxyParamCaption}\item[{bool}]{with\+Overflow }\end{DoxyParamCaption})}
+
+
+
+Resets the cache, taking optionally into account a previous overflow. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em with\+Overflow} & if set to {\ttfamily true} a previous overflow is taken into account and reinserted into the buffer, as if the first character had already been read.\\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Property Documentation}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_read_to_cache_a4ddb8704e3d3d39b40bba23183885700}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_read_to_cache_a4ddb8704e3d3d39b40bba23183885700}} 
+\index{RJCP.IO.Ports.Native.ReadToCache@{RJCP.IO.Ports.Native.ReadToCache}!Encoding@{Encoding}}
+\index{Encoding@{Encoding}!RJCP.IO.Ports.Native.ReadToCache@{RJCP.IO.Ports.Native.ReadToCache}}
+\subsubsection{\texorpdfstring{Encoding}{Encoding}}
+{\footnotesize\ttfamily Encoding R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Read\+To\+Cache.\+Encoding\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the byte encoding for pre-\/ and post-\/transmission conversion of text. 
+
+The encoding is used for encoding string information to byte format when sending over the serial port, or receiving data via the serial port. It is only used with the read/write functions that accept strings (and not used for byte based reading and writing). 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+P\+R\+O\+J\+E\+C\+T\+S/\+C\#/\+B\+S\+L430.\+N\+E\+T/src/\+B\+S\+L430.\+N\+E\+T/\+Library/serialportstream/2.\+1.\+4/src/\+Native/Read\+To\+Cache.\+cs\end{DoxyCompactItemize}

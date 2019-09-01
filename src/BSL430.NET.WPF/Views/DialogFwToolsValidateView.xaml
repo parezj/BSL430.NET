@@ -1,0 +1,166 @@
+﻿<Dialog:CustomDialog x:Name="DialogFwToolsValidateViewN"
+                     x:Class="BSL430_NET_WPF.Views.DialogFwToolsValidateView"
+                     Style="{StaticResource CustomDialogStyle}"
+                     Background="{DynamicResource WindowBackgroundBrush}"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"    
+                     xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+                     xmlns:Converters="clr-namespace:BSL430_NET_WPF.Converters"
+                     xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                     xmlns:cal="http://www.caliburnproject.org"
+                     VerticalAlignment="Stretch"
+                     xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+                     PreviewKeyDown="DialogFwToolsValidateViewN_PreviewKeyDown">
+    
+    <Grid VerticalAlignment="Center">
+        <Grid.Resources>
+            <Converters:SizeConverter2 x:Key="SizeConverter2" />
+            <Converters:FwFormatEnumConverter x:Key="FwFormatEnumConverter" />
+        </Grid.Resources>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="5,0" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+            <Label Content="Firmware status" Margin="15,0,0,0" FontWeight="Normal" FontSize="20"></Label>
+            <Border Margin="15,0" CornerRadius="7" BorderThickness="0" BorderBrush="Black" Background="{DynamicResource BasicHover}">
+                <Grid Margin="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" x:Name="State" FontSize="30" Margin="0" HorizontalAlignment="Center" FontWeight="Bold">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock" BasedOn="{StaticResource FwValidState}"/>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </Grid>
+            </Border>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Margin="5,0" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+            <Label Content="Firmware info" Margin="15,0,0,0" FontWeight="Normal" FontSize="20"></Label>
+            <Border Margin="15,0" CornerRadius="7" BorderThickness="0" BorderBrush="Black" Background="{DynamicResource BasicHover}">
+                <Grid Margin="15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto" MinWidth="200"/>
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto" MinWidth="200"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="1" FontSize="20" Content="Format:" Margin="2" FontWeight="Thin" ToolTip="Firmware format. TI-TXT, Intel-HEX or ELF is supported."/>
+                    <Label Grid.Row="0" Grid.Column="4" FontSize="20" Content="CRC16:" Margin="2" FontWeight="Thin" ToolTip="CRC-16-CCITT is 16-bit crc value of all data bytes in firmware."/>
+
+                    <Label Grid.Row="1" Grid.Column="1" FontSize="20" Content="First Address:" Margin="2" FontWeight="Thin" ToolTip="First and last 16-bit address in firmware."/>
+                    <Label Grid.Row="1" Grid.Column="4" FontSize="20" Content="Last Address:" Margin="2" FontWeight="Thin" ToolTip="First and last 16-bit address in firmware."/>
+
+                    <Label Grid.Row="2" Grid.Column="1" FontSize="20" Content="Size (Code/Full):" Margin="2" FontWeight="Thin" ToolTip="Full: Total length of firmware, count of all bytes from first address to last address.&#x0a;Code: Real count of all bytes in firmware parsed from file.&#x0a;When there is 'K' postfix present, it means, that real value is in multiples of 1024."/>
+                    <Label Grid.Row="2" Grid.Column="4" FontSize="20" Content="Reset Vector:" Margin="2" FontWeight="Thin" ToolTip="Reset vector is 16-bit address (value) located usually at address 0xFFFE. It is MSP430 architecture specific property."/>
+
+                    <TextBox Grid.Row="0" Grid.Column="2" FontSize="22" Text="{Binding ValidateData.Format, Mode=OneWay, Converter={StaticResource FwFormatEnumConverter}}" 
+                             Margin="2" FontWeight="DemiBold" IsReadOnly="True" BorderThickness="0" 
+                             TextAlignment="Center" FontFamily="Consolas" VerticalAlignment="Center">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox" BasedOn="{StaticResource FwInvalidClear}"/>
+                        </TextBox.Style>
+                    </TextBox>
+                    
+                    <TextBox Grid.Row="0" Grid.Column="5" FontSize="22" Text="{Binding ValidateData.Crc16, Mode=OneWay, StringFormat={}0x{0:X4}}"
+                             Margin="2" FontWeight="DemiBold" IsReadOnly="True" BorderThickness="0" 
+                             TextAlignment="Center" FontFamily="Consolas" VerticalAlignment="Center">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox" BasedOn="{StaticResource FwInvalidClear}"/>
+                        </TextBox.Style>
+                    </TextBox>
+
+                    <TextBox Grid.Row="1" Grid.Column="2" FontSize="22" Text="{Binding ValidateData.AddrFirst, Mode=OneWay, StringFormat={}0x{0:X4}}" 
+                             Margin="2" FontWeight="DemiBold" IsReadOnly="True" BorderThickness="0" 
+                             TextAlignment="Center" FontFamily="Consolas" VerticalAlignment="Center">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox" BasedOn="{StaticResource FwInvalidClear}"/>
+                        </TextBox.Style>
+                    </TextBox>
+
+                    <TextBox Grid.Row="1" Grid.Column="5" FontSize="22" Text="{Binding ValidateData.AddrLast, Mode=OneWay, StringFormat={}0x{0:X4}}" 
+                             Margin="2" FontWeight="DemiBold" IsReadOnly="True" BorderThickness="0" 
+                             TextAlignment="Center" FontFamily="Consolas" VerticalAlignment="Center">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox" BasedOn="{StaticResource FwInvalidClear}"/>
+                        </TextBox.Style>
+                    </TextBox>
+
+                    <Grid Grid.Row="2" Grid.Column="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBox Grid.Column="0" x:Name="s" FontSize="22" Text="{Binding ValidateData.SizeCode, Mode=OneWay, Converter={StaticResource SizeConverter2}}" 
+                                 FontFamily="Consolas" Margin="2,2,0,2" ToolTip="{Binding ValidateData.SizeCode, Mode=OneWay}" TextAlignment="Right" 
+                                 FontWeight="DemiBold" IsReadOnly="True" BorderThickness="0" VerticalAlignment="Center">
+                            <TextBox.Style>
+                                <Style TargetType="TextBox" BasedOn="{StaticResource FwInvalidClear}"/>
+                            </TextBox.Style>
+                        </TextBox>
+
+                        <TextBox Grid.Column="1" FontSize="22" Text="/" FontFamily="Consolas" Margin="0,2" FontWeight="DemiBold"
+                                 BorderThickness="0" VerticalAlignment="Center" Background="{Binding ElementName=s, Path=Background}">
+                            <TextBox.Style>
+                                <Style TargetType="TextBox" BasedOn="{StaticResource FwInvalidClear}"/>
+                            </TextBox.Style>
+                        </TextBox>
+
+                        <TextBox Grid.Column="2" FontSize="22" Text="{Binding ValidateData.SizeFull, Mode=OneWay, Converter={StaticResource SizeConverter2}}"
+                                 FontFamily="Consolas" ToolTip="{Binding ValidateData.SizeFull, Mode=OneWay}" Margin="0,2,2,2" TextAlignment="Left" 
+                                 FontWeight="DemiBold" IsReadOnly="True" BorderThickness="0" VerticalAlignment="Center">
+                            <TextBox.Style>
+                                <Style TargetType="TextBox" BasedOn="{StaticResource FwInvalidClear}"/>
+                            </TextBox.Style>
+                        </TextBox>
+                    </Grid>
+
+                    <TextBox Grid.Row="2" Grid.Column="5" FontSize="22" Text="{Binding ValidateData.ResetVector, Mode=OneWay, StringFormat={}0x{0:X4}}"
+                             FontFamily="Consolas" Margin="2" FontWeight="DemiBold" IsReadOnly="True" BorderThickness="0"
+                             TextAlignment="Center" VerticalAlignment="Center">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox" BasedOn="{StaticResource FwInvalidClear}"/>
+                        </TextBox.Style>
+                    </TextBox>
+                </Grid>
+            </Border>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10,20,10,20" >
+            <Button x:Name="OK" 
+                    Content="OK"
+                    Margin="10,0" 
+                    Width="150" 
+                    Padding="20, 10"
+                    FontWeight="Bold"
+                    FontSize="22" 
+                    Cursor="Hand"
+                    HorizontalAlignment="Center"
+                    BorderThickness="0"
+                    Controls:ControlsHelper.ContentCharacterCasing="Normal"
+                    Style="{DynamicResource AccentedSquareButtonStyle}" 
+                    cal:Message.Attach="ValidateClose"/>
+        </StackPanel>
+        
+    </Grid>
+</Dialog:CustomDialog>

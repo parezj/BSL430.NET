@@ -1,0 +1,98 @@
+.TH "BSL430_NET.Bsl430NetDevice" 3 "Sat Jun 22 2019" "Version 1.2.1" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BSL430_NET.Bsl430NetDevice \- BSL430\&.NET Device node serve as a generic device indentificator with field 'Name' as a key\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBBSL430_NET\&.Comm\&.FTDI_Device\fP, \fBBSL430_NET\&.Comm\&.Libftdi_Device\fP, \fBBSL430_NET\&.Comm\&.Serial_Device\fP, and \fBBSL430_NET\&.Comm\&.USB_HID_Device\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBsl430NetDevice\fP ()"
+.br
+.RI "\fBBsl430NetDevice\fP constructor "
+.ti -1c
+.RI "\fBBsl430NetDevice\fP (string device_name)"
+.br
+.RI "\fBBsl430NetDevice\fP constructor "
+.ti -1c
+.RI "\fBBsl430NetDevice\fP (string device_name, string description, string fulldesc, \fBMode\fP mode)"
+.br
+.RI "\fBBsl430NetDevice\fP constructor "
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "Returns FullDescription of current device\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "readonly string \fBName\fP = ''"
+.br
+.RI "Name is the key unique element by which this library handles devices eg\&. COM1, FTDI2, libtfi3, USB4 \&.\&. "
+.ti -1c
+.RI "readonly string \fBDescription\fP = ''"
+.br
+.RI "Device description\&. "
+.ti -1c
+.RI "readonly string \fBFullDescription\fP = ''"
+.br
+.RI "Device full available description eg\&. Name, Type, Serial \&.\&.\&. "
+.ti -1c
+.RI "readonly \fBMode\fP \fBMode\fP = \fBMode\&.UART_Serial\fP"
+.br
+.RI "Device mode\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+BSL430\&.NET Device node serve as a generic device indentificator with field 'Name' as a key\&. 
+
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "BSL430_NET\&.Bsl430NetDevice\&.Bsl430NetDevice ()"
+
+.PP
+\fBBsl430NetDevice\fP constructor 
+.SS "BSL430_NET\&.Bsl430NetDevice\&.Bsl430NetDevice (string device_name)"
+
+.PP
+\fBBsl430NetDevice\fP constructor 
+.SS "BSL430_NET\&.Bsl430NetDevice\&.Bsl430NetDevice (string device_name, string description, string fulldesc, \fBMode\fP mode)"
+
+.PP
+\fBBsl430NetDevice\fP constructor 
+.SH "Member Function Documentation"
+.PP 
+.SS "override string BSL430_NET\&.Bsl430NetDevice\&.ToString ()"
+
+.PP
+Returns FullDescription of current device\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "readonly string BSL430_NET\&.Bsl430NetDevice\&.Description = ''"
+
+.PP
+Device description\&. 
+.SS "readonly string BSL430_NET\&.Bsl430NetDevice\&.FullDescription = ''"
+
+.PP
+Device full available description eg\&. Name, Type, Serial \&.\&.\&. 
+.SS "readonly \fBMode\fP BSL430_NET\&.Bsl430NetDevice\&.Mode = \fBMode\&.UART_Serial\fP"
+
+.PP
+Device mode\&. 
+.SS "readonly string BSL430_NET\&.Bsl430NetDevice\&.Name = ''"
+
+.PP
+Name is the key unique element by which this library handles devices eg\&. COM1, FTDI2, libtfi3, USB4 \&.\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

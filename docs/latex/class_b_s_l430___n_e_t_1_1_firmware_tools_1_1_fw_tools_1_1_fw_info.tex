@@ -1,0 +1,176 @@
+\hypertarget{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info}{}\section{B\+S\+L430\+\_\+\+N\+E\+T.\+Firmware\+Tools.\+Fw\+Tools.\+Fw\+Info Class Reference}
+\label{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info}\index{BSL430\_NET.FirmwareTools.FwTools.FwInfo@{BSL430\_NET.FirmwareTools.FwTools.FwInfo}}
+
+
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info}{Fw\+Info}} provides info about firmware, like format, first and last addresses, C\+RC, code size and reset vector.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_a9df8f08dbbc374727b6c1cdf2db0117a}{Fw\+Info}} ()
+\begin{DoxyCompactList}\small\item\em Init all property to zero. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_ac7099273e3b2762b51535ccaad4f3c2a}{Fw\+Info}} (int addr\+\_\+first, int addr\+\_\+last, int size\+\_\+full, int size\+\_\+buffer=0)
+\begin{DoxyCompactList}\small\item\em Init fake info with values specified as parameters, the rest is init to zero. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_a0b3ab5316467374d612de29567b89769}{Fw\+Info}} (I\+Collection$<$ \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_node}{Fw\+Node}} $>$ nodes, Fw\+Format format, int size\+\_\+buffer=0, int reset\+\_\+vector\+\_\+addr=-\/1)
+\begin{DoxyCompactList}\small\item\em Init info class to values calculated from valid firmware data. size\+\_\+buffer is optional flag and reset\+\_\+vector\+\_\+addr is usually 0x\+F\+F\+FE, address where reset vector is, and its also optional. \end{DoxyCompactList}\item 
+int? \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_a29c67167406735189b1f2d009dd0f3a8}{Set\+Reset\+Vector}} (I\+Collection$<$ \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_node}{Fw\+Node}} $>$ nodes, int reset\+\_\+vector\+\_\+addr)
+\begin{DoxyCompactList}\small\item\em Sets Reset Vector property to valid data, calculated from nodes. reset\+\_\+vector\+\_\+addr is usually 0x\+F\+F\+FE. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+Fw\+Format \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_af50c2a855e56a7e3a87c3219137637bc}{Format}} = Fw\+Format.\+A\+U\+TO\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_firmware}{Firmware}} format. T\+I-\/\+T\+XT, Intel-\/\+H\+EX or E\+LF is supported. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_a8f99029513e4a9c26a7f607d1d015abb}{Addr\+First}} = 0\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em First 16-\/bit address in firmware. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_a972614613b4729dbbc36a06e240fb50b}{Addr\+Last}} = 0\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Last 16-\/bit address in firmware. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_ac64507db9efca6fd8958637bf06fe8a3}{Size\+Full}} = 0\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Total length of firmware, count of all bytes from first address to last address. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_a8da28ad0778ba66a5f7b98d188ad159f}{Size\+Code}} = 0\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Real count of all bytes in firmware parsed from file. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_ace4d79f2f0167ee49199ecf909dacce0}{Crc16}} = 0\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em C\+R\+C-\/16-\/\+C\+C\+I\+TT is 16-\/bit crc value of all data bytes in firmware. \end{DoxyCompactList}\item 
+int? \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_aaa106f267ffe7b7ca8faa7ea6437796d}{Reset\+Vector}} = 0\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Reset vector is 16-\/bit address (value) located usually at address 0x\+F\+F\+FE. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_afd0fba26ece185bfecbfe71d50230581}{Size\+Buffer}} = 0\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Help property for later firmware manipulation, like slicing in buffer blocks. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info}{Fw\+Info}} provides info about firmware, like format, first and last addresses, C\+RC, code size and reset vector. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_a9df8f08dbbc374727b6c1cdf2db0117a}\label{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_a9df8f08dbbc374727b6c1cdf2db0117a}} 
+\index{BSL430\_NET.FirmwareTools.FwTools.FwInfo@{BSL430\_NET.FirmwareTools.FwTools.FwInfo}!FwInfo@{FwInfo}}
+\index{FwInfo@{FwInfo}!BSL430\_NET.FirmwareTools.FwTools.FwInfo@{BSL430\_NET.FirmwareTools.FwTools.FwInfo}}
+\subsubsection{\texorpdfstring{FwInfo()}{FwInfo()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily B\+S\+L430\+\_\+\+N\+E\+T.\+Firmware\+Tools.\+Fw\+Tools.\+Fw\+Info.\+Fw\+Info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Init all property to zero. 
+
+\mbox{\Hypertarget{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_ac7099273e3b2762b51535ccaad4f3c2a}\label{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_ac7099273e3b2762b51535ccaad4f3c2a}} 
+\index{BSL430\_NET.FirmwareTools.FwTools.FwInfo@{BSL430\_NET.FirmwareTools.FwTools.FwInfo}!FwInfo@{FwInfo}}
+\index{FwInfo@{FwInfo}!BSL430\_NET.FirmwareTools.FwTools.FwInfo@{BSL430\_NET.FirmwareTools.FwTools.FwInfo}}
+\subsubsection{\texorpdfstring{FwInfo()}{FwInfo()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily B\+S\+L430\+\_\+\+N\+E\+T.\+Firmware\+Tools.\+Fw\+Tools.\+Fw\+Info.\+Fw\+Info (\begin{DoxyParamCaption}\item[{int}]{addr\+\_\+first,  }\item[{int}]{addr\+\_\+last,  }\item[{int}]{size\+\_\+full,  }\item[{int}]{size\+\_\+buffer = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Init fake info with values specified as parameters, the rest is init to zero. 
+
+\mbox{\Hypertarget{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_a0b3ab5316467374d612de29567b89769}\label{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_a0b3ab5316467374d612de29567b89769}} 
+\index{BSL430\_NET.FirmwareTools.FwTools.FwInfo@{BSL430\_NET.FirmwareTools.FwTools.FwInfo}!FwInfo@{FwInfo}}
+\index{FwInfo@{FwInfo}!BSL430\_NET.FirmwareTools.FwTools.FwInfo@{BSL430\_NET.FirmwareTools.FwTools.FwInfo}}
+\subsubsection{\texorpdfstring{FwInfo()}{FwInfo()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily B\+S\+L430\+\_\+\+N\+E\+T.\+Firmware\+Tools.\+Fw\+Tools.\+Fw\+Info.\+Fw\+Info (\begin{DoxyParamCaption}\item[{I\+Collection$<$ \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_node}{Fw\+Node}} $>$}]{nodes,  }\item[{Fw\+Format}]{format,  }\item[{int}]{size\+\_\+buffer = {\ttfamily 0},  }\item[{int}]{reset\+\_\+vector\+\_\+addr = {\ttfamily -\/1} }\end{DoxyParamCaption})}
+
+
+
+Init info class to values calculated from valid firmware data. size\+\_\+buffer is optional flag and reset\+\_\+vector\+\_\+addr is usually 0x\+F\+F\+FE, address where reset vector is, and its also optional. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_a29c67167406735189b1f2d009dd0f3a8}\label{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_a29c67167406735189b1f2d009dd0f3a8}} 
+\index{BSL430\_NET.FirmwareTools.FwTools.FwInfo@{BSL430\_NET.FirmwareTools.FwTools.FwInfo}!SetResetVector@{SetResetVector}}
+\index{SetResetVector@{SetResetVector}!BSL430\_NET.FirmwareTools.FwTools.FwInfo@{BSL430\_NET.FirmwareTools.FwTools.FwInfo}}
+\subsubsection{\texorpdfstring{SetResetVector()}{SetResetVector()}}
+{\footnotesize\ttfamily int? B\+S\+L430\+\_\+\+N\+E\+T.\+Firmware\+Tools.\+Fw\+Tools.\+Fw\+Info.\+Set\+Reset\+Vector (\begin{DoxyParamCaption}\item[{I\+Collection$<$ \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_node}{Fw\+Node}} $>$}]{nodes,  }\item[{int}]{reset\+\_\+vector\+\_\+addr }\end{DoxyParamCaption})}
+
+
+
+Sets Reset Vector property to valid data, calculated from nodes. reset\+\_\+vector\+\_\+addr is usually 0x\+F\+F\+FE. 
+
+
+
+\subsection{Property Documentation}
+\mbox{\Hypertarget{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_a8f99029513e4a9c26a7f607d1d015abb}\label{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_a8f99029513e4a9c26a7f607d1d015abb}} 
+\index{BSL430\_NET.FirmwareTools.FwTools.FwInfo@{BSL430\_NET.FirmwareTools.FwTools.FwInfo}!AddrFirst@{AddrFirst}}
+\index{AddrFirst@{AddrFirst}!BSL430\_NET.FirmwareTools.FwTools.FwInfo@{BSL430\_NET.FirmwareTools.FwTools.FwInfo}}
+\subsubsection{\texorpdfstring{AddrFirst}{AddrFirst}}
+{\footnotesize\ttfamily int B\+S\+L430\+\_\+\+N\+E\+T.\+Firmware\+Tools.\+Fw\+Tools.\+Fw\+Info.\+Addr\+First = 0\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+First 16-\/bit address in firmware. 
+
+\mbox{\Hypertarget{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_a972614613b4729dbbc36a06e240fb50b}\label{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_a972614613b4729dbbc36a06e240fb50b}} 
+\index{BSL430\_NET.FirmwareTools.FwTools.FwInfo@{BSL430\_NET.FirmwareTools.FwTools.FwInfo}!AddrLast@{AddrLast}}
+\index{AddrLast@{AddrLast}!BSL430\_NET.FirmwareTools.FwTools.FwInfo@{BSL430\_NET.FirmwareTools.FwTools.FwInfo}}
+\subsubsection{\texorpdfstring{AddrLast}{AddrLast}}
+{\footnotesize\ttfamily int B\+S\+L430\+\_\+\+N\+E\+T.\+Firmware\+Tools.\+Fw\+Tools.\+Fw\+Info.\+Addr\+Last = 0\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Last 16-\/bit address in firmware. 
+
+\mbox{\Hypertarget{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_ace4d79f2f0167ee49199ecf909dacce0}\label{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_ace4d79f2f0167ee49199ecf909dacce0}} 
+\index{BSL430\_NET.FirmwareTools.FwTools.FwInfo@{BSL430\_NET.FirmwareTools.FwTools.FwInfo}!Crc16@{Crc16}}
+\index{Crc16@{Crc16}!BSL430\_NET.FirmwareTools.FwTools.FwInfo@{BSL430\_NET.FirmwareTools.FwTools.FwInfo}}
+\subsubsection{\texorpdfstring{Crc16}{Crc16}}
+{\footnotesize\ttfamily int B\+S\+L430\+\_\+\+N\+E\+T.\+Firmware\+Tools.\+Fw\+Tools.\+Fw\+Info.\+Crc16 = 0\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+C\+R\+C-\/16-\/\+C\+C\+I\+TT is 16-\/bit crc value of all data bytes in firmware. 
+
+\mbox{\Hypertarget{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_af50c2a855e56a7e3a87c3219137637bc}\label{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_af50c2a855e56a7e3a87c3219137637bc}} 
+\index{BSL430\_NET.FirmwareTools.FwTools.FwInfo@{BSL430\_NET.FirmwareTools.FwTools.FwInfo}!Format@{Format}}
+\index{Format@{Format}!BSL430\_NET.FirmwareTools.FwTools.FwInfo@{BSL430\_NET.FirmwareTools.FwTools.FwInfo}}
+\subsubsection{\texorpdfstring{Format}{Format}}
+{\footnotesize\ttfamily Fw\+Format B\+S\+L430\+\_\+\+N\+E\+T.\+Firmware\+Tools.\+Fw\+Tools.\+Fw\+Info.\+Format = Fw\+Format.\+A\+U\+TO\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_firmware}{Firmware}} format. T\+I-\/\+T\+XT, Intel-\/\+H\+EX or E\+LF is supported. 
+
+\mbox{\Hypertarget{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_aaa106f267ffe7b7ca8faa7ea6437796d}\label{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_aaa106f267ffe7b7ca8faa7ea6437796d}} 
+\index{BSL430\_NET.FirmwareTools.FwTools.FwInfo@{BSL430\_NET.FirmwareTools.FwTools.FwInfo}!ResetVector@{ResetVector}}
+\index{ResetVector@{ResetVector}!BSL430\_NET.FirmwareTools.FwTools.FwInfo@{BSL430\_NET.FirmwareTools.FwTools.FwInfo}}
+\subsubsection{\texorpdfstring{ResetVector}{ResetVector}}
+{\footnotesize\ttfamily int? B\+S\+L430\+\_\+\+N\+E\+T.\+Firmware\+Tools.\+Fw\+Tools.\+Fw\+Info.\+Reset\+Vector = 0\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Reset vector is 16-\/bit address (value) located usually at address 0x\+F\+F\+FE. 
+
+\mbox{\Hypertarget{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_afd0fba26ece185bfecbfe71d50230581}\label{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_afd0fba26ece185bfecbfe71d50230581}} 
+\index{BSL430\_NET.FirmwareTools.FwTools.FwInfo@{BSL430\_NET.FirmwareTools.FwTools.FwInfo}!SizeBuffer@{SizeBuffer}}
+\index{SizeBuffer@{SizeBuffer}!BSL430\_NET.FirmwareTools.FwTools.FwInfo@{BSL430\_NET.FirmwareTools.FwTools.FwInfo}}
+\subsubsection{\texorpdfstring{SizeBuffer}{SizeBuffer}}
+{\footnotesize\ttfamily int B\+S\+L430\+\_\+\+N\+E\+T.\+Firmware\+Tools.\+Fw\+Tools.\+Fw\+Info.\+Size\+Buffer = 0\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Help property for later firmware manipulation, like slicing in buffer blocks. 
+
+\mbox{\Hypertarget{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_a8da28ad0778ba66a5f7b98d188ad159f}\label{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_a8da28ad0778ba66a5f7b98d188ad159f}} 
+\index{BSL430\_NET.FirmwareTools.FwTools.FwInfo@{BSL430\_NET.FirmwareTools.FwTools.FwInfo}!SizeCode@{SizeCode}}
+\index{SizeCode@{SizeCode}!BSL430\_NET.FirmwareTools.FwTools.FwInfo@{BSL430\_NET.FirmwareTools.FwTools.FwInfo}}
+\subsubsection{\texorpdfstring{SizeCode}{SizeCode}}
+{\footnotesize\ttfamily int B\+S\+L430\+\_\+\+N\+E\+T.\+Firmware\+Tools.\+Fw\+Tools.\+Fw\+Info.\+Size\+Code = 0\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Real count of all bytes in firmware parsed from file. 
+
+\mbox{\Hypertarget{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_ac64507db9efca6fd8958637bf06fe8a3}\label{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info_ac64507db9efca6fd8958637bf06fe8a3}} 
+\index{BSL430\_NET.FirmwareTools.FwTools.FwInfo@{BSL430\_NET.FirmwareTools.FwTools.FwInfo}!SizeFull@{SizeFull}}
+\index{SizeFull@{SizeFull}!BSL430\_NET.FirmwareTools.FwTools.FwInfo@{BSL430\_NET.FirmwareTools.FwTools.FwInfo}}
+\subsubsection{\texorpdfstring{SizeFull}{SizeFull}}
+{\footnotesize\ttfamily int B\+S\+L430\+\_\+\+N\+E\+T.\+Firmware\+Tools.\+Fw\+Tools.\+Fw\+Info.\+Size\+Full = 0\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Total length of firmware, count of all bytes from first address to last address. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+P\+R\+O\+J\+E\+C\+T\+S/\+C\#/\+B\+S\+L430.\+N\+E\+T/src/\+B\+S\+L430.\+N\+E\+T/Firmware\+Tools.\+cs\end{DoxyCompactItemize}

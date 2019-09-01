@@ -1,0 +1,56 @@
+.TH "BSL430_NET.Comm.Libftdi_Device" 3 "Sat Jun 22 2019" "Version 1.2.1" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BSL430_NET.Comm.Libftdi_Device \- Libftdi Device node extends generic \fBBsl430NetDevice\fP\&. Use requires libraries: libftdi, libusb  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBBSL430_NET\&.Bsl430NetDevice\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLibftdi_Device\fP (int _vid, int _pid, string name, string desc, string fulldesc, \fBMode\fP mode)"
+.br
+.RI "\fBLibftdi_Device\fP constructor\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "readonly int \fBvid\fP"
+.br
+.RI "FTDI device VID eg\&. 0x0403\&. "
+.ti -1c
+.RI "readonly int \fBpid\fP"
+.br
+.RI "FTDI device PID eg\&. 0x6001\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Libftdi Device node extends generic \fBBsl430NetDevice\fP\&. Use requires libraries: libftdi, libusb 
+
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "BSL430_NET\&.Comm\&.Libftdi_Device\&.Libftdi_Device (int _vid, int _pid, string name, string desc, string fulldesc, \fBMode\fP mode)"
+
+.PP
+\fBLibftdi_Device\fP constructor\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "readonly int BSL430_NET\&.Comm\&.Libftdi_Device\&.pid"
+
+.PP
+FTDI device PID eg\&. 0x6001\&. 
+.SS "readonly int BSL430_NET\&.Comm\&.Libftdi_Device\&.vid"
+
+.PP
+FTDI device VID eg\&. 0x0403\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

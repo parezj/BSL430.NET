@@ -1,0 +1,50 @@
+.TH "BSL430_NET.StatusEx" 3 "Sat Jun 22 2019" "Version 1.2.1" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BSL430_NET.StatusEx \- \fBStatusEx\fP is \fBStatus\fP extended with \fBReport\fP List, returned as a result of main public methods\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBBSL430_NET\&.Status\fP\&.
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBBytesProcessed\fP = 0\fC [get, set]\fP"
+.br
+.RI "Number of bytes that were processed (uploaded/downloaded to/from target MCU)\&. "
+.ti -1c
+.RI "byte [] \fBBSLVersion\fP\fC [get, set]\fP"
+.br
+.RI "Null, 4-byte or 10-byte array, meaning differs, please see TI BSL doc (slau319t\&.pdf)\&. "
+.ti -1c
+.RI "List< \fBReport\fP > \fBReports\fP\fC [get, set]\fP"
+.br
+.RI "\fBReport\fP List\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBStatusEx\fP is \fBStatus\fP extended with \fBReport\fP List, returned as a result of main public methods\&. 
+
+
+.SH "Property Documentation"
+.PP 
+.SS "byte [] BSL430_NET\&.StatusEx\&.BSLVersion\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Null, 4-byte or 10-byte array, meaning differs, please see TI BSL doc (slau319t\&.pdf)\&. 
+.SS "int BSL430_NET\&.StatusEx\&.BytesProcessed = 0\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Number of bytes that were processed (uploaded/downloaded to/from target MCU)\&. 
+.SS "List<\fBReport\fP> BSL430_NET\&.StatusEx\&.Reports\fC [get]\fP, \fC [set]\fP"
+
+.PP
+\fBReport\fP List\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

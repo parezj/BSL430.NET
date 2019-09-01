@@ -1,0 +1,1259 @@
+.TH "RJCP.IO.Ports.SerialPortStream" 3 "Sat Jun 22 2019" "Version 1.2.1" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+RJCP.IO.Ports.SerialPortStream \- The \fBSerialPortStream\fP is a stream class to communicate with serial port based devices\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits Stream\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSerialPortStream\fP ()"
+.br
+.RI "Constructor\&. Create a stream that doesn't connect to any port\&. "
+.ti -1c
+.RI "\fBSerialPortStream\fP (string port)"
+.br
+.RI "Constructor\&. Create a stream that connects to the specified port\&. "
+.ti -1c
+.RI "\fBSerialPortStream\fP (string port, int baud)"
+.br
+.RI "Constructor\&. Create a stream that connects to the specified port and sets the initial baud rate\&. "
+.ti -1c
+.RI "\fBSerialPortStream\fP (string port, int baud, int data, \fBParity\fP parity, \fBStopBits\fP stopbits)"
+.br
+.RI "Constructor\&. Create a stream that connects to the specified port with standard parameters\&. "
+.ti -1c
+.RI "void \fBGetPortSettings\fP ()"
+.br
+.RI "Update properties based on the current port, overwriting already existing properties\&. "
+.ti -1c
+.RI "void \fBOpen\fP ()"
+.br
+.RI "Opens a new serial port connection\&. "
+.ti -1c
+.RI "void \fBOpenDirect\fP ()"
+.br
+.RI "Opens a new serial port connection with control if the port settings are initialised or not\&. "
+.ti -1c
+.RI "new void \fBClose\fP ()"
+.br
+.RI "Closes the port connection, sets the IsOpen property to false\&. Does not dispose the object\&. "
+.ti -1c
+.RI "override int \fBRead\fP (byte[] buffer, int offset, int count)"
+.br
+.RI "Reads a sequence of bytes from the current stream and advances the position within the stream by the number of bytes read\&. "
+.ti -1c
+.RI "override IAsyncResult \fBBeginRead\fP (byte[] buffer, int offset, int count, AsyncCallback callback, object state)"
+.br
+.RI "Begins an asynchronous read operation\&. "
+.ti -1c
+.RI "override int \fBEndRead\fP (IAsyncResult asyncResult)"
+.br
+.RI "Waits for the pending asynchronous read to complete\&. "
+.ti -1c
+.RI "override int \fBReadByte\fP ()"
+.br
+.RI "Synchronously reads one byte from the SerialPort input buffer\&. "
+.ti -1c
+.RI "int \fBRead\fP (char[] buffer, int offset, int count)"
+.br
+.RI "Reads a number of characters from the \fBSerialPortStream\fP input buffer and writes them into an array of characters at a given offset\&. "
+.ti -1c
+.RI "int \fBReadChar\fP ()"
+.br
+.RI "Synchronously reads one character from the \fBSerialPortStream\fP input buffer\&. "
+.ti -1c
+.RI "string \fBReadLine\fP ()"
+.br
+.RI "Reads up to the NewLine value in the input buffer\&. "
+.ti -1c
+.RI "string \fBReadTo\fP (string text)"
+.br
+.RI "Reads a string up to the specified \fItext\fP in the input buffer\&. "
+.ti -1c
+.RI "string \fBReadExisting\fP ()"
+.br
+.RI "Reads all immediately available bytes\&. "
+.ti -1c
+.RI "void \fBDiscardInBuffer\fP ()"
+.br
+.RI "Discards data from the serial driver's receive buffer\&. "
+.ti -1c
+.RI "override void \fBFlush\fP ()"
+.br
+.RI "Clears all buffers for this stream and causes any buffered data to be written to the underlying device\&. "
+.ti -1c
+.RI "override void \fBWrite\fP (byte[] buffer, int offset, int count)"
+.br
+.RI "Write the given data into the buffered serial stream for sending over the serial port\&. "
+.ti -1c
+.RI "override IAsyncResult \fBBeginWrite\fP (byte[] buffer, int offset, int count, AsyncCallback callback, object state)"
+.br
+.RI "Begins an asynchronous write operation\&. "
+.ti -1c
+.RI "override void \fBEndWrite\fP (IAsyncResult asyncResult)"
+.br
+.RI "Ends an asynchronous write operation\&. "
+.ti -1c
+.RI "void \fBWrite\fP (char[] buffer, int offset, int count)"
+.br
+.RI "Writes a specified number of characters to the serial port using data from a buffer\&. "
+.ti -1c
+.RI "void \fBWrite\fP (string text)"
+.br
+.RI "Writes the specified string to the serial port\&. "
+.ti -1c
+.RI "void \fBWriteLine\fP (string text)"
+.br
+.RI "Writes the specified string and the NewLine value to the output buffer\&. "
+.ti -1c
+.RI "void \fBDiscardOutBuffer\fP ()"
+.br
+.RI "Discards data from the serial driver's transmit buffer\&. "
+.ti -1c
+.RI "override long \fBSeek\fP (long offset, SeekOrigin origin)"
+.br
+.RI "This stream does not support seeking\&. "
+.ti -1c
+.RI "override void \fBSetLength\fP (long value)"
+.br
+.RI "This stream does not support the SetLength property\&. "
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "Returns a System\&.String that represents this instance\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static string [] \fBGetPortNames\fP ()"
+.br
+.RI "Gets an array of serial port names for the current computer\&. "
+.ti -1c
+.RI "static \fBPortDescription\fP [] \fBGetPortDescriptions\fP ()"
+.br
+.RI "Gets an array of serial port names and descriptions for the current computer\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const int \fBInfiniteTimeout\fP = Timeout\&.Infinite"
+.br
+.RI "Indicates that no time out should occur\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBOnDataReceived\fP (object sender, \fBSerialDataReceivedEventArgs\fP args)"
+.br
+.RI "Called when data is received, or the EOF character is detected by the driver\&. "
+.ti -1c
+.RI "virtual void \fBOnCommError\fP (object sender, \fBSerialErrorReceivedEventArgs\fP args)"
+.br
+.RI "Called when an error condition is detected\&. "
+.ti -1c
+.RI "virtual void \fBOnPinChanged\fP (object sender, \fBSerialPinChangedEventArgs\fP args)"
+.br
+.RI "Called when modem pin changes are detected\&. "
+.ti -1c
+.RI "override void \fBDispose\fP (bool disposing)"
+.br
+.RI "Clean up all resources managed by this object\&. "
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "string \fBVersion\fP\fC [get]\fP"
+.br
+.RI "Get the version of this assembly (or components driving this assembly)\&. "
+.ti -1c
+.RI "string \fBPortName\fP\fC [get, set]\fP"
+.br
+.RI "Gets the port for communications, including but not limited to all available COM ports\&. "
+.ti -1c
+.RI "bool \fBIsOpen\fP\fC [get]\fP"
+.br
+.RI "Gets a value indicating the open or closed status of the \fBSerialPortStream\fP object\&. "
+.ti -1c
+.RI "Encoding \fBEncoding\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the byte encoding for pre- and post-transmission conversion of text\&. "
+.ti -1c
+.RI "string \fBNewLine\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the value used to interpret the end of a call to the ReadLine and WriteLine methods\&. "
+.ti -1c
+.RI "int \fBDriverInQueue\fP\fC [get, set]\fP"
+.br
+.RI "Specify the driver In Queue at the time it is opened\&. "
+.ti -1c
+.RI "int \fBDriverOutQueue\fP\fC [get, set]\fP"
+.br
+.RI "Specify the driver Out Queue at the time it is opened\&. "
+.ti -1c
+.RI "override bool \fBCanTimeout\fP\fC [get]\fP"
+.br
+.RI "Gets a value that determines whether the current stream can time out\&. "
+.ti -1c
+.RI "override bool \fBCanRead\fP\fC [get]\fP"
+.br
+.RI "Check if this stream supports reading\&. "
+.ti -1c
+.RI "override int \fBReadTimeout\fP\fC [get, set]\fP"
+.br
+.RI "Define the time out when reading data from the stream\&. "
+.ti -1c
+.RI "int \fBReadBufferSize\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the size of the \fBSerialPortStream\fP input buffer\&. "
+.ti -1c
+.RI "int \fBReceivedBytesThreshold\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the number of bytes in the read buffer before a DataReceived event occurs\&. "
+.ti -1c
+.RI "int \fBBytesToRead\fP\fC [get]\fP"
+.br
+.RI "Gets the number of bytes of data in the receive buffer\&. "
+.ti -1c
+.RI "override bool \fBCanWrite\fP\fC [get]\fP"
+.br
+.RI "Check if this stream supports writing\&. "
+.ti -1c
+.RI "override int \fBWriteTimeout\fP\fC [get, set]\fP"
+.br
+.RI "Define the time out when writing data to the local buffer\&. "
+.ti -1c
+.RI "int \fBWriteBufferSize\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the size of the serial port output buffer\&. "
+.ti -1c
+.RI "int \fBBytesToWrite\fP\fC [get]\fP"
+.br
+.RI "Gets the number of bytes of data in the send buffer\&. "
+.ti -1c
+.RI "bool \fBCDHolding\fP\fC [get]\fP"
+.br
+.RI "Gets the state of the Carrier Detect line for the port\&. "
+.ti -1c
+.RI "bool \fBCtsHolding\fP\fC [get]\fP"
+.br
+.RI "Gets the state of the Clear-to-Send line\&. "
+.ti -1c
+.RI "bool \fBDsrHolding\fP\fC [get]\fP"
+.br
+.RI "Gets the state of the Data Set Ready (DSR) signal\&. "
+.ti -1c
+.RI "bool \fBRingHolding\fP\fC [get]\fP"
+.br
+.RI "Gets the state of the Ring line signal\&. "
+.ti -1c
+.RI "int \fBBaudRate\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the serial baud rate\&. "
+.ti -1c
+.RI "int \fBDataBits\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the standard length of data bits per byte\&. "
+.ti -1c
+.RI "\fBStopBits\fP \fBStopBits\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the standard number of stop bits per byte\&. "
+.ti -1c
+.RI "\fBParity\fP \fBParity\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the parity-checking protocol\&. "
+.ti -1c
+.RI "byte \fBParityReplace\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the byte that replaces invalid bytes in a data stream when a parity error occurs\&. "
+.ti -1c
+.RI "bool \fBDiscardNull\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets a value indicating whether null bytes are ignored when transmitted between the port and the receive buffer\&. "
+.ti -1c
+.RI "bool \fBDtrEnable\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets a value that enables the Data Terminal Ready (DTR) signal during serial communication\&. "
+.ti -1c
+.RI "bool \fBRtsEnable\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets a value indicating whether the Request to Send (RTS) signal is enabled during serial communication\&. "
+.ti -1c
+.RI "\fBHandshake\fP \fBHandshake\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the handshaking protocol for serial port transmission of data\&. "
+.ti -1c
+.RI "int \fBXOnLimit\fP\fC [get, set]\fP"
+.br
+.RI "Define the limit of actual bytes in the transmit buffer when XON is sent\&. "
+.ti -1c
+.RI "int \fBXOffLimit\fP\fC [get, set]\fP"
+.br
+.RI "Define the limit of free bytes in the buffer before XOFF is sent\&. "
+.ti -1c
+.RI "bool \fBTxContinueOnXOff\fP\fC [get, set]\fP"
+.br
+.RI "Enable or Disable transmit of data when software flow control is enabled\&. "
+.ti -1c
+.RI "bool \fBBreakState\fP\fC [get, set]\fP"
+.br
+.RI "Gets or sets the break signal state\&. "
+.ti -1c
+.RI "override bool \fBCanSeek\fP\fC [get]\fP"
+.br
+.RI "This stream is not seekable, so always returns false\&. "
+.ti -1c
+.RI "override long \fBLength\fP\fC [get]\fP"
+.br
+.RI "This stream does not support the Length property\&. "
+.ti -1c
+.RI "override long \fBPosition\fP\fC [get, set]\fP"
+.br
+.RI "This stream does not support the Position property\&. "
+.ti -1c
+.RI "bool \fBIsDisposed\fP\fC [get]\fP"
+.br
+.RI "Indicates if this object has already been disposed\&. "
+.in -1c
+.SS "Events"
+
+.in +1c
+.ti -1c
+.RI "EventHandler< \fBSerialDataReceivedEventArgs\fP > \fBDataReceived\fP"
+.br
+.RI "Occurs when data is received, or the EOF character is detected by the driver\&. "
+.ti -1c
+.RI "EventHandler< \fBSerialErrorReceivedEventArgs\fP > \fBErrorReceived\fP"
+.br
+.RI "Occurs when an error condition is detected\&. "
+.ti -1c
+.RI "EventHandler< \fBSerialPinChangedEventArgs\fP > \fBPinChanged\fP"
+.br
+.RI "Occurs when modem pin changes are detected\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+The \fBSerialPortStream\fP is a stream class to communicate with serial port based devices\&. 
+
+This implementation is a ground up reimplementation of the Microsoft SerialPort class but one that is a stream\&. There are numerous small issues with the Microsoft \&.NET 4\&.0 implementation (and assumed earlier) that this class attempts to resolve\&. 
+.PP
+For detailed information about serial port programming, refer to the site: http://msdn.microsoft.com/en-us/library/ms810467.aspx
+.PP
+When instantiating\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "RJCP\&.IO\&.Ports\&.SerialPortStream\&.SerialPortStream ()"
+
+.PP
+Constructor\&. Create a stream that doesn't connect to any port\&. This constructor initialises a stream object, but doesn't assign it to any COM port\&. The properties then assume default settings\&. No COM port is opened and queried\&. 
+.SS "RJCP\&.IO\&.Ports\&.SerialPortStream\&.SerialPortStream (string port)"
+
+.PP
+Constructor\&. Create a stream that connects to the specified port\&. This constructor attempts to bind directly to the port given\&. Properties assume the settings of the port provided\&. Exceptions may occur if the port cannot be opened\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIport\fP The name of the COM port, such as 'COM1' or 'COM33'\&.
+.RE
+.PP
+
+.SS "RJCP\&.IO\&.Ports\&.SerialPortStream\&.SerialPortStream (string port, int baud)"
+
+.PP
+Constructor\&. Create a stream that connects to the specified port and sets the initial baud rate\&. The stream doesn't impose any arbitrary limits on setting the baud rate\&. It is passed directly to the driver and it is up to the driver to determine if the baud rate is settable or not\&. Normally, a driver will attempt to set a baud rate that is within 5% of the requested baud rate (but not guaranteed)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIport\fP The name of the COM port, such as 'COM1' or 'COM33'\&.
+.br
+\fIbaud\fP The baud rate that is passed to the underlying driver\&.
+.RE
+.PP
+
+.SS "RJCP\&.IO\&.Ports\&.SerialPortStream\&.SerialPortStream (string port, int baud, int data, \fBParity\fP parity, \fBStopBits\fP stopbits)"
+
+.PP
+Constructor\&. Create a stream that connects to the specified port with standard parameters\&. The stream doesn't impose any arbitrary limits on setting the baud rate\&. It is passed directly to the driver and it is up to the driver to determine if the baud rate is settable or not\&. Normally, a driver will attempt to set a baud rate that is within 5% of the requested baud rate (but not guaranteed)\&. 
+.PP
+Not all combinations are supported\&. The driver will interpret the data and indicate if configuration is possible or not\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIport\fP The name of the COM port, such as 'COM1' or 'COM33'\&.
+.br
+\fIbaud\fP The baud rate that is passed to the underlying driver\&.
+.br
+\fIdata\fP The number of data bits\&. This is checked that the driver supports the data bits provided\&. The special type 16X is not supported\&.
+.br
+\fIparity\fP The parity for the data stream\&.
+.br
+\fIstopbits\fP Number of stop bits\&.
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "override IAsyncResult RJCP\&.IO\&.Ports\&.SerialPortStream\&.BeginRead (byte [] buffer, int offset, int count, AsyncCallback callback, object state)"
+
+.PP
+Begins an asynchronous read operation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP The buffer to read the data into\&.
+.br
+\fIoffset\fP The byte offset in \fIbuffer\fP  at which to begin writing data read from the stream\&.
+.br
+\fIcount\fP The maximum number of bytes to read\&.
+.br
+\fIcallback\fP An optional asynchronous callback, to be called when the read is complete\&.
+.br
+\fIstate\fP A user-provided object that distinguishes this particular asynchronous read request from other requests\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An IAsyncResult object to be used with \fBEndRead\fP\&.
+.RE
+.PP
+
+.SS "override IAsyncResult RJCP\&.IO\&.Ports\&.SerialPortStream\&.BeginWrite (byte [] buffer, int offset, int count, AsyncCallback callback, object state)"
+
+.PP
+Begins an asynchronous write operation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP The buffer to write data from\&.
+.br
+\fIoffset\fP The byte offset in buffer from which to begin writing\&.
+.br
+\fIcount\fP The maximum number of bytes to write\&.
+.br
+\fIcallback\fP An optional asynchronous callback, to be called when the write is complete\&.
+.br
+\fIstate\fP A user-provided object that distinguishes this particular asynchronous write request from other requests\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+An IAsyncResult that represents the asynchronous write, which could still be pending\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.ArgumentNullException\fP NULL buffer was provided\&.
+.br
+\fISystem\&.ArgumentOutOfRangeException\fP Negative offset or negative count provided\&.
+.br
+\fISystem\&.ArgumentException\fP Offset and count exceed buffer boundaries\&.
+.br
+\fISystem\&.InvalidOperationException\fP Serial port not open\&.
+.RE
+.PP
+
+.SS "new void RJCP\&.IO\&.Ports\&.SerialPortStream\&.Close ()"
+
+.PP
+Closes the port connection, sets the IsOpen property to false\&. Does not dispose the object\&. This method will clean up the object so far as to close the port\&. Internal buffers remain active that the stream can continue to read\&. Writes will throw an exception\&. 
+.SS "void RJCP\&.IO\&.Ports\&.SerialPortStream\&.DiscardInBuffer ()"
+
+.PP
+Discards data from the serial driver's receive buffer\&. This function will discard the receive buffer of the \fBSerialPortStream\fP\&. 
+.SS "void RJCP\&.IO\&.Ports\&.SerialPortStream\&.DiscardOutBuffer ()"
+
+.PP
+Discards data from the serial driver's transmit buffer\&. Clears the local buffer for data not yet sent to the serial port, as well as attempting to clear the buffers in the driver itself\&. 
+.SS "override void RJCP\&.IO\&.Ports\&.SerialPortStream\&.Dispose (bool disposing)\fC [protected]\fP"
+
+.PP
+Clean up all resources managed by this object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdisposing\fP \fBtrue\fP if the user is disposing this object, \fBfalse\fP if being cleaned up by the finalizer\&.
+.RE
+.PP
+
+.SS "override int RJCP\&.IO\&.Ports\&.SerialPortStream\&.EndRead (IAsyncResult asyncResult)"
+
+.PP
+Waits for the pending asynchronous read to complete\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIasyncResult\fP The reference to the pending asynchronous request to finish\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIObjectDisposedException\fP 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIIOException\fP Device Error (e\&.g\&. device removed)\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of bytes read from the stream, between zero (0) and the number of bytes you requested\&. Streams return zero (0) only at the end of the stream, otherwise, they should block until at least one byte is available\&.
+.RE
+.PP
+.RE
+.PP
+
+.SS "override void RJCP\&.IO\&.Ports\&.SerialPortStream\&.EndWrite (IAsyncResult asyncResult)"
+
+.PP
+Ends an asynchronous write operation\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIasyncResult\fP A reference to the outstanding asynchronous I/O request\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.TimeoutException\fP Not enough buffer space was made available before the time out expired\&.
+.br
+\fISystem\&.ObjectDisposedException\fP Object is disposed, or disposed during flush operation\&.
+.br
+\fISystem\&.IO\&.IOException\fP Serial Port was closed during the flush operation; or there was a device error\&.
+.RE
+.PP
+.PP
+EndWrite must be called exactly once on every IAsyncResult from BeginWrite\&. 
+.SS "override void RJCP\&.IO\&.Ports\&.SerialPortStream\&.Flush ()"
+
+.PP
+Clears all buffers for this stream and causes any buffered data to be written to the underlying device\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.ObjectDisposedException\fP Object is disposed, or disposed during flush operation\&.
+.br
+\fISystem\&.TimeoutException\fP Flush write time out exceeded\&.
+.br
+\fISystem\&.InvalidOperationException\fP Serial Port not opened\&.
+.br
+\fISystem\&.IO\&.IOException\fP Serial Port was closed during the flush operation; or there was a device error\&.
+.RE
+.PP
+
+.SS "static \fBPortDescription\fP [] RJCP\&.IO\&.Ports\&.SerialPortStream\&.GetPortDescriptions ()\fC [static]\fP"
+
+.PP
+Gets an array of serial port names and descriptions for the current computer\&. This method uses the Windows Management Interface to obtain its information\&. Therefore, the list may be different to the list obtained using the \fBGetPortNames()\fP method which uses other techniques\&. 
+.PP
+On Windows 7, this method shows to return normal COM ports, but not those associated with a modem driver\&.
+.PP
+\fBReturns:\fP
+.RS 4
+An array of serial ports for the current computer\&.
+.RE
+.PP
+
+.SS "static string [] RJCP\&.IO\&.Ports\&.SerialPortStream\&.GetPortNames ()\fC [static]\fP"
+
+.PP
+Gets an array of serial port names for the current computer\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+An array of serial port names for the current computer\&.
+.RE
+.PP
+
+.SS "void RJCP\&.IO\&.Ports\&.SerialPortStream\&.GetPortSettings ()"
+
+.PP
+Update properties based on the current port, overwriting already existing properties\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.ObjectDisposedException\fP 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.InvalidOperationException\fP Serial Port already opened\&.
+.RE
+.PP
+.RE
+.PP
+This method opens the serial port and retrieves the current settings from Windows\&. These settings are then made available via the various properties, BaudRate, DataBits, Parity, ParityReplace, Handshake, StopBits, TxContinueOnXoff, DiscardNull, XOnLimit and XOffLimit\&. 
+.SS "virtual void RJCP\&.IO\&.Ports\&.SerialPortStream\&.OnCommError (object sender, \fBSerialErrorReceivedEventArgs\fP args)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when an error condition is detected\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsender\fP The sender\&.
+.br
+\fIargs\fP The \fBSerialErrorReceivedEventArgs\fP instance containing the event data\&.
+.RE
+.PP
+
+.SS "virtual void RJCP\&.IO\&.Ports\&.SerialPortStream\&.OnDataReceived (object sender, \fBSerialDataReceivedEventArgs\fP args)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when data is received, or the EOF character is detected by the driver\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsender\fP The sender\&.
+.br
+\fIargs\fP The \fBSerialDataReceivedEventArgs\fP instance containing the event data\&.
+.RE
+.PP
+
+.SS "virtual void RJCP\&.IO\&.Ports\&.SerialPortStream\&.OnPinChanged (object sender, \fBSerialPinChangedEventArgs\fP args)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Called when modem pin changes are detected\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsender\fP The sender\&.
+.br
+\fIargs\fP The \fBSerialPinChangedEventArgs\fP instance containing the event data\&.
+.RE
+.PP
+
+.SS "void RJCP\&.IO\&.Ports\&.SerialPortStream\&.Open ()"
+
+.PP
+Opens a new serial port connection\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIInvalidOperationException\fP This object is already managing a serial port connection\&.
+.br
+\fISystem\&.ObjectDisposedException\fP \fBSerialPortStream\fP is disposed of\&.
+.RE
+.PP
+.PP
+Opens a connection to the serial port provided by the constructor or the Port property\&. If this object is already managing a serial port, this object raises an exception\&. 
+.PP
+When opening the port, only the settings explicitly applied will be given to the port\&. That is, if you read the default BaudRate as 115200, this value will only be applied if you explicitly set it to 115200\&. Else the default baud rate of the serial port when its opened will be used\&.
+.PP
+Normally when you instantiate this stream on a COM port, it is opened for a brief time and queried for the capabilities and default settings\&. This allows your application to use the settings that were already available (such as defined by the windows user in the Control Panel, or the last open application)\&. If you require to open the COM port without briefly opening it to query its status, then you need to instantiate this object through the default constructor\&. Set the property UpdateOnPortSet to false and then set the Port property\&. Provide all the other properties you require then call the \fBOpen()\fP method\&. The port will be opened using the default properties providing you with a consistent environment (independent of the state of the Operating \fBSystem\fP or the driver beforehand)\&.
+.SS "void RJCP\&.IO\&.Ports\&.SerialPortStream\&.OpenDirect ()"
+
+.PP
+Opens a new serial port connection with control if the port settings are initialised or not\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.ObjectDisposedException\fP \fBSerialPortStream\fP is disposed of\&.
+.br
+\fISystem\&.InvalidOperationException\fP Serial Port already opened
+.RE
+.PP
+.PP
+Opens a connection to the serial port provided by the constructor or the Port property\&. If this object is already managing a serial port, this object raises an exception\&. 
+.PP
+You can override the open so that no communication settings are retrieved or set\&. This is useful for virtual COM ports that do not manage state bits (some as some emulated COM ports or USB based communications that present themselves as a COM port but do not have any underlying physical RS232 implementation)\&.
+.PP
+<note type='note'>If you use this method to avoid setting parameters for the serial port, instead only to open the serial port, you should be careful not to set any properties associated with the serial port, as they will set the communications properties\&.</note> 
+.SS "override int RJCP\&.IO\&.Ports\&.SerialPortStream\&.Read (byte [] buffer, int offset, int count)"
+
+.PP
+Reads a sequence of bytes from the current stream and advances the position within the stream by the number of bytes read\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP An array of bytes\&. When this method returns, the buffer contains the specified byte array with the values between \fIoffset\fP  and (\fIoffset\fP 
+.IP "\(bu" 2
+\fIcount\fP  - 1) replaced by the bytes read from the current source\&.
+.PP
+.br
+\fIoffset\fP The zero-based byte offset in \fIbuffer\fP  at which to begin storing the data read from the current stream\&.
+.br
+\fIcount\fP The maximum number of bytes to be read from the current stream\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIObjectDisposedException\fP 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIArgumentNullException\fP Null buffer provided\&.
+.br
+\fIArgumentOutOfRangeException\fP Negative offset provided, or negative count provided\&.
+.br
+\fIArgumentException\fP Offset and count exceed buffer boundaries\&.
+.br
+\fIIOException\fP Device Error (e\&.g\&. device removed)\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The total number of bytes read into the buffer\&. This can be less than the number of bytes requested if that many bytes are not currently available, or zero (0) if the end of the stream has been reached\&. 
+.RE
+.PP
+.RE
+.PP
+
+.SS "int RJCP\&.IO\&.Ports\&.SerialPortStream\&.Read (char [] buffer, int offset, int count)"
+
+.PP
+Reads a number of characters from the \fBSerialPortStream\fP input buffer and writes them into an array of characters at a given offset\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP The character array to write the input to\&.
+.br
+\fIoffset\fP Offset into the buffer where to start putting the data\&.
+.br
+\fIcount\fP Maximum number of bytes to read into the buffer\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The actual number of bytes copied into the buffer, 0 if there was a time out\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIIOException\fP Device Error (e\&.g\&. device removed)\&.
+.RE
+.PP
+.PP
+This function converts the data in the local buffer to characters based on the encoding defined by the encoding property\&. The encoder used may buffer data between calls if characters may require more than one byte of data for its interpretation as a character\&. 
+.SS "override int RJCP\&.IO\&.Ports\&.SerialPortStream\&.ReadByte ()"
+
+.PP
+Synchronously reads one byte from the SerialPort input buffer\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The byte, cast to an Int32, or -1 if the end of the stream has been read\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIIOException\fP Device Error (e\&.g\&. device removed)\&.
+.RE
+.PP
+
+.SS "int RJCP\&.IO\&.Ports\&.SerialPortStream\&.ReadChar ()"
+
+.PP
+Synchronously reads one character from the \fBSerialPortStream\fP input buffer\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The character that was read\&. -1 indicates no data was available within the time out\&.
+.RE
+.PP
+
+.SS "string RJCP\&.IO\&.Ports\&.SerialPortStream\&.ReadExisting ()"
+
+.PP
+Reads all immediately available bytes\&. Reads all data in the current buffer\&. If there is no data available, then no data is returned\&. This is different to the Microsoft implementation, that will read all data, and if there is no data, then it waits for data based on the time outs\&. This method employs no time outs\&. 
+.PP
+Because this method returns only the data that is currently in the cached buffer and ignores the data that is actually buffered by the driver itself, there may be a slight discrepancy between the value returned by BytesToRead and the actual length of the string returned\&.
+.PP
+This method differs slightly from the Microsoft implementation in that this function doesn't initiate a read operation, as we have a dedicated thread to reading data that is running independently\&.
+.PP
+\fBReturns:\fP
+.RS 4
+The contents of the stream and the input buffer of the \fBSerialPortStream\fP\&.
+.RE
+.PP
+
+.SS "string RJCP\&.IO\&.Ports\&.SerialPortStream\&.ReadLine ()"
+
+.PP
+Reads up to the NewLine value in the input buffer\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The contents of the input buffer up to the first occurrence of a NewLine value\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fITimeoutException\fP Data was not available in the timeout specified\&.
+.br
+\fIIOException\fP Device Error (e\&.g\&. device removed)\&.
+.br
+\fIObjectDisposedException\fP 
+.RE
+.PP
+
+.SS "string RJCP\&.IO\&.Ports\&.SerialPortStream\&.ReadTo (string text)"
+
+.PP
+Reads a string up to the specified \fItext\fP in the input buffer\&. The \fBReadTo()\fP function will read text from the byte buffer up to a predetermined limit (1024 characters) when looking for the string \fItext\fP\&. If \fItext\fP is not found within this limit, data is thrown away and more data is read (effectively consuming the earlier bytes)\&. 
+.PP
+This method is provided as compatibility with the Microsoft implementation\&. There are some important differences however\&. This method attempts to fix a minor pathological problem with the Microsoft implementation\&. If the string \fItext\fP is not found, the MS implementation may modify the internal state of the decoder\&. As a workaround, it pushes all decoded characters back into its internal byte buffer, which fixes the problem that a second call to the \fBReadTo()\fP method returns the consistent results, but a call to Read(byte[], \&.\&.) may return data that was not actually transmitted by the DCE\&. This would happen in case that an invalid byte sequence was found, converted to a fall back character\&. The original byte sequence is removed and replaced with the byte equivalent of the fall back character\&.
+.PP
+This method is rather slow, because it tries to preserve the byte buffer in case of failure\&.
+.PP
+In case the data cannot be read, an exception is always thrown\&. So you may assume that if this method returns, you have valid data\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fItext\fP The text to indicate where the read operation stops\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The contents of the input buffer up to the specified \fItext\fP\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fITimeoutException\fP Data was not available in the timeout specified\&.
+.br
+\fIIOException\fP Device Error (e\&.g\&. device removed)\&.
+.br
+\fIObjectDisposedException\fP 
+.RE
+.PP
+
+.SS "override long RJCP\&.IO\&.Ports\&.SerialPortStream\&.Seek (long offset, SeekOrigin origin)"
+
+.PP
+This stream does not support seeking\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoffset\fP A byte offset relative to the \fIorigin\fP  parameter\&.
+.br
+\fIorigin\fP A value of type T:System\&.IO\&.SeekOrigin indicating the reference point used to obtain the new position\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The new position within the current stream\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.NotSupportedException\fP This stream doesn't support seeking\&.
+.RE
+.PP
+
+.SS "override void RJCP\&.IO\&.Ports\&.SerialPortStream\&.SetLength (long value)"
+
+.PP
+This stream does not support the SetLength property\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP The desired length of the current stream in bytes\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.NotSupportedException\fP This stream doesn't support the SetLength property\&.
+.RE
+.PP
+
+.SS "override string RJCP\&.IO\&.Ports\&.SerialPortStream\&.ToString ()"
+
+.PP
+Returns a System\&.String that represents this instance\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A System\&.String that represents this instance\&. 
+.RE
+.PP
+
+.SS "override void RJCP\&.IO\&.Ports\&.SerialPortStream\&.Write (byte [] buffer, int offset, int count)"
+
+.PP
+Write the given data into the buffered serial stream for sending over the serial port\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP The buffer containing data to send\&.
+.br
+\fIoffset\fP Offset into the array buffer where data begins\&.
+.br
+\fIcount\fP Number of bytes to copy into the local buffer\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.TimeoutException\fP Not enough buffer space was made available before the time out expired\&.
+.br
+\fISystem\&.ObjectDisposedException\fP Object is disposed, or disposed during flush operation\&.
+.br
+\fISystem\&.ArgumentNullException\fP NULL buffer was provided\&.
+.br
+\fISystem\&.ArgumentOutOfRangeException\fP Negative offset or negative count provided\&.
+.br
+\fISystem\&.ArgumentException\fP Offset and count exceed buffer boundaries\&.
+.br
+\fISystem\&.InvalidOperationException\fP Serial port not open\&.
+.br
+\fISystem\&.IO\&.IOException\fP Serial Port was closed during the flush operation; or there was a device error\&.
+.RE
+.PP
+.PP
+Data is copied from the array provided into the local stream buffer\&. It does not guarantee that data will be sent over the serial port\&. So long as there is enough local buffer space to accept the write of count bytes, this function will succeed\&. In case that the buffered serial stream doesn't have enough data, the function will wait up to \fBWriteTimeout\fP milliseconds for enough buffer data to become available\&. In case that there is not enough space before the write time out expires, no data is copied to the local stream and the function fails with an exception\&. 
+.PP
+For reliability, this function will only write data to the write buffer if the complete set of data requested can be written\&. This implies that the parameter \fBcount\fP be less or equal to the number of bytes that are available in the write buffer\&. Equivalently, you must make sure that you have a write buffer with at least \fBcount\fP allocated bytes or this function will always raise an exception\&.
+.SS "void RJCP\&.IO\&.Ports\&.SerialPortStream\&.Write (char [] buffer, int offset, int count)"
+
+.PP
+Writes a specified number of characters to the serial port using data from a buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP The buffer containing data to send\&.
+.br
+\fIoffset\fP Offset into the array buffer where data begins\&.
+.br
+\fIcount\fP Number of characters to copy into the local buffer\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.TimeoutException\fP Not enough buffer space was made available before the time out expired\&.
+.br
+\fISystem\&.ObjectDisposedException\fP Object is disposed, or disposed during flush operation\&.
+.br
+\fISystem\&.ArgumentNullException\fP NULL buffer was provided\&.
+.br
+\fISystem\&.ArgumentOutOfRangeException\fP Negative offset or negative count provided\&.
+.br
+\fISystem\&.ArgumentException\fP Offset and count exceed buffer boundaries\&.
+.br
+\fISystem\&.InvalidOperationException\fP Serial port not open\&.
+.br
+\fISystem\&.IO\&.IOException\fP Serial Port was closed during the flush operation; or there was a device error\&.
+.RE
+.PP
+
+.SS "void RJCP\&.IO\&.Ports\&.SerialPortStream\&.Write (string text)"
+
+.PP
+Writes the specified string to the serial port\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItext\fP The string for output\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.TimeoutException\fP Not enough buffer space was made available before the time out expired\&.
+.br
+\fISystem\&.ObjectDisposedException\fP Object is disposed, or disposed during flush operation\&.
+.br
+\fISystem\&.ArgumentNullException\fP NULL buffer was provided\&.
+.br
+\fISystem\&.ArgumentOutOfRangeException\fP Negative offset or negative count provided\&.
+.br
+\fISystem\&.ArgumentException\fP Offset and count exceed buffer boundaries\&.
+.br
+\fISystem\&.InvalidOperationException\fP Serial port not open\&.
+.br
+\fISystem\&.IO\&.IOException\fP Serial Port was closed during the flush operation; or there was a device error\&.
+.RE
+.PP
+
+.SS "void RJCP\&.IO\&.Ports\&.SerialPortStream\&.WriteLine (string text)"
+
+.PP
+Writes the specified string and the NewLine value to the output buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItext\fP The string to write to the output buffer\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fISystem\&.TimeoutException\fP Not enough buffer space was made available before the time out expired\&.
+.br
+\fISystem\&.ObjectDisposedException\fP Object is disposed, or disposed during flush operation\&.
+.br
+\fISystem\&.ArgumentNullException\fP NULL buffer was provided\&.
+.br
+\fISystem\&.ArgumentOutOfRangeException\fP Negative offset or negative count provided\&.
+.br
+\fISystem\&.ArgumentException\fP Offset and count exceed buffer boundaries\&.
+.br
+\fISystem\&.InvalidOperationException\fP Serial port not open\&.
+.br
+\fISystem\&.IO\&.IOException\fP Serial Port was closed during the flush operation; or there was a device error\&.
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "const int RJCP\&.IO\&.Ports\&.SerialPortStream\&.InfiniteTimeout = Timeout\&.Infinite"
+
+.PP
+Indicates that no time out should occur\&. 
+.SH "Property Documentation"
+.PP 
+.SS "int RJCP\&.IO\&.Ports\&.SerialPortStream\&.BaudRate\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the serial baud rate\&. The stream doesn't impose any arbitrary limits on setting the baud rate\&. It is passed directly to the driver and it is up to the driver to determine if the baud rate is settable or not\&. Normally, a driver will attempt to set a baud rate that is within 5% of the requested baud rate (but not guaranteed)\&. 
+.PP
+If the serial driver doesn't support setting the baud rate, setting this property is silently ignored and the baud rate isn't updated\&.
+.SS "bool RJCP\&.IO\&.Ports\&.SerialPortStream\&.BreakState\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the break signal state\&. The break signal state occurs when a transmission is suspended and the line is placed in a break state (all low, no stop bit) until released\&. To enter a break state, set this property to true\&. If the port is already in a break state, setting this property again to true does not result in an exception\&. It is not possible to write to the \fBSerialPortStream\fP while BreakState is true\&. 
+.SS "int RJCP\&.IO\&.Ports\&.SerialPortStream\&.BytesToRead\fC [get]\fP"
+
+.PP
+Gets the number of bytes of data in the receive buffer\&. This method returns the number of bytes available in the input read buffer\&. Bytes that are cached by the driver itself are not accounted for, as they haven't yet been read by the local thread\&. 
+.PP
+This has the effect, that if the local buffer is full (let's say that it is arbitrarily picked to be 64KB) and the local driver also has buffered 4KB, only the size of the local buffer is given, so 64KB (instead of the expected 68KB)\&.
+.SS "int RJCP\&.IO\&.Ports\&.SerialPortStream\&.BytesToWrite\fC [get]\fP"
+
+.PP
+Gets the number of bytes of data in the send buffer\&. The send buffer includes the serial driver's send buffer as well as internal buffering in the \fBSerialPortStream\fP itself\&. 
+.SS "override bool RJCP\&.IO\&.Ports\&.SerialPortStream\&.CanRead\fC [get]\fP"
+
+.PP
+Check if this stream supports reading\&. Supported so long as the stream is not disposed\&. 
+.SS "override bool RJCP\&.IO\&.Ports\&.SerialPortStream\&.CanSeek\fC [get]\fP"
+
+.PP
+This stream is not seekable, so always returns false\&. 
+.SS "override bool RJCP\&.IO\&.Ports\&.SerialPortStream\&.CanTimeout\fC [get]\fP"
+
+.PP
+Gets a value that determines whether the current stream can time out\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A value that determines whether the current stream can time out\&.
+.RE
+.PP
+
+.SS "override bool RJCP\&.IO\&.Ports\&.SerialPortStream\&.CanWrite\fC [get]\fP"
+
+.PP
+Check if this stream supports writing\&. Supported so long as the stream is not disposed\&. 
+.SS "bool RJCP\&.IO\&.Ports\&.SerialPortStream\&.CDHolding\fC [get]\fP"
+
+.PP
+Gets the state of the Carrier Detect line for the port\&. This property can be used to monitor the state of the carrier detection line for a port\&. No carrier usually indicates that the receiver has hung up and the carrier has been dropped\&. 
+.PP
+Windows documentation sometimes refers to the Carrier Detect line as the RLSD (Receive Line Signal Detect)\&.
+.SS "bool RJCP\&.IO\&.Ports\&.SerialPortStream\&.CtsHolding\fC [get]\fP"
+
+.PP
+Gets the state of the Clear-to-Send line\&. The Clear-to-Send (CTS) line is used in Request to Send/Clear to Send (RTS/CTS) hardware handshaking\&. The CTS line is queried by a port before data is sent\&. 
+.SS "int RJCP\&.IO\&.Ports\&.SerialPortStream\&.DataBits\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the standard length of data bits per byte\&. The range of values for this property is from 5 through 8 and 16\&. A check is made by setting this property against the advertised capabilities of the driver\&. That is, a driver lists its capabilities to say what byte sizes it can support\&. If the driver cannot support the byte size requested, an exception is raised\&. 
+.PP
+Not all possible combinations are allowed by all drivers\&. That implies, that an exception may be raised for a valid setting of the DataBits property, if the other parameters are not valid\&. Such an example might be that 5-bits are only supported with 2 stop bits and not otherwise\&. The driver itself will raise an exception to the application in this case\&.
+.PP
+If the serial driver doesn't support setting the data bits, setting this property is silently ignored and the number of data bits isn't updated\&.
+.SS "bool RJCP\&.IO\&.Ports\&.SerialPortStream\&.DiscardNull\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether null bytes are ignored when transmitted between the port and the receive buffer\&. This value should normally be set to false, especially for binary transmissions\&. Setting this property to true can cause unexpected results for UTF32- and UTF16-encoded bytes\&. 
+.SS "int RJCP\&.IO\&.Ports\&.SerialPortStream\&.DriverInQueue\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Specify the driver In Queue at the time it is opened\&. This provides the driver a recommended internal input buffer, in bytes\&. 
+.SS "int RJCP\&.IO\&.Ports\&.SerialPortStream\&.DriverOutQueue\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Specify the driver Out Queue at the time it is opened\&. This provides the driver a recommended internal output buffer, in bytes\&. 
+.SS "bool RJCP\&.IO\&.Ports\&.SerialPortStream\&.DsrHolding\fC [get]\fP"
+
+.PP
+Gets the state of the Data Set Ready (DSR) signal\&. This property is used in Data Set Ready/Data Terminal Ready (DSR/DTR) handshaking\&. The Data Set Ready (DSR) signal is usually sent by a modem to a port to indicate that it is ready for data transmission or data reception\&. 
+.SS "bool RJCP\&.IO\&.Ports\&.SerialPortStream\&.DtrEnable\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value that enables the Data Terminal Ready (DTR) signal during serial communication\&. Data Terminal Ready (DTR) is typically enabled during XON/XOFF software handshaking and Request to Send/Clear to Send (RTS/CTS) hardware handshaking, and modem communications\&. 
+.SS "Encoding RJCP\&.IO\&.Ports\&.SerialPortStream\&.Encoding\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the byte encoding for pre- and post-transmission conversion of text\&. The encoding is used for encoding string information to byte format when sending over the serial port, or receiving data via the serial port\&. It is only used with the read/write functions that accept strings (and not used for byte based reading and writing)\&. 
+.SS "\fBHandshake\fP RJCP\&.IO\&.Ports\&.SerialPortStream\&.Handshake\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the handshaking protocol for serial port transmission of data\&. Enables handshaking on the serial port\&. We support three types of handshaking: RTS/CTS; XON/XOFF; and DTR/DTS\&. The Microsoft implementation SerialPort only supports RTS/CTS and XON/XOFF\&. 
+.PP
+This method is not 100% compatible with the Microsoft implementation\&. By disabling RTS flow control, it sets behaviour so that the RTS line is enabled\&. You must set the property RtsEnable as appropriate\&. Although the Microsoft implementation doesn't support DSR/DTR at all, setting this property will also set the DTR line to enabled\&. You must set the property DtrEnable as appropriate\&.
+.PP
+When enabling DTR flow control, the DsrSensitivity flag is set, so the driver ignores any bytes received, unless the DSR modem input line is high\&. Otherwise, if DTR flow control is disabled, the DSR line is ignored\&. For more detailed information about how windows works with flow control, see the site: http://msdn.microsoft.com/en-us/library/ms810467.aspx\&. When DTR flow control is specified, the fOutxDsrFlow is set along with fDsrSensitivity\&.
+.PP
+Note, the windows feature RTS_CONTROL_TOGGLE is not supported by this class\&. This is also not supported by the Microsoft implementation\&.
+.SS "bool RJCP\&.IO\&.Ports\&.SerialPortStream\&.IsDisposed\fC [get]\fP"
+
+.PP
+Indicates if this object has already been disposed\&. 
+.SS "bool RJCP\&.IO\&.Ports\&.SerialPortStream\&.IsOpen\fC [get]\fP"
+
+.PP
+Gets a value indicating the open or closed status of the \fBSerialPortStream\fP object\&. The IsOpen property tracks whether the port is open for use by the caller, not whether the port is open by any application on the machine\&. 
+.PP
+True if the serial port is open; otherwise, false\&. The default is false\&. 
+.SS "override long RJCP\&.IO\&.Ports\&.SerialPortStream\&.Length\fC [get]\fP"
+
+.PP
+This stream does not support the Length property\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fINotSupportedException\fP This stream doesn't support the Length property\&.
+.RE
+.PP
+
+.SS "string RJCP\&.IO\&.Ports\&.SerialPortStream\&.NewLine\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the value used to interpret the end of a call to the ReadLine and WriteLine methods\&. A value that represents the end of a line\&. The default is a line feed, (NewLine)\&. 
+.SS "\fBParity\fP RJCP\&.IO\&.Ports\&.SerialPortStream\&.Parity\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the parity-checking protocol\&. Parity is an error-checking procedure in which the number of 1s must always be the same — either even or odd — for each group of bits that is transmitted without error\&. In modem-to-modem communications, parity is often one of the parameters that must be agreed upon by sending parties and receiving parties before transmission can take place\&. 
+.SS "byte RJCP\&.IO\&.Ports\&.SerialPortStream\&.ParityReplace\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the byte that replaces invalid bytes in a data stream when a parity error occurs\&. If the value is set to the null character, parity replacement is disabled\&. This property only has an effect if the Parity property is not \fBParity\&.None\fP\&. 
+.SS "string RJCP\&.IO\&.Ports\&.SerialPortStream\&.PortName\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets the port for communications, including but not limited to all available COM ports\&. A list of valid port names can be obtained using the GetPortNames method\&. 
+.PP
+When changing the port name, and the property UpdateOnPortSet is \fBtrue\fP, setting this property will cause the port to be opened, status read and the port then closed\&. Thus, you can use this behaviour to determine the actual settings of the port (which remain constant until a program actually changes the port settings)\&.
+.PP
+Setting this property to itself, while having UpdateOnPortSet to \fBtrue\fP has the effect of updating the local properties based on the current port settings\&.
+.SS "override long RJCP\&.IO\&.Ports\&.SerialPortStream\&.Position\fC [get]\fP, \fC [set]\fP"
+
+.PP
+This stream does not support the Position property\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fINotSupportedException\fP This stream doesn't support the Position property\&.
+.RE
+.PP
+
+.SS "int RJCP\&.IO\&.Ports\&.SerialPortStream\&.ReadBufferSize\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the size of the \fBSerialPortStream\fP input buffer\&. Sets the amount of buffering to use when reading data from the serial port\&. Data is read locally into this buffered stream through another port\&. 
+.PP
+The Microsoft implementation uses this to set the buffer size of the underlying driver\&. This implementation interprets the ReadBufferSize differently by setting the local buffer which can be much larger (megabytes) and independent of the low level driver\&.
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIInvalidOperationException\fP An attempt was used to change the size of the buffer while the port is open (and therefore buffering is active)\&.
+.RE
+.PP
+
+.SS "override int RJCP\&.IO\&.Ports\&.SerialPortStream\&.ReadTimeout\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Define the time out when reading data from the stream\&. This defines the time out when data arrives in the buffered memory of this stream, that is, when the driver indicates that data has arrived to the application\&. 
+.PP
+Should the user perform a read operation and no data is available to copy in the buffer, a time out will occur\&.
+.PP
+Set this property to \fBInfiniteTimeout\fP for an infinite time out\&.
+.SS "int RJCP\&.IO\&.Ports\&.SerialPortStream\&.ReceivedBytesThreshold\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the number of bytes in the read buffer before a DataReceived event occurs\&. 
+.SS "bool RJCP\&.IO\&.Ports\&.SerialPortStream\&.RingHolding\fC [get]\fP"
+
+.PP
+Gets the state of the Ring line signal\&. The ring line is a separate line from a modem that indicates if there is an incoming call\&. 
+.SS "bool RJCP\&.IO\&.Ports\&.SerialPortStream\&.RtsEnable\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets a value indicating whether the Request to Send (RTS) signal is enabled during serial communication\&. The Request to Transmit (RTS) signal is typically used in Request to Send/Clear to Send (RTS/CTS) hardware handshaking\&. 
+.PP
+Note, the windows feature RTS_CONTROL_TOGGLE is not supported by this class\&.
+.SS "\fBStopBits\fP RJCP\&.IO\&.Ports\&.SerialPortStream\&.StopBits\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the standard number of stop bits per byte\&. Gets or sets the stop bits that should be used when transmitting and receiving data over the serial port\&. If the serial driver doesn't support setting the stop bits, setting this property is silently ignored and the number of stop bits isn't updated\&. 
+.SS "bool RJCP\&.IO\&.Ports\&.SerialPortStream\&.TxContinueOnXOff\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Enable or Disable transmit of data when software flow control is enabled\&. MSDN documentation states this flag as follows: 
+.PP
+If this member is TRUE, transmission continues after the input buffer has come within \fBXOffLimit\fP bytes of being full and the driver has transmitted the XoffChar character to stop receiving bytes\&. If this member is FALSE, transmission does not continue until the input buffer is within XonLim bytes of being empty and the driver has transmitted the XonChar character to resume reception\&.
+.PP
+When the driver buffer fills up and sends the XOFF character (and software flow control is active), this property defines if the driver should continue to send data over the serial port or not\&.
+.PP
+The Microsoft SerialPort implementation doesn't provide this option (in fact, in \&.NET 4\&.0 it doesn't appear to control this at all)\&.
+.PP
+Some DCE devices will resume sending after any character arrives\&. The \fBTxContinueOnXOff\fP member should be set to FALSE when communicating with a DCE device that resumes sending after any character arrives\&.
+.SS "string RJCP\&.IO\&.Ports\&.SerialPortStream\&.Version\fC [get]\fP"
+
+.PP
+Get the version of this assembly (or components driving this assembly)\&. The version of the assembly and/or subcomponents\&.
+.SS "int RJCP\&.IO\&.Ports\&.SerialPortStream\&.WriteBufferSize\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Gets or sets the size of the serial port output buffer\&. Defines the size of the buffered stream write buffer, used to send data to the serial port\&. It does not affect the buffers in the serial port hardware itself\&. 
+.PP
+The Microsoft implementation uses this to set the buffer size of the underlying driver\&. This implementation interprets the WriteBufferSize differently by setting the local buffer which can be much larger (megabytes) and independent of the low level driver\&.
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIInvalidOperationException\fP An attempt was used to change the size of the buffer while the port is open (and therefore buffering is active)\&.
+.RE
+.PP
+
+.SS "override int RJCP\&.IO\&.Ports\&.SerialPortStream\&.WriteTimeout\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Define the time out when writing data to the local buffer\&. This defines the time out when writing data to the local buffer\&. No guarantees are given to when the data will actually be transferred over to the serial port as this is dependent on the hardware configuration and flow control\&. 
+.PP
+When writing data to the stream buffer, a time out will occur if not all data can be written to the local buffer and the buffer wasn't able to empty itself in the period given by the time out\&.
+.PP
+Naturally then, this depends on the size of the send buffer in use, how much data is already in the buffer, how fast the data can leave the buffer\&.
+.PP
+In case the data cannot be written to the buffer in the given time out, no data will be written at all\&.
+.SS "int RJCP\&.IO\&.Ports\&.SerialPortStream\&.XOffLimit\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Define the limit of free bytes in the buffer before XOFF is sent\&. The XOFF character (19 or ^S) is sent when the input buffer comes within \fBXOffLimit\fP bytes of being full, and the XON character (17 or ^Q) is sent when the input buffer comes within \fBXOnLimit\fP bytes of being empty\&. 
+.SS "int RJCP\&.IO\&.Ports\&.SerialPortStream\&.XOnLimit\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Define the limit of actual bytes in the transmit buffer when XON is sent\&. The XOFF character (19 or ^S) is sent when the input buffer comes within \fBXOffLimit\fP bytes of being full, and the XON character (17 or ^Q) is sent when the input buffer comes within \fBXOnLimit\fP bytes of being empty\&. 
+.SH "Event Documentation"
+.PP 
+.SS "EventHandler<\fBSerialDataReceivedEventArgs\fP> RJCP\&.IO\&.Ports\&.SerialPortStream\&.DataReceived"
+
+.PP
+Occurs when data is received, or the EOF character is detected by the driver\&. 
+.SS "EventHandler<\fBSerialErrorReceivedEventArgs\fP> RJCP\&.IO\&.Ports\&.SerialPortStream\&.ErrorReceived"
+
+.PP
+Occurs when an error condition is detected\&. 
+.SS "EventHandler<\fBSerialPinChangedEventArgs\fP> RJCP\&.IO\&.Ports\&.SerialPortStream\&.PinChanged"
+
+.PP
+Occurs when modem pin changes are detected\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

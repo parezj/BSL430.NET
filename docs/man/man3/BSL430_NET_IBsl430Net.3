@@ -1,0 +1,249 @@
+.TH "BSL430_NET.IBsl430Net" 3 "Sat Jun 22 2019" "Version 1.2.1" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BSL430_NET.IBsl430Net \- Public interface of BSL430\&.NET library\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBBSL430_NET\&.BSL430NET\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBStatus\fP \fBStatus\fP \fBStatus\fP \fBStatus\fP serial \fBScanAll\fP (out List< \fBFTDI_Device\fP > ftdi_devices, out List< \fBLibftdi_Device\fP > libftdi_devices, out List< \fBUSB_HID_Device\fP > usb_devices, out List< \fBSerial_Device\fP > serial_devices, \fBScanOptions\fP scan_opt=\fBScanOptions\&.None\fP)"
+.br
+.ti -1c
+.RI "\fBStatus\fP \fBScan< Tdev >\fP (out List< Tdev > device_list, \fBScanOptions\fP scan_opt=\fBScanOptions\&.None\fP)"
+.br
+.RI "Scan for devices in single mode (FTDI, libftdi, USB or Serial)\&. "
+.ti -1c
+.RI "\fBStatusEx\fP \fBErase\fP (\fBBsl430NetDevice\fP device=null)"
+.br
+.RI "Mass erase deletes the entire flash memory area except Information Memory if protocol 5xx6xx is used\&. Please see MCU datasheet for detailed information, or TI BSL doc (slau319t\&.pdf)\&. "
+.ti -1c
+.RI "\fBStatusEx\fP \fBErase\fP (string device_name)"
+.br
+.RI "Mass erase deletes the entire flash memory area except Information Memory if protocol 5xx6xx is used\&. Please see MCU datasheet for detailed information, or TI BSL doc (slau319t\&.pdf)\&. device_name case dont matter\&. "
+.ti -1c
+.RI "\fBStatusEx\fP \fBUpload\fP (string firmware_path, \fBBsl430NetDevice\fP device=null, byte[] password=null)"
+.br
+.RI "Uploads data from firmware_path to target MCU\&. Supported file formats are TI-TXT, Intel-HEX and ELF\&. If none, null or invalid password is entered, mass erase is executed first\&. "
+.ti -1c
+.RI "\fBStatusEx\fP \fBUpload\fP (string firmware, string device_name, byte[] password=null)"
+.br
+.RI "Uploads data from firmware_path to target MCU\&. Supported file formats are TI-TXT, Intel-HEX and ELF\&. If none, null or invalid password is entered, mass erase is executed first\&. device_name case dont matter\&. "
+.ti -1c
+.RI "\fBStatusEx\fP \fBDownload\fP (byte[] password, int addr_start, int data_size, out List< byte > data, \fBBsl430NetDevice\fP device=null)"
+.br
+.RI "Downloads bytes from target MCU starting from address 'addr_start' to 'addr_start' + 'data_size'\&. If wrong password is entered, mass erase is auto executed as a safety measure, erasing entire flash\&. "
+.ti -1c
+.RI "\fBStatusEx\fP \fBDownload\fP (byte[] password, int addr_start, int data_size, out List< byte > data, string device_name)"
+.br
+.RI "Downloads bytes from target MCU starting from address 'addr_start' to 'addr_start' + 'data_size'\&. If wrong password is entered, mass erase is auto executed as a safety measure, erasing entire flash\&. device_name case dont matter\&. "
+.ti -1c
+.RI "\fBStatus\fP \fBSetBaudRate\fP (\fBBaudRate\fP \fBBaudRate\fP)"
+.br
+.RI "Sets baud rate\&. Default is 9600 bps (9600)\&. Baud rate is applicable only in UART mode and only in some BSL revs\&. "
+.ti -1c
+.RI "\fBStatus\fP \fBSetInvokeMechanism\fP (\fBInvokeMechanism\fP invoke_mechanism)"
+.br
+.RI "Sets invoke mechanism mode\&. Default is DTR_RST__RTS_TEST (0)\&. Note that USB HID mode requires manual BSL invocation\&. "
+.ti -1c
+.RI "\fBStatus\fP \fBSetMCU\fP (\fBMCU\fP mcu)"
+.br
+.RI "Sets MCU family\&. Default is MSP430_F5xx (4)\&. Please see TI BSL doc (slau319t\&.pdf) for supported MCUs and their modes\&. "
+.ti -1c
+.RI "\fBBaudRate\fP \fBGetBaudRate\fP ()"
+.br
+.RI "Returns currently set baud rate\&. "
+.ti -1c
+.RI "\fBInvokeMechanism\fP \fBGetInvokeMechanism\fP ()"
+.br
+.RI "Returns currently set invoke mechanism\&. "
+.ti -1c
+.RI "\fBMCU\fP \fBGetMCU\fP ()"
+.br
+.RI "Returns currently set MCU family\&. "
+.ti -1c
+.RI "\fBMode\fP \fBGetMode\fP ()"
+.br
+.RI "Returns current BSL430\&.NET instance operating mode (UART_FTDXX, UART_libftdi, UART_Serial, USB_HID)\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBStatus\fP \fBftdi\fP"
+.br
+.RI "Scan for all available devices in multimode (FTDI, libftdi, USB and Serial)\&. "
+.ti -1c
+.RI "\fBStatus\fP \fBStatus\fP \fBlibftdi\fP"
+.br
+.ti -1c
+.RI "\fBStatus\fP \fBStatus\fP \fBStatus\fP \fBusb\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Public interface of BSL430\&.NET library\&. 
+
+
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBStatusEx\fP BSL430_NET\&.IBsl430Net\&.Download (byte [] password, int addr_start, int data_size, out List< byte > data, \fBBsl430NetDevice\fP device = \fCnull\fP)"
+
+.PP
+Downloads bytes from target MCU starting from address 'addr_start' to 'addr_start' + 'data_size'\&. If wrong password is entered, mass erase is auto executed as a safety measure, erasing entire flash\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBBsl430NetException\fP\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBBSL430_NET\&.BSL430NET\fP\&.
+.SS "\fBStatusEx\fP BSL430_NET\&.IBsl430Net\&.Download (byte [] password, int addr_start, int data_size, out List< byte > data, string device_name)"
+
+.PP
+Downloads bytes from target MCU starting from address 'addr_start' to 'addr_start' + 'data_size'\&. If wrong password is entered, mass erase is auto executed as a safety measure, erasing entire flash\&. device_name case dont matter\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBBsl430NetException\fP\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBBSL430_NET\&.BSL430NET\fP\&.
+.SS "\fBStatusEx\fP BSL430_NET\&.IBsl430Net\&.Erase (\fBBsl430NetDevice\fP device = \fCnull\fP)"
+
+.PP
+Mass erase deletes the entire flash memory area except Information Memory if protocol 5xx6xx is used\&. Please see MCU datasheet for detailed information, or TI BSL doc (slau319t\&.pdf)\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBBsl430NetException\fP\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBBSL430_NET\&.BSL430NET\fP\&.
+.SS "\fBStatusEx\fP BSL430_NET\&.IBsl430Net\&.Erase (string device_name)"
+
+.PP
+Mass erase deletes the entire flash memory area except Information Memory if protocol 5xx6xx is used\&. Please see MCU datasheet for detailed information, or TI BSL doc (slau319t\&.pdf)\&. device_name case dont matter\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBBsl430NetException\fP\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBBSL430_NET\&.BSL430NET\fP\&.
+.SS "\fBBaudRate\fP BSL430_NET\&.IBsl430Net\&.GetBaudRate ()"
+
+.PP
+Returns currently set baud rate\&. 
+.PP
+Implemented in \fBBSL430_NET\&.BSL430NET\fP\&.
+.SS "\fBInvokeMechanism\fP BSL430_NET\&.IBsl430Net\&.GetInvokeMechanism ()"
+
+.PP
+Returns currently set invoke mechanism\&. 
+.PP
+Implemented in \fBBSL430_NET\&.BSL430NET\fP\&.
+.SS "\fBMCU\fP BSL430_NET\&.IBsl430Net\&.GetMCU ()"
+
+.PP
+Returns currently set MCU family\&. 
+.PP
+Implemented in \fBBSL430_NET\&.BSL430NET\fP\&.
+.SS "\fBMode\fP BSL430_NET\&.IBsl430Net\&.GetMode ()"
+
+.PP
+Returns current BSL430\&.NET instance operating mode (UART_FTDXX, UART_libftdi, UART_Serial, USB_HID)\&. 
+.PP
+Implemented in \fBBSL430_NET\&.BSL430NET\fP\&.
+.SS "\fBStatus\fP BSL430_NET\&.IBsl430Net\&.Scan< Tdev > (out List< Tdev > device_list, \fBScanOptions\fP scan_opt = \fC\fBScanOptions\&.None\fP\fP)"
+
+.PP
+Scan for devices in single mode (FTDI, libftdi, USB or Serial)\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBBsl430NetException\fP\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBBSL430_NET\&.BSL430NET\fP\&.
+.PP
+\fBType Constraints\fP
+.TP
+\fITdev\fP : \fIBsl430NetDevice\fP
+.SS "\fBStatus\fP BSL430_NET\&.IBsl430Net\&.SetBaudRate (\fBBaudRate\fP BaudRate)"
+
+.PP
+Sets baud rate\&. Default is 9600 bps (9600)\&. Baud rate is applicable only in UART mode and only in some BSL revs\&. 
+.PP
+Implemented in \fBBSL430_NET\&.BSL430NET\fP\&.
+.SS "\fBStatus\fP BSL430_NET\&.IBsl430Net\&.SetInvokeMechanism (\fBInvokeMechanism\fP invoke_mechanism)"
+
+.PP
+Sets invoke mechanism mode\&. Default is DTR_RST__RTS_TEST (0)\&. Note that USB HID mode requires manual BSL invocation\&. 
+.PP
+Implemented in \fBBSL430_NET\&.BSL430NET\fP\&.
+.SS "\fBStatus\fP BSL430_NET\&.IBsl430Net\&.SetMCU (\fBMCU\fP mcu)"
+
+.PP
+Sets MCU family\&. Default is MSP430_F5xx (4)\&. Please see TI BSL doc (slau319t\&.pdf) for supported MCUs and their modes\&. 
+.PP
+Implemented in \fBBSL430_NET\&.BSL430NET\fP\&.
+.SS "\fBStatusEx\fP BSL430_NET\&.IBsl430Net\&.Upload (string firmware_path, \fBBsl430NetDevice\fP device = \fCnull\fP, byte [] password = \fCnull\fP)"
+
+.PP
+Uploads data from firmware_path to target MCU\&. Supported file formats are TI-TXT, Intel-HEX and ELF\&. If none, null or invalid password is entered, mass erase is executed first\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBBsl430NetException\fP\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBBSL430_NET\&.BSL430NET\fP\&.
+.SS "\fBStatusEx\fP BSL430_NET\&.IBsl430Net\&.Upload (string firmware, string device_name, byte [] password = \fCnull\fP)"
+
+.PP
+Uploads data from firmware_path to target MCU\&. Supported file formats are TI-TXT, Intel-HEX and ELF\&. If none, null or invalid password is entered, mass erase is executed first\&. device_name case dont matter\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBBsl430NetException\fP\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBBSL430_NET\&.BSL430NET\fP\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBStatus\fP BSL430_NET\&.IBsl430Net\&.ftdi"
+
+.PP
+Scan for all available devices in multimode (FTDI, libftdi, USB and Serial)\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBBsl430NetException\fP\fP 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

@@ -1,0 +1,202 @@
+.TH "FTD2XX_NET.FTDI.FT4232H_EEPROM_STRUCTURE" 3 "Sat Jun 22 2019" "Version 1.2.1" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+FTD2XX_NET.FTDI.FT4232H_EEPROM_STRUCTURE \- EEPROM structure specific to FT4232H devices\&. Inherits from \fBFT_EEPROM_DATA\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBFTD2XX_NET\&.FTDI\&.FT_EEPROM_DATA\fP\&.
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBPullDownEnable\fP = false"
+.br
+.RI "Determines if IOs are pulled down when the device is in suspend "
+.ti -1c
+.RI "bool \fBSerNumEnable\fP = true"
+.br
+.RI "Determines if the serial number is enabled "
+.ti -1c
+.RI "bool \fBASlowSlew\fP = false"
+.br
+.RI "Determines if A pins have a slow slew rate "
+.ti -1c
+.RI "bool \fBASchmittInput\fP = false"
+.br
+.RI "Determines if the A pins have a Schmitt input "
+.ti -1c
+.RI "byte \fBADriveCurrent\fP = \fBFT_DRIVE_CURRENT\&.FT_DRIVE_CURRENT_4MA\fP"
+.br
+.RI "Determines the A pins drive current in mA\&. Valid values are FT_DRIVE_CURRENT_4MA, FT_DRIVE_CURRENT_8MA, FT_DRIVE_CURRENT_12MA or FT_DRIVE_CURRENT_16MA "
+.ti -1c
+.RI "bool \fBBSlowSlew\fP = false"
+.br
+.RI "Determines if B pins have a slow slew rate "
+.ti -1c
+.RI "bool \fBBSchmittInput\fP = false"
+.br
+.RI "Determines if the B pins have a Schmitt input "
+.ti -1c
+.RI "byte \fBBDriveCurrent\fP = \fBFT_DRIVE_CURRENT\&.FT_DRIVE_CURRENT_4MA\fP"
+.br
+.RI "Determines the B pins drive current in mA\&. Valid values are FT_DRIVE_CURRENT_4MA, FT_DRIVE_CURRENT_8MA, FT_DRIVE_CURRENT_12MA or FT_DRIVE_CURRENT_16MA "
+.ti -1c
+.RI "bool \fBCSlowSlew\fP = false"
+.br
+.RI "Determines if C pins have a slow slew rate "
+.ti -1c
+.RI "bool \fBCSchmittInput\fP = false"
+.br
+.RI "Determines if the C pins have a Schmitt input "
+.ti -1c
+.RI "byte \fBCDriveCurrent\fP = \fBFT_DRIVE_CURRENT\&.FT_DRIVE_CURRENT_4MA\fP"
+.br
+.RI "Determines the C pins drive current in mA\&. Valid values are FT_DRIVE_CURRENT_4MA, FT_DRIVE_CURRENT_8MA, FT_DRIVE_CURRENT_12MA or FT_DRIVE_CURRENT_16MA "
+.ti -1c
+.RI "bool \fBDSlowSlew\fP = false"
+.br
+.RI "Determines if D pins have a slow slew rate "
+.ti -1c
+.RI "bool \fBDSchmittInput\fP = false"
+.br
+.RI "Determines if the D pins have a Schmitt input "
+.ti -1c
+.RI "byte \fBDDriveCurrent\fP = \fBFT_DRIVE_CURRENT\&.FT_DRIVE_CURRENT_4MA\fP"
+.br
+.RI "Determines the D pins drive current in mA\&. Valid values are FT_DRIVE_CURRENT_4MA, FT_DRIVE_CURRENT_8MA, FT_DRIVE_CURRENT_12MA or FT_DRIVE_CURRENT_16MA "
+.ti -1c
+.RI "bool \fBARIIsTXDEN\fP = false"
+.br
+.RI "RI of port A acts as RS485 transmit enable (TXDEN) "
+.ti -1c
+.RI "bool \fBBRIIsTXDEN\fP = false"
+.br
+.RI "RI of port B acts as RS485 transmit enable (TXDEN) "
+.ti -1c
+.RI "bool \fBCRIIsTXDEN\fP = false"
+.br
+.RI "RI of port C acts as RS485 transmit enable (TXDEN) "
+.ti -1c
+.RI "bool \fBDRIIsTXDEN\fP = false"
+.br
+.RI "RI of port D acts as RS485 transmit enable (TXDEN) "
+.ti -1c
+.RI "bool \fBAIsVCP\fP = true"
+.br
+.RI "Determines if channel A loads the VCP driver "
+.ti -1c
+.RI "bool \fBBIsVCP\fP = true"
+.br
+.RI "Determines if channel B loads the VCP driver "
+.ti -1c
+.RI "bool \fBCIsVCP\fP = true"
+.br
+.RI "Determines if channel C loads the VCP driver "
+.ti -1c
+.RI "bool \fBDIsVCP\fP = true"
+.br
+.RI "Determines if channel D loads the VCP driver "
+.in -1c
+.SH "Detailed Description"
+.PP 
+EEPROM structure specific to FT4232H devices\&. Inherits from \fBFT_EEPROM_DATA\fP\&. 
+
+
+.SH "Member Data Documentation"
+.PP 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT4232H_EEPROM_STRUCTURE\&.ADriveCurrent = \fBFT_DRIVE_CURRENT\&.FT_DRIVE_CURRENT_4MA\fP"
+
+.PP
+Determines the A pins drive current in mA\&. Valid values are FT_DRIVE_CURRENT_4MA, FT_DRIVE_CURRENT_8MA, FT_DRIVE_CURRENT_12MA or FT_DRIVE_CURRENT_16MA 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT4232H_EEPROM_STRUCTURE\&.AIsVCP = true"
+
+.PP
+Determines if channel A loads the VCP driver 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT4232H_EEPROM_STRUCTURE\&.ARIIsTXDEN = false"
+
+.PP
+RI of port A acts as RS485 transmit enable (TXDEN) 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT4232H_EEPROM_STRUCTURE\&.ASchmittInput = false"
+
+.PP
+Determines if the A pins have a Schmitt input 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT4232H_EEPROM_STRUCTURE\&.ASlowSlew = false"
+
+.PP
+Determines if A pins have a slow slew rate 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT4232H_EEPROM_STRUCTURE\&.BDriveCurrent = \fBFT_DRIVE_CURRENT\&.FT_DRIVE_CURRENT_4MA\fP"
+
+.PP
+Determines the B pins drive current in mA\&. Valid values are FT_DRIVE_CURRENT_4MA, FT_DRIVE_CURRENT_8MA, FT_DRIVE_CURRENT_12MA or FT_DRIVE_CURRENT_16MA 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT4232H_EEPROM_STRUCTURE\&.BIsVCP = true"
+
+.PP
+Determines if channel B loads the VCP driver 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT4232H_EEPROM_STRUCTURE\&.BRIIsTXDEN = false"
+
+.PP
+RI of port B acts as RS485 transmit enable (TXDEN) 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT4232H_EEPROM_STRUCTURE\&.BSchmittInput = false"
+
+.PP
+Determines if the B pins have a Schmitt input 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT4232H_EEPROM_STRUCTURE\&.BSlowSlew = false"
+
+.PP
+Determines if B pins have a slow slew rate 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT4232H_EEPROM_STRUCTURE\&.CDriveCurrent = \fBFT_DRIVE_CURRENT\&.FT_DRIVE_CURRENT_4MA\fP"
+
+.PP
+Determines the C pins drive current in mA\&. Valid values are FT_DRIVE_CURRENT_4MA, FT_DRIVE_CURRENT_8MA, FT_DRIVE_CURRENT_12MA or FT_DRIVE_CURRENT_16MA 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT4232H_EEPROM_STRUCTURE\&.CIsVCP = true"
+
+.PP
+Determines if channel C loads the VCP driver 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT4232H_EEPROM_STRUCTURE\&.CRIIsTXDEN = false"
+
+.PP
+RI of port C acts as RS485 transmit enable (TXDEN) 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT4232H_EEPROM_STRUCTURE\&.CSchmittInput = false"
+
+.PP
+Determines if the C pins have a Schmitt input 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT4232H_EEPROM_STRUCTURE\&.CSlowSlew = false"
+
+.PP
+Determines if C pins have a slow slew rate 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT4232H_EEPROM_STRUCTURE\&.DDriveCurrent = \fBFT_DRIVE_CURRENT\&.FT_DRIVE_CURRENT_4MA\fP"
+
+.PP
+Determines the D pins drive current in mA\&. Valid values are FT_DRIVE_CURRENT_4MA, FT_DRIVE_CURRENT_8MA, FT_DRIVE_CURRENT_12MA or FT_DRIVE_CURRENT_16MA 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT4232H_EEPROM_STRUCTURE\&.DIsVCP = true"
+
+.PP
+Determines if channel D loads the VCP driver 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT4232H_EEPROM_STRUCTURE\&.DRIIsTXDEN = false"
+
+.PP
+RI of port D acts as RS485 transmit enable (TXDEN) 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT4232H_EEPROM_STRUCTURE\&.DSchmittInput = false"
+
+.PP
+Determines if the D pins have a Schmitt input 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT4232H_EEPROM_STRUCTURE\&.DSlowSlew = false"
+
+.PP
+Determines if D pins have a slow slew rate 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT4232H_EEPROM_STRUCTURE\&.PullDownEnable = false"
+
+.PP
+Determines if IOs are pulled down when the device is in suspend 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT4232H_EEPROM_STRUCTURE\&.SerNumEnable = true"
+
+.PP
+Determines if the serial number is enabled 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

@@ -1,0 +1,50 @@
+﻿<Controls:MetroWindow
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        xmlns:views="clr-namespace:BSL430_NET_WPF.Views"
+        x:Class="BSL430_NET_WPF.Views.ShellView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:model="clr-namespace:BSL430_NET_WPF.ViewModels"
+        xmlns:tb="http://www.hardcodet.net/taskbar"
+        xmlns:cal="http://www.caliburnproject.org"
+        mc:Ignorable="d"
+        AllowDrop="True"
+        ResizeMode="CanMinimize"
+        GlowBrush="Black"
+        ShowIconOnTitleBar="False"
+        ShowTitleBar="False"
+        Icon="pack://application:,,,/Resources/Img/logo2.ico"
+        BorderThickness="0"
+        WindowStartupLocation="CenterScreen"
+        Title="BSL430.NET - TI MSP430 BSL toolchain"
+        TextOptions.TextFormattingMode="Display"
+        TextOptions.TextRenderingMode="ClearType"
+        SizeToContent="Height"
+        WindowState="{Binding Path=WinState, Mode=TwoWay}"
+        Visibility="{Binding Path=WinVisibility, Mode=TwoWay}"
+        MinWidth="950" 
+        Width="950" 
+        MouseDown="Window_MouseDown"
+        cal:Message.Attach="[Event Closing] = [Action WindowClosing($eventArgs)]">
+
+    <Controls:MetroWindow.Style>
+        <Style TargetType="{x:Type Controls:MetroWindow}">
+            <Setter Property="ShowInTaskbar" Value="True"/>
+            <Style.Triggers>
+                <MultiDataTrigger>
+                    <MultiDataTrigger.Conditions>
+                        <Condition Binding="{Binding WinTaskBar}" Value="True" />
+                        <Condition Binding="{Binding WinState}" Value="Minimized" />
+                    </MultiDataTrigger.Conditions>
+                    <Setter Property="ShowInTaskbar" Value="False" />
+                </MultiDataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Controls:MetroWindow.Style>
+
+    <ContentControl Name="ActiveItem" />
+
+</Controls:MetroWindow>

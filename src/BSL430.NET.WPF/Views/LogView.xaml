@@ -1,0 +1,57 @@
+﻿<Controls:MetroWindow
+        x:Class="BSL430_NET_WPF.Views.LogView"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls" 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BSL430_NET_WPF.Views"
+        xmlns:cal="http://www.caliburnproject.org"
+        xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        ShowIconOnTitleBar="False"
+        ShowTitleBar="True"
+        WindowTitleBrush="DimGray"
+        Icon="pack://application:,,,/Resources/Img/logo2.ico"
+        BorderThickness="0"
+        WindowStartupLocation="CenterScreen"
+        GlowBrush="Black"
+        TextOptions.TextFormattingMode="Display"
+        TextOptions.TextRenderingMode="ClearType"
+        ShowInTaskbar="{Binding shellViewModel.WinTaskBar, Mode=TwoWay}"
+        ResizeMode="CanResizeWithGrip"
+        TitleCaps="False"
+        Title="{Binding LogPath}" 
+        Height="800"
+        MinHeight="10" 
+        Width="800"
+        MinWidth="800"
+        Closing="MetroWindow_Closing">
+    
+    <Grid>
+        <avalonEdit:TextEditor x:Name="avalon"
+                               FontFamily="Consolas"
+                               FontSize="13pt"
+                               SyntaxHighlighting="XML"
+                               IsReadOnly="True"
+                               ShowLineNumbers="True"
+                               HorizontalScrollBarVisibility="Auto"
+                               VerticalScrollBarVisibility="Visible"
+                               MouseDoubleClick="Avalon_MouseDoubleClick">
+        </avalonEdit:TextEditor>
+    </Grid>
+    
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+
+            <Button x:Name="Clear" Cursor="Hand" VerticalAlignment="Center" FontWeight="Normal" FontSize="20" Click="Clear_Click">
+                <WrapPanel VerticalAlignment="Center">
+                    <iconPacks:PackIconEntypo Margin="0,0,5,0" Kind="Trash" VerticalAlignment="Center" Width="18" Height="18" />
+                    <TextBlock FontWeight="Thin" FontSize="18" Text="Clear" VerticalAlignment="Center"/>
+                </WrapPanel>
+            </Button>
+
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+</Controls:MetroWindow>

@@ -1,0 +1,1813 @@
+.TH "FTD2XX_NET.FTDI" 3 "Sat Jun 22 2019" "Version 1.2.1" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+FTD2XX_NET.FTDI \- Class wrapper for FTD2XX\&.DLL  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBFT2232_EEPROM_STRUCTURE\fP"
+.br
+.RI "EEPROM structure specific to FT2232 devices\&. Inherits from \fBFT_EEPROM_DATA\fP\&. "
+.ti -1c
+.RI "class \fBFT2232H_EEPROM_STRUCTURE\fP"
+.br
+.RI "EEPROM structure specific to FT2232H devices\&. Inherits from \fBFT_EEPROM_DATA\fP\&. "
+.ti -1c
+.RI "class \fBFT232B_EEPROM_STRUCTURE\fP"
+.br
+.RI "EEPROM structure specific to FT232B and FT245B devices\&. Inherits from \fBFT_EEPROM_DATA\fP\&. "
+.ti -1c
+.RI "class \fBFT232H_EEPROM_STRUCTURE\fP"
+.br
+.RI "EEPROM structure specific to FT232H devices\&. Inherits from \fBFT_EEPROM_DATA\fP\&. "
+.ti -1c
+.RI "class \fBFT232R_EEPROM_STRUCTURE\fP"
+.br
+.RI "EEPROM structure specific to FT232R and FT245R devices\&. Inherits from \fBFT_EEPROM_DATA\fP\&. "
+.ti -1c
+.RI "class \fBFT4232H_EEPROM_STRUCTURE\fP"
+.br
+.RI "EEPROM structure specific to FT4232H devices\&. Inherits from \fBFT_EEPROM_DATA\fP\&. "
+.ti -1c
+.RI "class \fBFT_232H_CBUS_OPTIONS\fP"
+.br
+.RI "Available functions for the FT232H CBUS pins\&. Controlled by FT232H EEPROM settings "
+.ti -1c
+.RI "class \fBFT_BIT_MODES\fP"
+.br
+.RI "Permitted bit mode values for \fBFTDI\fP devices\&. For use with SetBitMode "
+.ti -1c
+.RI "class \fBFT_CBUS_OPTIONS\fP"
+.br
+.RI "Available functions for the FT232R CBUS pins\&. Controlled by FT232R EEPROM settings "
+.ti -1c
+.RI "class \fBFT_DATA_BITS\fP"
+.br
+.RI "Permitted data bits for \fBFTDI\fP devices "
+.ti -1c
+.RI "class \fBFT_DEVICE_INFO_NODE\fP"
+.br
+.RI "Type that holds device information for GetDeviceInformation method\&. Used with FT_GetDeviceInfo and FT_GetDeviceInfoDetail in FTD2XX\&.DLL "
+.ti -1c
+.RI "class \fBFT_DRIVE_CURRENT\fP"
+.br
+.RI "Valid values for drive current options on FT2232H, FT4232H and FT232H devices\&. "
+.ti -1c
+.RI "class \fBFT_EEPROM_DATA\fP"
+.br
+.RI "Common EEPROM elements for all devices\&. Inherited to specific device type EEPROMs\&. "
+.ti -1c
+.RI "class \fBFT_EVENTS\fP"
+.br
+.RI "\fBFTDI\fP device event types that can be monitored "
+.ti -1c
+.RI "class \fBFT_EXCEPTION\fP"
+.br
+.RI "Exceptions thrown by errors within the \fBFTDI\fP class\&. "
+.ti -1c
+.RI "class \fBFT_FLAGS\fP"
+.br
+.RI "Flags that provide information on the \fBFTDI\fP device state "
+.ti -1c
+.RI "class \fBFT_FLOW_CONTROL\fP"
+.br
+.RI "Permitted flow control values for \fBFTDI\fP devices "
+.ti -1c
+.RI "class \fBFT_LINE_STATUS\fP"
+.br
+.RI "Line status bit definitions "
+.ti -1c
+.RI "class \fBFT_MODEM_STATUS\fP"
+.br
+.RI "Modem status bit definitions "
+.ti -1c
+.RI "class \fBFT_PARITY\fP"
+.br
+.RI "Permitted parity values for \fBFTDI\fP devices "
+.ti -1c
+.RI "class \fBFT_PURGE\fP"
+.br
+.RI "Purge buffer constant definitions "
+.ti -1c
+.RI "class \fBFT_STOP_BITS\fP"
+.br
+.RI "Permitted stop bits for \fBFTDI\fP devices "
+.ti -1c
+.RI "class \fBFT_XSERIES_CBUS_OPTIONS\fP"
+.br
+.RI "Available functions for the X-Series CBUS pins\&. Controlled by X-Series EEPROM settings "
+.ti -1c
+.RI "class \fBFT_XSERIES_EEPROM_STRUCTURE\fP"
+.br
+.RI "EEPROM structure specific to X-Series devices\&. Inherits from \fBFT_EEPROM_DATA\fP\&. "
+.in -1c
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBFT_STATUS\fP { \fBFT_STATUS\&.FT_OK\fP = 0, \fBFT_STATUS\&.FT_INVALID_HANDLE\fP, \fBFT_STATUS\&.FT_DEVICE_NOT_FOUND\fP, \fBFT_STATUS\&.FT_DEVICE_NOT_OPENED\fP, \fBFT_STATUS\&.FT_IO_ERROR\fP, \fBFT_STATUS\&.FT_INSUFFICIENT_RESOURCES\fP, \fBFT_STATUS\&.FT_INVALID_PARAMETER\fP, \fBFT_STATUS\&.FT_INVALID_BAUD_RATE\fP, \fBFT_STATUS\&.FT_DEVICE_NOT_OPENED_FOR_ERASE\fP, \fBFT_STATUS\&.FT_DEVICE_NOT_OPENED_FOR_WRITE\fP, \fBFT_STATUS\&.FT_FAILED_TO_WRITE_DEVICE\fP, \fBFT_STATUS\&.FT_EEPROM_READ_FAILED\fP, \fBFT_STATUS\&.FT_EEPROM_WRITE_FAILED\fP, \fBFT_STATUS\&.FT_EEPROM_ERASE_FAILED\fP, \fBFT_STATUS\&.FT_EEPROM_NOT_PRESENT\fP, \fBFT_STATUS\&.FT_EEPROM_NOT_PROGRAMMED\fP, \fBFT_STATUS\&.FT_INVALID_ARGS\fP, \fBFT_STATUS\&.FT_OTHER_ERROR\fP }"
+.br
+.RI "Status values for \fBFTDI\fP devices\&. "
+.ti -1c
+.RI "enum \fBFT_DEVICE\fP { \fBFT_DEVICE\&.FT_DEVICE_BM\fP = 0, \fBFT_DEVICE\&.FT_DEVICE_AM\fP, \fBFT_DEVICE\&.FT_DEVICE_100AX\fP, \fBFT_DEVICE\&.FT_DEVICE_UNKNOWN\fP, \fBFT_DEVICE\&.FT_DEVICE_2232\fP, \fBFT_DEVICE\&.FT_DEVICE_232R\fP, \fBFT_DEVICE\&.FT_DEVICE_2232H\fP, \fBFT_DEVICE\&.FT_DEVICE_4232H\fP, \fBFT_DEVICE\&.FT_DEVICE_232H\fP, \fBFT_DEVICE\&.FT_DEVICE_X_SERIES\fP, \fBFT_DEVICE\&.FT_DEVICE_4222H_0\fP, \fBFT_DEVICE\&.FT_DEVICE_4222H_1_2\fP, \fBFT_DEVICE\&.FT_DEVICE_4222H_3\fP, \fBFT_DEVICE\&.FT_DEVICE_4222_PROG\fP }"
+.br
+.RI "List of \fBFTDI\fP device types "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFTDI\fP ()"
+.br
+.RI "Constructor for the \fBFTDI\fP class\&. "
+.ti -1c
+.RI "\fBFTDI\fP (String path)"
+.br
+.RI "Non default constructor allowing passing of string for dll handle\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBGetNumberOfDevices\fP (ref UInt32 devcount)"
+.br
+.RI "Gets the number of \fBFTDI\fP devices available\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBGetDeviceList\fP (\fBFT_DEVICE_INFO_NODE\fP[] devicelist)"
+.br
+.RI "Gets information on all of the \fBFTDI\fP devices available\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBOpenByIndex\fP (UInt32 index)"
+.br
+.RI "Opens the \fBFTDI\fP device with the specified index\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBOpenBySerialNumber\fP (string serialnumber)"
+.br
+.RI "Opens the \fBFTDI\fP device with the specified serial number\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBOpenByDescription\fP (string description)"
+.br
+.RI "Opens the \fBFTDI\fP device with the specified description\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBOpenByLocation\fP (UInt32 location)"
+.br
+.RI "Opens the \fBFTDI\fP device at the specified physical location\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBClose\fP ()"
+.br
+.RI "Closes the handle to an open \fBFTDI\fP device\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBRead\fP (byte[] dataBuffer, UInt32 numBytesToRead, ref UInt32 numBytesRead)"
+.br
+.RI "Read data from an open \fBFTDI\fP device\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBRead\fP (out string dataBuffer, UInt32 numBytesToRead, ref UInt32 numBytesRead)"
+.br
+.RI "Read data from an open \fBFTDI\fP device\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBWrite\fP (byte[] dataBuffer, Int32 numBytesToWrite, ref UInt32 numBytesWritten)"
+.br
+.RI "Write data to an open \fBFTDI\fP device\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBWrite\fP (byte[] dataBuffer, UInt32 numBytesToWrite, ref UInt32 numBytesWritten)"
+.br
+.RI "Write data to an open \fBFTDI\fP device\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBWrite\fP (string dataBuffer, Int32 numBytesToWrite, ref UInt32 numBytesWritten)"
+.br
+.RI "Write data to an open \fBFTDI\fP device\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBWrite\fP (string dataBuffer, UInt32 numBytesToWrite, ref UInt32 numBytesWritten)"
+.br
+.RI "Write data to an open \fBFTDI\fP device\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBResetDevice\fP ()"
+.br
+.RI "Reset an open \fBFTDI\fP device\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBPurge\fP (UInt32 purgemask)"
+.br
+.RI "Purge data from the devices transmit and/or receive buffers\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBSetEventNotification\fP (UInt32 eventmask, EventWaitHandle eventhandle)"
+.br
+.RI "Register for event notification\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBStopInTask\fP ()"
+.br
+.RI "Stops the driver issuing USB in requests\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBRestartInTask\fP ()"
+.br
+.RI "Resumes the driver issuing USB in requests\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBResetPort\fP ()"
+.br
+.RI "Resets the device port\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBCyclePort\fP ()"
+.br
+.RI "Causes the device to be re-enumerated on the USB bus\&. This is equivalent to unplugging and replugging the device\&. Also calls FT_Close if FT_CyclePort is successful, so no need to call this separately in the application\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBRescan\fP ()"
+.br
+.RI "Causes the system to check for USB hardware changes\&. This is equivalent to clicking on the 'Scan for hardware changes' button in the Device Manager\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBReload\fP (UInt16 VendorID, UInt16 ProductID)"
+.br
+.RI "Forces a reload of the driver for devices with a specific VID and PID combination\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBSetBitMode\fP (byte Mask, byte BitMode)"
+.br
+.RI "Puts the device in a mode other than the default UART or FIFO mode\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBGetPinStates\fP (ref byte BitMode)"
+.br
+.RI "Gets the instantaneous state of the device IO pins\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBReadEEPROMLocation\fP (UInt32 Address, ref UInt16 EEValue)"
+.br
+.RI "Reads an individual word value from a specified location in the device's EEPROM\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBWriteEEPROMLocation\fP (UInt32 Address, UInt16 EEValue)"
+.br
+.RI "Writes an individual word value to a specified location in the device's EEPROM\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBEraseEEPROM\fP ()"
+.br
+.RI "Erases the device EEPROM\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBReadFT232BEEPROM\fP (\fBFT232B_EEPROM_STRUCTURE\fP ee232b)"
+.br
+.RI "Reads the EEPROM contents of an FT232B or FT245B device\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBReadFT2232EEPROM\fP (\fBFT2232_EEPROM_STRUCTURE\fP ee2232)"
+.br
+.RI "Reads the EEPROM contents of an FT2232 device\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBReadFT232REEPROM\fP (\fBFT232R_EEPROM_STRUCTURE\fP ee232r)"
+.br
+.RI "Reads the EEPROM contents of an FT232R or FT245R device\&. Calls FT_EE_Read in FTD2XX DLL "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBReadFT2232HEEPROM\fP (\fBFT2232H_EEPROM_STRUCTURE\fP ee2232h)"
+.br
+.RI "Reads the EEPROM contents of an FT2232H device\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBReadFT4232HEEPROM\fP (\fBFT4232H_EEPROM_STRUCTURE\fP ee4232h)"
+.br
+.RI "Reads the EEPROM contents of an FT4232H device\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBReadFT232HEEPROM\fP (\fBFT232H_EEPROM_STRUCTURE\fP ee232h)"
+.br
+.RI "Reads the EEPROM contents of an FT232H device\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBReadXSeriesEEPROM\fP (\fBFT_XSERIES_EEPROM_STRUCTURE\fP eeX)"
+.br
+.RI "Reads the EEPROM contents of an X-Series device\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBWriteFT232BEEPROM\fP (\fBFT232B_EEPROM_STRUCTURE\fP ee232b)"
+.br
+.RI "Writes the specified values to the EEPROM of an FT232B or FT245B device\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBWriteFT2232EEPROM\fP (\fBFT2232_EEPROM_STRUCTURE\fP ee2232)"
+.br
+.RI "Writes the specified values to the EEPROM of an FT2232 device\&. Calls FT_EE_Program in FTD2XX DLL "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBWriteFT232REEPROM\fP (\fBFT232R_EEPROM_STRUCTURE\fP ee232r)"
+.br
+.RI "Writes the specified values to the EEPROM of an FT232R or FT245R device\&. Calls FT_EE_Program in FTD2XX DLL "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBWriteFT2232HEEPROM\fP (\fBFT2232H_EEPROM_STRUCTURE\fP ee2232h)"
+.br
+.RI "Writes the specified values to the EEPROM of an FT2232H device\&. Calls FT_EE_Program in FTD2XX DLL "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBWriteFT4232HEEPROM\fP (\fBFT4232H_EEPROM_STRUCTURE\fP ee4232h)"
+.br
+.RI "Writes the specified values to the EEPROM of an FT4232H device\&. Calls FT_EE_Program in FTD2XX DLL "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBWriteFT232HEEPROM\fP (\fBFT232H_EEPROM_STRUCTURE\fP ee232h)"
+.br
+.RI "Writes the specified values to the EEPROM of an FT232H device\&. Calls FT_EE_Program in FTD2XX DLL "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBWriteXSeriesEEPROM\fP (\fBFT_XSERIES_EEPROM_STRUCTURE\fP eeX)"
+.br
+.RI "Writes the specified values to the EEPROM of an X-Series device\&. Calls FT_EEPROM_Program in FTD2XX DLL "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBEEReadUserArea\fP (byte[] UserAreaDataBuffer, ref UInt32 numBytesRead)"
+.br
+.RI "Reads data from the user area of the device EEPROM\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBEEWriteUserArea\fP (byte[] UserAreaDataBuffer)"
+.br
+.RI "Writes data to the user area of the device EEPROM\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBGetDeviceType\fP (ref \fBFT_DEVICE\fP DeviceType)"
+.br
+.RI "Gets the chip type of the current device\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBGetDeviceID\fP (ref UInt32 DeviceID)"
+.br
+.RI "Gets the Vendor ID and Product ID of the current device\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBGetDescription\fP (out string Description)"
+.br
+.RI "Gets the description of the current device\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBGetSerialNumber\fP (out string SerialNumber)"
+.br
+.RI "Gets the serial number of the current device\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBGetRxBytesAvailable\fP (ref UInt32 RxQueue)"
+.br
+.RI "Gets the number of bytes available in the receive buffer\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBGetTxBytesWaiting\fP (ref UInt32 TxQueue)"
+.br
+.RI "Gets the number of bytes waiting in the transmit buffer\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBGetEventType\fP (ref UInt32 EventType)"
+.br
+.RI "Gets the event type after an event has fired\&. Can be used to distinguish which event has been triggered when waiting on multiple event types\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBGetModemStatus\fP (ref byte ModemStatus)"
+.br
+.RI "Gets the current modem status\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBGetLineStatus\fP (ref byte LineStatus)"
+.br
+.RI "Gets the current line status\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBSetBaudRate\fP (UInt32 BaudRate)"
+.br
+.RI "Sets the current Baud rate\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBSetDataCharacteristics\fP (byte DataBits, byte StopBits, byte Parity)"
+.br
+.RI "Sets the data bits, stop bits and parity for the device\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBSetFlowControl\fP (UInt16 FlowControl, byte Xon, byte Xoff)"
+.br
+.RI "Sets the flow control type\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBSetRTS\fP (bool Enable)"
+.br
+.RI "Asserts or de-asserts the Request To Send (RTS) line\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBSetDTR\fP (bool Enable)"
+.br
+.RI "Asserts or de-asserts the Data Terminal Ready (DTR) line\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBSetTimeouts\fP (UInt32 ReadTimeout, UInt32 WriteTimeout)"
+.br
+.RI "Sets the read and write timeout values\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBSetBreak\fP (bool Enable)"
+.br
+.RI "Sets or clears the break state\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBSetResetPipeRetryCount\fP (UInt32 ResetPipeRetryCount)"
+.br
+.RI "Gets or sets the reset pipe retry count\&. Default value is 50\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBGetDriverVersion\fP (ref UInt32 DriverVersion)"
+.br
+.RI "Gets the current FTDIBUS\&.SYS driver version number\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBGetLibraryVersion\fP (ref UInt32 LibraryVersion)"
+.br
+.RI "Gets the current FTD2XX\&.DLL driver version number\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBSetDeadmanTimeout\fP (UInt32 DeadmanTimeout)"
+.br
+.RI "Sets the USB deadman timeout value\&. Default is 5000ms\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBSetLatency\fP (byte Latency)"
+.br
+.RI "Sets the value of the latency timer\&. Default value is 16ms\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBGetLatency\fP (ref byte Latency)"
+.br
+.RI "Gets the value of the latency timer\&. Default value is 16ms\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBInTransferSize\fP (UInt32 InTransferSize)"
+.br
+.RI "Sets the USB IN and OUT transfer sizes\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBSetCharacters\fP (byte EventChar, bool EventCharEnable, byte ErrorChar, bool ErrorCharEnable)"
+.br
+.RI "Sets an event character, an error character and enables or disables them\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBEEUserAreaSize\fP (ref UInt32 UASize)"
+.br
+.RI "Gets the size of the EEPROM user area\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBGetCOMPort\fP (out string ComPortName)"
+.br
+.RI "Gets the corresponding COM port number for the current device\&. If no COM port is exposed, an empty string is returned\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBVendorCmdGet\fP (UInt16 request, byte[] buf, UInt16 len)"
+.br
+.RI "Get data from the FT4222 using the vendor command interface\&. "
+.ti -1c
+.RI "\fBFT_STATUS\fP \fBVendorCmdSet\fP (UInt16 request, byte[] buf, UInt16 len)"
+.br
+.RI "Set data from the FT4222 using the vendor command interface\&. "
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBIsOpen\fP\fC [get]\fP"
+.br
+.RI "Gets the open status of the device\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Class wrapper for FTD2XX\&.DLL 
+
+
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBFTD2XX_NET\&.FTDI\&.FT_DEVICE\fP\fC [strong]\fP"
+
+.PP
+List of \fBFTDI\fP device types 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIFT_DEVICE_BM \fP\fP
+FT232B or FT245B device 
+.TP
+\fB\fIFT_DEVICE_AM \fP\fP
+FT8U232AM or FT8U245AM device 
+.TP
+\fB\fIFT_DEVICE_100AX \fP\fP
+FT8U100AX device 
+.TP
+\fB\fIFT_DEVICE_UNKNOWN \fP\fP
+Unknown device 
+.TP
+\fB\fIFT_DEVICE_2232 \fP\fP
+FT2232 device 
+.TP
+\fB\fIFT_DEVICE_232R \fP\fP
+FT232R or FT245R device 
+.TP
+\fB\fIFT_DEVICE_2232H \fP\fP
+FT2232H device 
+.TP
+\fB\fIFT_DEVICE_4232H \fP\fP
+FT4232H device 
+.TP
+\fB\fIFT_DEVICE_232H \fP\fP
+FT232H device 
+.TP
+\fB\fIFT_DEVICE_X_SERIES \fP\fP
+FT X-Series device 
+.TP
+\fB\fIFT_DEVICE_4222H_0 \fP\fP
+FT4222 hi-speed device Mode 0 - 2 interfaces 
+.TP
+\fB\fIFT_DEVICE_4222H_1_2 \fP\fP
+FT4222 hi-speed device Mode 1 or 2 - 4 interfaces 
+.TP
+\fB\fIFT_DEVICE_4222H_3 \fP\fP
+FT4222 hi-speed device Mode 3 - 1 interface 
+.TP
+\fB\fIFT_DEVICE_4222_PROG \fP\fP
+OTP programmer board for the FT4222\&. 
+.SS "enum \fBFTD2XX_NET\&.FTDI\&.FT_STATUS\fP\fC [strong]\fP"
+
+.PP
+Status values for \fBFTDI\fP devices\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIFT_OK \fP\fP
+Status OK 
+.TP
+\fB\fIFT_INVALID_HANDLE \fP\fP
+The device handle is invalid 
+.TP
+\fB\fIFT_DEVICE_NOT_FOUND \fP\fP
+Device not found 
+.TP
+\fB\fIFT_DEVICE_NOT_OPENED \fP\fP
+Device is not open 
+.TP
+\fB\fIFT_IO_ERROR \fP\fP
+IO error 
+.TP
+\fB\fIFT_INSUFFICIENT_RESOURCES \fP\fP
+Insufficient resources 
+.TP
+\fB\fIFT_INVALID_PARAMETER \fP\fP
+A parameter was invalid 
+.TP
+\fB\fIFT_INVALID_BAUD_RATE \fP\fP
+The requested baud rate is invalid 
+.TP
+\fB\fIFT_DEVICE_NOT_OPENED_FOR_ERASE \fP\fP
+Device not opened for erase 
+.TP
+\fB\fIFT_DEVICE_NOT_OPENED_FOR_WRITE \fP\fP
+Device not poened for write 
+.TP
+\fB\fIFT_FAILED_TO_WRITE_DEVICE \fP\fP
+Failed to write to device 
+.TP
+\fB\fIFT_EEPROM_READ_FAILED \fP\fP
+Failed to read the device EEPROM 
+.TP
+\fB\fIFT_EEPROM_WRITE_FAILED \fP\fP
+Failed to write the device EEPROM 
+.TP
+\fB\fIFT_EEPROM_ERASE_FAILED \fP\fP
+Failed to erase the device EEPROM 
+.TP
+\fB\fIFT_EEPROM_NOT_PRESENT \fP\fP
+An EEPROM is not fitted to the device 
+.TP
+\fB\fIFT_EEPROM_NOT_PROGRAMMED \fP\fP
+Device EEPROM is blank 
+.TP
+\fB\fIFT_INVALID_ARGS \fP\fP
+Invalid arguments 
+.TP
+\fB\fIFT_OTHER_ERROR \fP\fP
+An other error has occurred 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "FTD2XX_NET\&.FTDI\&.FTDI ()"
+
+.PP
+Constructor for the \fBFTDI\fP class\&. 
+.SS "FTD2XX_NET\&.FTDI\&.FTDI (String path)"
+
+.PP
+Non default constructor allowing passing of string for dll handle\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.Close ()"
+
+.PP
+Closes the handle to an open \fBFTDI\fP device\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_Close in FTD2XX\&.DLL
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.CyclePort ()"
+
+.PP
+Causes the device to be re-enumerated on the USB bus\&. This is equivalent to unplugging and replugging the device\&. Also calls FT_Close if FT_CyclePort is successful, so no need to call this separately in the application\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_CyclePort in FTD2XX\&.DLL
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.EEReadUserArea (byte [] UserAreaDataBuffer, ref UInt32 numBytesRead)"
+
+.PP
+Reads data from the user area of the device EEPROM\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS from FT_UARead in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUserAreaDataBuffer\fP An array of bytes which will be populated with the data read from the device EEPROM user area\&.
+.br
+\fInumBytesRead\fP The number of bytes actually read from the EEPROM user area\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.EEUserAreaSize (ref UInt32 UASize)"
+
+.PP
+Gets the size of the EEPROM user area\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_EE_UASize in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUASize\fP The EEPROM user area size in bytes\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.EEWriteUserArea (byte [] UserAreaDataBuffer)"
+
+.PP
+Writes data to the user area of the device EEPROM\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_UAWrite in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIUserAreaDataBuffer\fP An array of bytes which will be written to the device EEPROM user area\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.EraseEEPROM ()"
+
+.PP
+Erases the device EEPROM\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_EraseEE in FTD2XX\&.DLL
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBFT_EXCEPTION\fP\fP Thrown when attempting to erase the EEPROM of a device with an internal EEPROM such as an FT232R or FT245R\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.GetCOMPort (out string ComPortName)"
+
+.PP
+Gets the corresponding COM port number for the current device\&. If no COM port is exposed, an empty string is returned\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_GetComPortNumber in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIComPortName\fP The COM port name corresponding to the current device\&. If no COM port is installed, an empty string is passed back\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.GetDescription (out string Description)"
+
+.PP
+Gets the description of the current device\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_GetDeviceInfo in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIDescription\fP The description of the current device\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.GetDeviceID (ref UInt32 DeviceID)"
+
+.PP
+Gets the Vendor ID and Product ID of the current device\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_GetDeviceInfo in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIDeviceID\fP The device ID (Vendor ID and Product ID) of the current device\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.GetDeviceList (\fBFT_DEVICE_INFO_NODE\fP [] devicelist)"
+
+.PP
+Gets information on all of the \fBFTDI\fP devices available\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_GetDeviceInfoDetail in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdevicelist\fP An array of type \fBFT_DEVICE_INFO_NODE\fP to contain the device information for all available devices\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBFT_EXCEPTION\fP\fP Thrown when the supplied buffer is not large enough to contain the device info list\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.GetDeviceType (ref \fBFT_DEVICE\fP DeviceType)"
+
+.PP
+Gets the chip type of the current device\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_GetDeviceInfo in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIDeviceType\fP The \fBFTDI\fP chip type of the current device\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.GetDriverVersion (ref UInt32 DriverVersion)"
+
+.PP
+Gets the current FTDIBUS\&.SYS driver version number\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_GetDriverVersion in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIDriverVersion\fP The current driver version number\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.GetEventType (ref UInt32 EventType)"
+
+.PP
+Gets the event type after an event has fired\&. Can be used to distinguish which event has been triggered when waiting on multiple event types\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_GetStatus in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIEventType\fP The type of event that has occurred\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.GetLatency (ref byte Latency)"
+
+.PP
+Gets the value of the latency timer\&. Default value is 16ms\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_GetLatencyTimer in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fILatency\fP The latency timer value in ms\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.GetLibraryVersion (ref UInt32 LibraryVersion)"
+
+.PP
+Gets the current FTD2XX\&.DLL driver version number\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_GetLibraryVersion in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fILibraryVersion\fP The current library version\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.GetLineStatus (ref byte LineStatus)"
+
+.PP
+Gets the current line status\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_GetModemStatus in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fILineStatus\fP A bit map representaion of the current line status\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.GetModemStatus (ref byte ModemStatus)"
+
+.PP
+Gets the current modem status\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_GetModemStatus in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIModemStatus\fP A bit map representaion of the current modem status\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.GetNumberOfDevices (ref UInt32 devcount)"
+
+.PP
+Gets the number of \fBFTDI\fP devices available\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_CreateDeviceInfoList in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdevcount\fP The number of \fBFTDI\fP devices available\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.GetPinStates (ref byte BitMode)"
+
+.PP
+Gets the instantaneous state of the device IO pins\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_GetBitMode in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIBitMode\fP A bitmap value containing the instantaneous state of the device IO pins
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.GetRxBytesAvailable (ref UInt32 RxQueue)"
+
+.PP
+Gets the number of bytes available in the receive buffer\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_GetQueueStatus in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIRxQueue\fP The number of bytes available to be read\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.GetSerialNumber (out string SerialNumber)"
+
+.PP
+Gets the serial number of the current device\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_GetDeviceInfo in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fISerialNumber\fP The serial number of the current device\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.GetTxBytesWaiting (ref UInt32 TxQueue)"
+
+.PP
+Gets the number of bytes waiting in the transmit buffer\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_GetStatus in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fITxQueue\fP The number of bytes waiting to be sent\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.InTransferSize (UInt32 InTransferSize)"
+
+.PP
+Sets the USB IN and OUT transfer sizes\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_SetUSBParameters in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIInTransferSize\fP The USB IN transfer size in bytes\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.OpenByDescription (string description)"
+
+.PP
+Opens the \fBFTDI\fP device with the specified description\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_OpenEx in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdescription\fP Description of the device to open\&.
+.RE
+.PP
+.PP
+Initialises the device to 8 data bits, 1 stop bit, no parity, no flow control and 9600 Baud\&.
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.OpenByIndex (UInt32 index)"
+
+.PP
+Opens the \fBFTDI\fP device with the specified index\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_Open in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP Index of the device to open\&. Note that this cannot be guaranteed to open a specific device\&.
+.RE
+.PP
+.PP
+Initialises the device to 8 data bits, 1 stop bit, no parity, no flow control and 9600 Baud\&.
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.OpenByLocation (UInt32 location)"
+
+.PP
+Opens the \fBFTDI\fP device at the specified physical location\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_OpenEx in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlocation\fP Location of the device to open\&.
+.RE
+.PP
+.PP
+Initialises the device to 8 data bits, 1 stop bit, no parity, no flow control and 9600 Baud\&.
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.OpenBySerialNumber (string serialnumber)"
+
+.PP
+Opens the \fBFTDI\fP device with the specified serial number\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_OpenEx in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIserialnumber\fP Serial number of the device to open\&.
+.RE
+.PP
+.PP
+Initialises the device to 8 data bits, 1 stop bit, no parity, no flow control and 9600 Baud\&.
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.Purge (UInt32 purgemask)"
+
+.PP
+Purge data from the devices transmit and/or receive buffers\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_Purge in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpurgemask\fP Specifies which buffer(s) to be purged\&. Valid values are any combination of the following flags: FT_PURGE_RX, FT_PURGE_TX
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.Read (byte [] dataBuffer, UInt32 numBytesToRead, ref UInt32 numBytesRead)"
+
+.PP
+Read data from an open \fBFTDI\fP device\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_Read in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdataBuffer\fP An array of bytes which will be populated with the data read from the device\&.
+.br
+\fInumBytesToRead\fP The number of bytes requested from the device\&.
+.br
+\fInumBytesRead\fP The number of bytes actually read\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.Read (out string dataBuffer, UInt32 numBytesToRead, ref UInt32 numBytesRead)"
+
+.PP
+Read data from an open \fBFTDI\fP device\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_Read in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdataBuffer\fP A string containing the data read
+.br
+\fInumBytesToRead\fP The number of bytes requested from the device\&.
+.br
+\fInumBytesRead\fP The number of bytes actually read\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.ReadEEPROMLocation (UInt32 Address, ref UInt16 EEValue)"
+
+.PP
+Reads an individual word value from a specified location in the device's EEPROM\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_ReadEE in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIAddress\fP The EEPROM location to read data from
+.br
+\fIEEValue\fP The WORD value read from the EEPROM location specified in the Address paramter
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.ReadFT2232EEPROM (\fBFT2232_EEPROM_STRUCTURE\fP ee2232)"
+
+.PP
+Reads the EEPROM contents of an FT2232 device\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_EE_Read in FTD2XX DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIee2232\fP An \fBFT2232_EEPROM_STRUCTURE\fP which contains only the relevant information for an FT2232 device\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBFT_EXCEPTION\fP\fP Thrown when the current device does not match the type required by this method\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.ReadFT2232HEEPROM (\fBFT2232H_EEPROM_STRUCTURE\fP ee2232h)"
+
+.PP
+Reads the EEPROM contents of an FT2232H device\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_EE_Read in FTD2XX DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIee2232h\fP An \fBFT2232H_EEPROM_STRUCTURE\fP which contains only the relevant information for an FT2232H device\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBFT_EXCEPTION\fP\fP Thrown when the current device does not match the type required by this method\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.ReadFT232BEEPROM (\fBFT232B_EEPROM_STRUCTURE\fP ee232b)"
+
+.PP
+Reads the EEPROM contents of an FT232B or FT245B device\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_EE_Read in FTD2XX DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIee232b\fP An \fBFT232B_EEPROM_STRUCTURE\fP which contains only the relevant information for an FT232B and FT245B device\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBFT_EXCEPTION\fP\fP Thrown when the current device does not match the type required by this method\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.ReadFT232HEEPROM (\fBFT232H_EEPROM_STRUCTURE\fP ee232h)"
+
+.PP
+Reads the EEPROM contents of an FT232H device\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_EE_Read in FTD2XX DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIee232h\fP An \fBFT232H_EEPROM_STRUCTURE\fP which contains only the relevant information for an FT232H device\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBFT_EXCEPTION\fP\fP Thrown when the current device does not match the type required by this method\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.ReadFT232REEPROM (\fBFT232R_EEPROM_STRUCTURE\fP ee232r)"
+
+.PP
+Reads the EEPROM contents of an FT232R or FT245R device\&. Calls FT_EE_Read in FTD2XX DLL 
+.PP
+\fBReturns:\fP
+.RS 4
+An \fBFT232R_EEPROM_STRUCTURE\fP which contains only the relevant information for an FT232R and FT245R device\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBFT_EXCEPTION\fP\fP Thrown when the current device does not match the type required by this method\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.ReadFT4232HEEPROM (\fBFT4232H_EEPROM_STRUCTURE\fP ee4232h)"
+
+.PP
+Reads the EEPROM contents of an FT4232H device\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_EE_Read in FTD2XX DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIee4232h\fP An \fBFT4232H_EEPROM_STRUCTURE\fP which contains only the relevant information for an FT4232H device\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBFT_EXCEPTION\fP\fP Thrown when the current device does not match the type required by this method\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.ReadXSeriesEEPROM (\fBFT_XSERIES_EEPROM_STRUCTURE\fP eeX)"
+
+.PP
+Reads the EEPROM contents of an X-Series device\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_EEPROM_Read in FTD2XX DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIeeX\fP An \fBFT_XSERIES_EEPROM_STRUCTURE\fP which contains only the relevant information for an X-Series device\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBFT_EXCEPTION\fP\fP Thrown when the current device does not match the type required by this method\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.Reload (UInt16 VendorID, UInt16 ProductID)"
+
+.PP
+Forces a reload of the driver for devices with a specific VID and PID combination\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_Reload in FTD2XX\&.DLL
+.RE
+.PP
+.PP
+If the VID and PID parameters are 0, the drivers for USB root hubs will be reloaded, causing all USB devices connected to reload their drivers
+.PP
+\fBParameters:\fP
+.RS 4
+\fIVendorID\fP Vendor ID of the devices to have the driver reloaded
+.br
+\fIProductID\fP Product ID of the devices to have the driver reloaded
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.Rescan ()"
+
+.PP
+Causes the system to check for USB hardware changes\&. This is equivalent to clicking on the 'Scan for hardware changes' button in the Device Manager\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_Rescan in FTD2XX\&.DLL
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.ResetDevice ()"
+
+.PP
+Reset an open \fBFTDI\fP device\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_ResetDevice in FTD2XX\&.DLL
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.ResetPort ()"
+
+.PP
+Resets the device port\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_ResetPort in FTD2XX\&.DLL
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.RestartInTask ()"
+
+.PP
+Resumes the driver issuing USB in requests\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_RestartInTask in FTD2XX\&.DLL
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.SetBaudRate (UInt32 BaudRate)"
+
+.PP
+Sets the current Baud rate\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_SetBaudRate in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIBaudRate\fP The desired Baud rate for the device\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.SetBitMode (byte Mask, byte BitMode)"
+
+.PP
+Puts the device in a mode other than the default UART or FIFO mode\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_SetBitMode in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIMask\fP Sets up which bits are inputs and which are outputs\&. A bit value of 0 sets the corresponding pin to an input, a bit value of 1 sets the corresponding pin to an output\&. In the case of CBUS Bit Bang, the upper nibble of this value controls which pins are inputs and outputs, while the lower nibble controls which of the outputs are high and low\&.
+.br
+\fIBitMode\fP For FT232H devices, valid values are FT_BIT_MODE_RESET, FT_BIT_MODE_ASYNC_BITBANG, FT_BIT_MODE_MPSSE, FT_BIT_MODE_SYNC_BITBANG, FT_BIT_MODE_CBUS_BITBANG, FT_BIT_MODE_MCU_HOST, FT_BIT_MODE_FAST_SERIAL, FT_BIT_MODE_SYNC_FIFO\&. For FT2232H devices, valid values are FT_BIT_MODE_RESET, FT_BIT_MODE_ASYNC_BITBANG, FT_BIT_MODE_MPSSE, FT_BIT_MODE_SYNC_BITBANG, FT_BIT_MODE_MCU_HOST, FT_BIT_MODE_FAST_SERIAL, FT_BIT_MODE_SYNC_FIFO\&. For FT4232H devices, valid values are FT_BIT_MODE_RESET, FT_BIT_MODE_ASYNC_BITBANG, FT_BIT_MODE_MPSSE, FT_BIT_MODE_SYNC_BITBANG\&. For FT232R devices, valid values are FT_BIT_MODE_RESET, FT_BIT_MODE_ASYNC_BITBANG, FT_BIT_MODE_SYNC_BITBANG, FT_BIT_MODE_CBUS_BITBANG\&. For FT245R devices, valid values are FT_BIT_MODE_RESET, FT_BIT_MODE_ASYNC_BITBANG, FT_BIT_MODE_SYNC_BITBANG\&. For FT2232 devices, valid values are FT_BIT_MODE_RESET, FT_BIT_MODE_ASYNC_BITBANG, FT_BIT_MODE_MPSSE, FT_BIT_MODE_SYNC_BITBANG, FT_BIT_MODE_MCU_HOST, FT_BIT_MODE_FAST_SERIAL\&. For FT232B and FT245B devices, valid values are FT_BIT_MODE_RESET, FT_BIT_MODE_ASYNC_BITBANG\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBFT_EXCEPTION\fP\fP Thrown when the current device does not support the requested bit mode\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.SetBreak (bool Enable)"
+
+.PP
+Sets or clears the break state\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_SetBreakOn or FT_SetBreakOff in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIEnable\fP If true, sets break on\&. If false, sets break off\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.SetCharacters (byte EventChar, bool EventCharEnable, byte ErrorChar, bool ErrorCharEnable)"
+
+.PP
+Sets an event character, an error character and enables or disables them\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_SetChars in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIEventChar\fP A character that will be tigger an IN to the host when this character is received\&.
+.br
+\fIEventCharEnable\fP Determines if the EventChar is enabled or disabled\&.
+.br
+\fIErrorChar\fP A character that will be inserted into the data stream to indicate that an error has occurred\&.
+.br
+\fIErrorCharEnable\fP Determines if the ErrorChar is enabled or disabled\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.SetDataCharacteristics (byte DataBits, byte StopBits, byte Parity)"
+
+.PP
+Sets the data bits, stop bits and parity for the device\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_SetDataCharacteristics in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIDataBits\fP The number of data bits for UART data\&. Valid values are FT_DATA_BITS\&.FT_DATA_7 or \fBFT_DATA_BITS\&.FT_BITS_8\fP
+.br
+\fIStopBits\fP The number of stop bits for UART data\&. Valid values are \fBFT_STOP_BITS\&.FT_STOP_BITS_1\fP or \fBFT_STOP_BITS\&.FT_STOP_BITS_2\fP
+.br
+\fIParity\fP The parity of the UART data\&. Valid values are \fBFT_PARITY\&.FT_PARITY_NONE\fP, \fBFT_PARITY\&.FT_PARITY_ODD\fP, \fBFT_PARITY\&.FT_PARITY_EVEN\fP, \fBFT_PARITY\&.FT_PARITY_MARK\fP or \fBFT_PARITY\&.FT_PARITY_SPACE\fP
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.SetDeadmanTimeout (UInt32 DeadmanTimeout)"
+
+.PP
+Sets the USB deadman timeout value\&. Default is 5000ms\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_SetDeadmanTimeout in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIDeadmanTimeout\fP The deadman timeout value in ms\&. Default is 5000ms\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.SetDTR (bool Enable)"
+
+.PP
+Asserts or de-asserts the Data Terminal Ready (DTR) line\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_SetDtr or FT_ClrDtr in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIEnable\fP If true, asserts DTR\&. If false, de-asserts DTR\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.SetEventNotification (UInt32 eventmask, EventWaitHandle eventhandle)"
+
+.PP
+Register for event notification\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_SetEventNotification in FTD2XX\&.DLL
+.RE
+.PP
+.PP
+After setting event notification, the event can be caught by executing the WaitOne() method of the EventWaitHandle\&. If multiple event types are being monitored, the event that fired can be determined from the GetEventType method\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIeventmask\fP The type of events to signal\&. Can be any combination of the following: FT_EVENT_RXCHAR, FT_EVENT_MODEM_STATUS, FT_EVENT_LINE_STATUS
+.br
+\fIeventhandle\fP Handle to the event that will receive the notification
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.SetFlowControl (UInt16 FlowControl, byte Xon, byte Xoff)"
+
+.PP
+Sets the flow control type\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_SetFlowControl in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIFlowControl\fP The type of flow control for the UART\&. Valid values are \fBFT_FLOW_CONTROL\&.FT_FLOW_NONE\fP, \fBFT_FLOW_CONTROL\&.FT_FLOW_RTS_CTS\fP, \fBFT_FLOW_CONTROL\&.FT_FLOW_DTR_DSR\fP or \fBFT_FLOW_CONTROL\&.FT_FLOW_XON_XOFF\fP
+.br
+\fIXon\fP The Xon character for Xon/Xoff flow control\&. Ignored if not using Xon/XOff flow control\&.
+.br
+\fIXoff\fP The Xoff character for Xon/Xoff flow control\&. Ignored if not using Xon/XOff flow control\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.SetLatency (byte Latency)"
+
+.PP
+Sets the value of the latency timer\&. Default value is 16ms\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_SetLatencyTimer in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fILatency\fP The latency timer value in ms\&. Valid values are 2ms - 255ms for FT232BM, FT245BM and FT2232 devices\&. Valid values are 0ms - 255ms for other devices\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.SetResetPipeRetryCount (UInt32 ResetPipeRetryCount)"
+
+.PP
+Gets or sets the reset pipe retry count\&. Default value is 50\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS vlaue from FT_SetResetPipeRetryCount in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIResetPipeRetryCount\fP The reset pipe retry count\&.
+.RE
+.PP
+Electrically noisy environments may benefit from a larger value\&.
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.SetRTS (bool Enable)"
+
+.PP
+Asserts or de-asserts the Request To Send (RTS) line\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_SetRts or FT_ClrRts in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIEnable\fP If true, asserts RTS\&. If false, de-asserts RTS
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.SetTimeouts (UInt32 ReadTimeout, UInt32 WriteTimeout)"
+
+.PP
+Sets the read and write timeout values\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_SetTimeouts in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIReadTimeout\fP Read timeout value in ms\&. A value of 0 indicates an infinite timeout\&.
+.br
+\fIWriteTimeout\fP Write timeout value in ms\&. A value of 0 indicates an infinite timeout\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.StopInTask ()"
+
+.PP
+Stops the driver issuing USB in requests\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_StopInTask in FTD2XX\&.DLL
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.VendorCmdGet (UInt16 request, byte [] buf, UInt16 len)"
+
+.PP
+Get data from the FT4222 using the vendor command interface\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_VendorCmdSet in FTD2XX\&.DLL
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.VendorCmdSet (UInt16 request, byte [] buf, UInt16 len)"
+
+.PP
+Set data from the FT4222 using the vendor command interface\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_VendorCmdSet in FTD2XX\&.DLL
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.Write (byte [] dataBuffer, Int32 numBytesToWrite, ref UInt32 numBytesWritten)"
+
+.PP
+Write data to an open \fBFTDI\fP device\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_Write in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdataBuffer\fP An array of bytes which contains the data to be written to the device\&.
+.br
+\fInumBytesToWrite\fP The number of bytes to be written to the device\&.
+.br
+\fInumBytesWritten\fP The number of bytes actually written to the device\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.Write (byte [] dataBuffer, UInt32 numBytesToWrite, ref UInt32 numBytesWritten)"
+
+.PP
+Write data to an open \fBFTDI\fP device\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_Write in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdataBuffer\fP An array of bytes which contains the data to be written to the device\&.
+.br
+\fInumBytesToWrite\fP The number of bytes to be written to the device\&.
+.br
+\fInumBytesWritten\fP The number of bytes actually written to the device\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.Write (string dataBuffer, Int32 numBytesToWrite, ref UInt32 numBytesWritten)"
+
+.PP
+Write data to an open \fBFTDI\fP device\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_Write in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdataBuffer\fP A string which contains the data to be written to the device\&.
+.br
+\fInumBytesToWrite\fP The number of bytes to be written to the device\&.
+.br
+\fInumBytesWritten\fP The number of bytes actually written to the device\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.Write (string dataBuffer, UInt32 numBytesToWrite, ref UInt32 numBytesWritten)"
+
+.PP
+Write data to an open \fBFTDI\fP device\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_Write in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdataBuffer\fP A string which contains the data to be written to the device\&.
+.br
+\fInumBytesToWrite\fP The number of bytes to be written to the device\&.
+.br
+\fInumBytesWritten\fP The number of bytes actually written to the device\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.WriteEEPROMLocation (UInt32 Address, UInt16 EEValue)"
+
+.PP
+Writes an individual word value to a specified location in the device's EEPROM\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_WriteEE in FTD2XX\&.DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIAddress\fP The EEPROM location to read data from
+.br
+\fIEEValue\fP The WORD value to write to the EEPROM location specified by the Address parameter
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.WriteFT2232EEPROM (\fBFT2232_EEPROM_STRUCTURE\fP ee2232)"
+
+.PP
+Writes the specified values to the EEPROM of an FT2232 device\&. Calls FT_EE_Program in FTD2XX DLL 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_EE_Program in FTD2XX DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIee2232\fP The EEPROM settings to be written to the device
+.RE
+.PP
+.PP
+If the strings are too long, they will be truncated to their maximum permitted lengths
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBFT_EXCEPTION\fP\fP Thrown when the current device does not match the type required by this method\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.WriteFT2232HEEPROM (\fBFT2232H_EEPROM_STRUCTURE\fP ee2232h)"
+
+.PP
+Writes the specified values to the EEPROM of an FT2232H device\&. Calls FT_EE_Program in FTD2XX DLL 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_EE_Program in FTD2XX DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIee2232h\fP The EEPROM settings to be written to the device
+.RE
+.PP
+.PP
+If the strings are too long, they will be truncated to their maximum permitted lengths
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBFT_EXCEPTION\fP\fP Thrown when the current device does not match the type required by this method\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.WriteFT232BEEPROM (\fBFT232B_EEPROM_STRUCTURE\fP ee232b)"
+
+.PP
+Writes the specified values to the EEPROM of an FT232B or FT245B device\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_EE_Program in FTD2XX DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIee232b\fP The EEPROM settings to be written to the device
+.RE
+.PP
+.PP
+If the strings are too long, they will be truncated to their maximum permitted lengths
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBFT_EXCEPTION\fP\fP Thrown when the current device does not match the type required by this method\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.WriteFT232HEEPROM (\fBFT232H_EEPROM_STRUCTURE\fP ee232h)"
+
+.PP
+Writes the specified values to the EEPROM of an FT232H device\&. Calls FT_EE_Program in FTD2XX DLL 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_EE_Program in FTD2XX DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIee232h\fP The EEPROM settings to be written to the device
+.RE
+.PP
+.PP
+If the strings are too long, they will be truncated to their maximum permitted lengths
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBFT_EXCEPTION\fP\fP Thrown when the current device does not match the type required by this method\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.WriteFT232REEPROM (\fBFT232R_EEPROM_STRUCTURE\fP ee232r)"
+
+.PP
+Writes the specified values to the EEPROM of an FT232R or FT245R device\&. Calls FT_EE_Program in FTD2XX DLL 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_EE_Program in FTD2XX DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIee232r\fP The EEPROM settings to be written to the device
+.RE
+.PP
+.PP
+If the strings are too long, they will be truncated to their maximum permitted lengths
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBFT_EXCEPTION\fP\fP Thrown when the current device does not match the type required by this method\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.WriteFT4232HEEPROM (\fBFT4232H_EEPROM_STRUCTURE\fP ee4232h)"
+
+.PP
+Writes the specified values to the EEPROM of an FT4232H device\&. Calls FT_EE_Program in FTD2XX DLL 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_EE_Program in FTD2XX DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIee4232h\fP The EEPROM settings to be written to the device
+.RE
+.PP
+.PP
+If the strings are too long, they will be truncated to their maximum permitted lengths
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBFT_EXCEPTION\fP\fP Thrown when the current device does not match the type required by this method\&.
+.RE
+.PP
+
+.SS "\fBFT_STATUS\fP FTD2XX_NET\&.FTDI\&.WriteXSeriesEEPROM (\fBFT_XSERIES_EEPROM_STRUCTURE\fP eeX)"
+
+.PP
+Writes the specified values to the EEPROM of an X-Series device\&. Calls FT_EEPROM_Program in FTD2XX DLL 
+.PP
+\fBReturns:\fP
+.RS 4
+FT_STATUS value from FT_EEPROM_Program in FTD2XX DLL
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIeeX\fP The EEPROM settings to be written to the device
+.RE
+.PP
+.PP
+If the strings are too long, they will be truncated to their maximum permitted lengths
+.PP
+\fBExceptions:\fP
+.RS 4
+\fI\fBFT_EXCEPTION\fP\fP Thrown when the current device does not match the type required by this method\&.
+.RE
+.PP
+
+.SH "Property Documentation"
+.PP 
+.SS "bool FTD2XX_NET\&.FTDI\&.IsOpen\fC [get]\fP"
+
+.PP
+Gets the open status of the device\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

@@ -1,0 +1,87 @@
+.TH "BSL430_NET.Main.Core" 3 "Sat Jun 22 2019" "Version 1.2.1" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BSL430_NET.Main.Core
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBBSL430_NET\&.Main\&.IDevice\fP, \fBBSL430_NET\&.Main\&.ICommable\fP, \fBBSL430_NET\&.Main\&.IDevice\fP, and \fBBSL430_NET\&.Main\&.ICommable\fP\&.
+.PP
+Inherited by \fBBSL430_NET\&.Comm\&.CommFTD2XX\fP, \fBBSL430_NET\&.Comm\&.CommLibftdi\fP, \fBBSL430_NET\&.Comm\&.CommSerial\fP, and \fBBSL430_NET\&.Comm\&.CommUSB\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "abstract void \fBCommOpen\fP (\fBBsl430NetDevice\fP device)"
+.br
+.ti -1c
+.RI "abstract void \fBCommSet\fP (\fBBaudRate\fP baud_rate)"
+.br
+.ti -1c
+.RI "abstract void \fBCommDtr\fP (bool val=true, bool ignore_err=false)"
+.br
+.ti -1c
+.RI "abstract void \fBCommRts\fP (bool val=true, bool ignore_err=false)"
+.br
+.ti -1c
+.RI "abstract void \fBCommClrBuff\fP ()"
+.br
+.ti -1c
+.RI "abstract void \fBCommClose\fP (bool ignore_err=false)"
+.br
+.ti -1c
+.RI "abstract \fBBsl430NetDevice\fP \fBCommGetDefaultDevice\fP ()"
+.br
+.ti -1c
+.RI "abstract \fBStatus\fP \fBCommXfer\fP (out byte[] msg_rx, byte[] msg_tx, int rx_size)"
+.br
+.ti -1c
+.RI "abstract \fBStatus\fP \fBScan< Tdev >\fP (out List< Tdev > device_list, \fBScanOptions\fP scan_opt=\fBScanOptions\&.None\fP)"
+.br
+.ti -1c
+.RI "\fBBaudRate\fP \fBGetBaudRate\fP ()"
+.br
+.ti -1c
+.RI "\fBInvokeMechanism\fP \fBGetInvoke\fP ()"
+.br
+.ti -1c
+.RI "\fBMCU\fP \fBGetMCU\fP ()"
+.br
+.ti -1c
+.RI "\fBCore\fP (\fBBSL430NET\fP _root, \fBMode\fP _mode)"
+.br
+.ti -1c
+.RI "\fBStatusEx\fP \fBErase\fP (\fBBsl430NetDevice\fP device)"
+.br
+.ti -1c
+.RI "\fBStatusEx\fP \fBDownload\fP (\fBBsl430NetDevice\fP device, byte[] password, int addr_start, int data_size, out List< byte > data)"
+.br
+.ti -1c
+.RI "\fBStatusEx\fP \fBUpload\fP (\fBBsl430NetDevice\fP device, string firmware_path, byte[] password)"
+.br
+.ti -1c
+.RI "\fBStatus\fP \fBChangeBaudRate\fP (\fBBaudRate\fP _baud)"
+.br
+.ti -1c
+.RI "\fBStatus\fP \fBSetInvoke\fP (\fBInvokeMechanism\fP _invoke)"
+.br
+.ti -1c
+.RI "\fBStatus\fP \fBSetMCU\fP (\fBMCU\fP _mcu)"
+.br
+.ti -1c
+.RI "void \fBDispose\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "abstract \fBBsl430NetDevice\fP \fBDefaultDevice\fP\fC [get, set]\fP"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{BAB94C02-0828-4D88-9198-7AB04D7F38B6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>BSL430_NET_WPF</RootNamespace>
+    <AssemblyName>BSL430.NET.WPF</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Img\logo2.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>89DA8E4FC31C377B5EE2C477F2BD1A478977F84E</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>MySPC.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WPFHexaEditor, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\WPFHexaEditor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="AppBootstrapper.cs" />
+    <Compile Include="Controls\ControlProcess.cs" />
+    <Compile Include="Converters\BoolNegationConverter.cs" />
+    <Compile Include="Converters\BoolNORConverter.cs" />
+    <Compile Include="Converters\BoolToVisibilityConverters.cs" />
+    <Compile Include="Converters\FwFormatEnumConverter.cs" />
+    <Compile Include="Converters\IndexToBoldConverters.cs" />
+    <Compile Include="Converters\MenuItemIsCheckedConverters.cs" />
+    <Compile Include="Converters\PasswordEnabledConverter.cs" />
+    <Compile Include="Converters\ProgressToPercentageConverter.cs" />
+    <Compile Include="Converters\SizeConverters.cs" />
+    <Compile Include="Helpers\Admin.cs" />
+    <Compile Include="Helpers\Dialogs.cs" />
+    <Compile Include="Helpers\Extensions.cs" />
+    <Compile Include="Helpers\ShellIntegration.cs" />
+    <Compile Include="Models\ShellModel.cs" />
+    <Compile Include="Settings\IBslSettings.cs" />
+    <Compile Include="Settings\BslSettings.cs" />
+    <Compile Include="Models\ControlProcessModel.cs" />
+    <Compile Include="ViewModels\ControlProcessViewModel.cs" />
+    <Compile Include="ViewModels\HexViewModel.cs" />
+    <Compile Include="ViewModels\LogViewModel.cs" />
+    <Compile Include="ViewModels\TabBSL430NETViewModel.cs" />
+    <Compile Include="ViewModels\TabDownloadViewModel.cs" />
+    <Compile Include="ViewModels\TabEraseViewModel.cs" />
+    <Compile Include="ViewModels\TabFwToolsViewModel.cs" />
+    <Compile Include="ViewModels\TabUploadViewModel.cs" />
+    <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="Views\ControlProcessView.cs" />
+    <Compile Include="Views\HexView.xaml.cs">
+      <DependentUpon>HexView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogView.xaml.cs">
+      <DependentUpon>LogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShellView.xaml.cs">
+      <DependentUpon>ShellView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TabBSL430NETView.xaml.cs">
+      <DependentUpon>TabBSL430NETView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TabDownloadView.xaml.cs">
+      <DependentUpon>TabDownloadView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TabEraseView.xaml.cs">
+      <DependentUpon>TabEraseView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TabFwToolsView.xaml.cs">
+      <DependentUpon>TabFwToolsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TabUploadView.xaml.cs">
+      <DependentUpon>TabUploadView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DialogFwToolsValidateView.xaml.cs">
+      <DependentUpon>DialogFwToolsValidateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DialogFwToolsGetPasswordView.xaml.cs">
+      <DependentUpon>DialogFwToolsGetPasswordView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DialogFwToolsCombineView.xaml.cs">
+      <DependentUpon>DialogFwToolsCombineView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DialogFwToolsConvertView.xaml.cs">
+      <DependentUpon>DialogFwToolsConvertView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="Views\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Styles\ContextMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ControlProcessStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Controls.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\MainGeneric.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HexView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ShellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TabBSL430NETView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TabDownloadView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TabEraseView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TabFwToolsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TabUploadView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DialogFwToolsValidateView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DialogFwToolsGetPasswordView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DialogFwToolsCombineView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DialogFwToolsConvertView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\MainDark.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\MainLight.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <None Include="app.config" />
+    <EmbeddedResource Include="Resources\XML_dark.xshd" />
+    <EmbeddedResource Include="Resources\XML_light.xshd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="FodyWeavers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BSL430.NET\BSL430.NET.csproj">
+      <Project>{f2581d99-9c2f-44b1-a672-9cf0e08b3c61}</Project>
+      <Name>BSL430.NET</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\MSP430F169.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\TexasInstruments-Logo_dark.png" />
+    <Resource Include="Resources\Img\TexasInstruments-Logo_light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="costura32\ftd2xx.dll" />
+    <EmbeddedResource Include="costura32\libftdi1.dll" />
+    <EmbeddedResource Include="costura32\libusb-1.0.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="costura64\ftd2xx64.dll" />
+    <Content Include="costura64\libftdi1.dll" />
+    <Content Include="costura64\libusb-1.0.dll" />
+    <Content Include="lib\WPFHexaEditor.dll" />
+    <EmbeddedResource Include="Resources\file.ico" />
+    <EmbeddedResource Include="Resources\logo2.ico" />
+    <None Include="Resources\Img\TexasInstruments-Logo_dark_f.png" />
+    <None Include="Resources\Img\TexasInstruments-Logo_light_f.png" />
+    <Resource Include="Resources\Img\logo2.png" />
+    <None Include="Resources\Img\logo.ico" />
+    <Resource Include="Resources\Img\logo2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AvalonEdit">
+      <Version>5.0.4</Version>
+    </PackageReference>
+    <PackageReference Include="Caliburn.Micro">
+      <Version>3.2.0</Version>
+    </PackageReference>
+    <PackageReference Include="Config.Net">
+      <Version>4.13.7</Version>
+    </PackageReference>
+    <PackageReference Include="Config.Net.Json">
+      <Version>4.13.7</Version>
+    </PackageReference>
+    <PackageReference Include="ControlzEx">
+      <Version>3.0.2.4</Version>
+    </PackageReference>
+    <PackageReference Include="Costura.Fody">
+      <Version>4.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Fody">
+      <Version>5.1.1</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Hardcodet.NotifyIcon.Wpf">
+      <Version>1.0.8</Version>
+    </PackageReference>
+    <PackageReference Include="MahApps.Metro">
+      <Version>1.6.5</Version>
+    </PackageReference>
+    <PackageReference Include="MahApps.Metro.IconPacks.Entypo">
+      <Version>2.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="MahApps.Metro.IconPacks.FontAwesome">
+      <Version>2.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="MahApps.Metro.IconPacks.Modern">
+      <Version>2.3.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Win32.Registry">
+      <Version>4.5.0</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>10.0.3</Version>
+    </PackageReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>%25windir%25\system32\xcopy /Y "$(TargetDir)*.*" "$(SolutionDir)..\build\BSL430.NET.WPF\*.*"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

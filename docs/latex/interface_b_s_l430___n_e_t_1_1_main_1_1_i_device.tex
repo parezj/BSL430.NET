@@ -1,0 +1,52 @@
+\hypertarget{interface_b_s_l430___n_e_t_1_1_main_1_1_i_device}{}\section{B\+S\+L430\+\_\+\+N\+E\+T.\+Main.\+I\+Device Interface Reference}
+\label{interface_b_s_l430___n_e_t_1_1_main_1_1_i_device}\index{BSL430\_NET.Main.IDevice@{BSL430\_NET.Main.IDevice}}
+Inheritance diagram for B\+S\+L430\+\_\+\+N\+E\+T.\+Main.\+I\+Device\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.454545cm]{interface_b_s_l430___n_e_t_1_1_main_1_1_i_device}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{interface_b_s_l430___n_e_t_1_1_main_1_1_i_device_a88c853d21562c8f42e56d8c7e3c2bbbf}\label{interface_b_s_l430___n_e_t_1_1_main_1_1_i_device_a88c853d21562c8f42e56d8c7e3c2bbbf}} 
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status}{Status}} {\bfseries Scan$<$ Tdev $>$} (out List$<$ Tdev $>$ device\+\_\+list, \mbox{\hyperlink{namespace_b_s_l430___n_e_t_a4cd6f8166a2a97ccb3405df2287d4ba8}{Scan\+Options}} scan\+\_\+opt=\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a4cd6f8166a2a97ccb3405df2287d4ba8a6adf97f83acf6453d4a6a4b1070f3754}{Scan\+Options.\+None}})
+\item 
+\mbox{\Hypertarget{interface_b_s_l430___n_e_t_1_1_main_1_1_i_device_ad1fbac2357d27956b3d2d833e67442cc}\label{interface_b_s_l430___n_e_t_1_1_main_1_1_i_device_ad1fbac2357d27956b3d2d833e67442cc}} 
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status_ex}{Status\+Ex}} {\bfseries Erase} (\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_bsl430_net_device}{Bsl430\+Net\+Device}} device)
+\item 
+\mbox{\Hypertarget{interface_b_s_l430___n_e_t_1_1_main_1_1_i_device_ac1f8e78f926515b481aafaa24a9328cf}\label{interface_b_s_l430___n_e_t_1_1_main_1_1_i_device_ac1f8e78f926515b481aafaa24a9328cf}} 
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status_ex}{Status\+Ex}} {\bfseries Upload} (\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_bsl430_net_device}{Bsl430\+Net\+Device}} device, string firmware, byte\mbox{[}$\,$\mbox{]} password)
+\item 
+\mbox{\Hypertarget{interface_b_s_l430___n_e_t_1_1_main_1_1_i_device_a6984bdc3d1635f42ea916479427006f5}\label{interface_b_s_l430___n_e_t_1_1_main_1_1_i_device_a6984bdc3d1635f42ea916479427006f5}} 
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status_ex}{Status\+Ex}} {\bfseries Download} (\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_bsl430_net_device}{Bsl430\+Net\+Device}} device, byte\mbox{[}$\,$\mbox{]} password, int addr\+\_\+start, int data\+\_\+size, out List$<$ byte $>$ data)
+\item 
+\mbox{\Hypertarget{interface_b_s_l430___n_e_t_1_1_main_1_1_i_device_a344debe3e5cee19ae9e66adffec3df20}\label{interface_b_s_l430___n_e_t_1_1_main_1_1_i_device_a344debe3e5cee19ae9e66adffec3df20}} 
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status}{Status}} {\bfseries Change\+Baud\+Rate} (\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a8d30c263598635a481840944d38aeb70}{Baud\+Rate}} baud)
+\item 
+\mbox{\Hypertarget{interface_b_s_l430___n_e_t_1_1_main_1_1_i_device_a0a5cc0551689dde49e8dcbdc5730242b}\label{interface_b_s_l430___n_e_t_1_1_main_1_1_i_device_a0a5cc0551689dde49e8dcbdc5730242b}} 
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status}{Status}} {\bfseries Set\+Invoke} (\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a6571fdf0fbbc8408b8428f4d642c1305}{Invoke\+Mechanism}} \+\_\+invoke)
+\item 
+\mbox{\Hypertarget{interface_b_s_l430___n_e_t_1_1_main_1_1_i_device_a21f1e2910d10429b802218e56afadc70}\label{interface_b_s_l430___n_e_t_1_1_main_1_1_i_device_a21f1e2910d10429b802218e56afadc70}} 
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status}{Status}} {\bfseries Set\+M\+CU} (\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490}{M\+CU}} mcu)
+\item 
+\mbox{\Hypertarget{interface_b_s_l430___n_e_t_1_1_main_1_1_i_device_abcf169df1c164f44211196b82490a724}\label{interface_b_s_l430___n_e_t_1_1_main_1_1_i_device_abcf169df1c164f44211196b82490a724}} 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a8d30c263598635a481840944d38aeb70}{Baud\+Rate}} {\bfseries Get\+Baud\+Rate} ()
+\item 
+\mbox{\Hypertarget{interface_b_s_l430___n_e_t_1_1_main_1_1_i_device_a9b1e7a28bb8cc3d7aa90fbeb336fedcb}\label{interface_b_s_l430___n_e_t_1_1_main_1_1_i_device_a9b1e7a28bb8cc3d7aa90fbeb336fedcb}} 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a6571fdf0fbbc8408b8428f4d642c1305}{Invoke\+Mechanism}} {\bfseries Get\+Invoke} ()
+\item 
+\mbox{\Hypertarget{interface_b_s_l430___n_e_t_1_1_main_1_1_i_device_a6b6061d578e2a6e2a606cb181d6708b7}\label{interface_b_s_l430___n_e_t_1_1_main_1_1_i_device_a6b6061d578e2a6e2a606cb181d6708b7}} 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490}{M\+CU}} {\bfseries Get\+M\+CU} ()
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{interface_b_s_l430___n_e_t_1_1_main_1_1_i_device_aa6a8519a97820c39ab769f24b3f4f112}\label{interface_b_s_l430___n_e_t_1_1_main_1_1_i_device_aa6a8519a97820c39ab769f24b3f4f112}} 
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_bsl430_net_device}{Bsl430\+Net\+Device}} {\bfseries Default\+Device}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+P\+R\+O\+J\+E\+C\+T\+S/\+C\#/\+B\+S\+L430.\+N\+E\+T/src/\+B\+S\+L430.\+N\+E\+T/Main.\+cs\end{DoxyCompactItemize}

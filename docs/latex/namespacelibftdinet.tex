@@ -1,0 +1,106 @@
+\hypertarget{namespacelibftdinet}{}\section{libftdinet Namespace Reference}
+\label{namespacelibftdinet}\index{libftdinet@{libftdinet}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structlibftdinet_1_1ftdi__context}{ftdi\+\_\+context}}
+\item 
+struct \mbox{\hyperlink{structlibftdinet_1_1ftdi__eeprom}{ftdi\+\_\+eeprom}}
+\item 
+class \mbox{\hyperlink{classlibftdinet_1_1_f_t_d_i_context}{F\+T\+D\+I\+Context}}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespacelibftdinet_a82e31c4f064de87d1d2d5f7c263aaed4}\label{namespacelibftdinet_a82e31c4f064de87d1d2d5f7c263aaed4}} 
+enum {\bfseries Chip\+Type} \{ \newline
+{\bfseries T\+Y\+P\+E\+\_\+\+AM} =0, 
+{\bfseries T\+Y\+P\+E\+\_\+\+BM} =1, 
+{\bfseries T\+Y\+P\+E\+\_\+2232C} =2, 
+{\bfseries T\+Y\+P\+E\+\_\+R} =3, 
+\newline
+{\bfseries T\+Y\+P\+E\+\_\+2232H} =4, 
+{\bfseries T\+Y\+P\+E\+\_\+4232H} =5
+ \}
+\item 
+\mbox{\Hypertarget{namespacelibftdinet_a00a431d8f4509a12fa5942db245a888a}\label{namespacelibftdinet_a00a431d8f4509a12fa5942db245a888a}} 
+enum {\bfseries Parity\+Type} \{ \newline
+{\bfseries N\+O\+NE} =0, 
+{\bfseries O\+DD} =1, 
+{\bfseries E\+V\+EN} =2, 
+{\bfseries M\+A\+RK} =3, 
+\newline
+{\bfseries S\+P\+A\+CE} =4
+ \}
+\item 
+\mbox{\Hypertarget{namespacelibftdinet_a9287e372bd61698b4cbe18b86e88df86}\label{namespacelibftdinet_a9287e372bd61698b4cbe18b86e88df86}} 
+enum {\bfseries Stop\+Bits\+Type} \{ {\bfseries S\+T\+O\+P\+\_\+\+B\+I\+T\+\_\+1} =0, 
+{\bfseries S\+T\+O\+P\+\_\+\+B\+I\+T\+\_\+15} =1, 
+{\bfseries S\+T\+O\+P\+\_\+\+B\+I\+T\+\_\+2} =2
+ \}
+\item 
+\mbox{\Hypertarget{namespacelibftdinet_a0bf2f4dc9aeec9a5ec6ae00148843318}\label{namespacelibftdinet_a0bf2f4dc9aeec9a5ec6ae00148843318}} 
+enum {\bfseries Bits\+Type} \{ {\bfseries B\+I\+T\+S\+\_\+7} =7, 
+{\bfseries B\+I\+T\+S\+\_\+8} =8
+ \}
+\item 
+\mbox{\Hypertarget{namespacelibftdinet_a7c8c82a8c01eac9d50a413df2073877c}\label{namespacelibftdinet_a7c8c82a8c01eac9d50a413df2073877c}} 
+enum {\bfseries Break\+Type} \{ {\bfseries B\+R\+E\+A\+K\+\_\+\+O\+FF} =0, 
+{\bfseries B\+R\+E\+A\+K\+\_\+\+ON} =1
+ \}
+\item 
+\mbox{\Hypertarget{namespacelibftdinet_a3d7c5c5f59ffa8b4513847972b3606bf}\label{namespacelibftdinet_a3d7c5c5f59ffa8b4513847972b3606bf}} 
+enum {\bfseries Mpsse\+Mode} \+: uint \{ \newline
+{\bfseries B\+I\+T\+M\+O\+D\+E\+\_\+\+R\+E\+S\+ET} = 0x00, 
+{\bfseries B\+I\+T\+M\+O\+D\+E\+\_\+\+B\+I\+T\+B\+A\+NG} = 0x01, 
+{\bfseries B\+I\+T\+M\+O\+D\+E\+\_\+\+M\+P\+S\+SE} = 0x02, 
+{\bfseries B\+I\+T\+M\+O\+D\+E\+\_\+\+S\+Y\+N\+C\+BB} = 0x04, 
+\newline
+{\bfseries B\+I\+T\+M\+O\+D\+E\+\_\+\+M\+CU} = 0x08, 
+{\bfseries B\+I\+T\+M\+O\+D\+E\+\_\+\+O\+P\+TO} = 0x10, 
+{\bfseries B\+I\+T\+M\+O\+D\+E\+\_\+\+C\+B\+US} = 0x20
+ \}
+\item 
+\mbox{\Hypertarget{namespacelibftdinet_a98fd34eea062179a149e562cb9bad731}\label{namespacelibftdinet_a98fd34eea062179a149e562cb9bad731}} 
+enum {\bfseries Interface} \+: uint \{ \newline
+{\bfseries I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+\+A\+NY} = 0, 
+{\bfseries I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+A} = 1, 
+{\bfseries I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+B} = 2, 
+{\bfseries I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+C} = 3, 
+\newline
+{\bfseries I\+N\+T\+E\+R\+F\+A\+C\+E\+\_\+D} = 4
+ \}
+\item 
+\mbox{\Hypertarget{namespacelibftdinet_a6c78c144891e9363a7be64130636a084}\label{namespacelibftdinet_a6c78c144891e9363a7be64130636a084}} 
+enum {\bfseries M\+P\+S\+S\+E\+Shift\+Cmds} \{ \newline
+{\bfseries M\+P\+S\+S\+E\+\_\+\+W\+R\+I\+T\+E\+\_\+\+N\+EG} = 0x01, 
+{\bfseries M\+P\+S\+S\+E\+\_\+\+B\+I\+T\+M\+O\+DE} = 0x02, 
+{\bfseries M\+P\+S\+S\+E\+\_\+\+R\+E\+A\+D\+\_\+\+N\+EG} = 0x04, 
+{\bfseries M\+P\+S\+S\+E\+\_\+\+L\+SB} = 0x08, 
+\newline
+{\bfseries M\+P\+S\+S\+E\+\_\+\+D\+O\+\_\+\+W\+R\+I\+TE} = 0x10, 
+{\bfseries M\+P\+S\+S\+E\+\_\+\+D\+O\+\_\+\+R\+E\+AD} = 0x20, 
+{\bfseries M\+P\+S\+S\+E\+\_\+\+W\+R\+I\+T\+E\+\_\+\+T\+MS} = 0x40
+ \}
+\item 
+\mbox{\Hypertarget{namespacelibftdinet_ab8e769c649f070ee3f4fd0cfe1518551}\label{namespacelibftdinet_ab8e769c649f070ee3f4fd0cfe1518551}} 
+enum {\bfseries M\+P\+S\+S\+E\+Commands} \{ \newline
+{\bfseries S\+E\+T\+\_\+\+B\+I\+T\+S\+\_\+\+L\+OW} = 0x80, 
+{\bfseries S\+E\+T\+\_\+\+B\+I\+T\+S\+\_\+\+H\+I\+GH} = 0x82, 
+{\bfseries G\+E\+T\+\_\+\+B\+I\+T\+S\+\_\+\+L\+OW} = 0x81, 
+{\bfseries G\+E\+T\+\_\+\+B\+I\+T\+S\+\_\+\+H\+I\+GH} = 0x83, 
+\newline
+{\bfseries L\+O\+O\+P\+B\+A\+C\+K\+\_\+\+S\+T\+A\+RT} = 0x84, 
+{\bfseries L\+O\+O\+P\+B\+A\+C\+K\+\_\+\+E\+ND} = 0x85, 
+{\bfseries T\+C\+K\+\_\+\+D\+I\+V\+I\+S\+OR} = 0x86, 
+{\bfseries S\+E\+N\+D\+\_\+\+I\+M\+M\+E\+D\+I\+A\+TE} = 0x87, 
+\newline
+{\bfseries W\+A\+I\+T\+\_\+\+O\+N\+\_\+\+H\+I\+GH} = 0x88, 
+{\bfseries W\+A\+I\+T\+\_\+\+O\+N\+\_\+\+L\+OW} = 0x89, 
+{\bfseries R\+E\+A\+D\+\_\+\+S\+H\+O\+RT} = 0x90, 
+{\bfseries R\+E\+A\+D\+\_\+\+E\+X\+T\+E\+N\+D\+ED} = 0x91, 
+\newline
+{\bfseries W\+R\+I\+T\+E\+\_\+\+S\+H\+O\+RT} = 0x92, 
+{\bfseries W\+R\+I\+T\+E\+\_\+\+E\+X\+T\+E\+N\+D\+ED} = 0x93
+ \}
+\end{DoxyCompactItemize}

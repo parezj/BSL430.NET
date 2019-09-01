@@ -1,0 +1,198 @@
+\hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties}{}\section{R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Windows.\+Comm\+Properties Class Reference}
+\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties}\index{RJCP.IO.Ports.Native.Windows.CommProperties@{RJCP.IO.Ports.Native.Windows.CommProperties}}
+
+
+Abstracts the Win32 A\+PI Get\+Comm\+Properties().  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a7f342cef3a0920abf213c1f60843d14c}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a7f342cef3a0920abf213c1f60843d14c}} 
+void {\bfseries Get\+Comm\+Properties} ()
+\item 
+bool \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a25fa4b8cd5c49959427e1f04a236b518}{Is\+Valid\+Data\+Bits}} (int databits)
+\begin{DoxyCompactList}\small\item\em Check if the number of data bits is settable. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a0afc93c2b4e0bf52a173a24e7bd2906e}{Is\+Valid\+Stop\+Bits}} (\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a56a13b591d46736acafe20f2976c84fa}{Stop\+Bits}} stopbits)
+\begin{DoxyCompactList}\small\item\em Check if the number of stop bits is settable. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a5eaedb3f4a21a4f8ff2b33ed00c65e8a}{Is\+Valid\+Parity}} (\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a35c8c760a80dd0392e605dd3ad169954}{Parity}} parity)
+\begin{DoxyCompactList}\small\item\em Check if the parity is supported. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_af6c03c2be7494e8cacdadc37da64054a}{Is\+Valid\+Baud}} (int baudrate)
+\begin{DoxyCompactList}\small\item\em Check if the baud rate value given is settable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_aa1cfb9310a880f29157f55add2e66a54}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_aa1cfb9310a880f29157f55add2e66a54}} 
+int {\bfseries Max\+Tx\+Queue}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_aeddaeb0dd9763ca7a61ed1a1f6a9036d}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_aeddaeb0dd9763ca7a61ed1a1f6a9036d}} 
+int {\bfseries Max\+Rx\+Queue}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_abc1791ea63bd6afc637a68ed0d5be404}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_abc1791ea63bd6afc637a68ed0d5be404}} 
+int {\bfseries Current\+Tx\+Queue}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a6806309601b3bd932fec603c4b3f4c07}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a6806309601b3bd932fec603c4b3f4c07}} 
+int {\bfseries Current\+Rx\+Queue}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a69422302e27e379a533ec4eeea96cf10}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a69422302e27e379a533ec4eeea96cf10}} 
+bool {\bfseries Is\+Settable\+Parity}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a3bc73a96903c3dec6d4b777dd308d6fb}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a3bc73a96903c3dec6d4b777dd308d6fb}} 
+bool {\bfseries Is\+Settable\+Baud}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a45d73e142ac7b23b7b75b2f059b2df15}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a45d73e142ac7b23b7b75b2f059b2df15}} 
+bool {\bfseries Is\+Settable\+Data\+Bits}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a40fe9e3c6e9180e8b1788487106b2c95}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a40fe9e3c6e9180e8b1788487106b2c95}} 
+bool {\bfseries Is\+Settable\+Stopbits}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a33e313d0aeef8d1777139504464549f1}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a33e313d0aeef8d1777139504464549f1}} 
+bool {\bfseries Is\+Settable\+Handshaking}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_ab6d5f563189af219d251912572cdaf46}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_ab6d5f563189af219d251912572cdaf46}} 
+bool {\bfseries Is\+Settable\+Parity\+Check}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a396846499dbeb02051cebb25b14fe337}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a396846499dbeb02051cebb25b14fe337}} 
+bool {\bfseries Is\+Settable\+Rlsd}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_af2d5eca7b81e0bac4d579d764ce891c8}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_af2d5eca7b81e0bac4d579d764ce891c8}} 
+bool {\bfseries Is\+Dtr\+Dsr\+Supported}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_afc0f85d8d1189630052ab874423f694c}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_afc0f85d8d1189630052ab874423f694c}} 
+bool {\bfseries Is\+Rts\+Cts\+Supported}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a66e21f01f090ac310ca764b175ec846a}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a66e21f01f090ac310ca764b175ec846a}} 
+bool {\bfseries Is\+Rlsd\+Supported}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_ac0926b5daad78d7f3c229a63187ac651}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_ac0926b5daad78d7f3c229a63187ac651}} 
+bool {\bfseries Is\+Parity\+Check\+Supported}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a095a34a7c7f7d205965877efd25f664b}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a095a34a7c7f7d205965877efd25f664b}} 
+bool {\bfseries Is\+X\+On\+X\+Off\+Supported}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a97a6867ad48dcf55c671e18eddc304e2}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a97a6867ad48dcf55c671e18eddc304e2}} 
+bool {\bfseries Is\+X\+Char\+Supported}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a4979dd82762a7104fce673e3ef4d7121}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a4979dd82762a7104fce673e3ef4d7121}} 
+bool {\bfseries Is\+Total\+Timeouts\+Supported}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a3127377da95f6d655821f34a16978931}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a3127377da95f6d655821f34a16978931}} 
+bool {\bfseries Is\+Interval\+Timeouts\+Supported}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_ae426c4feef3024fbd842747955bc963e}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_ae426c4feef3024fbd842747955bc963e}} 
+bool {\bfseries Is\+Special\+Chars\+Supported}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a92ce3d912ff323e40736c4e8f818bd1c}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a92ce3d912ff323e40736c4e8f818bd1c}} 
+bool {\bfseries Is16\+Bit\+Supported}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_acfb91c85d2c56b14e4344b36973b8899}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_acfb91c85d2c56b14e4344b36973b8899}} 
+bool {\bfseries Is\+Unspecified\+Type}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_ac4bb5b1887778ee625839e203cebee49}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_ac4bb5b1887778ee625839e203cebee49}} 
+bool {\bfseries Is\+Rs232\+Type}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a0b2e8aca94ea83ff9addefb5d1b9e410}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a0b2e8aca94ea83ff9addefb5d1b9e410}} 
+bool {\bfseries Is\+Parallel\+Port\+Type}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a943a0e7d6bdfed342d0662d75a7522f4}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a943a0e7d6bdfed342d0662d75a7522f4}} 
+bool {\bfseries Is\+Rs422\+Type}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a997cdc39b398ac5df15755954192898b}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a997cdc39b398ac5df15755954192898b}} 
+bool {\bfseries Is\+Rs423\+Type}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a7fa0e83af630ab18edcd48d88ecfc50e}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a7fa0e83af630ab18edcd48d88ecfc50e}} 
+bool {\bfseries Is\+Rs499\+Type}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a0b81507294b1fbff5933e66348237b30}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a0b81507294b1fbff5933e66348237b30}} 
+bool {\bfseries Is\+Modem\+Type}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a8afcfac845225e9acf3111a2dee424d5}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a8afcfac845225e9acf3111a2dee424d5}} 
+bool {\bfseries Is\+Fax\+Type}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Abstracts the Win32 A\+PI Get\+Comm\+Properties(). 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_af6c03c2be7494e8cacdadc37da64054a}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_af6c03c2be7494e8cacdadc37da64054a}} 
+\index{RJCP.IO.Ports.Native.Windows.CommProperties@{RJCP.IO.Ports.Native.Windows.CommProperties}!IsValidBaud@{IsValidBaud}}
+\index{IsValidBaud@{IsValidBaud}!RJCP.IO.Ports.Native.Windows.CommProperties@{RJCP.IO.Ports.Native.Windows.CommProperties}}
+\subsubsection{\texorpdfstring{IsValidBaud()}{IsValidBaud()}}
+{\footnotesize\ttfamily bool R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Windows.\+Comm\+Properties.\+Is\+Valid\+Baud (\begin{DoxyParamCaption}\item[{int}]{baudrate }\end{DoxyParamCaption})}
+
+
+
+Check if the baud rate value given is settable. 
+
+This function relies on the {\ttfamily dw\+Settable\+Baud} parameter. It does not rely on the {\ttfamily dw\+Max\+Baud} parameter as if they don\textquotesingle{}t match, then this is an inconsistency in the \mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows}{Windows}} serial driver. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em baudrate} & The baud rate to check for.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} if the baud rate is indicated to be supported.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a25fa4b8cd5c49959427e1f04a236b518}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a25fa4b8cd5c49959427e1f04a236b518}} 
+\index{RJCP.IO.Ports.Native.Windows.CommProperties@{RJCP.IO.Ports.Native.Windows.CommProperties}!IsValidDataBits@{IsValidDataBits}}
+\index{IsValidDataBits@{IsValidDataBits}!RJCP.IO.Ports.Native.Windows.CommProperties@{RJCP.IO.Ports.Native.Windows.CommProperties}}
+\subsubsection{\texorpdfstring{IsValidDataBits()}{IsValidDataBits()}}
+{\footnotesize\ttfamily bool R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Windows.\+Comm\+Properties.\+Is\+Valid\+Data\+Bits (\begin{DoxyParamCaption}\item[{int}]{databits }\end{DoxyParamCaption})}
+
+
+
+Check if the number of data bits is settable. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em databits} & The number of data bits the user wants to set.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} if the number of data bits is indicated as supported.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a5eaedb3f4a21a4f8ff2b33ed00c65e8a}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a5eaedb3f4a21a4f8ff2b33ed00c65e8a}} 
+\index{RJCP.IO.Ports.Native.Windows.CommProperties@{RJCP.IO.Ports.Native.Windows.CommProperties}!IsValidParity@{IsValidParity}}
+\index{IsValidParity@{IsValidParity}!RJCP.IO.Ports.Native.Windows.CommProperties@{RJCP.IO.Ports.Native.Windows.CommProperties}}
+\subsubsection{\texorpdfstring{IsValidParity()}{IsValidParity()}}
+{\footnotesize\ttfamily bool R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Windows.\+Comm\+Properties.\+Is\+Valid\+Parity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a35c8c760a80dd0392e605dd3ad169954}{Parity}}}]{parity }\end{DoxyParamCaption})}
+
+
+
+Check if the parity is supported. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parity} & The parity the user wants to set.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} if the parity is indicated as supported.
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a0afc93c2b4e0bf52a173a24e7bd2906e}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_comm_properties_a0afc93c2b4e0bf52a173a24e7bd2906e}} 
+\index{RJCP.IO.Ports.Native.Windows.CommProperties@{RJCP.IO.Ports.Native.Windows.CommProperties}!IsValidStopBits@{IsValidStopBits}}
+\index{IsValidStopBits@{IsValidStopBits}!RJCP.IO.Ports.Native.Windows.CommProperties@{RJCP.IO.Ports.Native.Windows.CommProperties}}
+\subsubsection{\texorpdfstring{IsValidStopBits()}{IsValidStopBits()}}
+{\footnotesize\ttfamily bool R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Windows.\+Comm\+Properties.\+Is\+Valid\+Stop\+Bits (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a56a13b591d46736acafe20f2976c84fa}{Stop\+Bits}}}]{stopbits }\end{DoxyParamCaption})}
+
+
+
+Check if the number of stop bits is settable. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em stopbits} & The number of stop bits the user wants to set.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\bfseries{true}} if the number of stop bits is indicated as supported.
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+P\+R\+O\+J\+E\+C\+T\+S/\+C\#/\+B\+S\+L430.\+N\+E\+T/src/\+B\+S\+L430.\+N\+E\+T/\+Library/serialportstream/2.\+1.\+4/src/\+Native/\+Windows/Comm\+Properties.\+cs\end{DoxyCompactItemize}

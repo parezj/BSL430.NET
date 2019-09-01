@@ -1,0 +1,294 @@
+\hypertarget{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data}{}\section{R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+I\+Serial\+Buffer\+Stream\+Data Interface Reference}
+\label{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data}\index{RJCP.IO.Ports.Native.ISerialBufferStreamData@{RJCP.IO.Ports.Native.ISerialBufferStreamData}}
+
+
+Container structure for properties and methods related to the Stream object.  
+
+
+Inheritance diagram for R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+I\+Serial\+Buffer\+Stream\+Data\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_a15378fb8e021e06d581171d0af31dd65}{Wait\+For\+Read}} (int timeout)
+\begin{DoxyCompactList}\small\item\em Waits up to a specified time out for data to be available to read. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_aaec861ebbf441eaf738fec441d449ccf}{Wait\+For\+Read}} (int count, int timeout)
+\begin{DoxyCompactList}\small\item\em Waits up to a specified time out for data to be available to read. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_a40f667c1b2c794b95ace76dfe846f42d}{Read}} (byte\mbox{[}$\,$\mbox{]} buffer, int offset, int count)
+\begin{DoxyCompactList}\small\item\em Reads data received by the Serial object, copying it into a buffer and reducing the read buffer size. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_a5dd428e1afe318c0abfc1a2d11421029}{Read\+Consume}} (int count)
+\begin{DoxyCompactList}\small\item\em Consume bytes from the incoming buffer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_abdd6ae4bffcd73b226c3a8328317cb24}{Read}} (char\mbox{[}$\,$\mbox{]} buffer, int offset, int count, Decoder decoder)
+\begin{DoxyCompactList}\small\item\em Reads data received by the serial object, converted to characters using the specified decoder. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_a26b358983643725cee8c161ac6abf912}{Read\+Byte}} ()
+\begin{DoxyCompactList}\small\item\em Reads a single byte from the input queue. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_a44d3fd5155c163b756712432cb4df387}{Discard\+In\+Buffer}} ()
+\begin{DoxyCompactList}\small\item\em Discards data from the receive buffer. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_ae8b9e26ea5a73cedf4314708b8e12c0d}{Wait\+For\+Write}} (int count, int timeout)
+\begin{DoxyCompactList}\small\item\em Waits up to a specified time out for enough data to be free in the write buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_a3441575dd01e2111a5a66c593822f3f6}{Abort\+Wait}} ()
+\begin{DoxyCompactList}\small\item\em Aborts the wait for write. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_a9499ef9e6a11233aa5f3855bff6c69b0}{Write}} (byte\mbox{[}$\,$\mbox{]} buffer, int offset, int count)
+\begin{DoxyCompactList}\small\item\em Puts data into the write buffer for the Serial object to send. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_a7013d68f281c1007dac3ed592b29510f}{Flush}} (int timeout)
+\begin{DoxyCompactList}\small\item\em Waits for all data in the write buffer to be written with notification also by the serial buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_afbf7fddda140259c624de77a936eee28}{Reset}} (bool clear\+Buffer)
+\begin{DoxyCompactList}\small\item\em Reset the buffer to an initial state ready for a new connection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_a7bee5da2f9b257cb316f992c43593738}{Bytes\+To\+Read}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the number of bytes in the internal read buffer only. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_a20b8a4c6adb372f23e6a609c513eca85}{Bytes\+To\+Write}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the number of bytes in the internal write buffer only. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Container structure for properties and methods related to the Stream object. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_a3441575dd01e2111a5a66c593822f3f6}\label{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_a3441575dd01e2111a5a66c593822f3f6}} 
+\index{RJCP.IO.Ports.Native.ISerialBufferStreamData@{RJCP.IO.Ports.Native.ISerialBufferStreamData}!AbortWait@{AbortWait}}
+\index{AbortWait@{AbortWait}!RJCP.IO.Ports.Native.ISerialBufferStreamData@{RJCP.IO.Ports.Native.ISerialBufferStreamData}}
+\subsubsection{\texorpdfstring{AbortWait()}{AbortWait()}}
+{\footnotesize\ttfamily void R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+I\+Serial\+Buffer\+Stream\+Data.\+Abort\+Wait (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Aborts the wait for write. 
+
+\mbox{\Hypertarget{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_a44d3fd5155c163b756712432cb4df387}\label{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_a44d3fd5155c163b756712432cb4df387}} 
+\index{RJCP.IO.Ports.Native.ISerialBufferStreamData@{RJCP.IO.Ports.Native.ISerialBufferStreamData}!DiscardInBuffer@{DiscardInBuffer}}
+\index{DiscardInBuffer@{DiscardInBuffer}!RJCP.IO.Ports.Native.ISerialBufferStreamData@{RJCP.IO.Ports.Native.ISerialBufferStreamData}}
+\subsubsection{\texorpdfstring{DiscardInBuffer()}{DiscardInBuffer()}}
+{\footnotesize\ttfamily void R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+I\+Serial\+Buffer\+Stream\+Data.\+Discard\+In\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Discards data from the receive buffer. 
+
+\mbox{\Hypertarget{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_a7013d68f281c1007dac3ed592b29510f}\label{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_a7013d68f281c1007dac3ed592b29510f}} 
+\index{RJCP.IO.Ports.Native.ISerialBufferStreamData@{RJCP.IO.Ports.Native.ISerialBufferStreamData}!Flush@{Flush}}
+\index{Flush@{Flush}!RJCP.IO.Ports.Native.ISerialBufferStreamData@{RJCP.IO.Ports.Native.ISerialBufferStreamData}}
+\subsubsection{\texorpdfstring{Flush()}{Flush()}}
+{\footnotesize\ttfamily bool R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+I\+Serial\+Buffer\+Stream\+Data.\+Flush (\begin{DoxyParamCaption}\item[{int}]{timeout }\end{DoxyParamCaption})}
+
+
+
+Waits for all data in the write buffer to be written with notification also by the serial buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timeout} & The time out in milliseconds.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if the data was flushed within the specified time out; {\ttfamily false} otherwise.
+\end{DoxyReturn}
+\mbox{\Hypertarget{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_a40f667c1b2c794b95ace76dfe846f42d}\label{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_a40f667c1b2c794b95ace76dfe846f42d}} 
+\index{RJCP.IO.Ports.Native.ISerialBufferStreamData@{RJCP.IO.Ports.Native.ISerialBufferStreamData}!Read@{Read}}
+\index{Read@{Read}!RJCP.IO.Ports.Native.ISerialBufferStreamData@{RJCP.IO.Ports.Native.ISerialBufferStreamData}}
+\subsubsection{\texorpdfstring{Read()}{Read()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+I\+Serial\+Buffer\+Stream\+Data.\+Read (\begin{DoxyParamCaption}\item[{byte \mbox{[}$\,$\mbox{]}}]{buffer,  }\item[{int}]{offset,  }\item[{int}]{count }\end{DoxyParamCaption})}
+
+
+
+Reads data received by the Serial object, copying it into a buffer and reducing the read buffer size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & The buffer to copy data into.\\
+\hline
+{\em offset} & The offset where to copy data into..\\
+\hline
+{\em count} & The number of bytes to copy.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of bytes actually read from the queue.
+\end{DoxyReturn}
+\mbox{\Hypertarget{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_abdd6ae4bffcd73b226c3a8328317cb24}\label{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_abdd6ae4bffcd73b226c3a8328317cb24}} 
+\index{RJCP.IO.Ports.Native.ISerialBufferStreamData@{RJCP.IO.Ports.Native.ISerialBufferStreamData}!Read@{Read}}
+\index{Read@{Read}!RJCP.IO.Ports.Native.ISerialBufferStreamData@{RJCP.IO.Ports.Native.ISerialBufferStreamData}}
+\subsubsection{\texorpdfstring{Read()}{Read()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily int R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+I\+Serial\+Buffer\+Stream\+Data.\+Read (\begin{DoxyParamCaption}\item[{char \mbox{[}$\,$\mbox{]}}]{buffer,  }\item[{int}]{offset,  }\item[{int}]{count,  }\item[{Decoder}]{decoder }\end{DoxyParamCaption})}
+
+
+
+Reads data received by the serial object, converted to characters using the specified decoder. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & The character buffer to read into.\\
+\hline
+{\em offset} & The offset into {\itshape buffer} .\\
+\hline
+{\em count} & The number of characters to write into {\itshape buffer} .\\
+\hline
+{\em decoder} & The decoder to use for the conversion.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of characters read.
+\end{DoxyReturn}
+
+
+This method has no input checks that it is internal \mbox{\Hypertarget{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_a26b358983643725cee8c161ac6abf912}\label{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_a26b358983643725cee8c161ac6abf912}} 
+\index{RJCP.IO.Ports.Native.ISerialBufferStreamData@{RJCP.IO.Ports.Native.ISerialBufferStreamData}!ReadByte@{ReadByte}}
+\index{ReadByte@{ReadByte}!RJCP.IO.Ports.Native.ISerialBufferStreamData@{RJCP.IO.Ports.Native.ISerialBufferStreamData}}
+\subsubsection{\texorpdfstring{ReadByte()}{ReadByte()}}
+{\footnotesize\ttfamily int R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+I\+Serial\+Buffer\+Stream\+Data.\+Read\+Byte (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reads a single byte from the input queue. 
+
+\begin{DoxyReturn}{Returns}
+The byte, cast to an Int32, or -\/1 if the end of the stream has been read.
+\end{DoxyReturn}
+\mbox{\Hypertarget{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_a5dd428e1afe318c0abfc1a2d11421029}\label{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_a5dd428e1afe318c0abfc1a2d11421029}} 
+\index{RJCP.IO.Ports.Native.ISerialBufferStreamData@{RJCP.IO.Ports.Native.ISerialBufferStreamData}!ReadConsume@{ReadConsume}}
+\index{ReadConsume@{ReadConsume}!RJCP.IO.Ports.Native.ISerialBufferStreamData@{RJCP.IO.Ports.Native.ISerialBufferStreamData}}
+\subsubsection{\texorpdfstring{ReadConsume()}{ReadConsume()}}
+{\footnotesize\ttfamily void R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+I\+Serial\+Buffer\+Stream\+Data.\+Read\+Consume (\begin{DoxyParamCaption}\item[{int}]{count }\end{DoxyParamCaption})}
+
+
+
+Consume bytes from the incoming buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em count} & The number of bytes to discard at the beginning of the read byte buffer.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_afbf7fddda140259c624de77a936eee28}\label{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_afbf7fddda140259c624de77a936eee28}} 
+\index{RJCP.IO.Ports.Native.ISerialBufferStreamData@{RJCP.IO.Ports.Native.ISerialBufferStreamData}!Reset@{Reset}}
+\index{Reset@{Reset}!RJCP.IO.Ports.Native.ISerialBufferStreamData@{RJCP.IO.Ports.Native.ISerialBufferStreamData}}
+\subsubsection{\texorpdfstring{Reset()}{Reset()}}
+{\footnotesize\ttfamily void R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+I\+Serial\+Buffer\+Stream\+Data.\+Reset (\begin{DoxyParamCaption}\item[{bool}]{clear\+Buffer }\end{DoxyParamCaption})}
+
+
+
+Reset the buffer to an initial state ready for a new connection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em clear\+Buffer} & Set to {\ttfamily true} to reset the contents of the buffers.\\
+\hline
+\end{DoxyParams}
+
+
+This should only be closed when the serial port is closed. \mbox{\Hypertarget{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_a15378fb8e021e06d581171d0af31dd65}\label{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_a15378fb8e021e06d581171d0af31dd65}} 
+\index{RJCP.IO.Ports.Native.ISerialBufferStreamData@{RJCP.IO.Ports.Native.ISerialBufferStreamData}!WaitForRead@{WaitForRead}}
+\index{WaitForRead@{WaitForRead}!RJCP.IO.Ports.Native.ISerialBufferStreamData@{RJCP.IO.Ports.Native.ISerialBufferStreamData}}
+\subsubsection{\texorpdfstring{WaitForRead()}{WaitForRead()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+I\+Serial\+Buffer\+Stream\+Data.\+Wait\+For\+Read (\begin{DoxyParamCaption}\item[{int}]{timeout }\end{DoxyParamCaption})}
+
+
+
+Waits up to a specified time out for data to be available to read. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em timeout} & The time out in milliseconds.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if data is available to read in time; {\ttfamily false} otherwise.
+\end{DoxyReturn}
+\mbox{\Hypertarget{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_aaec861ebbf441eaf738fec441d449ccf}\label{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_aaec861ebbf441eaf738fec441d449ccf}} 
+\index{RJCP.IO.Ports.Native.ISerialBufferStreamData@{RJCP.IO.Ports.Native.ISerialBufferStreamData}!WaitForRead@{WaitForRead}}
+\index{WaitForRead@{WaitForRead}!RJCP.IO.Ports.Native.ISerialBufferStreamData@{RJCP.IO.Ports.Native.ISerialBufferStreamData}}
+\subsubsection{\texorpdfstring{WaitForRead()}{WaitForRead()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+I\+Serial\+Buffer\+Stream\+Data.\+Wait\+For\+Read (\begin{DoxyParamCaption}\item[{int}]{count,  }\item[{int}]{timeout }\end{DoxyParamCaption})}
+
+
+
+Waits up to a specified time out for data to be available to read. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em count} & The number of bytes that should be in the read buffer.\\
+\hline
+{\em timeout} & The time out in milliseconds.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if data is available to read in time; {\ttfamily false} otherwise.
+\end{DoxyReturn}
+\mbox{\Hypertarget{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_ae8b9e26ea5a73cedf4314708b8e12c0d}\label{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_ae8b9e26ea5a73cedf4314708b8e12c0d}} 
+\index{RJCP.IO.Ports.Native.ISerialBufferStreamData@{RJCP.IO.Ports.Native.ISerialBufferStreamData}!WaitForWrite@{WaitForWrite}}
+\index{WaitForWrite@{WaitForWrite}!RJCP.IO.Ports.Native.ISerialBufferStreamData@{RJCP.IO.Ports.Native.ISerialBufferStreamData}}
+\subsubsection{\texorpdfstring{WaitForWrite()}{WaitForWrite()}}
+{\footnotesize\ttfamily bool R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+I\+Serial\+Buffer\+Stream\+Data.\+Wait\+For\+Write (\begin{DoxyParamCaption}\item[{int}]{count,  }\item[{int}]{timeout }\end{DoxyParamCaption})}
+
+
+
+Waits up to a specified time out for enough data to be free in the write buffer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em count} & The number of bytes required to be free.\\
+\hline
+{\em timeout} & The time out in milliseconds.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if {\itshape count}  bytes are available for writing to the buffer; {\ttfamily false} if there is not enough buffer available within the {\itshape timeout}  parameter. If {\itshape count}  is larger than the capacity of the buffer, {\ttfamily false} is returned immediately.
+\end{DoxyReturn}
+\mbox{\Hypertarget{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_a9499ef9e6a11233aa5f3855bff6c69b0}\label{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_a9499ef9e6a11233aa5f3855bff6c69b0}} 
+\index{RJCP.IO.Ports.Native.ISerialBufferStreamData@{RJCP.IO.Ports.Native.ISerialBufferStreamData}!Write@{Write}}
+\index{Write@{Write}!RJCP.IO.Ports.Native.ISerialBufferStreamData@{RJCP.IO.Ports.Native.ISerialBufferStreamData}}
+\subsubsection{\texorpdfstring{Write()}{Write()}}
+{\footnotesize\ttfamily int R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+I\+Serial\+Buffer\+Stream\+Data.\+Write (\begin{DoxyParamCaption}\item[{byte \mbox{[}$\,$\mbox{]}}]{buffer,  }\item[{int}]{offset,  }\item[{int}]{count }\end{DoxyParamCaption})}
+
+
+
+Puts data into the write buffer for the Serial object to send. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & The buffer to copy data from.\\
+\hline
+{\em offset} & The offset where to copy the data from.\\
+\hline
+{\em count} & The number of bytes to copy.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of bytes actually written to the queue.
+\end{DoxyReturn}
+
+
+\subsection{Property Documentation}
+\mbox{\Hypertarget{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_a7bee5da2f9b257cb316f992c43593738}\label{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_a7bee5da2f9b257cb316f992c43593738}} 
+\index{RJCP.IO.Ports.Native.ISerialBufferStreamData@{RJCP.IO.Ports.Native.ISerialBufferStreamData}!BytesToRead@{BytesToRead}}
+\index{BytesToRead@{BytesToRead}!RJCP.IO.Ports.Native.ISerialBufferStreamData@{RJCP.IO.Ports.Native.ISerialBufferStreamData}}
+\subsubsection{\texorpdfstring{BytesToRead}{BytesToRead}}
+{\footnotesize\ttfamily int R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+I\+Serial\+Buffer\+Stream\+Data.\+Bytes\+To\+Read\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Gets the number of bytes in the internal read buffer only. 
+
+This value is independent of the actual number of bytes in the serial port hardware buffer. It will only return that which is currently obtained by the I/O thread. \mbox{\Hypertarget{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_a20b8a4c6adb372f23e6a609c513eca85}\label{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_serial_buffer_stream_data_a20b8a4c6adb372f23e6a609c513eca85}} 
+\index{RJCP.IO.Ports.Native.ISerialBufferStreamData@{RJCP.IO.Ports.Native.ISerialBufferStreamData}!BytesToWrite@{BytesToWrite}}
+\index{BytesToWrite@{BytesToWrite}!RJCP.IO.Ports.Native.ISerialBufferStreamData@{RJCP.IO.Ports.Native.ISerialBufferStreamData}}
+\subsubsection{\texorpdfstring{BytesToWrite}{BytesToWrite}}
+{\footnotesize\ttfamily int R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+I\+Serial\+Buffer\+Stream\+Data.\+Bytes\+To\+Write\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Gets the number of bytes in the internal write buffer only. 
+
+This value is independent of the actual number of bytes in the serial port hardware buffer. It will only return that which is currently not completely written by the I/O thread. 
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+P\+R\+O\+J\+E\+C\+T\+S/\+C\#/\+B\+S\+L430.\+N\+E\+T/src/\+B\+S\+L430.\+N\+E\+T/\+Library/serialportstream/2.\+1.\+4/src/\+Native/I\+Serial\+Buffer\+Stream\+Data.\+cs\end{DoxyCompactItemize}

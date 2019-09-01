@@ -1,0 +1,472 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    x:Class="BSL430_NET_WPF.Views.ControlProcessView"
+                    xmlns:cal="http://www.caliburnproject.org"
+                    xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+                    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                    xmlns:BslControls="clr-namespace:BSL430_NET_WPF.Controls"
+                    xmlns:Converters="clr-namespace:BSL430_NET_WPF.Converters"
+                    xmlns:ViewModels="clr-namespace:BSL430_NET_WPF.ViewModels"
+                    xmlns:System="clr-namespace:System;assembly=mscorlib"
+                    xmlns:BSL430_NET="clr-namespace:BSL430_NET;assembly=BSL430.NET">
+
+    <Style TargetType="BslControls:ControlProcess">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="BslControls:ControlProcess">
+                    
+                    <Grid x:Name="MainGrid" Tag="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Name}">
+                        <Grid.Resources>
+                            <Converters:BoolToVisibilityConverter1 x:Key="BoolToVisibilityConverter1" />
+                            <Converters:BoolToVisibilityConverter2 x:Key="BoolToVisibilityConverter2" />
+                            <Converters:BoolNegationConverter x:Key="BoolNegationConverter" />
+                            <Converters:ProgressToPercentageConverter x:Key="ProgressToPercentageConverter" />
+                            <Converters:BoolNORConverter x:Key="BoolNORConverter" />
+                            <Converters:PasswordEnabledConverter x:Key="PasswordEnabledConverter" />
+
+                            <ObjectDataProvider x:Key="BSL430_NET_MCU" MethodName="GetValues" ObjectType="{x:Type System:Enum}">
+                                <ObjectDataProvider.MethodParameters>
+                                    <x:Type TypeName="BSL430_NET:MCU"/>
+                                </ObjectDataProvider.MethodParameters>
+                            </ObjectDataProvider>
+
+                            <ObjectDataProvider x:Key="BSL430_NET_BaudRate" MethodName="GetValues" ObjectType="{x:Type System:Enum}">
+                                <ObjectDataProvider.MethodParameters>
+                                    <x:Type TypeName="BSL430_NET:BaudRate"/>
+                                </ObjectDataProvider.MethodParameters>
+                            </ObjectDataProvider>
+
+                            <ObjectDataProvider x:Key="BSL430_NET_InvokeMechanism" MethodName="GetValues" ObjectType="{x:Type System:Enum}">
+                                <ObjectDataProvider.MethodParameters>
+                                    <x:Type TypeName="BSL430_NET:InvokeMechanism"/>
+                                </ObjectDataProvider.MethodParameters>
+                            </ObjectDataProvider>
+
+                        </Grid.Resources>
+                        
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="10"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="1">
+                            <StackPanel Margin="5,0" VerticalAlignment="Center">
+                                <Label x:Name="Label" Content="{TemplateBinding Tag}" Tag="{TemplateBinding Name}" Margin="15,0,0,0" FontSize="20"/>
+                                <Border Margin="15,0,15,15" 
+                                        CornerRadius="7" 
+                                        BorderThickness="0" 
+                                        BorderBrush="Black" 
+                                        Background="{DynamicResource BasicHover}">
+                                    <Grid Margin="15">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <ComboBox Grid.Column="0" 
+                                                  x:Name="Devices" 
+                                                  ItemsSource="{Binding ControlProcess.Devices}" 
+                                                  SelectedIndex="{Binding ControlProcess.SelectedIndex, Mode=TwoWay}"
+                                                  IsEnabled="{Binding ControlProcess.InProgress, Converter={StaticResource BoolNegationConverter}}"
+                                                  FontWeight="Normal" 
+                                                  FontSize="30" 
+                                                  Height="40" 
+                                                  Grid.IsSharedSizeScope="True"
+                                                  HorizontalAlignment="Stretch"
+                                                  IsSynchronizedWithCurrentItem="True">
+                                            <ComboBox.GroupStyle>
+                                                <GroupStyle>
+                                                    <GroupStyle.HeaderTemplate>
+                                                        <DataTemplate>
+                                                            <Grid Background="{DynamicResource BasicHover}" VerticalAlignment="Center">
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="100"/>
+                                                                    <ColumnDefinition Width="1*"/>
+                                                                    <ColumnDefinition Width="100"/>
+                                                                </Grid.ColumnDefinitions>
+
+                                                                <TextBlock Grid.Column="1" 
+                                                                           FontWeight="Bold" 
+                                                                           FontSize="16" 
+                                                                           Margin="0" 
+                                                                           VerticalAlignment="Center" 
+                                                                           HorizontalAlignment="Center" 
+                                                                           Text="{Binding Name, StringFormat=':: {0} ::'}"/>
+                                                                <TextBlock Grid.Column="2" 
+                                                                           FontWeight="Normal" 
+                                                                           FontSize="16" 
+                                                                           Margin="0,0,5,0" 
+                                                                           Padding="0,0,0,0" 
+                                                                           VerticalAlignment="Center" 
+                                                                           HorizontalAlignment="Right" 
+                                                                           Text="{Binding Path=ItemCount, StringFormat='({0})'}"/>
+                                                            </Grid>
+                                                        </DataTemplate>
+                                                    </GroupStyle.HeaderTemplate>
+                                                </GroupStyle>
+                                            </ComboBox.GroupStyle>
+                                            <ComboBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="Auto" SharedSizeGroup="col1"/>
+                                                            <ColumnDefinition Width="Auto" SharedSizeGroup="col2"/>
+                                                            <ColumnDefinition Width="Auto" SharedSizeGroup="col3"/>
+                                                            <ColumnDefinition Width="1*" SharedSizeGroup="col4"/>
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <iconPacks:PackIconFontAwesome Grid.Column="0" 
+                                                                                  x:Name="DevIcon"
+                                                                                  Margin="5,0,10,0" 
+                                                                                  VerticalAlignment="Center" 
+                                                                                  Width="20" 
+                                                                                  Height="20">
+                                                            <iconPacks:PackIconFontAwesome.Style>
+                                                                <Style TargetType="{x:Type iconPacks:PackIconFontAwesome}" 
+                                                                       BasedOn="{StaticResource {x:Type iconPacks:PackIconFontAwesome}}">
+                                                                    <Setter Property="Kind" Value="HddSolid"/>
+                                                                    <Style.Triggers>
+                                                                        <DataTrigger Binding="{Binding Kind}" Value="libftdi">
+                                                                            <Setter Property="Kind" Value="HddRegular"/>
+                                                                        </DataTrigger>
+                                                                        <DataTrigger Binding="{Binding Kind}" Value="USB">
+                                                                            <Setter Property="Kind" Value="UsbBrands"/>
+                                                                        </DataTrigger>
+                                                                        <DataTrigger Binding="{Binding Kind}" Value="COM">
+                                                                            <Setter Property="Kind" Value="ProjectDiagramSolid"/>
+                                                                        </DataTrigger>
+                                                                    </Style.Triggers>
+                                                                </Style>
+                                                            </iconPacks:PackIconFontAwesome.Style>
+                                                        </iconPacks:PackIconFontAwesome>
+
+                                                        <TextBlock Grid.Column="1" 
+                                                                   FontWeight="DemiBold" 
+                                                                   FontSize="22" 
+                                                                   Text="{Binding Name}"
+                                                                   HorizontalAlignment="Left"/>
+
+                                                        <TextBlock Grid.Column="2" 
+                                                                   FontWeight="Normal" 
+                                                                   FontSize="22" 
+                                                                   Text="  - "/>
+
+                                                        <TextBlock Grid.Column="3" 
+                                                                   FontWeight="Thin" 
+                                                                   FontSize="22" 
+                                                                   Text="{Binding FormattedDescription}"/>
+                                                    </Grid>
+                                                </DataTemplate>
+                                            </ComboBox.ItemTemplate>
+                                        </ComboBox>
+                                        <Button Grid.Column="1" 
+                                                x:Name="Scan" 
+                                                HorizontalAlignment="Right" 
+                                                Width="Auto" 
+                                                Cursor="Hand"
+                                                Style="{DynamicResource MetroFlatButton}"   
+                                                cal:Message.Attach="Scan">
+                                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                                <iconPacks:PackIconEntypo Margin="0,0,10,0" 
+                                                                          Kind="MagnifyingGlass" 
+                                                                          VerticalAlignment="Center" 
+                                                                          Width="20" 
+                                                                          Height="20" 
+                                                                          Visibility="{Binding ControlProcess.Scanning, Converter={StaticResource BoolToVisibilityConverter1}}" />
+                                                <Controls:ProgressRing x:Name="ScanRing" 
+                                                                       Margin="0,0,10,0" 
+                                                                       VerticalAlignment="Center" 
+                                                                       Height="30" 
+                                                                       Width="30" 
+                                                                       IsActive="{Binding ControlProcess.Scanning}" 
+                                                                       Visibility="{Binding ControlProcess.Scanning, Converter={StaticResource BoolToVisibilityConverter2}}"/>
+                                                <TextBlock VerticalAlignment="Center" FontWeight="Thin" FontSize="20">
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="TextBlock" BasedOn="{StaticResource MetroTextBlock}">
+                                                            <Setter Property="Text" Value="Scan"/>
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding ControlProcess.Scanning}" Value="True">
+                                                                    <Setter Property="Text" Value="wait"/>
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </TextBlock.Style>
+                                                </TextBlock>
+                                                <TextBlock FontWeight="Thin"
+                                                           FontSize="18" 
+                                                           Margin="5,0,0,0"
+                                                           Padding="0,2,0,0"
+                                                           Opacity="0.4"
+                                                           Text="{Binding ElementName=Devices, Path=Items.Count, StringFormat='({0})'}">
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="TextBlock" BasedOn="{StaticResource MetroTextBlock}">
+                                                            <Setter Property="Visibility" Value="Visible"/>
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding ControlProcess.Scanning}" Value="True">
+                                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </TextBlock.Style>
+                                                </TextBlock>
+                                            </StackPanel>
+                                            <Button.IsEnabled>
+                                                <MultiBinding Converter="{StaticResource BoolNORConverter}">
+                                                    <Binding Path="ControlProcess.Scanning" />
+                                                    <Binding Path="ControlProcess.InProgress" />
+                                                </MultiBinding>
+                                            </Button.IsEnabled>
+                                        </Button>
+                                    </Grid>
+                                </Border>
+                            </StackPanel>
+                        </Grid>
+
+                        <Grid Grid.Row="2">
+                            <Border Margin="20,0,20,5" CornerRadius="7" BorderThickness="0" BorderBrush="Black" Background="{DynamicResource BasicHover}">
+                                <Grid Margin="15,0,15,15">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Grid Grid.Row="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="1*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Grid.Column="0" Margin="0" VerticalAlignment="Center" ToolTip="MSP430/432 MCU device family. Default is MSP430_F5xx (4).&#x0a;You can find this on top of your MCU or in its datasheet.">
+                                            <TextBlock Text="MCU" Margin="0,5,0,0" FontWeight="Normal" FontSize="12"/>
+                                            <ComboBox Grid.Column="0" 
+                                                      x:Name="MCU" 
+                                                      FontWeight="Normal" 
+                                                      FontSize="20" 
+                                                      Height="36" 
+                                                      IsEnabled="{Binding ControlProcess.InProgress, Converter={StaticResource BoolNegationConverter}}"
+                                                      ItemsSource="{Binding Source={StaticResource BSL430_NET_MCU}}" 
+                                                      SelectedValue="{Binding ControlProcess.MCU, Mode=TwoWay}"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="1" Margin="5,0" VerticalAlignment="Center" ToolTip="Baud rate value is inversely proportional to process speed.&#x0a;Default is 9600 bps (9600).&#x0a;Setting other than default is supported only by some BSL versions, usually the newer ones.">
+                                            <TextBlock Text="Baud Rate" Margin="0,5,0,0" FontWeight="Normal" FontSize="12"/>
+                                            <ComboBox Grid.Column="1" 
+                                                      x:Name="BaudRate" 
+                                                      FontWeight="Normal" 
+                                                      FontSize="20" 
+                                                      Height="36" 
+                                                      IsEnabled="{Binding ControlProcess.InProgress, Converter={StaticResource BoolNegationConverter}}"
+                                                      ItemsSource="{Binding Source={StaticResource BSL430_NET_BaudRate}}" 
+                                                      SelectedValue="{Binding ControlProcess.BaudRate, Mode=TwoWay}"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="2" Margin="0,0,5,0" VerticalAlignment="Center" ToolTip="Entry sequence on MCU pins which forces the target to start program execution at the BSL RESET vector.&#x0a;Default and most common is SHARED_JTAG (0).&#x0a;SHARED_JTAG = Only UART mode and MCU with shared JTAG pins. Tie DTR to RST and RTS to TEST pin.&#x0a;DEDICATED_JTAG = Only UART mode and MCU with dedicated JTAG pins. Tie DTR to RST and RTS to TCK pin.&#x0a;MANUAL = Only USB mode, where BSL is invoked either of the following conditions are met:&#x0a;The MCU is powered up by USB and the reset vector is blank or the MCU powers up with PUR pin tied to VUSB.">
+                                            <TextBlock Text="Invoke Mechanism" Margin="0,5,0,0" FontWeight="Normal" FontSize="12"/>
+                                            <ComboBox Grid.Column="2" 
+                                                      x:Name="InvokeMechanism" 
+                                                      FontWeight="Normal" 
+                                                      FontSize="20" 
+                                                      Height="36" 
+                                                      IsEnabled="{Binding ControlProcess.InProgress, Converter={StaticResource BoolNegationConverter}}"
+                                                      ItemsSource="{Binding Source={StaticResource BSL430_NET_InvokeMechanism}}" 
+                                                      SelectedValue="{Binding ControlProcess.InvokeMechanism, Mode=TwoWay}"/>
+                                        </StackPanel>
+
+                                        <StackPanel Grid.Column="3" Margin="0" VerticalAlignment="Center" ToolTip="BSL 16 byte password is required for Download and Upload.&#x0a;If wrong or none password is entered, mass erase is auto executed as a safety measure, erasing entire flash,&#x0a;except INFO A. However, this is usually not a problem, when performing Upload.">
+                                            <TextBlock Text="Password (16 byte hex string)" Margin="0,5,0,0" FontWeight="Normal" FontSize="12"/>
+                                            <TextBox Grid.Column="3" 
+                                                     x:Name="Password" 
+                                                     FontWeight="Normal" 
+                                                     FontSize="20" 
+                                                     Height="36" 
+                                                     HorizontalAlignment="Stretch" 
+                                                     Text="{Binding ControlProcess.Password, Mode=TwoWay}"
+                                                     MaxLength="32" 
+                                                     PreviewTextInput="Password_PreviewTextInput" 
+                                                     CharacterCasing="Upper">
+                                                <TextBox.LayoutTransform>
+                                                    <ScaleTransform ScaleX="0.9"></ScaleTransform>
+                                                </TextBox.LayoutTransform>
+                                                <TextBox.Style>
+                                                    <Style TargetType="TextBox" BasedOn="{StaticResource MetroTextBox}">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=TemplatedParent}, Path=Name}" Value="Erase">
+                                                                <Setter Property="BorderBrush" Value="Black"/>
+                                                                <Setter Property="Opacity" Value="0.5"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </TextBox.Style>
+                                                <TextBox.IsEnabled>
+                                                    <MultiBinding Converter="{StaticResource PasswordEnabledConverter}">
+                                                        <Binding Path="ControlProcess.InProgress" />
+                                                        <Binding ElementName="MainGrid" Path="Tag" />
+                                                    </MultiBinding>
+                                                </TextBox.IsEnabled>
+                                            </TextBox>
+                                        </StackPanel>
+                                    </Grid>
+                                    <ContentPresenter Grid.Row="1"/>
+                                </Grid>
+                            </Border>
+                        </Grid>
+
+                        <Grid Grid.Row="4">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="20"/>
+                                </Grid.ColumnDefinitions>
+
+                                <WrapPanel Grid.Column="0" VerticalAlignment="Bottom">
+                                    <iconPacks:PackIconModern Margin="21,2,0,0" Kind="Console" VerticalAlignment="Center" Width="20" Height="20" />
+                                    <Label Content="Status:" FontWeight="Thin" FontSize="20"></Label>
+                                    <TextBox x:Name="Status" 
+                                             VerticalAlignment="Center" 
+                                             Text="{Binding ControlProcess.Status}" 
+                                             BorderThickness="0" 
+                                             IsReadOnly="True" 
+                                             FontWeight="DemiBold" 
+                                             FontSize="20"/>
+                                </WrapPanel>
+                                <Button Grid.Column="1" 
+                                           x:Name="Log" 
+                                           VerticalAlignment="Center" 
+                                           FontWeight="Normal" 
+                                           FontSize="20"
+                                           Cursor="Hand"
+                                           Background="Transparent"
+                                           cal:Message.Attach="OpenLog">
+                                    <WrapPanel>
+                                        <iconPacks:PackIconModern Margin="5,2,5,0" Kind="PageXml" VerticalAlignment="Center" Width="20" Height="20" />
+                                        <TextBlock TextWrapping="Wrap" Margin="0,0,5,0">
+                                            <Hyperlink Foreground="{DynamicResource BasicText}" TextDecorations="Underline">XML Log</Hyperlink>
+                                        </TextBlock>
+                                    </WrapPanel>
+                                    <Button.Style>
+                                        <Style TargetType="Button" BasedOn="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+                                            <Style.Triggers>
+                                                <Trigger Property ="IsMouseOver" Value="True">
+                                                    <Setter Property="FontWeight" Value="DemiBold"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </Grid>
+                        </Grid>
+
+                        <Grid Grid.Row="5">
+                            <Grid VerticalAlignment="Center" Margin="20,0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0">
+                                    <Controls:MetroProgressBar x:Name="Progressbar" 
+                                                               Value="{Binding ControlProcess.Progress}" 
+                                                               Width="Auto" 
+                                                               Background="DimGray" 
+                                                               Minimum="0" 
+                                                               Maximum="100" 
+                                                               Height="45">
+                                        <Controls:MetroProgressBar.Style>
+                                            <Style TargetType="Controls:MetroProgressBar" BasedOn="{StaticResource {x:Type Controls:MetroProgressBar}}">
+                                                <Setter Property="Foreground" Value="#ea9f33"/>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding ControlProcess.State}" Value="{x:Static ViewModels:ProcessState.SUCCESS}">
+                                                        <Setter Property="Foreground" Value="LimeGReen"/>
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding ControlProcess.State}" Value="{x:Static ViewModels:ProcessState.FAILED}">
+                                                        <Setter Property="Foreground" Value="Red"/>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Controls:MetroProgressBar.Style>
+                                    </Controls:MetroProgressBar>
+                                    <TextBlock x:Name="Percentage" 
+                                               FontSize="22" 
+                                               Margin="0,0,0,0" 
+                                               Text="{Binding ControlProcess.Progress, Converter={StaticResource ProgressToPercentageConverter}}" 
+                                               FontWeight="Bold" 
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center" 
+                                               Foreground="White" 
+                                               Height="Auto" 
+                                               Width="Auto"/>
+                                </Grid>
+                                <Button Grid.Column="1" 
+                                        x:Name="StartStop" 
+                                        Margin="1,0,0,0" 
+                                        Width="150" 
+                                        FontWeight="Bold" 
+                                        Height="45" 
+                                        Cursor="Hand"
+                                        Tag="{TemplateBinding Name}"
+                                        FontSize="22"
+                                        VerticalAlignment="Center" 
+                                        BorderThickness="0" 
+                                        Controls:ControlsHelper.ContentCharacterCasing="Normal" 
+                                        cal:Message.Attach="StartStop">
+                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                        <iconPacks:PackIconFontAwesome Margin="0,0,10,0" 
+                                                                  Kind="PlayCircleRegular" 
+                                                                  VerticalAlignment="Center" 
+                                                                  Width="22" 
+                                                                  Height="22"
+                                                                  Visibility="{Binding ControlProcess.InProgress, Converter={StaticResource BoolToVisibilityConverter1}}"/>
+                                        <Controls:ProgressRing x:Name="StartStopRing" 
+                                                               Margin="0,0,10,0" 
+                                                               VerticalAlignment="Center" 
+                                                               Height="30" 
+                                                               Width="30" 
+                                                               Foreground="{DynamicResource BasicText}"
+                                                               IsActive="{Binding ControlProcess.InProgress}" 
+                                                               Visibility="{Binding ControlProcess.InProgress, Converter={StaticResource BoolToVisibilityConverter2}}"/>
+                                        <TextBlock VerticalAlignment="Center" FontWeight="Thin" FontSize="22" Padding="0,0,0,1">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock" BasedOn="{StaticResource MetroTextBlock}">
+                                                    <Setter Property="Text" Value="{Binding ElementName=StartStop, Path=Tag}"/>
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding ControlProcess.InProgress}" Value="True">
+                                                            <Setter Property="Text" Value="Stop"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </StackPanel>
+                                    <Button.Style>
+                                        <Style TargetType="Button" BasedOn="{StaticResource AccentedSquareButtonStyle}">
+                                            <Setter Property="IsEnabled" Value="True"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding ControlProcess.Devices.Count}" Value="0">
+                                                    <Setter Property="IsEnabled" Value="False"/>
+                                                </DataTrigger>
+                                                <Trigger Property="IsEnabled" Value="False">
+                                                    <Setter Property="Background" Value="{DynamicResource AccentColorBrush3}"/>
+                                                    <Setter Property="Foreground" Value="{DynamicResource BasicText}"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </Grid>
+                        </Grid>
+
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

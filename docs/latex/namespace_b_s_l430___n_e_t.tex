@@ -1,0 +1,453 @@
+\hypertarget{namespace_b_s_l430___n_e_t}{}\section{B\+S\+L430\+\_\+\+N\+ET Namespace Reference}
+\label{namespace_b_s_l430___n_e_t}\index{BSL430\_NET@{BSL430\_NET}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_b_s_l430_n_e_t}{B\+S\+L430\+N\+ET}}
+\begin{DoxyCompactList}\small\item\em B\+S\+L430.\+N\+ET is cross-\/platform toolkit to manage memory of M\+S\+P430 M\+C\+Us via U\+A\+RT or U\+SB. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_bsl430_net_device}{Bsl430\+Net\+Device}}
+\begin{DoxyCompactList}\small\item\em B\+S\+L430.\+N\+ET Device node serve as a generic device indentificator with field \textquotesingle{}Name\textquotesingle{} as a key. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_bsl430_net_event_args}{Bsl430\+Net\+Event\+Args}}
+\begin{DoxyCompactList}\small\item\em B\+S\+L430.\+N\+ET Event Args. Progress is double percentage and \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_report}{Report}} is current action. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_bsl430_net_exception}{Bsl430\+Net\+Exception}}
+\begin{DoxyCompactList}\small\item\em B\+S\+L430.\+N\+ET Exception is generic Exception extended with \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status}{Status}} object. \end{DoxyCompactList}\item 
+interface \mbox{\hyperlink{interface_b_s_l430___n_e_t_1_1_i_bsl430_net}{I\+Bsl430\+Net}}
+\begin{DoxyCompactList}\small\item\em Public interface of B\+S\+L430.\+N\+ET library. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_report}{Report}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_report}{Report}} is result of an action block with Name, Result and Timestamp. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status}{Status}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status}{Status}} class is an Error Cluster with int, bool and string status with Core and U\+A\+RT messages. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status_ex}{Status\+Ex}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status_ex}{Status\+Ex}} is \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status}{Status}} extended with \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_report}{Report}} List, returned as a result of main public methods. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespace_b_s_l430___n_e_t_aa1c6981cb6f279b5491d861ca555a1d7}{Mode}} \+: byte \{ \mbox{\hyperlink{namespace_b_s_l430___n_e_t_aa1c6981cb6f279b5491d861ca555a1d7a1e8f7424bc8f1fb2d9593f1f05e27bc8}{Mode.\+U\+A\+R\+T\+\_\+\+F\+T\+D2\+XX}}, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_aa1c6981cb6f279b5491d861ca555a1d7ad0f63e0e18723fee410b62fe202028a1}{Mode.\+U\+A\+R\+T\+\_\+libftdi}}, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_aa1c6981cb6f279b5491d861ca555a1d7a766287f492a16ccdf7b4b2a8a5ba125b}{Mode.\+U\+A\+R\+T\+\_\+\+Serial}}, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_aa1c6981cb6f279b5491d861ca555a1d7abc0998f5c74151a4a3dfaa6e2b0af993}{Mode.\+U\+S\+B\+\_\+\+H\+ID}}
+ \}
+\begin{DoxyCompactList}\small\item\em Main mode which each library instance can operate in, explicitly stated in constructor or derived from device. 
+
+First word U\+A\+R\+T/\+U\+SB declares the target M\+CU data interface. Please see M\+CU datasheet for more info. 
+
+Second word declares the library, which handles communication. This library needs to be present. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespace_b_s_l430___n_e_t_a8d30c263598635a481840944d38aeb70}{Baud\+Rate}} \+: int \{ \newline
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a8d30c263598635a481840944d38aeb70a35de50c520011baf226b81865ed5ae94}{Baud\+Rate.\+B\+A\+U\+D\+\_\+9600}} = 9600, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a8d30c263598635a481840944d38aeb70ae0f726d9f87f8874aa8f8a5e3bdffda1}{Baud\+Rate.\+B\+A\+U\+D\+\_\+19200}} = 19200, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a8d30c263598635a481840944d38aeb70a6aa297ec67f069d6c1dc929bcd2e561e}{Baud\+Rate.\+B\+A\+U\+D\+\_\+38400}} = 38400, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a8d30c263598635a481840944d38aeb70ab09272971cc3e7e6aa1e84869c2d6942}{Baud\+Rate.\+B\+A\+U\+D\+\_\+57600}} = 57600, 
+\newline
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a8d30c263598635a481840944d38aeb70adf0ddcf34c8454b3f328134629f9d9ae}{Baud\+Rate.\+B\+A\+U\+D\+\_\+115200}} = 115200
+ \}
+\begin{DoxyCompactList}\small\item\em Baud rate value. Default is 9600 bps (9600). Setting other than default is supported only by some B\+SL versions. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespace_b_s_l430___n_e_t_a6571fdf0fbbc8408b8428f4d642c1305}{Invoke\+Mechanism}} \+: byte \{ \mbox{\hyperlink{namespace_b_s_l430___n_e_t_a6571fdf0fbbc8408b8428f4d642c1305a5ef5378a5d2c07ce5f51f312850afec0}{Invoke\+Mechanism.\+S\+H\+A\+R\+E\+D\+\_\+\+J\+T\+AG}} = 0, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a6571fdf0fbbc8408b8428f4d642c1305aa643869331e1585816b884997641dfd6}{Invoke\+Mechanism.\+D\+E\+D\+I\+C\+A\+T\+E\+D\+\_\+\+J\+T\+AG}} = 1, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a6571fdf0fbbc8408b8428f4d642c1305aa60a6a471c0681e5a49c4f5d00f6bc5a}{Invoke\+Mechanism.\+M\+A\+N\+U\+AL}} = 2
+ \}
+\begin{DoxyCompactList}\small\item\em Entry sequence on M\+CU pins which forces the target to start program execution at the B\+SL R\+E\+S\+ET vector. Default is S\+H\+A\+R\+E\+D\+\_\+\+J\+T\+AG (0) -\/ D\+TR to R\+ST and R\+TS to T\+E\+ST pin. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490}{M\+CU}} \+: byte \{ \newline
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490ada08066f748ce2d96dde83cee52c6226}{M\+C\+U.\+M\+S\+P430\+\_\+\+F1xx}} = 0, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490af382754fdf59a17e4a0beaddc26f1f69}{M\+C\+U.\+M\+S\+P430\+\_\+\+F2xx}} = 1, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490a1d045bdd0727a198107db01315fb1494}{M\+C\+U.\+M\+S\+P430\+\_\+\+F4xx}} = 2, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490a54c83129a15d1806e73f73eb3cc1a187}{M\+C\+U.\+M\+S\+P430\+\_\+\+G2xx3}} = 3, 
+\newline
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490aafbeb33d0b34fb25aded3af758c27771}{M\+C\+U.\+M\+S\+P430\+\_\+\+F5xx}} = 4, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490ad9c4019d1ca41bff58f080a79657ce5e}{M\+C\+U.\+M\+S\+P430\+\_\+\+F543x}} = 5, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490acb1ec64e534847a79b4e511d5cc7764d}{M\+C\+U.\+M\+S\+P430\+\_\+\+F6xx}} = 6, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490ad7c55fc13e7bfdb82391c185ad2c5bbe}{M\+C\+U.\+M\+S\+P430\+\_\+\+F\+R5xx}} = 7, 
+\newline
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490a47818d4668f99f1f4e3bbef3b7c394d5}{M\+C\+U.\+M\+S\+P430\+\_\+\+F\+R6xx}} = 8, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490a98e06ffa6586ae8a82262577d8378117}{M\+C\+U.\+M\+S\+P430\+\_\+\+F\+R2x33}} = 9, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490a84ee9d4e2176a332f2dacb1dc3944d96}{M\+C\+U.\+M\+S\+P430\+\_\+\+F\+R231x}} = 10, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490ab36942cb6ee85d8530d7edbaab051876}{M\+C\+U.\+M\+S\+P430\+\_\+\+F\+R235x}} = 11, 
+\newline
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490ab00ea530e6d293095eb97205d7cda436}{M\+C\+U.\+M\+S\+P430\+\_\+\+F\+R215x}} = 12, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490a6bc1e7d0c872807b7ad917faf8ad813a}{M\+C\+U.\+M\+S\+P430\+\_\+\+F\+R413x}} = 13, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490a91da435665b18eeafd5b7c3794b0962a}{M\+C\+U.\+M\+S\+P430\+\_\+\+F\+R211x}} = 14, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490aced9b803d4bc56f956fa933ba49b0f59}{M\+C\+U.\+M\+S\+P432\+\_\+\+P401R}} = 15
+ \}
+\begin{DoxyCompactList}\small\item\em M\+S\+P430/432 M\+CU device family. Default is M\+S\+P430\+\_\+\+F5xx (4). \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespace_b_s_l430___n_e_t_ae93ff76b832d2a9a0c3d67665e2f25ac}{Bsl\+Uart\+Message}} \+: byte \{ \newline
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_ae93ff76b832d2a9a0c3d67665e2f25aca0fc437bc317835cad5faafc12a83fad5}{Bsl\+Uart\+Message.\+A\+CK}} = 0x00, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_ae93ff76b832d2a9a0c3d67665e2f25acaab0f2d43e5f4dd050eeefec3fc0ebe18}{Bsl\+Uart\+Message.\+Header\+Incorrect}} = 0x51, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_ae93ff76b832d2a9a0c3d67665e2f25aca9b80238295e8452348cb146627795ffb}{Bsl\+Uart\+Message.\+Checksum\+Incorrect}} = 0x52, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_ae93ff76b832d2a9a0c3d67665e2f25aca50b3e17539fc378fd1c629bad0015b2c}{Bsl\+Uart\+Message.\+Packet\+Size\+Zero}} = 0x53, 
+\newline
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_ae93ff76b832d2a9a0c3d67665e2f25aca01b9aec1dc5005179c024e46a3ddd7c9}{Bsl\+Uart\+Message.\+Packet\+Size\+Overflow}} = 0x54, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_ae93ff76b832d2a9a0c3d67665e2f25acabfaef30f1c8011c5cefa38ae470fb7aa}{Bsl\+Uart\+Message.\+Unknown\+Error}} = 0x55, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_ae93ff76b832d2a9a0c3d67665e2f25acadc86f6793d96f97b2925c50cbaccbbdc}{Bsl\+Uart\+Message.\+Unknown\+Baud\+Rate}} = 0x56, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_ae93ff76b832d2a9a0c3d67665e2f25aca534ceac854da4ba59c4dc41b7ab732dc}{Bsl\+Uart\+Message.\+Not\+Available}} = 0x99
+ \}
+\begin{DoxyCompactList}\small\item\em B\+LS U\+A\+RT Message. If there are any errors with the data transmission, an error message is sent back. This message is sent only when 5xx or 6xx protocol version is used. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17a}{Bsl\+Core\+Message}} \+: byte \{ \newline
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17aa505a83f220c02df2f85c3810cd9ceb38}{Bsl\+Core\+Message.\+Success}} = 0x00, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17aa5354401133c7c40d5aa414b29fcd77a8}{Bsl\+Core\+Message.\+Flash\+Write\+Check\+Fail}} = 0x01, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17aa9c513065679db4b2f6c5943eb5802a49}{Bsl\+Core\+Message.\+Flash\+Fail\+Bit\+Set}} = 0x02, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17aa4491275bddbd804048d2d4599da326b0}{Bsl\+Core\+Message.\+Voltage\+Changed}} = 0x03, 
+\newline
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17aaad25c5ec3eb9475e0a27d027d54e59e8}{Bsl\+Core\+Message.\+B\+S\+L\+Locked}} = 0x04, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17aac9234dfa56b502931ee349d25e1436bb}{Bsl\+Core\+Message.\+B\+S\+L\+Password\+Error}} = 0x05, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17aa8711d08dcdabe7ed1b1d60329afef3c1}{Bsl\+Core\+Message.\+Byte\+Write\+Forbidden}} = 0x06, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17aae186ae062361df4aeb3f0c5420542d8e}{Bsl\+Core\+Message.\+Unknown\+Command}} = 0x07, 
+\newline
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17aa2a57b7e43d1cdfbae7ef4a5fc5e7aa04}{Bsl\+Core\+Message.\+Packet\+Length\+Overflow}} = 0x08, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17aa534ceac854da4ba59c4dc41b7ab732dc}{Bsl\+Core\+Message.\+Not\+Available}} = 0x99
+ \}
+\begin{DoxyCompactList}\small\item\em B\+SL Core Message is a response to Erase or Download action. (Mass Erase, TX Data Block) This message is sent only when 5xx or 6xx protocol version is used. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespace_b_s_l430___n_e_t_a4cd6f8166a2a97ccb3405df2287d4ba8}{Scan\+Options}} \+: byte \{ \mbox{\hyperlink{namespace_b_s_l430___n_e_t_a4cd6f8166a2a97ccb3405df2287d4ba8a6adf97f83acf6453d4a6a4b1070f3754}{Scan\+Options.\+None}} = 0x0, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a4cd6f8166a2a97ccb3405df2287d4ba8a312c91a2fcbbf5ab7fc303f318179b60}{Scan\+Options.\+Usb\+Hid\+\_\+\+Ignore\+Texas\+Vid}} = 0x1, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a4cd6f8166a2a97ccb3405df2287d4ba8afbe2059f92ca0f1d2a8fe47b5853f0e1}{Scan\+Options.\+Ftdi\+\_\+\+Ignore\+Unknown\+Dev}} = 0x2
+ \}
+\begin{DoxyCompactList}\small\item\em \mbox{[}Flags\mbox{]} Scan Options adjust scanner behavior, use it like this\+: (Usb\+Hid\+\_\+\+Ignore\+Texas\+Vid $\vert$ Ftdi\+\_\+\+Ignore\+Unknown\+Dev) 
+
+\textquotesingle{}Usb\+Hid\+\_\+\+Ignore\+Texas\+Vid\textquotesingle{} forces scanner to ignore TI V\+I\+D(0x2047) and get all U\+SB H\+ID devices present in system. 
+
+\textquotesingle{}Ftdi\+\_\+\+Ignore\+Unknown\+Dev\textquotesingle{} forces scanner to ignore \char`\"{}unknown\char`\"{} type devices, that are most likely already connected. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespace_b_s_l430___n_e_t_a5329555917cbeec8fdb5a3fe35126138}{Report\+Result}} \{ \mbox{\hyperlink{namespace_b_s_l430___n_e_t_a5329555917cbeec8fdb5a3fe35126138ad0749aaba8b833466dfcbb0428e4f89c}{Report\+Result.\+S\+U\+C\+C\+E\+SS}}, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a5329555917cbeec8fdb5a3fe35126138a203ec08f57cb105eeb2b121ba6503b52}{Report\+Result.\+S\+K\+I\+P\+P\+ED}}, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a5329555917cbeec8fdb5a3fe35126138ab9e14d9b2886bcff408b85aefa780419}{Report\+Result.\+F\+A\+I\+L\+ED}}, 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a5329555917cbeec8fdb5a3fe35126138ac69f06e1a9b016d133907b4e5f5864d2}{Report\+Result.\+P\+E\+N\+D\+I\+NG}}
+ \}
+\begin{DoxyCompactList}\small\item\em Report result. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+delegate void \mbox{\hyperlink{namespace_b_s_l430___n_e_t_a98dbd2acd09405042ee92547353c9f81}{Bsl430\+Net\+Event\+Handler}} (object source, \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_bsl430_net_event_args}{Bsl430\+Net\+Event\+Args}} e)
+\begin{DoxyCompactList}\small\item\em B\+S\+L430.\+N\+ET Event handler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a8d30c263598635a481840944d38aeb70}\label{namespace_b_s_l430___n_e_t_a8d30c263598635a481840944d38aeb70}} 
+\index{BSL430\_NET@{BSL430\_NET}!BaudRate@{BaudRate}}
+\index{BaudRate@{BaudRate}!BSL430\_NET@{BSL430\_NET}}
+\subsubsection{\texorpdfstring{BaudRate}{BaudRate}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_b_s_l430___n_e_t_a8d30c263598635a481840944d38aeb70}{B\+S\+L430\+\_\+\+N\+E\+T.\+Baud\+Rate}} \+: int\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Baud rate value. Default is 9600 bps (9600). Setting other than default is supported only by some B\+SL versions. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BAUD\_9600@{BAUD\_9600}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!BAUD\_9600@{BAUD\_9600}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a8d30c263598635a481840944d38aeb70a35de50c520011baf226b81865ed5ae94}\label{namespace_b_s_l430___n_e_t_a8d30c263598635a481840944d38aeb70a35de50c520011baf226b81865ed5ae94}} 
+B\+A\+U\+D\+\_\+9600&9600 bps \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BAUD\_19200@{BAUD\_19200}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!BAUD\_19200@{BAUD\_19200}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a8d30c263598635a481840944d38aeb70ae0f726d9f87f8874aa8f8a5e3bdffda1}\label{namespace_b_s_l430___n_e_t_a8d30c263598635a481840944d38aeb70ae0f726d9f87f8874aa8f8a5e3bdffda1}} 
+B\+A\+U\+D\+\_\+19200&19200 bps \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BAUD\_38400@{BAUD\_38400}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!BAUD\_38400@{BAUD\_38400}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a8d30c263598635a481840944d38aeb70a6aa297ec67f069d6c1dc929bcd2e561e}\label{namespace_b_s_l430___n_e_t_a8d30c263598635a481840944d38aeb70a6aa297ec67f069d6c1dc929bcd2e561e}} 
+B\+A\+U\+D\+\_\+38400&38400 bps \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BAUD\_57600@{BAUD\_57600}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!BAUD\_57600@{BAUD\_57600}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a8d30c263598635a481840944d38aeb70ab09272971cc3e7e6aa1e84869c2d6942}\label{namespace_b_s_l430___n_e_t_a8d30c263598635a481840944d38aeb70ab09272971cc3e7e6aa1e84869c2d6942}} 
+B\+A\+U\+D\+\_\+57600&57600 bps \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BAUD\_115200@{BAUD\_115200}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!BAUD\_115200@{BAUD\_115200}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a8d30c263598635a481840944d38aeb70adf0ddcf34c8454b3f328134629f9d9ae}\label{namespace_b_s_l430___n_e_t_a8d30c263598635a481840944d38aeb70adf0ddcf34c8454b3f328134629f9d9ae}} 
+B\+A\+U\+D\+\_\+115200&115200 bps \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17a}\label{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17a}} 
+\index{BSL430\_NET@{BSL430\_NET}!BslCoreMessage@{BslCoreMessage}}
+\index{BslCoreMessage@{BslCoreMessage}!BSL430\_NET@{BSL430\_NET}}
+\subsubsection{\texorpdfstring{BslCoreMessage}{BslCoreMessage}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17a}{B\+S\+L430\+\_\+\+N\+E\+T.\+Bsl\+Core\+Message}} \+: byte\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+B\+SL Core Message is a response to Erase or Download action. (Mass Erase, TX Data Block) This message is sent only when 5xx or 6xx protocol version is used. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Success@{Success}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!Success@{Success}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17aa505a83f220c02df2f85c3810cd9ceb38}\label{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17aa505a83f220c02df2f85c3810cd9ceb38}} 
+Success&Operation Successful. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FlashWriteCheckFail@{FlashWriteCheckFail}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!FlashWriteCheckFail@{FlashWriteCheckFail}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17aa5354401133c7c40d5aa414b29fcd77a8}\label{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17aa5354401133c7c40d5aa414b29fcd77a8}} 
+Flash\+Write\+Check\+Fail&Flash Write Check Failed. After programming, a C\+RC is run on the programmed data. If the C\+RC does not match the expected result, this error is returned. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FlashFailBitSet@{FlashFailBitSet}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!FlashFailBitSet@{FlashFailBitSet}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17aa9c513065679db4b2f6c5943eb5802a49}\label{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17aa9c513065679db4b2f6c5943eb5802a49}} 
+Flash\+Fail\+Bit\+Set&Flash Fail Bit Set. An operation set the F\+A\+IL bit in the flash controller (see the M\+S\+P430x5xx and M\+S\+P430x6xx Family User\textquotesingle{}s Guide for more details on the flash fail bit). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{VoltageChanged@{VoltageChanged}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!VoltageChanged@{VoltageChanged}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17aa4491275bddbd804048d2d4599da326b0}\label{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17aa4491275bddbd804048d2d4599da326b0}} 
+Voltage\+Changed&Voltage Change During Program. The V\+PE was set during the requested write operation (see the M\+S\+P430x5xx and M\+S\+P430x6xx Family User\textquotesingle{}s Guide for more details on the V\+PE bit). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BSLLocked@{BSLLocked}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!BSLLocked@{BSLLocked}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17aaad25c5ec3eb9475e0a27d027d54e59e8}\label{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17aaad25c5ec3eb9475e0a27d027d54e59e8}} 
+B\+S\+L\+Locked&B\+SL Locked. The correct password has not yet been supplied to unlock the B\+SL. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BSLPasswordError@{BSLPasswordError}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!BSLPasswordError@{BSLPasswordError}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17aac9234dfa56b502931ee349d25e1436bb}\label{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17aac9234dfa56b502931ee349d25e1436bb}} 
+B\+S\+L\+Password\+Error&B\+SL Password Error. An incorrect password was supplied to the B\+SL when attempting an unlock. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ByteWriteForbidden@{ByteWriteForbidden}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!ByteWriteForbidden@{ByteWriteForbidden}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17aa8711d08dcdabe7ed1b1d60329afef3c1}\label{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17aa8711d08dcdabe7ed1b1d60329afef3c1}} 
+Byte\+Write\+Forbidden&Byte Write Forbidden. This error is returned when a byte write is attempted in a flash area. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UnknownCommand@{UnknownCommand}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!UnknownCommand@{UnknownCommand}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17aae186ae062361df4aeb3f0c5420542d8e}\label{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17aae186ae062361df4aeb3f0c5420542d8e}} 
+Unknown\+Command&Unknown Command. The command given to the B\+SL was not recognized. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PacketLengthOverflow@{PacketLengthOverflow}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!PacketLengthOverflow@{PacketLengthOverflow}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17aa2a57b7e43d1cdfbae7ef4a5fc5e7aa04}\label{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17aa2a57b7e43d1cdfbae7ef4a5fc5e7aa04}} 
+Packet\+Length\+Overflow&Packet Length Exceeds Buffer Size. The supplied packet length value is too large to be held in the B\+SL receive buffer. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NotAvailable@{NotAvailable}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!NotAvailable@{NotAvailable}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17aa534ceac854da4ba59c4dc41b7ab732dc}\label{namespace_b_s_l430___n_e_t_ac916153c12b33a95ee1fd35e1a15f17aa534ceac854da4ba59c4dc41b7ab732dc}} 
+Not\+Available&B\+SL Core Message is not available. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_ae93ff76b832d2a9a0c3d67665e2f25ac}\label{namespace_b_s_l430___n_e_t_ae93ff76b832d2a9a0c3d67665e2f25ac}} 
+\index{BSL430\_NET@{BSL430\_NET}!BslUartMessage@{BslUartMessage}}
+\index{BslUartMessage@{BslUartMessage}!BSL430\_NET@{BSL430\_NET}}
+\subsubsection{\texorpdfstring{BslUartMessage}{BslUartMessage}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_b_s_l430___n_e_t_ae93ff76b832d2a9a0c3d67665e2f25ac}{B\+S\+L430\+\_\+\+N\+E\+T.\+Bsl\+Uart\+Message}} \+: byte\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+B\+LS U\+A\+RT Message. If there are any errors with the data transmission, an error message is sent back. This message is sent only when 5xx or 6xx protocol version is used. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ACK@{ACK}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!ACK@{ACK}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_ae93ff76b832d2a9a0c3d67665e2f25aca0fc437bc317835cad5faafc12a83fad5}\label{namespace_b_s_l430___n_e_t_ae93ff76b832d2a9a0c3d67665e2f25aca0fc437bc317835cad5faafc12a83fad5}} 
+A\+CK&A\+CK \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HeaderIncorrect@{HeaderIncorrect}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!HeaderIncorrect@{HeaderIncorrect}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_ae93ff76b832d2a9a0c3d67665e2f25acaab0f2d43e5f4dd050eeefec3fc0ebe18}\label{namespace_b_s_l430___n_e_t_ae93ff76b832d2a9a0c3d67665e2f25acaab0f2d43e5f4dd050eeefec3fc0ebe18}} 
+Header\+Incorrect&Header incorrect. The packet did not begin with the required 0x80 value. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ChecksumIncorrect@{ChecksumIncorrect}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!ChecksumIncorrect@{ChecksumIncorrect}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_ae93ff76b832d2a9a0c3d67665e2f25aca9b80238295e8452348cb146627795ffb}\label{namespace_b_s_l430___n_e_t_ae93ff76b832d2a9a0c3d67665e2f25aca9b80238295e8452348cb146627795ffb}} 
+Checksum\+Incorrect&Checksum incorrect. The packet did not have the correct checksum value. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PacketSizeZero@{PacketSizeZero}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!PacketSizeZero@{PacketSizeZero}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_ae93ff76b832d2a9a0c3d67665e2f25aca50b3e17539fc378fd1c629bad0015b2c}\label{namespace_b_s_l430___n_e_t_ae93ff76b832d2a9a0c3d67665e2f25aca50b3e17539fc378fd1c629bad0015b2c}} 
+Packet\+Size\+Zero&Packet size zero. The size for the B\+SL core command was given as 0. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PacketSizeOverflow@{PacketSizeOverflow}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!PacketSizeOverflow@{PacketSizeOverflow}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_ae93ff76b832d2a9a0c3d67665e2f25aca01b9aec1dc5005179c024e46a3ddd7c9}\label{namespace_b_s_l430___n_e_t_ae93ff76b832d2a9a0c3d67665e2f25aca01b9aec1dc5005179c024e46a3ddd7c9}} 
+Packet\+Size\+Overflow&Packet size exceeds buffer. The packet size given is too big for the RX buffer. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UnknownError@{UnknownError}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!UnknownError@{UnknownError}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_ae93ff76b832d2a9a0c3d67665e2f25acabfaef30f1c8011c5cefa38ae470fb7aa}\label{namespace_b_s_l430___n_e_t_ae93ff76b832d2a9a0c3d67665e2f25acabfaef30f1c8011c5cefa38ae470fb7aa}} 
+Unknown\+Error&Unknown error. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UnknownBaudRate@{UnknownBaudRate}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!UnknownBaudRate@{UnknownBaudRate}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_ae93ff76b832d2a9a0c3d67665e2f25acadc86f6793d96f97b2925c50cbaccbbdc}\label{namespace_b_s_l430___n_e_t_ae93ff76b832d2a9a0c3d67665e2f25acadc86f6793d96f97b2925c50cbaccbbdc}} 
+Unknown\+Baud\+Rate&Unknown baud rate. The supplied data for baud rate change is not a known value. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NotAvailable@{NotAvailable}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!NotAvailable@{NotAvailable}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_ae93ff76b832d2a9a0c3d67665e2f25aca534ceac854da4ba59c4dc41b7ab732dc}\label{namespace_b_s_l430___n_e_t_ae93ff76b832d2a9a0c3d67665e2f25aca534ceac854da4ba59c4dc41b7ab732dc}} 
+Not\+Available&B\+SL U\+A\+RT Message is not available. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a6571fdf0fbbc8408b8428f4d642c1305}\label{namespace_b_s_l430___n_e_t_a6571fdf0fbbc8408b8428f4d642c1305}} 
+\index{BSL430\_NET@{BSL430\_NET}!InvokeMechanism@{InvokeMechanism}}
+\index{InvokeMechanism@{InvokeMechanism}!BSL430\_NET@{BSL430\_NET}}
+\subsubsection{\texorpdfstring{InvokeMechanism}{InvokeMechanism}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_b_s_l430___n_e_t_a6571fdf0fbbc8408b8428f4d642c1305}{B\+S\+L430\+\_\+\+N\+E\+T.\+Invoke\+Mechanism}} \+: byte\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Entry sequence on M\+CU pins which forces the target to start program execution at the B\+SL R\+E\+S\+ET vector. Default is S\+H\+A\+R\+E\+D\+\_\+\+J\+T\+AG (0) -\/ D\+TR to R\+ST and R\+TS to T\+E\+ST pin. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SHARED\_JTAG@{SHARED\_JTAG}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!SHARED\_JTAG@{SHARED\_JTAG}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a6571fdf0fbbc8408b8428f4d642c1305a5ef5378a5d2c07ce5f51f312850afec0}\label{namespace_b_s_l430___n_e_t_a6571fdf0fbbc8408b8428f4d642c1305a5ef5378a5d2c07ce5f51f312850afec0}} 
+S\+H\+A\+R\+E\+D\+\_\+\+J\+T\+AG&Only U\+A\+RT mode and M\+CU with shared J\+T\+AG pins. Tie D\+TR to R\+ST and R\+TS to T\+E\+ST pin. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DEDICATED\_JTAG@{DEDICATED\_JTAG}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!DEDICATED\_JTAG@{DEDICATED\_JTAG}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a6571fdf0fbbc8408b8428f4d642c1305aa643869331e1585816b884997641dfd6}\label{namespace_b_s_l430___n_e_t_a6571fdf0fbbc8408b8428f4d642c1305aa643869331e1585816b884997641dfd6}} 
+D\+E\+D\+I\+C\+A\+T\+E\+D\+\_\+\+J\+T\+AG&Only U\+A\+RT mode and M\+CU with dedicated J\+T\+AG pins. Tie D\+TR to R\+ST and R\+TS to T\+CK pin. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MANUAL@{MANUAL}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!MANUAL@{MANUAL}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a6571fdf0fbbc8408b8428f4d642c1305aa60a6a471c0681e5a49c4f5d00f6bc5a}\label{namespace_b_s_l430___n_e_t_a6571fdf0fbbc8408b8428f4d642c1305aa60a6a471c0681e5a49c4f5d00f6bc5a}} 
+M\+A\+N\+U\+AL&Only U\+SB mode, where B\+SL is invoked either of the following conditions are met\+: 
+
+The M\+CU is powered up by U\+SB and the reset vector is blank. 
+
+The M\+CU powers up with P\+UR pin tied to V\+U\+SB. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490}\label{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490}} 
+\index{BSL430\_NET@{BSL430\_NET}!MCU@{MCU}}
+\index{MCU@{MCU}!BSL430\_NET@{BSL430\_NET}}
+\subsubsection{\texorpdfstring{MCU}{MCU}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490}{B\+S\+L430\+\_\+\+N\+E\+T.\+M\+CU}} \+: byte\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+M\+S\+P430/432 M\+CU device family. Default is M\+S\+P430\+\_\+\+F5xx (4). 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MSP430\_F1xx@{MSP430\_F1xx}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!MSP430\_F1xx@{MSP430\_F1xx}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490ada08066f748ce2d96dde83cee52c6226}\label{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490ada08066f748ce2d96dde83cee52c6226}} 
+M\+S\+P430\+\_\+\+F1xx&M\+S\+P430 F1xx \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MSP430\_F2xx@{MSP430\_F2xx}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!MSP430\_F2xx@{MSP430\_F2xx}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490af382754fdf59a17e4a0beaddc26f1f69}\label{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490af382754fdf59a17e4a0beaddc26f1f69}} 
+M\+S\+P430\+\_\+\+F2xx&M\+S\+P430 F2xx \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MSP430\_F4xx@{MSP430\_F4xx}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!MSP430\_F4xx@{MSP430\_F4xx}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490a1d045bdd0727a198107db01315fb1494}\label{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490a1d045bdd0727a198107db01315fb1494}} 
+M\+S\+P430\+\_\+\+F4xx&M\+S\+P430 F4xx \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MSP430\_G2xx3@{MSP430\_G2xx3}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!MSP430\_G2xx3@{MSP430\_G2xx3}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490a54c83129a15d1806e73f73eb3cc1a187}\label{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490a54c83129a15d1806e73f73eb3cc1a187}} 
+M\+S\+P430\+\_\+\+G2xx3&M\+S\+P430 G2xx3 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MSP430\_F5xx@{MSP430\_F5xx}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!MSP430\_F5xx@{MSP430\_F5xx}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490aafbeb33d0b34fb25aded3af758c27771}\label{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490aafbeb33d0b34fb25aded3af758c27771}} 
+M\+S\+P430\+\_\+\+F5xx&M\+S\+P430 F5xx \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MSP430\_F543x@{MSP430\_F543x}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!MSP430\_F543x@{MSP430\_F543x}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490ad9c4019d1ca41bff58f080a79657ce5e}\label{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490ad9c4019d1ca41bff58f080a79657ce5e}} 
+M\+S\+P430\+\_\+\+F543x&M\+S\+P430 F543x \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MSP430\_F6xx@{MSP430\_F6xx}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!MSP430\_F6xx@{MSP430\_F6xx}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490acb1ec64e534847a79b4e511d5cc7764d}\label{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490acb1ec64e534847a79b4e511d5cc7764d}} 
+M\+S\+P430\+\_\+\+F6xx&M\+S\+P430 F6xx \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MSP430\_FR5xx@{MSP430\_FR5xx}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!MSP430\_FR5xx@{MSP430\_FR5xx}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490ad7c55fc13e7bfdb82391c185ad2c5bbe}\label{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490ad7c55fc13e7bfdb82391c185ad2c5bbe}} 
+M\+S\+P430\+\_\+\+F\+R5xx&M\+S\+P430 F\+R5xx \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MSP430\_FR6xx@{MSP430\_FR6xx}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!MSP430\_FR6xx@{MSP430\_FR6xx}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490a47818d4668f99f1f4e3bbef3b7c394d5}\label{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490a47818d4668f99f1f4e3bbef3b7c394d5}} 
+M\+S\+P430\+\_\+\+F\+R6xx&M\+S\+P430 F\+R6xx \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MSP430\_FR2x33@{MSP430\_FR2x33}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!MSP430\_FR2x33@{MSP430\_FR2x33}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490a98e06ffa6586ae8a82262577d8378117}\label{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490a98e06ffa6586ae8a82262577d8378117}} 
+M\+S\+P430\+\_\+\+F\+R2x33&M\+S\+P430 F\+R2x33 \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MSP430\_FR231x@{MSP430\_FR231x}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!MSP430\_FR231x@{MSP430\_FR231x}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490a84ee9d4e2176a332f2dacb1dc3944d96}\label{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490a84ee9d4e2176a332f2dacb1dc3944d96}} 
+M\+S\+P430\+\_\+\+F\+R231x&M\+S\+P430 F\+R231x \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MSP430\_FR235x@{MSP430\_FR235x}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!MSP430\_FR235x@{MSP430\_FR235x}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490ab36942cb6ee85d8530d7edbaab051876}\label{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490ab36942cb6ee85d8530d7edbaab051876}} 
+M\+S\+P430\+\_\+\+F\+R235x&M\+S\+P430 F\+R235x \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MSP430\_FR215x@{MSP430\_FR215x}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!MSP430\_FR215x@{MSP430\_FR215x}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490ab00ea530e6d293095eb97205d7cda436}\label{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490ab00ea530e6d293095eb97205d7cda436}} 
+M\+S\+P430\+\_\+\+F\+R215x&M\+S\+P430 F\+R215x \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MSP430\_FR413x@{MSP430\_FR413x}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!MSP430\_FR413x@{MSP430\_FR413x}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490a6bc1e7d0c872807b7ad917faf8ad813a}\label{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490a6bc1e7d0c872807b7ad917faf8ad813a}} 
+M\+S\+P430\+\_\+\+F\+R413x&M\+S\+P430 F\+R413x \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MSP430\_FR211x@{MSP430\_FR211x}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!MSP430\_FR211x@{MSP430\_FR211x}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490a91da435665b18eeafd5b7c3794b0962a}\label{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490a91da435665b18eeafd5b7c3794b0962a}} 
+M\+S\+P430\+\_\+\+F\+R211x&M\+S\+P430 F\+R211x \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MSP432\_P401R@{MSP432\_P401R}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!MSP432\_P401R@{MSP432\_P401R}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490aced9b803d4bc56f956fa933ba49b0f59}\label{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490aced9b803d4bc56f956fa933ba49b0f59}} 
+M\+S\+P432\+\_\+\+P401R&M\+S\+P432 P401R \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_aa1c6981cb6f279b5491d861ca555a1d7}\label{namespace_b_s_l430___n_e_t_aa1c6981cb6f279b5491d861ca555a1d7}} 
+\index{BSL430\_NET@{BSL430\_NET}!Mode@{Mode}}
+\index{Mode@{Mode}!BSL430\_NET@{BSL430\_NET}}
+\subsubsection{\texorpdfstring{Mode}{Mode}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_b_s_l430___n_e_t_aa1c6981cb6f279b5491d861ca555a1d7}{B\+S\+L430\+\_\+\+N\+E\+T.\+Mode}} \+: byte\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_1_1_main}{Main}} mode which each library instance can operate in, explicitly stated in constructor or derived from device. 
+
+First word U\+A\+R\+T/\+U\+SB declares the target M\+CU data interface. Please see M\+CU datasheet for more info. 
+
+Second word declares the library, which handles communication. This library needs to be present. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UART\_FTD2XX@{UART\_FTD2XX}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!UART\_FTD2XX@{UART\_FTD2XX}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_aa1c6981cb6f279b5491d861ca555a1d7a1e8f7424bc8f1fb2d9593f1f05e27bc8}\label{namespace_b_s_l430___n_e_t_aa1c6981cb6f279b5491d861ca555a1d7a1e8f7424bc8f1fb2d9593f1f05e27bc8}} 
+U\+A\+R\+T\+\_\+\+F\+T\+D2\+XX&U\+A\+RT mode via proprietary F\+T\+D2\+XX library requires ftdibus.\+sys driver \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UART\_libftdi@{UART\_libftdi}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!UART\_libftdi@{UART\_libftdi}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_aa1c6981cb6f279b5491d861ca555a1d7ad0f63e0e18723fee410b62fe202028a1}\label{namespace_b_s_l430___n_e_t_aa1c6981cb6f279b5491d861ca555a1d7ad0f63e0e18723fee410b62fe202028a1}} 
+U\+A\+R\+T\+\_\+libftdi&U\+A\+RT mode via opensource libftdi library requires libusb \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UART\_Serial@{UART\_Serial}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!UART\_Serial@{UART\_Serial}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_aa1c6981cb6f279b5491d861ca555a1d7a766287f492a16ccdf7b4b2a8a5ba125b}\label{namespace_b_s_l430___n_e_t_aa1c6981cb6f279b5491d861ca555a1d7a766287f492a16ccdf7b4b2a8a5ba125b}} 
+U\+A\+R\+T\+\_\+\+Serial&U\+A\+RT mode via Serial\+Port\+Stream library \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{USB\_HID@{USB\_HID}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!USB\_HID@{USB\_HID}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_aa1c6981cb6f279b5491d861ca555a1d7abc0998f5c74151a4a3dfaa6e2b0af993}\label{namespace_b_s_l430___n_e_t_aa1c6981cb6f279b5491d861ca555a1d7abc0998f5c74151a4a3dfaa6e2b0af993}} 
+U\+S\+B\+\_\+\+H\+ID&U\+SB mode via Hid\+Sharp and Lib\+Usb\+Dot\+Net library \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a5329555917cbeec8fdb5a3fe35126138}\label{namespace_b_s_l430___n_e_t_a5329555917cbeec8fdb5a3fe35126138}} 
+\index{BSL430\_NET@{BSL430\_NET}!ReportResult@{ReportResult}}
+\index{ReportResult@{ReportResult}!BSL430\_NET@{BSL430\_NET}}
+\subsubsection{\texorpdfstring{ReportResult}{ReportResult}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_b_s_l430___n_e_t_a5329555917cbeec8fdb5a3fe35126138}{B\+S\+L430\+\_\+\+N\+E\+T.\+Report\+Result}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_report}{Report}} result. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SUCCESS@{SUCCESS}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!SUCCESS@{SUCCESS}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a5329555917cbeec8fdb5a3fe35126138ad0749aaba8b833466dfcbb0428e4f89c}\label{namespace_b_s_l430___n_e_t_a5329555917cbeec8fdb5a3fe35126138ad0749aaba8b833466dfcbb0428e4f89c}} 
+S\+U\+C\+C\+E\+SS&Action headlined by \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_report}{Report}} Name completed successfully. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SKIPPED@{SKIPPED}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!SKIPPED@{SKIPPED}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a5329555917cbeec8fdb5a3fe35126138a203ec08f57cb105eeb2b121ba6503b52}\label{namespace_b_s_l430___n_e_t_a5329555917cbeec8fdb5a3fe35126138a203ec08f57cb105eeb2b121ba6503b52}} 
+S\+K\+I\+P\+P\+ED&Action headlined by \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_report}{Report}} Name was skipped. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FAILED@{FAILED}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!FAILED@{FAILED}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a5329555917cbeec8fdb5a3fe35126138ab9e14d9b2886bcff408b85aefa780419}\label{namespace_b_s_l430___n_e_t_a5329555917cbeec8fdb5a3fe35126138ab9e14d9b2886bcff408b85aefa780419}} 
+F\+A\+I\+L\+ED&Action headlined by \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_report}{Report}} Name failed. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PENDING@{PENDING}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!PENDING@{PENDING}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a5329555917cbeec8fdb5a3fe35126138ac69f06e1a9b016d133907b4e5f5864d2}\label{namespace_b_s_l430___n_e_t_a5329555917cbeec8fdb5a3fe35126138ac69f06e1a9b016d133907b4e5f5864d2}} 
+P\+E\+N\+D\+I\+NG&Action headlined by \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_report}{Report}} Name is currently in progress. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a4cd6f8166a2a97ccb3405df2287d4ba8}\label{namespace_b_s_l430___n_e_t_a4cd6f8166a2a97ccb3405df2287d4ba8}} 
+\index{BSL430\_NET@{BSL430\_NET}!ScanOptions@{ScanOptions}}
+\index{ScanOptions@{ScanOptions}!BSL430\_NET@{BSL430\_NET}}
+\subsubsection{\texorpdfstring{ScanOptions}{ScanOptions}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_b_s_l430___n_e_t_a4cd6f8166a2a97ccb3405df2287d4ba8}{B\+S\+L430\+\_\+\+N\+E\+T.\+Scan\+Options}} \+: byte\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+\mbox{[}Flags\mbox{]} Scan Options adjust scanner behavior, use it like this\+: (Usb\+Hid\+\_\+\+Ignore\+Texas\+Vid $\vert$ Ftdi\+\_\+\+Ignore\+Unknown\+Dev) 
+
+\textquotesingle{}Usb\+Hid\+\_\+\+Ignore\+Texas\+Vid\textquotesingle{} forces scanner to ignore TI V\+I\+D(0x2047) and get all U\+SB H\+ID devices present in system. 
+
+\textquotesingle{}Ftdi\+\_\+\+Ignore\+Unknown\+Dev\textquotesingle{} forces scanner to ignore \char`\"{}unknown\char`\"{} type devices, that are most likely already connected. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{None@{None}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!None@{None}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a4cd6f8166a2a97ccb3405df2287d4ba8a6adf97f83acf6453d4a6a4b1070f3754}\label{namespace_b_s_l430___n_e_t_a4cd6f8166a2a97ccb3405df2287d4ba8a6adf97f83acf6453d4a6a4b1070f3754}} 
+None&\mbox{[}Flag\mbox{]} Default value None has zero effect on scanner. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UsbHid\_IgnoreTexasVid@{UsbHid\_IgnoreTexasVid}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!UsbHid\_IgnoreTexasVid@{UsbHid\_IgnoreTexasVid}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a4cd6f8166a2a97ccb3405df2287d4ba8a312c91a2fcbbf5ab7fc303f318179b60}\label{namespace_b_s_l430___n_e_t_a4cd6f8166a2a97ccb3405df2287d4ba8a312c91a2fcbbf5ab7fc303f318179b60}} 
+Usb\+Hid\+\_\+\+Ignore\+Texas\+Vid&\mbox{[}Flag\mbox{]} Forces scanner to ignore TI V\+I\+D(0x2047) and get all U\+SB H\+ID devices present in system. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Ftdi\_IgnoreUnknownDev@{Ftdi\_IgnoreUnknownDev}!BSL430\_NET@{BSL430\_NET}}\index{BSL430\_NET@{BSL430\_NET}!Ftdi\_IgnoreUnknownDev@{Ftdi\_IgnoreUnknownDev}}}\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a4cd6f8166a2a97ccb3405df2287d4ba8afbe2059f92ca0f1d2a8fe47b5853f0e1}\label{namespace_b_s_l430___n_e_t_a4cd6f8166a2a97ccb3405df2287d4ba8afbe2059f92ca0f1d2a8fe47b5853f0e1}} 
+Ftdi\+\_\+\+Ignore\+Unknown\+Dev&\mbox{[}Flag\mbox{]} Forces scanner to ignore \char`\"{}unknown\char`\"{} type devices, that are most likely already connected. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespace_b_s_l430___n_e_t_a98dbd2acd09405042ee92547353c9f81}\label{namespace_b_s_l430___n_e_t_a98dbd2acd09405042ee92547353c9f81}} 
+\index{BSL430\_NET@{BSL430\_NET}!Bsl430NetEventHandler@{Bsl430NetEventHandler}}
+\index{Bsl430NetEventHandler@{Bsl430NetEventHandler}!BSL430\_NET@{BSL430\_NET}}
+\subsubsection{\texorpdfstring{Bsl430NetEventHandler()}{Bsl430NetEventHandler()}}
+{\footnotesize\ttfamily delegate void B\+S\+L430\+\_\+\+N\+E\+T.\+Bsl430\+Net\+Event\+Handler (\begin{DoxyParamCaption}\item[{object}]{source,  }\item[{\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_bsl430_net_event_args}{Bsl430\+Net\+Event\+Args}}}]{e }\end{DoxyParamCaption})}
+
+
+
+B\+S\+L430.\+N\+ET Event handler. 
+

@@ -1,0 +1,72 @@
+.TH "BSL430_NET.Comm.FTDI_Device" 3 "Sat Jun 22 2019" "Version 1.2.1" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BSL430_NET.Comm.FTDI_Device \- FTDI Device node extends generic \fBBsl430NetDevice\fP\&. Use requires D2XX library (FTD2XX\&.dll or libftd2xx\&.so) and driver installed (ftdibus\&.sys)\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBBSL430_NET\&.Bsl430NetDevice\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFTDI_Device\fP (int _vid, int _pid, string _type, string _serial, string name, string desc, string fulldesc, \fBMode\fP mode)"
+.br
+.RI "\fBFTDI_Device\fP constructor\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "readonly int \fBvid\fP"
+.br
+.RI "FTDI device VID eg\&. VID: 0x0403\&. "
+.ti -1c
+.RI "readonly int \fBpid\fP"
+.br
+.RI "FTDI device PID eg\&. 0x6001\&. "
+.ti -1c
+.RI "readonly string \fBtype\fP"
+.br
+.RI "FTDI device type eg\&. FT232R\&. "
+.ti -1c
+.RI "readonly string \fBserial\fP"
+.br
+.RI "FTDI device serial number\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+FTDI Device node extends generic \fBBsl430NetDevice\fP\&. Use requires D2XX library (FTD2XX\&.dll or libftd2xx\&.so) and driver installed (ftdibus\&.sys)\&. 
+
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "BSL430_NET\&.Comm\&.FTDI_Device\&.FTDI_Device (int _vid, int _pid, string _type, string _serial, string name, string desc, string fulldesc, \fBMode\fP mode)"
+
+.PP
+\fBFTDI_Device\fP constructor\&. 
+.SH "Member Data Documentation"
+.PP 
+.SS "readonly int BSL430_NET\&.Comm\&.FTDI_Device\&.pid"
+
+.PP
+FTDI device PID eg\&. 0x6001\&. 
+.SS "readonly string BSL430_NET\&.Comm\&.FTDI_Device\&.serial"
+
+.PP
+FTDI device serial number\&. 
+.SS "readonly string BSL430_NET\&.Comm\&.FTDI_Device\&.type"
+
+.PP
+FTDI device type eg\&. FT232R\&. 
+.SS "readonly int BSL430_NET\&.Comm\&.FTDI_Device\&.vid"
+
+.PP
+FTDI device VID eg\&. VID: 0x0403\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

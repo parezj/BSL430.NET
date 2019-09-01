@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>LibUsbDotNet</id>
+    <version>2.2.29</version>
+    <authors>Travis Robinson,Stevie-O,Quamotion</authors>
+    <owners>Travis Robinson,Stevie-O,Quamotion</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/LibUsbDotNet/LibUsbDotNet/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/LibUsbDotNet/LibUsbDotNet/</projectUrl>
+    <iconUrl>http://c.fsdn.com/allura/p/libusbdotnet/icon</iconUrl>
+    <description>.NET C# USB library for WinUSB, LibUsb-Win32, and libusb-1.0. Using the common device classes, applications work with all operating systems and drivers without modification. Lots of example code. Open source software at sourceforge.net.</description>
+    <repository type="git" url="https://github.com/LibUsbDotNet/LibUsbDotNet" commit="5dd91a2fda393cf11db2072f2b45c3aee2750388" />
+    <dependencies>
+      <group targetFramework=".NETFramework4.5" />
+      <group targetFramework=".NETStandard1.6">
+        <dependency id="Microsoft.Win32.Registry" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="NETStandard.Library" version="1.6.1" exclude="Build,Analyzers" />
+        <dependency id="System.Collections" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Diagnostics.Debug" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.IO.FileSystem" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.IO.FileSystem.Watcher" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Resources.ResourceManager" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Runtime.Extensions" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Runtime.InteropServices" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Runtime.InteropServices.RuntimeInformation" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Text.RegularExpressions" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Threading" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.Overlapped" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.Thread" version="4.3.0" exclude="Build,Analyzers" />
+        <dependency id="System.Threading.Timer" version="4.3.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETCoreApp2.0">
+        <dependency id="Microsoft.Win32.Registry" version="4.5.0" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Microsoft.Win32.Registry" version="4.5.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="Microsoft.CSharp" targetFramework=".NETFramework4.5" />
+      <frameworkAssembly assemblyName="System" targetFramework=".NETFramework4.5" />
+      <frameworkAssembly assemblyName="System.Windows.Forms" targetFramework=".NETFramework4.5" />
+    </frameworkAssemblies>
+  </metadata>
+</package>

@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "BSL430.NET": {
+      "commandName": "Executable",
+      "executablePath": "F:\\C# PROJECTS\\BSL430.NET\\src\\BSL430.NET.WPF\\bin\\x86\\Debug\\BSL430.NET.WPF.exe",
+      "nativeDebugging": false
+    }
+  }
+}

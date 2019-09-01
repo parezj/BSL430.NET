@@ -1,0 +1,131 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <ProjectGuid>{23BAAE71-7B4C-452D-85CC-82057C70BB62}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>BSL430_NET_WPF</RootNamespace>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.2.6.0</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <AssemblyTitle>BSL430.NET - MSP430 Toolchain &amp; Firmware Tools</AssemblyTitle>
+    <Company>Jakub Parez</Company>
+    <Product>BSL430.NET.WPF</Product>
+    <Description>TI MSP430 Bootloader Toolchain &amp; Firmware Tools</Description>
+    <Copyright>Jakub Parez ©  2019</Copyright>
+    <AssemblyVersion>1.2.6.0</AssemblyVersion>
+    <FileVersion>1.2.6.0</FileVersion>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseWPF>true</UseWPF>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <PostBuildEvent>%25windir%25\system32\xcopy /Y "$(TargetDir)*.*" "$(SolutionDir)..\build\BSL430.NET.WPF\*.*"</PostBuildEvent>
+    <Platforms>x86</Platforms>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Img\logo2.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>89DA8E4FC31C377B5EE2C477F2BD1A478977F84E</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>%25windir%25\system32\xcopy /Y "$(TargetDir)*.*" "$(SolutionDir)..\build\BSL430.NET.WPF\*.*"</PostBuildEvent>
+    <AssemblyName>BSL430.NET.WPF</AssemblyName>
+    <Authors>Jakub Parez</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/parezj/BSL430.NET</PackageProjectUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="WPFHexaEditor, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>lib\WPFHexaEditor.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <EmbeddedResource Include="Resources\XML_dark.xshd" />
+    <EmbeddedResource Include="Resources\XML_light.xshd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="FodyWeavers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BSL430.NET\BSL430.NET.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\MSP430F169.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Img\TexasInstruments-Logo_dark.png" />
+    <Resource Include="Resources\Img\TexasInstruments-Logo_light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="costura32\ftd2xx.dll" />
+    <EmbeddedResource Include="costura32\libftdi1.dll" />
+    <EmbeddedResource Include="costura32\libusb-1.0.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="costura64\ftd2xx64.dll" />
+    <Content Include="costura64\libftdi1.dll" />
+    <Content Include="costura64\libusb-1.0.dll" />
+    <Content Include="lib\WPFHexaEditor.dll" />
+    <EmbeddedResource Include="Resources\file.ico" />
+    <EmbeddedResource Include="Resources\logo2.ico" />
+    <None Include="Resources\Img\TexasInstruments-Logo_dark_f.png" />
+    <None Include="Resources\Img\TexasInstruments-Logo_light_f.png" />
+    <Resource Include="Resources\Img\logo2.png" />
+    <None Include="Resources\Img\logo.ico" />
+    <Resource Include="Resources\Img\logo2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="AvalonEdit" Version="6.0.0-preview1" />
+    <PackageReference Include="Caliburn.Micro" Version="3.2.0" />
+    <PackageReference Include="Config.Net" Version="4.13.7" />
+    <PackageReference Include="Config.Net.Json" Version="4.13.7" />
+    <PackageReference Include="ControlzEx" Version="4.0.2" />
+    <PackageReference Include="Costura.Fody" Version="4.1.0" />
+    <PackageReference Include="Fody" Version="6.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Hardcodet.NotifyIcon.Wpf" Version="1.0.8" />
+    <PackageReference Include="MahApps.Metro" Version="2.0.0-alpha0455" />
+    <PackageReference Include="MahApps.Metro.IconPacks.Entypo" Version="3.0.0-alpha0206" />
+    <PackageReference Include="MahApps.Metro.IconPacks.FontAwesome" Version="3.0.0-alpha0206" />
+    <PackageReference Include="MahApps.Metro.IconPacks.Modern" Version="3.0.0-alpha0206" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
+    <PackageReference Include="Microsoft.Win32.Registry" Version="4.5.0" />
+    <PackageReference Include="Microsoft.Windows.Compatibility" Version="2.1.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3-beta1" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+    <PackageReference Include="System.Management" Version="4.5.0" />
+    <PackageReference Include="WindowsBase" Version="4.6.1055" />
+  </ItemGroup>
+</Project>

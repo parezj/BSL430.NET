@@ -1,0 +1,58 @@
+\hypertarget{class_b_s_l430___n_e_t_1_1_comm_1_1_comm_libftdi}{}\section{B\+S\+L430\+\_\+\+N\+E\+T.\+Comm.\+Comm\+Libftdi Class Reference}
+\label{class_b_s_l430___n_e_t_1_1_comm_1_1_comm_libftdi}\index{BSL430\_NET.Comm.CommLibftdi@{BSL430\_NET.Comm.CommLibftdi}}
+Inheritance diagram for B\+S\+L430\+\_\+\+N\+E\+T.\+Comm.\+Comm\+Libftdi\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.731707cm]{class_b_s_l430___n_e_t_1_1_comm_1_1_comm_libftdi}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_b_s_l430___n_e_t_1_1_comm_1_1_comm_libftdi_a145170f60b31681f511ef5cb0730425d}\label{class_b_s_l430___n_e_t_1_1_comm_1_1_comm_libftdi_a145170f60b31681f511ef5cb0730425d}} 
+{\bfseries Comm\+Libftdi} (\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_b_s_l430_n_e_t}{B\+S\+L430\+N\+ET}} root=null, \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_bsl430_net_device}{Bsl430\+Net\+Device}} device=null)
+\item 
+\mbox{\Hypertarget{class_b_s_l430___n_e_t_1_1_comm_1_1_comm_libftdi_a830531600b4228d60c0d1309e71c93d1}\label{class_b_s_l430___n_e_t_1_1_comm_1_1_comm_libftdi_a830531600b4228d60c0d1309e71c93d1}} 
+override void {\bfseries Comm\+Open} (\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_bsl430_net_device}{Bsl430\+Net\+Device}} device)
+\item 
+\mbox{\Hypertarget{class_b_s_l430___n_e_t_1_1_comm_1_1_comm_libftdi_af5bbcf84e4701a8e469c028e1c170f2b}\label{class_b_s_l430___n_e_t_1_1_comm_1_1_comm_libftdi_af5bbcf84e4701a8e469c028e1c170f2b}} 
+override void {\bfseries Comm\+Set} (\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a8d30c263598635a481840944d38aeb70}{Baud\+Rate}} baud\+\_\+rate)
+\item 
+\mbox{\Hypertarget{class_b_s_l430___n_e_t_1_1_comm_1_1_comm_libftdi_a9c9a88559ff7b3c60cc56b15e2bd4663}\label{class_b_s_l430___n_e_t_1_1_comm_1_1_comm_libftdi_a9c9a88559ff7b3c60cc56b15e2bd4663}} 
+override void {\bfseries Comm\+Dtr} (bool val, bool ignore\+\_\+err=false)
+\item 
+\mbox{\Hypertarget{class_b_s_l430___n_e_t_1_1_comm_1_1_comm_libftdi_a6ea78a78239528a9502fa7fa25ed2ec2}\label{class_b_s_l430___n_e_t_1_1_comm_1_1_comm_libftdi_a6ea78a78239528a9502fa7fa25ed2ec2}} 
+override void {\bfseries Comm\+Rts} (bool val, bool ignore\+\_\+err=false)
+\item 
+\mbox{\Hypertarget{class_b_s_l430___n_e_t_1_1_comm_1_1_comm_libftdi_a28b1bece8f37e84a2e1beebd68c62097}\label{class_b_s_l430___n_e_t_1_1_comm_1_1_comm_libftdi_a28b1bece8f37e84a2e1beebd68c62097}} 
+override void {\bfseries Comm\+Clr\+Buff} ()
+\item 
+\mbox{\Hypertarget{class_b_s_l430___n_e_t_1_1_comm_1_1_comm_libftdi_acd6d3483a6f1b9ba067390027c257cdd}\label{class_b_s_l430___n_e_t_1_1_comm_1_1_comm_libftdi_acd6d3483a6f1b9ba067390027c257cdd}} 
+override void {\bfseries Comm\+Close} (bool ignore\+\_\+err)
+\item 
+\mbox{\Hypertarget{class_b_s_l430___n_e_t_1_1_comm_1_1_comm_libftdi_ac162e16141f6375270cdcee61c347762}\label{class_b_s_l430___n_e_t_1_1_comm_1_1_comm_libftdi_ac162e16141f6375270cdcee61c347762}} 
+override \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status}{Status}} {\bfseries Comm\+Xfer} (out byte\mbox{[}$\,$\mbox{]} msg\+\_\+rx, byte\mbox{[}$\,$\mbox{]} msg\+\_\+tx, int rx\+\_\+size)
+\item 
+\mbox{\Hypertarget{class_b_s_l430___n_e_t_1_1_comm_1_1_comm_libftdi_a64e797fc1001a3c114809d02ed6eab61}\label{class_b_s_l430___n_e_t_1_1_comm_1_1_comm_libftdi_a64e797fc1001a3c114809d02ed6eab61}} 
+override \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status}{Status}} {\bfseries Scan$<$ Libftdi\+\_\+\+Device $>$} (out List$<$ \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_comm_1_1_libftdi___device}{Libftdi\+\_\+\+Device}} $>$ device\+\_\+list, \mbox{\hyperlink{namespace_b_s_l430___n_e_t_a4cd6f8166a2a97ccb3405df2287d4ba8}{Scan\+Options}} scan\+\_\+opt=\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a4cd6f8166a2a97ccb3405df2287d4ba8a6adf97f83acf6453d4a6a4b1070f3754}{Scan\+Options.\+None}})
+\item 
+\mbox{\Hypertarget{class_b_s_l430___n_e_t_1_1_comm_1_1_comm_libftdi_ada174f1ad4115190b0c717715ece2ea2}\label{class_b_s_l430___n_e_t_1_1_comm_1_1_comm_libftdi_ada174f1ad4115190b0c717715ece2ea2}} 
+override \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_bsl430_net_device}{Bsl430\+Net\+Device}} {\bfseries Comm\+Get\+Default\+Device} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_b_s_l430___n_e_t_1_1_comm_1_1_comm_libftdi_ad95f97be4d545e6875ce648895cc775e}\label{class_b_s_l430___n_e_t_1_1_comm_1_1_comm_libftdi_ad95f97be4d545e6875ce648895cc775e}} 
+const string {\bfseries D\+E\+V\+I\+C\+E\+\_\+\+P\+R\+E\+F\+IX} = \char`\"{}libftdi\char`\"{}
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_b_s_l430___n_e_t_1_1_comm_1_1_comm_libftdi_a17912ba810d846498cb215bd93dc76d6}\label{class_b_s_l430___n_e_t_1_1_comm_1_1_comm_libftdi_a17912ba810d846498cb215bd93dc76d6}} 
+override \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_bsl430_net_device}{Bsl430\+Net\+Device}} {\bfseries Default\+Device} = null\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+P\+R\+O\+J\+E\+C\+T\+S/\+C\#/\+B\+S\+L430.\+N\+E\+T/src/\+B\+S\+L430.\+N\+E\+T/Comm\+Libftdi.\+cs\end{DoxyCompactItemize}

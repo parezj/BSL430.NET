@@ -1,0 +1,147 @@
+.TH "RJCP.IO.Ports.Native.Windows.CommState" 3 "Sat Jun 22 2019" "Version 1.2.1" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+RJCP.IO.Ports.Native.Windows.CommState \- Abstracts the Win32 API \fBGetCommState()\fP and \fBSetCommState()\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCommState\fP (SafeFileHandle handle)"
+.br
+.RI "Constructor for a DCB, prefilled with data from the handle provided\&. "
+.ti -1c
+.RI "void \fBGetCommState\fP ()"
+.br
+.RI "Call Win32API to get the DCB for the current serial port object\&. "
+.ti -1c
+.RI "void \fBSetCommState\fP ()"
+.br
+.RI "Call Win32API to set the DCB based on the current properties of this object\&. "
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool? \fBBinary\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBBaudRate\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool? \fBParityEnable\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool? \fBOutCtsFlow\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool? \fBOutDsrFlow\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBDtrControl\fP \fBDtrControl\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool? \fBDsrSensitivity\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool? \fBTxContinueOnXOff\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool? \fBOutX\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool? \fBInX\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "byte \fBXOnChar\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "byte \fBXOffChar\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool? \fBErrorCharEnabled\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "byte \fBErrorChar\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "byte \fBEventChar\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "byte \fBEofChar\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool? \fBNull\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBRtsControl\fP \fBRtsControl\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "bool? \fBAbortOnError\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBXonLim\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBXoffLim\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBByteSize\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBParity\fP \fBParity\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "\fBStopBits\fP \fBStopBits\fP\fC [get, set]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Abstracts the Win32 API \fBGetCommState()\fP and \fBSetCommState()\fP\&. 
+
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "RJCP\&.IO\&.Ports\&.Native\&.Windows\&.CommState\&.CommState (SafeFileHandle handle)"
+
+.PP
+Constructor for a DCB, prefilled with data from the handle provided\&. This constructor allocates space for a DCB (Device Control Block) and gets the state of the serial port provided by the handle\&. You can then update the DCB with the properties of this class and set them with the \fBSetCommState()\fP method\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIhandle\fP Valid handle to a serial port object\&.
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void RJCP\&.IO\&.Ports\&.Native\&.Windows\&.CommState\&.GetCommState ()"
+
+.PP
+Call Win32API to get the DCB for the current serial port object\&. Calls the Win32 native API to get the DCB for the current serial port object\&. This assumes that the handle is valid\&. The Operating \fBSystem\fP will check the handle for validity\&. If there are problems, the IOException() exception will be raised\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIIOException\fP The DCB could not be obtained\&.
+.RE
+.PP
+
+.SS "void RJCP\&.IO\&.Ports\&.Native\&.Windows\&.CommState\&.SetCommState ()"
+
+.PP
+Call Win32API to set the DCB based on the current properties of this object\&. Calls the Win32 native API to get the DCB for the current serial port object\&. This assumes that the handle is valid\&. The Operating \fBSystem\fP will check the handle for validity\&. If there are problems, the IOException() exception will be raised\&. 
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIIOException\fP The DCB could not be set\&. The reasons why the DCB cannot be set may be dependent on an invalid handle, or an invalid combination of data in the DCB\&.
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

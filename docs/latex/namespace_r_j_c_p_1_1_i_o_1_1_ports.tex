@@ -1,0 +1,270 @@
+\hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports}{}\section{R\+J\+C\+P.\+I\+O.\+Ports Namespace Reference}
+\label{namespace_r_j_c_p_1_1_i_o_1_1_ports}\index{RJCP.IO.Ports@{RJCP.IO.Ports}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_internal_application_exception}{Internal\+Application\+Exception}}
+\begin{DoxyCompactList}\small\item\em Indicates an unexpected internal error occurred in the application. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_port_description}{Port\+Description}}
+\begin{DoxyCompactList}\small\item\em A class containing information about a serial port. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_serial_data_received_event_args}{Serial\+Data\+Received\+Event\+Args}}
+\begin{DoxyCompactList}\small\item\em Event\+Args for Data\+Received. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_serial_error_received_event_args}{Serial\+Error\+Received\+Event\+Args}}
+\begin{DoxyCompactList}\small\item\em Event\+Args for Error\+Received. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_serial_pin_changed_event_args}{Serial\+Pin\+Changed\+Event\+Args}}
+\begin{DoxyCompactList}\small\item\em Event\+Args for Pin\+Changed. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_serial_port_stream}{Serial\+Port\+Stream}}
+\begin{DoxyCompactList}\small\item\em The \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_serial_port_stream}{Serial\+Port\+Stream}} is a stream class to communicate with serial port based devices. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a5328e888558ed5726b3fb7b8b692527c}{Handshake}} \{ \newline
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a5328e888558ed5726b3fb7b8b692527ca6adf97f83acf6453d4a6a4b1070f3754}{Handshake.\+None}} = 0, 
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a5328e888558ed5726b3fb7b8b692527ca82413f1c9d1afb8880cca6940f3f7977}{Handshake.\+X\+On}} = 1, 
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a5328e888558ed5726b3fb7b8b692527ca5dfdbba09e0706d303ed1d002d3c1546}{Handshake.\+Rts}} = 2, 
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a5328e888558ed5726b3fb7b8b692527ca7095002aab23dfc4f01168045a33de97}{Handshake.\+Dtr}} = 4, 
+\newline
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a5328e888558ed5726b3fb7b8b692527ca3de0b8bed72e762b8be29c398cf284b2}{Handshake.\+Rts\+X\+On}} = Rts $\vert$ X\+On, 
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a5328e888558ed5726b3fb7b8b692527ca2f22a0cc6b9e8b9fb186691ddab01a57}{Handshake.\+Dtr\+X\+On}} = Dtr $\vert$ X\+On, 
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a5328e888558ed5726b3fb7b8b692527ca1f691e91fa9dadee3f1af3ccbec47cab}{Handshake.\+Dtr\+Rts}} = Dtr $\vert$ Rts, 
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a5328e888558ed5726b3fb7b8b692527ca39f247ee061241312d8ff325496af8f2}{Handshake.\+Dtr\+Rts\+X\+On}} = Dtr $\vert$ Rts $\vert$ X\+On
+ \}
+\begin{DoxyCompactList}\small\item\em Handshaking mode to use. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a35c8c760a80dd0392e605dd3ad169954}{Parity}} \{ \newline
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a35c8c760a80dd0392e605dd3ad169954a6adf97f83acf6453d4a6a4b1070f3754}{Parity.\+None}} = 0, 
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a35c8c760a80dd0392e605dd3ad169954a37b6bd7fe61d651735cec3d3b0356c66}{Parity.\+Odd}} = 1, 
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a35c8c760a80dd0392e605dd3ad169954a35537fbc25d87ffe59e4f35fefcd34b7}{Parity.\+Even}} = 2, 
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a35c8c760a80dd0392e605dd3ad169954ab82a9a13f4651e9abcbde90cd24ce2cb}{Parity.\+Mark}} = 3, 
+\newline
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a35c8c760a80dd0392e605dd3ad169954ad511f8439ecde36647437fbba67a4394}{Parity.\+Space}} = 4
+ \}
+\begin{DoxyCompactList}\small\item\em The type of parity to use. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a2a76844574a0724e6b7755e2f6ec3681}{Serial\+Data}} \{ \mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a2a76844574a0724e6b7755e2f6ec3681acbf169aecd4365561eb6b245659f55d8}{Serial\+Data.\+No\+Data}} = 0, 
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a2a76844574a0724e6b7755e2f6ec3681a1d2deb7774be5c79235080ec92e12c98}{Serial\+Data.\+Chars}} = 0x0001, 
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a2a76844574a0724e6b7755e2f6ec3681a49650dcc55dc413da4032cbe44b15d37}{Serial\+Data.\+Eof}} = 0x0002
+ \}
+\begin{DoxyCompactList}\small\item\em Event related information on Data\+Received \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a117eef0f83d73b56ed3f13d084902e98}{Serial\+Error}} \{ \newline
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a117eef0f83d73b56ed3f13d084902e98a70a47cae4eb221930f2663fd244369ea}{Serial\+Error.\+No\+Error}} = 0, 
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a117eef0f83d73b56ed3f13d084902e98a062810f39026589e92122604ee543a83}{Serial\+Error.\+R\+X\+Over}} = 0x0001, 
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a117eef0f83d73b56ed3f13d084902e98a9fa996dc830f67a458e46cf1463d5cd3}{Serial\+Error.\+Overrun}} = 0x0002, 
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a117eef0f83d73b56ed3f13d084902e98a3a3e6bce3957a809a705fe9f757a81ba}{Serial\+Error.\+R\+X\+Parity}} = 0x0004, 
+\newline
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a117eef0f83d73b56ed3f13d084902e98a3bb3e8c8a24891ba0f7608bcc96f8b0a}{Serial\+Error.\+Frame}} = 0x0008, 
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a117eef0f83d73b56ed3f13d084902e98a97379078d4b231a1750c7a97217aaf3f}{Serial\+Error.\+T\+X\+Full}} = 0x0100
+ \}
+\begin{DoxyCompactList}\small\item\em Event related information on Error\+Received. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_abe559cc956a8d6ec76d331e52b774a71}{Serial\+Pin\+Change}} \{ \newline
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_abe559cc956a8d6ec76d331e52b774a71a4bac8cdf0a968472b519b3b295d0d48b}{Serial\+Pin\+Change.\+No\+Change}} = 0, 
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_abe559cc956a8d6ec76d331e52b774a71a50faef698c8d4c83049ba75a11fc6844}{Serial\+Pin\+Change.\+Cts\+Changed}} = 0x08, 
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_abe559cc956a8d6ec76d331e52b774a71a5a49998aed1e1d414f0ef9cc605e4d5b}{Serial\+Pin\+Change.\+Dsr\+Changed}} = 0x10, 
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_abe559cc956a8d6ec76d331e52b774a71a0ad3052878fa86d619f4400f03ee3c48}{Serial\+Pin\+Change.\+C\+D\+Changed}} = 0x20, 
+\newline
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_abe559cc956a8d6ec76d331e52b774a71ae4c38d6d45baf080943d323dd51a2ce8}{Serial\+Pin\+Change.\+Break}} = 0x40, 
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_abe559cc956a8d6ec76d331e52b774a71ad4db177c94738b72bf9ce61e988ab1f1}{Serial\+Pin\+Change.\+Ring}} = 0x100
+ \}
+\begin{DoxyCompactList}\small\item\em Event related data on Pin\+Changed. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a56a13b591d46736acafe20f2976c84fa}{Stop\+Bits}} \{ \mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a56a13b591d46736acafe20f2976c84faa06c2cea18679d64399783748fa367bdd}{Stop\+Bits.\+One}} = 0, 
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a56a13b591d46736acafe20f2976c84faac1ced57069889668088d8d24691407b4}{Stop\+Bits.\+One5}} = 1, 
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a56a13b591d46736acafe20f2976c84faaaada29daee1d64ed0fe907043855cb7e}{Stop\+Bits.\+Two}} = 2
+ \}
+\begin{DoxyCompactList}\small\item\em Number of stop bits to use. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_a5328e888558ed5726b3fb7b8b692527c}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_a5328e888558ed5726b3fb7b8b692527c}} 
+\index{RJCP.IO.Ports@{RJCP.IO.Ports}!Handshake@{Handshake}}
+\index{Handshake@{Handshake}!RJCP.IO.Ports@{RJCP.IO.Ports}}
+\subsubsection{\texorpdfstring{Handshake}{Handshake}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a5328e888558ed5726b3fb7b8b692527c}{R\+J\+C\+P.\+I\+O.\+Ports.\+Handshake}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Handshaking mode to use. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{None@{None}!RJCP.IO.Ports@{RJCP.IO.Ports}}\index{RJCP.IO.Ports@{RJCP.IO.Ports}!None@{None}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_a5328e888558ed5726b3fb7b8b692527ca6adf97f83acf6453d4a6a4b1070f3754}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_a5328e888558ed5726b3fb7b8b692527ca6adf97f83acf6453d4a6a4b1070f3754}} 
+None&No handshaking. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{XOn@{XOn}!RJCP.IO.Ports@{RJCP.IO.Ports}}\index{RJCP.IO.Ports@{RJCP.IO.Ports}!XOn@{XOn}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_a5328e888558ed5726b3fb7b8b692527ca82413f1c9d1afb8880cca6940f3f7977}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_a5328e888558ed5726b3fb7b8b692527ca82413f1c9d1afb8880cca6940f3f7977}} 
+X\+On&Software handshaking. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Rts@{Rts}!RJCP.IO.Ports@{RJCP.IO.Ports}}\index{RJCP.IO.Ports@{RJCP.IO.Ports}!Rts@{Rts}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_a5328e888558ed5726b3fb7b8b692527ca5dfdbba09e0706d303ed1d002d3c1546}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_a5328e888558ed5726b3fb7b8b692527ca5dfdbba09e0706d303ed1d002d3c1546}} 
+Rts&Hardware handshaking (R\+T\+S/\+C\+TS). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Dtr@{Dtr}!RJCP.IO.Ports@{RJCP.IO.Ports}}\index{RJCP.IO.Ports@{RJCP.IO.Ports}!Dtr@{Dtr}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_a5328e888558ed5726b3fb7b8b692527ca7095002aab23dfc4f01168045a33de97}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_a5328e888558ed5726b3fb7b8b692527ca7095002aab23dfc4f01168045a33de97}} 
+Dtr&Hardware handshaking (D\+T\+R/\+D\+SR) (uncommon). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RtsXOn@{RtsXOn}!RJCP.IO.Ports@{RJCP.IO.Ports}}\index{RJCP.IO.Ports@{RJCP.IO.Ports}!RtsXOn@{RtsXOn}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_a5328e888558ed5726b3fb7b8b692527ca3de0b8bed72e762b8be29c398cf284b2}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_a5328e888558ed5726b3fb7b8b692527ca3de0b8bed72e762b8be29c398cf284b2}} 
+Rts\+X\+On&R\+TS and Software handshaking. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DtrXOn@{DtrXOn}!RJCP.IO.Ports@{RJCP.IO.Ports}}\index{RJCP.IO.Ports@{RJCP.IO.Ports}!DtrXOn@{DtrXOn}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_a5328e888558ed5726b3fb7b8b692527ca2f22a0cc6b9e8b9fb186691ddab01a57}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_a5328e888558ed5726b3fb7b8b692527ca2f22a0cc6b9e8b9fb186691ddab01a57}} 
+Dtr\+X\+On&D\+TR and Software handshaking (uncommon). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DtrRts@{DtrRts}!RJCP.IO.Ports@{RJCP.IO.Ports}}\index{RJCP.IO.Ports@{RJCP.IO.Ports}!DtrRts@{DtrRts}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_a5328e888558ed5726b3fb7b8b692527ca1f691e91fa9dadee3f1af3ccbec47cab}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_a5328e888558ed5726b3fb7b8b692527ca1f691e91fa9dadee3f1af3ccbec47cab}} 
+Dtr\+Rts&Hardware handshaking with R\+T\+S/\+C\+TS and D\+T\+R/\+D\+SR (uncommon). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DtrRtsXOn@{DtrRtsXOn}!RJCP.IO.Ports@{RJCP.IO.Ports}}\index{RJCP.IO.Ports@{RJCP.IO.Ports}!DtrRtsXOn@{DtrRtsXOn}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_a5328e888558ed5726b3fb7b8b692527ca39f247ee061241312d8ff325496af8f2}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_a5328e888558ed5726b3fb7b8b692527ca39f247ee061241312d8ff325496af8f2}} 
+Dtr\+Rts\+X\+On&Hardware handshaking with R\+T\+S/\+C\+TS and D\+T\+R/\+D\+SR and Software handshaking (uncommon). \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_a35c8c760a80dd0392e605dd3ad169954}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_a35c8c760a80dd0392e605dd3ad169954}} 
+\index{RJCP.IO.Ports@{RJCP.IO.Ports}!Parity@{Parity}}
+\index{Parity@{Parity}!RJCP.IO.Ports@{RJCP.IO.Ports}}
+\subsubsection{\texorpdfstring{Parity}{Parity}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a35c8c760a80dd0392e605dd3ad169954}{R\+J\+C\+P.\+I\+O.\+Ports.\+Parity}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+The type of parity to use. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{None@{None}!RJCP.IO.Ports@{RJCP.IO.Ports}}\index{RJCP.IO.Ports@{RJCP.IO.Ports}!None@{None}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_a35c8c760a80dd0392e605dd3ad169954a6adf97f83acf6453d4a6a4b1070f3754}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_a35c8c760a80dd0392e605dd3ad169954a6adf97f83acf6453d4a6a4b1070f3754}} 
+None&No parity. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Odd@{Odd}!RJCP.IO.Ports@{RJCP.IO.Ports}}\index{RJCP.IO.Ports@{RJCP.IO.Ports}!Odd@{Odd}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_a35c8c760a80dd0392e605dd3ad169954a37b6bd7fe61d651735cec3d3b0356c66}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_a35c8c760a80dd0392e605dd3ad169954a37b6bd7fe61d651735cec3d3b0356c66}} 
+Odd&Odd parity. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Even@{Even}!RJCP.IO.Ports@{RJCP.IO.Ports}}\index{RJCP.IO.Ports@{RJCP.IO.Ports}!Even@{Even}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_a35c8c760a80dd0392e605dd3ad169954a35537fbc25d87ffe59e4f35fefcd34b7}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_a35c8c760a80dd0392e605dd3ad169954a35537fbc25d87ffe59e4f35fefcd34b7}} 
+Even&Even parity. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Mark@{Mark}!RJCP.IO.Ports@{RJCP.IO.Ports}}\index{RJCP.IO.Ports@{RJCP.IO.Ports}!Mark@{Mark}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_a35c8c760a80dd0392e605dd3ad169954ab82a9a13f4651e9abcbde90cd24ce2cb}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_a35c8c760a80dd0392e605dd3ad169954ab82a9a13f4651e9abcbde90cd24ce2cb}} 
+Mark&Mark parity. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Space@{Space}!RJCP.IO.Ports@{RJCP.IO.Ports}}\index{RJCP.IO.Ports@{RJCP.IO.Ports}!Space@{Space}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_a35c8c760a80dd0392e605dd3ad169954ad511f8439ecde36647437fbba67a4394}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_a35c8c760a80dd0392e605dd3ad169954ad511f8439ecde36647437fbba67a4394}} 
+Space&Space parity. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_a2a76844574a0724e6b7755e2f6ec3681}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_a2a76844574a0724e6b7755e2f6ec3681}} 
+\index{RJCP.IO.Ports@{RJCP.IO.Ports}!SerialData@{SerialData}}
+\index{SerialData@{SerialData}!RJCP.IO.Ports@{RJCP.IO.Ports}}
+\subsubsection{\texorpdfstring{SerialData}{SerialData}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a2a76844574a0724e6b7755e2f6ec3681}{R\+J\+C\+P.\+I\+O.\+Ports.\+Serial\+Data}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Event related information on Data\+Received 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NoData@{NoData}!RJCP.IO.Ports@{RJCP.IO.Ports}}\index{RJCP.IO.Ports@{RJCP.IO.Ports}!NoData@{NoData}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_a2a76844574a0724e6b7755e2f6ec3681acbf169aecd4365561eb6b245659f55d8}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_a2a76844574a0724e6b7755e2f6ec3681acbf169aecd4365561eb6b245659f55d8}} 
+No\+Data&Indicates no data received \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Chars@{Chars}!RJCP.IO.Ports@{RJCP.IO.Ports}}\index{RJCP.IO.Ports@{RJCP.IO.Ports}!Chars@{Chars}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_a2a76844574a0724e6b7755e2f6ec3681a1d2deb7774be5c79235080ec92e12c98}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_a2a76844574a0724e6b7755e2f6ec3681a1d2deb7774be5c79235080ec92e12c98}} 
+Chars&At least a single byte has been received \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Eof@{Eof}!RJCP.IO.Ports@{RJCP.IO.Ports}}\index{RJCP.IO.Ports@{RJCP.IO.Ports}!Eof@{Eof}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_a2a76844574a0724e6b7755e2f6ec3681a49650dcc55dc413da4032cbe44b15d37}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_a2a76844574a0724e6b7755e2f6ec3681a49650dcc55dc413da4032cbe44b15d37}} 
+Eof&The E\+OF character has been detected \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_a117eef0f83d73b56ed3f13d084902e98}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_a117eef0f83d73b56ed3f13d084902e98}} 
+\index{RJCP.IO.Ports@{RJCP.IO.Ports}!SerialError@{SerialError}}
+\index{SerialError@{SerialError}!RJCP.IO.Ports@{RJCP.IO.Ports}}
+\subsubsection{\texorpdfstring{SerialError}{SerialError}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a117eef0f83d73b56ed3f13d084902e98}{R\+J\+C\+P.\+I\+O.\+Ports.\+Serial\+Error}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Event related information on Error\+Received. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NoError@{NoError}!RJCP.IO.Ports@{RJCP.IO.Ports}}\index{RJCP.IO.Ports@{RJCP.IO.Ports}!NoError@{NoError}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_a117eef0f83d73b56ed3f13d084902e98a70a47cae4eb221930f2663fd244369ea}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_a117eef0f83d73b56ed3f13d084902e98a70a47cae4eb221930f2663fd244369ea}} 
+No\+Error&Indicates no error. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RXOver@{RXOver}!RJCP.IO.Ports@{RJCP.IO.Ports}}\index{RJCP.IO.Ports@{RJCP.IO.Ports}!RXOver@{RXOver}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_a117eef0f83d73b56ed3f13d084902e98a062810f39026589e92122604ee543a83}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_a117eef0f83d73b56ed3f13d084902e98a062810f39026589e92122604ee543a83}} 
+R\+X\+Over&Driver buffer has reached 80\% full. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Overrun@{Overrun}!RJCP.IO.Ports@{RJCP.IO.Ports}}\index{RJCP.IO.Ports@{RJCP.IO.Ports}!Overrun@{Overrun}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_a117eef0f83d73b56ed3f13d084902e98a9fa996dc830f67a458e46cf1463d5cd3}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_a117eef0f83d73b56ed3f13d084902e98a9fa996dc830f67a458e46cf1463d5cd3}} 
+Overrun&Driver has detected an overflow. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RXParity@{RXParity}!RJCP.IO.Ports@{RJCP.IO.Ports}}\index{RJCP.IO.Ports@{RJCP.IO.Ports}!RXParity@{RXParity}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_a117eef0f83d73b56ed3f13d084902e98a3a3e6bce3957a809a705fe9f757a81ba}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_a117eef0f83d73b56ed3f13d084902e98a3a3e6bce3957a809a705fe9f757a81ba}} 
+R\+X\+Parity&Parity error detected. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Frame@{Frame}!RJCP.IO.Ports@{RJCP.IO.Ports}}\index{RJCP.IO.Ports@{RJCP.IO.Ports}!Frame@{Frame}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_a117eef0f83d73b56ed3f13d084902e98a3bb3e8c8a24891ba0f7608bcc96f8b0a}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_a117eef0f83d73b56ed3f13d084902e98a3bb3e8c8a24891ba0f7608bcc96f8b0a}} 
+Frame&Frame error detected. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TXFull@{TXFull}!RJCP.IO.Ports@{RJCP.IO.Ports}}\index{RJCP.IO.Ports@{RJCP.IO.Ports}!TXFull@{TXFull}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_a117eef0f83d73b56ed3f13d084902e98a97379078d4b231a1750c7a97217aaf3f}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_a117eef0f83d73b56ed3f13d084902e98a97379078d4b231a1750c7a97217aaf3f}} 
+T\+X\+Full&Transmit buffer is full. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_abe559cc956a8d6ec76d331e52b774a71}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_abe559cc956a8d6ec76d331e52b774a71}} 
+\index{RJCP.IO.Ports@{RJCP.IO.Ports}!SerialPinChange@{SerialPinChange}}
+\index{SerialPinChange@{SerialPinChange}!RJCP.IO.Ports@{RJCP.IO.Ports}}
+\subsubsection{\texorpdfstring{SerialPinChange}{SerialPinChange}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_abe559cc956a8d6ec76d331e52b774a71}{R\+J\+C\+P.\+I\+O.\+Ports.\+Serial\+Pin\+Change}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Event related data on Pin\+Changed. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NoChange@{NoChange}!RJCP.IO.Ports@{RJCP.IO.Ports}}\index{RJCP.IO.Ports@{RJCP.IO.Ports}!NoChange@{NoChange}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_abe559cc956a8d6ec76d331e52b774a71a4bac8cdf0a968472b519b3b295d0d48b}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_abe559cc956a8d6ec76d331e52b774a71a4bac8cdf0a968472b519b3b295d0d48b}} 
+No\+Change&Indicates no pin change detected. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CtsChanged@{CtsChanged}!RJCP.IO.Ports@{RJCP.IO.Ports}}\index{RJCP.IO.Ports@{RJCP.IO.Ports}!CtsChanged@{CtsChanged}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_abe559cc956a8d6ec76d331e52b774a71a50faef698c8d4c83049ba75a11fc6844}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_abe559cc956a8d6ec76d331e52b774a71a50faef698c8d4c83049ba75a11fc6844}} 
+Cts\+Changed&Clear To Send signal has changed. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DsrChanged@{DsrChanged}!RJCP.IO.Ports@{RJCP.IO.Ports}}\index{RJCP.IO.Ports@{RJCP.IO.Ports}!DsrChanged@{DsrChanged}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_abe559cc956a8d6ec76d331e52b774a71a5a49998aed1e1d414f0ef9cc605e4d5b}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_abe559cc956a8d6ec76d331e52b774a71a5a49998aed1e1d414f0ef9cc605e4d5b}} 
+Dsr\+Changed&Data Set Ready signal has changed. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CDChanged@{CDChanged}!RJCP.IO.Ports@{RJCP.IO.Ports}}\index{RJCP.IO.Ports@{RJCP.IO.Ports}!CDChanged@{CDChanged}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_abe559cc956a8d6ec76d331e52b774a71a0ad3052878fa86d619f4400f03ee3c48}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_abe559cc956a8d6ec76d331e52b774a71a0ad3052878fa86d619f4400f03ee3c48}} 
+C\+D\+Changed&Carrier Detect signal has changed. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Break@{Break}!RJCP.IO.Ports@{RJCP.IO.Ports}}\index{RJCP.IO.Ports@{RJCP.IO.Ports}!Break@{Break}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_abe559cc956a8d6ec76d331e52b774a71ae4c38d6d45baf080943d323dd51a2ce8}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_abe559cc956a8d6ec76d331e52b774a71ae4c38d6d45baf080943d323dd51a2ce8}} 
+Break&Break detected. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Ring@{Ring}!RJCP.IO.Ports@{RJCP.IO.Ports}}\index{RJCP.IO.Ports@{RJCP.IO.Ports}!Ring@{Ring}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_abe559cc956a8d6ec76d331e52b774a71ad4db177c94738b72bf9ce61e988ab1f1}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_abe559cc956a8d6ec76d331e52b774a71ad4db177c94738b72bf9ce61e988ab1f1}} 
+Ring&Ring signal has changed. \\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_a56a13b591d46736acafe20f2976c84fa}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_a56a13b591d46736acafe20f2976c84fa}} 
+\index{RJCP.IO.Ports@{RJCP.IO.Ports}!StopBits@{StopBits}}
+\index{StopBits@{StopBits}!RJCP.IO.Ports@{RJCP.IO.Ports}}
+\subsubsection{\texorpdfstring{StopBits}{StopBits}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a56a13b591d46736acafe20f2976c84fa}{R\+J\+C\+P.\+I\+O.\+Ports.\+Stop\+Bits}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Number of stop bits to use. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{One@{One}!RJCP.IO.Ports@{RJCP.IO.Ports}}\index{RJCP.IO.Ports@{RJCP.IO.Ports}!One@{One}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_a56a13b591d46736acafe20f2976c84faa06c2cea18679d64399783748fa367bdd}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_a56a13b591d46736acafe20f2976c84faa06c2cea18679d64399783748fa367bdd}} 
+One&One stop bit. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{One5@{One5}!RJCP.IO.Ports@{RJCP.IO.Ports}}\index{RJCP.IO.Ports@{RJCP.IO.Ports}!One5@{One5}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_a56a13b591d46736acafe20f2976c84faac1ced57069889668088d8d24691407b4}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_a56a13b591d46736acafe20f2976c84faac1ced57069889668088d8d24691407b4}} 
+One5&1.\+5 stop bits. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Two@{Two}!RJCP.IO.Ports@{RJCP.IO.Ports}}\index{RJCP.IO.Ports@{RJCP.IO.Ports}!Two@{Two}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_a56a13b591d46736acafe20f2976c84faaaada29daee1d64ed0fe907043855cb7e}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_a56a13b591d46736acafe20f2976c84faaaada29daee1d64ed0fe907043855cb7e}} 
+Two&Two stop bits. \\
+\hline
+
+\end{DoxyEnumFields}

@@ -1,0 +1,128 @@
+.TH "BSL430_NET.FirmwareTools.FwTools.FwInfo" 3 "Sat Jun 22 2019" "Version 1.2.1" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BSL430_NET.FirmwareTools.FwTools.FwInfo \- \fBFwInfo\fP provides info about firmware, like format, first and last addresses, CRC, code size and reset vector\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFwInfo\fP ()"
+.br
+.RI "Init all property to zero\&. "
+.ti -1c
+.RI "\fBFwInfo\fP (int addr_first, int addr_last, int size_full, int size_buffer=0)"
+.br
+.RI "Init fake info with values specified as parameters, the rest is init to zero\&. "
+.ti -1c
+.RI "\fBFwInfo\fP (ICollection< \fBFwNode\fP > nodes, FwFormat format, int size_buffer=0, int reset_vector_addr=\-1)"
+.br
+.RI "Init info class to values calculated from valid firmware data\&. size_buffer is optional flag and reset_vector_addr is usually 0xFFFE, address where reset vector is, and its also optional\&. "
+.ti -1c
+.RI "int? \fBSetResetVector\fP (ICollection< \fBFwNode\fP > nodes, int reset_vector_addr)"
+.br
+.RI "Sets Reset Vector property to valid data, calculated from nodes\&. reset_vector_addr is usually 0xFFFE\&. "
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "FwFormat \fBFormat\fP = FwFormat\&.AUTO\fC [get]\fP"
+.br
+.RI "\fBFirmware\fP format\&. TI-TXT, Intel-HEX or ELF is supported\&. "
+.ti -1c
+.RI "int \fBAddrFirst\fP = 0\fC [get]\fP"
+.br
+.RI "First 16-bit address in firmware\&. "
+.ti -1c
+.RI "int \fBAddrLast\fP = 0\fC [get]\fP"
+.br
+.RI "Last 16-bit address in firmware\&. "
+.ti -1c
+.RI "int \fBSizeFull\fP = 0\fC [get]\fP"
+.br
+.RI "Total length of firmware, count of all bytes from first address to last address\&. "
+.ti -1c
+.RI "int \fBSizeCode\fP = 0\fC [get]\fP"
+.br
+.RI "Real count of all bytes in firmware parsed from file\&. "
+.ti -1c
+.RI "int \fBCrc16\fP = 0\fC [get, set]\fP"
+.br
+.RI "CRC-16-CCITT is 16-bit crc value of all data bytes in firmware\&. "
+.ti -1c
+.RI "int? \fBResetVector\fP = 0\fC [get]\fP"
+.br
+.RI "Reset vector is 16-bit address (value) located usually at address 0xFFFE\&. "
+.ti -1c
+.RI "int \fBSizeBuffer\fP = 0\fC [get, set]\fP"
+.br
+.RI "Help property for later firmware manipulation, like slicing in buffer blocks\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBFwInfo\fP provides info about firmware, like format, first and last addresses, CRC, code size and reset vector\&. 
+
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "BSL430_NET\&.FirmwareTools\&.FwTools\&.FwInfo\&.FwInfo ()"
+
+.PP
+Init all property to zero\&. 
+.SS "BSL430_NET\&.FirmwareTools\&.FwTools\&.FwInfo\&.FwInfo (int addr_first, int addr_last, int size_full, int size_buffer = \fC0\fP)"
+
+.PP
+Init fake info with values specified as parameters, the rest is init to zero\&. 
+.SS "BSL430_NET\&.FirmwareTools\&.FwTools\&.FwInfo\&.FwInfo (ICollection< \fBFwNode\fP > nodes, FwFormat format, int size_buffer = \fC0\fP, int reset_vector_addr = \fC\-1\fP)"
+
+.PP
+Init info class to values calculated from valid firmware data\&. size_buffer is optional flag and reset_vector_addr is usually 0xFFFE, address where reset vector is, and its also optional\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "int? BSL430_NET\&.FirmwareTools\&.FwTools\&.FwInfo\&.SetResetVector (ICollection< \fBFwNode\fP > nodes, int reset_vector_addr)"
+
+.PP
+Sets Reset Vector property to valid data, calculated from nodes\&. reset_vector_addr is usually 0xFFFE\&. 
+.SH "Property Documentation"
+.PP 
+.SS "int BSL430_NET\&.FirmwareTools\&.FwTools\&.FwInfo\&.AddrFirst = 0\fC [get]\fP"
+
+.PP
+First 16-bit address in firmware\&. 
+.SS "int BSL430_NET\&.FirmwareTools\&.FwTools\&.FwInfo\&.AddrLast = 0\fC [get]\fP"
+
+.PP
+Last 16-bit address in firmware\&. 
+.SS "int BSL430_NET\&.FirmwareTools\&.FwTools\&.FwInfo\&.Crc16 = 0\fC [get]\fP, \fC [set]\fP"
+
+.PP
+CRC-16-CCITT is 16-bit crc value of all data bytes in firmware\&. 
+.SS "FwFormat BSL430_NET\&.FirmwareTools\&.FwTools\&.FwInfo\&.Format = FwFormat\&.AUTO\fC [get]\fP"
+
+.PP
+\fBFirmware\fP format\&. TI-TXT, Intel-HEX or ELF is supported\&. 
+.SS "int? BSL430_NET\&.FirmwareTools\&.FwTools\&.FwInfo\&.ResetVector = 0\fC [get]\fP"
+
+.PP
+Reset vector is 16-bit address (value) located usually at address 0xFFFE\&. 
+.SS "int BSL430_NET\&.FirmwareTools\&.FwTools\&.FwInfo\&.SizeBuffer = 0\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Help property for later firmware manipulation, like slicing in buffer blocks\&. 
+.SS "int BSL430_NET\&.FirmwareTools\&.FwTools\&.FwInfo\&.SizeCode = 0\fC [get]\fP"
+
+.PP
+Real count of all bytes in firmware parsed from file\&. 
+.SS "int BSL430_NET\&.FirmwareTools\&.FwTools\&.FwInfo\&.SizeFull = 0\fC [get]\fP"
+
+.PP
+Total length of firmware, count of all bytes from first address to last address\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

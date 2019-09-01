@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29123.88
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BSL430.NET.WPF.NET461", "BSL430.NET.WPF\BSL430.NET.WPF.NET461.csproj", "{BAB94C02-0828-4D88-9198-7AB04D7F38B6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BSL430.NET.WPF.Core3", "BSL430.NET.WPF\BSL430.NET.WPF.Core3.csproj", "{23BAAE71-7B4C-452D-85CC-82057C70BB62}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BSL430.NET", "BSL430.NET\BSL430.NET.csproj", "{F2581D99-9C2F-44B1-A672-9CF0E08B3C61}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BSL430.NET.Console", "BSL430.NET.Console\BSL430.NET.Console.csproj", "{261FE9AA-D91D-4B3E-97B1-E6F376C52C07}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BSL430.NET.Test", "BSL430.NET.Test\BSL430.NET.Test.csproj", "{B8901D38-AE8C-4A3B-B527-579B5ACDEE09}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BAB94C02-0828-4D88-9198-7AB04D7F38B6}.Debug|x86.ActiveCfg = Debug|x86
+		{BAB94C02-0828-4D88-9198-7AB04D7F38B6}.Debug|x86.Build.0 = Debug|x86
+		{BAB94C02-0828-4D88-9198-7AB04D7F38B6}.Release|x86.ActiveCfg = Release|x86
+		{BAB94C02-0828-4D88-9198-7AB04D7F38B6}.Release|x86.Build.0 = Release|x86
+		{23BAAE71-7B4C-452D-85CC-82057C70BB62}.Debug|x86.ActiveCfg = Debug|x86
+		{23BAAE71-7B4C-452D-85CC-82057C70BB62}.Debug|x86.Build.0 = Debug|x86
+		{23BAAE71-7B4C-452D-85CC-82057C70BB62}.Release|x86.ActiveCfg = Release|x86
+		{23BAAE71-7B4C-452D-85CC-82057C70BB62}.Release|x86.Build.0 = Release|x86
+		{F2581D99-9C2F-44B1-A672-9CF0E08B3C61}.Debug|x86.ActiveCfg = Debug|x86
+		{F2581D99-9C2F-44B1-A672-9CF0E08B3C61}.Debug|x86.Build.0 = Debug|x86
+		{F2581D99-9C2F-44B1-A672-9CF0E08B3C61}.Release|x86.ActiveCfg = Release|x86
+		{F2581D99-9C2F-44B1-A672-9CF0E08B3C61}.Release|x86.Build.0 = Release|x86
+		{261FE9AA-D91D-4B3E-97B1-E6F376C52C07}.Debug|x86.ActiveCfg = Debug|x86
+		{261FE9AA-D91D-4B3E-97B1-E6F376C52C07}.Debug|x86.Build.0 = Debug|x86
+		{261FE9AA-D91D-4B3E-97B1-E6F376C52C07}.Release|x86.ActiveCfg = Release|x86
+		{261FE9AA-D91D-4B3E-97B1-E6F376C52C07}.Release|x86.Build.0 = Release|x86
+		{B8901D38-AE8C-4A3B-B527-579B5ACDEE09}.Debug|x86.ActiveCfg = Debug|x86
+		{B8901D38-AE8C-4A3B-B527-579B5ACDEE09}.Debug|x86.Build.0 = Debug|x86
+		{B8901D38-AE8C-4A3B-B527-579B5ACDEE09}.Release|x86.ActiveCfg = Release|x86
+		{B8901D38-AE8C-4A3B-B527-579B5ACDEE09}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BC697B4C-ECE3-416D-BC58-950E8826110E}
+	EndGlobalSection
+EndGlobal

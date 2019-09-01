@@ -1,0 +1,451 @@
+﻿<UserControl x:Class="BSL430_NET_WPF.Views.MainView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BSL430_NET_WPF.Views"
+             xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:tb="http://www.hardcodet.net/taskbar"
+             xmlns:model="clr-namespace:BSL430_NET_WPF.ViewModels"
+             xmlns:Converters="clr-namespace:BSL430_NET_WPF.Converters"
+             xmlns:Helpers="clr-namespace:BSL430_NET_WPF.Helpers"
+             d:DataContext="{x:Type model:MainViewModel}"
+             xmlns:cal="http://www.caliburnproject.org"
+             mc:Ignorable="d"
+             AllowDrop="True"
+             Loaded="OnLoad">
+    
+    <UserControl.Resources>
+        <!--<FontFamily x:Key="HeaderFontFamily">Segoe UI</FontFamily>-->
+        <Converters:IndexToBoldConverter0 x:Key="IndexToBoldConverter0" />
+        <Converters:IndexToBoldConverter1 x:Key="IndexToBoldConverter1" />
+        <Converters:IndexToBoldConverter2 x:Key="IndexToBoldConverter2" />
+        <Converters:IndexToBoldConverter3 x:Key="IndexToBoldConverter3" />
+        <Converters:IndexToBoldConverter4 x:Key="IndexToBoldConverter4" />
+        <Converters:BoolToBoldConverter x:Key="BoolToBoldConverter" />
+        <Converters:BoolToVisibilityConverter1 x:Key="BoolToVisibilityConverter1" />
+        <Converters:MenuItemIsCheckedConverter x:Key="MenuItemIsCheckedConverter" />
+    </UserControl.Resources>
+
+    <Grid>
+
+        <Controls:MetroTabControl ItemsSource="{Binding Tabs}" 
+                                  AllowDrop="True"
+                                  Controls:TabControlHelper.Underlined="TabPanel"
+                                  SelectedIndex="{Binding Path=TabSelectedIndex, Mode=TwoWay}"
+                                  cal:Message.Attach="[Event SelectionChanged] = [Action TabUpdateHeader]">
+            <TabControl.Resources>
+                <Style TargetType="TabItem" BasedOn="{StaticResource CustomMetroTabItem}"/>
+            </TabControl.Resources>
+        </Controls:MetroTabControl>
+
+        <tb:TaskbarIcon x:Name="notifyIcon" 
+                        Visibility="Visible" 
+                        ToolTipText="BSL430.NET&#x0a;TI MSP430 Bootloader Toolchain with Firmware Tools"
+                        IconSource="pack://application:,,,/Resources/Img/logo2.ico" 
+                        cal:Message.Attach="[Event TrayMouseDoubleClick] = [Action TrayDoubleClick]">
+                        
+            <tb:TaskbarIcon.ContextMenu>
+                
+                <ContextMenu Style="{StaticResource ContextMenuStyle}">
+                    <MenuItem x:Name="MenuUpload" 
+                              Style="{StaticResource MenuItemStyle}"
+                              Tag="Install"
+                              Margin="0,2,0,0" 
+                              IsCheckable="False" 
+                              Header="Upload"
+                              FontWeight="{Binding TabSelectedIndex, Converter={StaticResource IndexToBoldConverter0}}" 
+                              Visibility="{Binding InProgress, Converter={StaticResource BoolToVisibilityConverter1}}"
+                              cal:Message.Attach="[Event Click] = [Action TabSelect(0)]"/>
+                    
+                    <MenuItem x:Name="MenuDownload" 
+                              Style="{StaticResource MenuItemStyle}"
+                              Tag="Upload"
+                              IsCheckable="False" 
+                              Header="Download" 
+                              FontWeight="{Binding TabSelectedIndex, Converter={StaticResource IndexToBoldConverter1}}"
+                              Visibility="{Binding InProgress, Converter={StaticResource BoolToVisibilityConverter1}}"
+                              cal:Message.Attach="[Event Click] = [Action TabSelect(1)]"/>
+                    
+                    <MenuItem x:Name="MenuErase" 
+                              Style="{StaticResource MenuItemStyle}"
+                              Tag="Uninstall"
+                              IsCheckable="False" 
+                              Header="Erase" 
+                              FontWeight="{Binding TabSelectedIndex, Converter={StaticResource IndexToBoldConverter2}}" 
+                              Visibility="{Binding InProgress, Converter={StaticResource BoolToVisibilityConverter1}}"
+                              cal:Message.Attach="[Event Click] = [Action TabSelect(2)]"/>
+                    
+                    <MenuItem x:Name="MenuFwTools" 
+                              Style="{StaticResource MenuItemStyle}"
+                              Tag="Labflask"
+                              IsCheckable="False" 
+                              Header="FW Tools" 
+                              FontWeight="{Binding TabSelectedIndex, Converter={StaticResource IndexToBoldConverter3}}" 
+                              Visibility="{Binding InProgress, Converter={StaticResource BoolToVisibilityConverter1}}"
+                              cal:Message.Attach="[Event Click] = [Action TabSelect(3)]"/>
+                    
+                    <MenuItem x:Name="MenuBSL430NET" 
+                              Style="{StaticResource MenuItemStyle}"
+                              Tag="Help"
+                              IsCheckable="False" 
+                              Header="BSL430.NET" 
+                              FontWeight="{Binding TabSelectedIndex, Converter={StaticResource IndexToBoldConverter4}}" 
+                              Visibility="{Binding InProgress, Converter={StaticResource BoolToVisibilityConverter1}}"
+                              cal:Message.Attach="[Event Click] = [Action TabSelect(4)]"/>
+
+                    <Separator Visibility="{Binding InProgress, Converter={StaticResource BoolToVisibilityConverter1}}" 
+                               Style="{StaticResource MenuSeparator}"/>
+
+                    <MenuItem Header="Settings"
+                              Style="{StaticResource MenuItemStyle}"
+                              Tag="Cog"
+                              FontSize="16"
+                              TextBlock.FontWeight="Thin"
+                              Visibility="{Binding InProgress, Converter={StaticResource BoolToVisibilityConverter1}}">
+                        
+                        <MenuItem Header="Download Size Range" 
+                                  Style="{StaticResource MenuItemStyle}"
+                                  Tag="BarGraph"
+                                  FontSize="16"
+                                  TextBlock.FontWeight="Thin">
+                            
+                            <MenuItem Header="120 K"
+                                      Style="{StaticResource MenuItemStyle}"
+                                      Tag="None"
+                                      IsCheckable="True"
+                                      TextBlock.FontWeight="Thin" 
+                                      FontWeight="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked, Converter={StaticResource BoolToBoldConverter}}"
+                                      IsChecked="{Binding Path=DownloadSizeMax, 
+                                                  Mode=TwoWay, 
+                                                  Converter={StaticResource MenuItemIsCheckedConverter}, 
+                                                  ConverterParameter=120}"/>
+                            
+                            <MenuItem Header="60 K"
+                                      Style="{StaticResource MenuItemStyle}"
+                                      Tag="None"
+                                      IsCheckable="True"
+                                      TextBlock.FontWeight="Thin" 
+                                      FontWeight="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked, Converter={StaticResource BoolToBoldConverter}}"
+                                      IsChecked="{Binding Path=DownloadSizeMax, 
+                                                  Mode=TwoWay, 
+                                                  Converter={StaticResource MenuItemIsCheckedConverter}, 
+                                                  ConverterParameter=60}"/>
+                            
+                            <MenuItem Header="48 K"
+                                      Style="{StaticResource MenuItemStyle}"
+                                      Tag="None"
+                                      IsCheckable="True"
+                                      TextBlock.FontWeight="Thin" 
+                                      FontWeight="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked, Converter={StaticResource BoolToBoldConverter}}"
+                                      IsChecked="{Binding Path=DownloadSizeMax, 
+                                                  Mode=TwoWay, 
+                                                  Converter={StaticResource MenuItemIsCheckedConverter}, 
+                                                  ConverterParameter=48}"/>
+                            
+                            <MenuItem Header="32 K"
+                                      Style="{StaticResource MenuItemStyle}"
+                                      Tag="None"
+                                      IsCheckable="True"
+                                      TextBlock.FontWeight="Thin" 
+                                      FontWeight="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked, Converter={StaticResource BoolToBoldConverter}}"
+                                      IsChecked="{Binding Path=DownloadSizeMax, 
+                                                  Mode=TwoWay, 
+                                                  Converter={StaticResource MenuItemIsCheckedConverter}, 
+                                                  ConverterParameter=32}"/>
+                            
+                            <MenuItem Header="24 K"
+                                      Style="{StaticResource MenuItemStyle}"
+                                      Tag="None"
+                                      IsCheckable="True"
+                                      TextBlock.FontWeight="Thin" 
+                                      FontWeight="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked, Converter={StaticResource BoolToBoldConverter}}"
+                                      IsChecked="{Binding Path=DownloadSizeMax, 
+                                                  Mode=TwoWay, 
+                                                  Converter={StaticResource MenuItemIsCheckedConverter}, 
+                                                  ConverterParameter=24}"/>
+                            
+                            <MenuItem Header="16 K"
+                                      Style="{StaticResource MenuItemStyle}"
+                                      Tag="None"
+                                      IsCheckable="True"
+                                      TextBlock.FontWeight="Thin" 
+                                      FontWeight="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked, Converter={StaticResource BoolToBoldConverter}}"
+                                      IsChecked="{Binding Path=DownloadSizeMax, 
+                                                  Mode=TwoWay, 
+                                                  Converter={StaticResource MenuItemIsCheckedConverter}, 
+                                                  ConverterParameter=16}"/>
+                            
+                            <MenuItem Header="8 K"
+                                      Style="{StaticResource MenuItemStyle}"
+                                      Tag="None"
+                                      IsCheckable="True"
+                                      TextBlock.FontWeight="Thin" 
+                                      FontWeight="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked, Converter={StaticResource BoolToBoldConverter}}"
+                                      IsChecked="{Binding Path=DownloadSizeMax, 
+                                                  Mode=TwoWay, 
+                                                  Converter={StaticResource MenuItemIsCheckedConverter}, 
+                                                  ConverterParameter=8}"/>
+                            
+                            <MenuItem Header="4 K"
+                                      Style="{StaticResource MenuItemStyle}"
+                                      Tag="None"
+                                      IsCheckable="True"
+                                      TextBlock.FontWeight="Thin" 
+                                      FontWeight="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked, Converter={StaticResource BoolToBoldConverter}}"
+                                      IsChecked="{Binding Path=DownloadSizeMax, 
+                                                  Mode=TwoWay, 
+                                                  Converter={StaticResource MenuItemIsCheckedConverter}, 
+                                                  ConverterParameter=4}"/>
+                        </MenuItem>
+                        
+                        <MenuItem Header="FW Write Line Length" 
+                                  Style="{StaticResource MenuItemStyle}"
+                                  Tag="List"
+                                  FontSize="16"
+                                  TextBlock.FontWeight="Thin">
+                            
+                            <MenuItem Header="128 B"
+                                      Style="{StaticResource MenuItemStyle}"
+                                      Tag="None"
+                                      IsCheckable="True"
+                                      TextBlock.FontWeight="Thin" 
+                                      FontWeight="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked, Converter={StaticResource BoolToBoldConverter}}"
+                                      IsChecked="{Binding Path=FwWriteLineLength, 
+                                                  Mode=TwoWay, 
+                                                  Converter={StaticResource MenuItemIsCheckedConverter}, 
+                                                  ConverterParameter=128}"/>
+                            
+                            <MenuItem Header="64 B"
+                                      Style="{StaticResource MenuItemStyle}"
+                                      Tag="None"
+                                      IsCheckable="True"
+                                      TextBlock.FontWeight="Thin" 
+                                      FontWeight="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked, Converter={StaticResource BoolToBoldConverter}}"
+                                      IsChecked="{Binding Path=FwWriteLineLength, 
+                                                  Mode=TwoWay, 
+                                                  Converter={StaticResource MenuItemIsCheckedConverter}, 
+                                                  ConverterParameter=64}"/>
+                            
+                            <MenuItem Header="48 B"
+                                      Style="{StaticResource MenuItemStyle}"
+                                      Tag="None"
+                                      IsCheckable="True"
+                                      TextBlock.FontWeight="Thin" 
+                                      FontWeight="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked, Converter={StaticResource BoolToBoldConverter}}"
+                                      IsChecked="{Binding Path=FwWriteLineLength, 
+                                                  Mode=TwoWay, 
+                                                  Converter={StaticResource MenuItemIsCheckedConverter}, 
+                                                  ConverterParameter=48}"/>
+                            
+                            <MenuItem Header="32 B"
+                                      Style="{StaticResource MenuItemStyle}"
+                                      Tag="None"
+                                      IsCheckable="True"
+                                      TextBlock.FontWeight="Thin" 
+                                      FontWeight="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked, Converter={StaticResource BoolToBoldConverter}}"
+                                      IsChecked="{Binding Path=FwWriteLineLength, 
+                                                  Mode=TwoWay, 
+                                                  Converter={StaticResource MenuItemIsCheckedConverter}, 
+                                                  ConverterParameter=32}"/>
+                            
+                            <MenuItem Header="24 B"
+                                      Style="{StaticResource MenuItemStyle}"
+                                      Tag="None"
+                                      TextBlock.FontWeight="Thin" 
+                                      FontWeight="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked, Converter={StaticResource BoolToBoldConverter}}"
+                                      IsChecked="{Binding Path=FwWriteLineLength, 
+                                                  Mode=TwoWay, 
+                                                  Converter={StaticResource MenuItemIsCheckedConverter}, 
+                                                  ConverterParameter=24}"/>
+                            
+                            <MenuItem Header="16 B"
+                                      Style="{StaticResource MenuItemStyle}"
+                                      Tag="None"
+                                      IsCheckable="True"
+                                      TextBlock.FontWeight="Thin" 
+                                      FontWeight="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked, Converter={StaticResource BoolToBoldConverter}}"
+                                      IsChecked="{Binding Path=FwWriteLineLength, 
+                                                  Mode=TwoWay, 
+                                                  Converter={StaticResource MenuItemIsCheckedConverter}, 
+                                                  ConverterParameter=16}"/>
+                            
+                            <MenuItem Header="8 B"
+                                      Style="{StaticResource MenuItemStyle}"
+                                      Tag="None"
+                                      IsCheckable="True"
+                                      TextBlock.FontWeight="Thin" 
+                                      FontWeight="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked, Converter={StaticResource BoolToBoldConverter}}"
+                                      IsChecked="{Binding Path=FwWriteLineLength, 
+                                                  Mode=TwoWay, 
+                                                  Converter={StaticResource MenuItemIsCheckedConverter}, 
+                                                  ConverterParameter=8}"/>
+
+                            <Separator Style="{StaticResource MenuSeparator}"/>
+                            
+                            <MenuItem Header="AUTO"
+                                      Style="{StaticResource MenuItemStyle}"
+                                      Tag="None"
+                                      IsCheckable="True"
+                                      TextBlock.FontWeight="Thin" 
+                                      FontWeight="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked, Converter={StaticResource BoolToBoldConverter}}"
+                                      IsChecked="{Binding Path=FwWriteLineLength, 
+                                                  Mode=TwoWay, 
+                                                  Converter={StaticResource MenuItemIsCheckedConverter}, 
+                                                  ConverterParameter=0}"/>
+                        </MenuItem>
+
+                        <MenuItem x:Name="MenuTaskBar" 
+                                  Style="{StaticResource MenuItemStyle}"
+                                  Tag="None"
+                                  TextBlock.FontWeight="Thin" 
+                                  IsCheckable="True" 
+                                  Header="Minimize To Tray Bar"
+                                  FontWeight="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked, Converter={StaticResource BoolToBoldConverter}}"
+                                  IsChecked="{Binding Path=MenuWinTaskBar, Mode=TwoWay}"/>
+
+                        <Separator Style="{StaticResource MenuSeparator}"/>
+
+                        <MenuItem Header="Shell Default Action" 
+                                  Tag="List"
+                                  FontSize="16"
+                                  TextBlock.FontWeight="Thin">
+                            <MenuItem.Style>
+                                <Style TargetType="MenuItem" BasedOn="{StaticResource MenuItemStyle}">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ShellAssociation}" Value="True">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding ShellExtension}" Value="True">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </MenuItem.Style>
+                            
+                            <MenuItem Header="Upload"
+                                      Style="{StaticResource MenuItemStyle}"
+                                      Tag="None"
+                                      IsCheckable="True"
+                                      TextBlock.FontWeight="Thin" 
+                                      FontWeight="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked, Converter={StaticResource BoolToBoldConverter}}"
+                                      IsChecked="{Binding Path=ShellDefaultAct, 
+                                                  Mode=TwoWay, 
+                                                  Converter={StaticResource MenuItemIsCheckedConverter}, 
+                                                  ConverterParameter=0}"/>
+
+                            <Separator Style="{StaticResource MenuSeparator}"/>
+                            
+                            <MenuItem Header="Convert"
+                                      Style="{StaticResource MenuItemStyle}"
+                                      Tag="None"
+                                      IsCheckable="True"
+                                      TextBlock.FontWeight="Thin" 
+                                      FontWeight="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked, Converter={StaticResource BoolToBoldConverter}}"
+                                      IsChecked="{Binding Path=ShellDefaultAct, 
+                                                  Mode=TwoWay, 
+                                                  Converter={StaticResource MenuItemIsCheckedConverter}, 
+                                                  ConverterParameter=1}"/>
+                            
+                            <MenuItem Header="Combine"
+                                      Style="{StaticResource MenuItemStyle}"
+                                      Tag="None"
+                                      IsCheckable="True"
+                                      TextBlock.FontWeight="Thin" 
+                                      FontWeight="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked, Converter={StaticResource BoolToBoldConverter}}"
+                                      IsChecked="{Binding Path=ShellDefaultAct, 
+                                                  Mode=TwoWay, 
+                                                  Converter={StaticResource MenuItemIsCheckedConverter}, 
+                                                  ConverterParameter=2}"/>
+                            
+                            <MenuItem Header="Validate"
+                                      Style="{StaticResource MenuItemStyle}"
+                                      Tag="None"
+                                      IsCheckable="True"
+                                      TextBlock.FontWeight="Thin" 
+                                      FontWeight="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked, Converter={StaticResource BoolToBoldConverter}}"
+                                      IsChecked="{Binding Path=ShellDefaultAct, 
+                                                  Mode=TwoWay, 
+                                                  Converter={StaticResource MenuItemIsCheckedConverter}, 
+                                                  ConverterParameter=3}"/>
+                            
+                            <MenuItem Header="Hex Edit"
+                                      Style="{StaticResource MenuItemStyle}"
+                                      Tag="None"
+                                      IsCheckable="True"
+                                      TextBlock.FontWeight="Thin" 
+                                      FontWeight="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked, Converter={StaticResource BoolToBoldConverter}}"
+                                      IsChecked="{Binding Path=ShellDefaultAct, 
+                                                  Mode=TwoWay, 
+                                                  Converter={StaticResource MenuItemIsCheckedConverter}, 
+                                                  ConverterParameter=4}"/>
+
+                            <MenuItem Header="Get Password"
+                                      Style="{StaticResource MenuItemStyle}"
+                                      Tag="None"
+                                      IsCheckable="True"
+                                      TextBlock.FontWeight="Thin"
+                                      FontWeight="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked, Converter={StaticResource BoolToBoldConverter}}"
+                                      IsChecked="{Binding Path=ShellDefaultAct, 
+                                                  Mode=TwoWay, 
+                                                  Converter={StaticResource MenuItemIsCheckedConverter}, 
+                                                  ConverterParameter=5}"/>
+                        </MenuItem>
+
+                        <MenuItem x:Name="MenuShellAssoc" 
+                                  Style="{StaticResource MenuItemStyle}"
+                                  Tag="None"
+                                  TextBlock.FontWeight="Thin" 
+                                  IsCheckable="True" 
+                                  Header="Shell File Association"
+                                  FontWeight="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked, Converter={StaticResource BoolToBoldConverter}}"
+                                  IsChecked="{Binding Path=ShellAssociation, Mode=TwoWay}"/>
+
+                        <MenuItem x:Name="MenuShellExt" 
+                                  Style="{StaticResource MenuItemStyle}"
+                                  Tag="None"
+                                  TextBlock.FontWeight="Thin" 
+                                  IsCheckable="True" 
+                                  Header="Shell Explorer Extension"
+                                  FontWeight="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked, Converter={StaticResource BoolToBoldConverter}}"
+                                  IsChecked="{Binding Path=ShellExtension, Mode=TwoWay}"/>
+                        
+                        <Separator Style="{StaticResource MenuSeparator}"/>
+                        
+                        <MenuItem x:Name="MenuResetSettings" 
+                                  Style="{StaticResource MenuItemStyle}"
+                                  Tag="None"
+                                  TextBlock.FontWeight="Thin" 
+                                  IsCheckable="False" 
+                                  Header="Reset User Settings"
+                                  cal:Message.Attach="[Event Click] = [Action ResetSettings]"/>
+                    </MenuItem>
+                    
+                    <MenuItem x:Name="MenuDarkMode" 
+                              Style="{StaticResource MenuItemStyle}"
+                              Tag="None"
+                              IsCheckable="True" 
+                              TextBlock.FontWeight="Thin" 
+                              IsChecked="{Binding Path=DarkMode, Mode=TwoWay}" 
+                              FontWeight="{Binding RelativeSource={RelativeSource Self}, Path=IsChecked, Converter={StaticResource BoolToBoldConverter}}"
+                              Header="Dark Mode"/>
+
+                    <Separator Style="{StaticResource MenuSeparator}"/>
+
+                    <MenuItem x:Name="MenuExit" 
+                              Style="{StaticResource MenuItemStyle}"
+                              Tag="Logout"
+                              Margin="0,0,0,2" 
+                              IsCheckable="False" 
+                              TextBlock.FontWeight="Thin" 
+                              Header="Exit" 
+                              cal:Message.Attach="[Event Click] = [Action MenuExit]"/>
+                </ContextMenu>
+            </tb:TaskbarIcon.ContextMenu>
+        </tb:TaskbarIcon>
+        
+    </Grid>
+
+</UserControl>

@@ -1,0 +1,80 @@
+.TH "FTD2XX_NET.FTDI.FT_DEVICE_INFO_NODE" 3 "Sat Jun 22 2019" "Version 1.2.1" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+FTD2XX_NET.FTDI.FT_DEVICE_INFO_NODE \- Type that holds device information for GetDeviceInformation method\&. Used with FT_GetDeviceInfo and FT_GetDeviceInfoDetail in FTD2XX\&.DLL  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "UInt32 \fBFlags\fP"
+.br
+.RI "Indicates device state\&. Can be any combination of the following: FT_FLAGS_OPENED, FT_FLAGS_HISPEED "
+.ti -1c
+.RI "\fBFT_DEVICE\fP \fBType\fP"
+.br
+.RI "Indicates the device type\&. Can be one of the following: FT_DEVICE_232R, FT_DEVICE_2232C, FT_DEVICE_BM, FT_DEVICE_AM, FT_DEVICE_100AX or FT_DEVICE_UNKNOWN "
+.ti -1c
+.RI "UInt32 \fBID\fP"
+.br
+.RI "The Vendor ID and Product ID of the device "
+.ti -1c
+.RI "UInt32 \fBLocId\fP"
+.br
+.RI "The physical location identifier of the device "
+.ti -1c
+.RI "string \fBSerialNumber\fP"
+.br
+.RI "The device serial number "
+.ti -1c
+.RI "string \fBDescription\fP"
+.br
+.RI "The device description "
+.ti -1c
+.RI "IntPtr \fBftHandle\fP"
+.br
+.RI "The device handle\&. This value is not used externally and is provided for information only\&. If the device is not open, this value is 0\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Type that holds device information for GetDeviceInformation method\&. Used with FT_GetDeviceInfo and FT_GetDeviceInfoDetail in FTD2XX\&.DLL 
+
+
+.SH "Member Data Documentation"
+.PP 
+.SS "string FTD2XX_NET\&.FTDI\&.FT_DEVICE_INFO_NODE\&.Description"
+
+.PP
+The device description 
+.SS "UInt32 FTD2XX_NET\&.FTDI\&.FT_DEVICE_INFO_NODE\&.Flags"
+
+.PP
+Indicates device state\&. Can be any combination of the following: FT_FLAGS_OPENED, FT_FLAGS_HISPEED 
+.SS "IntPtr FTD2XX_NET\&.FTDI\&.FT_DEVICE_INFO_NODE\&.ftHandle"
+
+.PP
+The device handle\&. This value is not used externally and is provided for information only\&. If the device is not open, this value is 0\&. 
+.SS "UInt32 FTD2XX_NET\&.FTDI\&.FT_DEVICE_INFO_NODE\&.ID"
+
+.PP
+The Vendor ID and Product ID of the device 
+.SS "UInt32 FTD2XX_NET\&.FTDI\&.FT_DEVICE_INFO_NODE\&.LocId"
+
+.PP
+The physical location identifier of the device 
+.SS "string FTD2XX_NET\&.FTDI\&.FT_DEVICE_INFO_NODE\&.SerialNumber"
+
+.PP
+The device serial number 
+.SS "\fBFT_DEVICE\fP FTD2XX_NET\&.FTDI\&.FT_DEVICE_INFO_NODE\&.Type"
+
+.PP
+Indicates the device type\&. Can be one of the following: FT_DEVICE_232R, FT_DEVICE_2232C, FT_DEVICE_BM, FT_DEVICE_AM, FT_DEVICE_100AX or FT_DEVICE_UNKNOWN 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

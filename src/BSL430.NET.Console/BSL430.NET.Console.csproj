@@ -1,0 +1,57 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <StartupObject>BSL430_NET_Console.BSL430NETConsole</StartupObject>
+    <Authors>Jakub Parez</Authors>
+    <Copyright>Copyright (c) 2019 Jakub Parez</Copyright>
+    <Description>BSL430.NET - TI MSP430 Bootloader (BSL) .NET Cross-Platform Toolchain &amp; Firmware Tools
+-replace expensive original MSP FET programmer with cheap FTDI FT232 or Serial COM port
+-upload, download or erase MSP430 memory with minimal effort with generic UART convertes
+-firmware tools: convert, combine, validate, hex edit or get password from TI-TXT, Intel-HEX, SREC or ELF</Description>
+    <RootNamespace>BSL430_NET_Console</RootNamespace>
+    <Platforms>x86</Platforms>
+    <ApplicationIcon>logo2.ico</ApplicationIcon>
+    <RuntimeIdentifiers>win-x86</RuntimeIdentifiers>
+    <Version>1.2.7</Version>
+    <PackageTags>TI Texas Instruments MSP430 MSP 430 MCU BSL bootloader flash memory toolchain BSL430 BSL430.NET download upload erase</PackageTags>
+    <RepositoryUrl>https://github.com/parezj/BSL430.NET</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/parezj/BSL430.NET</PackageProjectUrl>
+    <PackageLicenseUrl></PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIconUrl>https://github.com/parezj/BSL430.NET/src/BSL430.NET.WPF/Img/logo2.png?raw=true</PackageIconUrl>
+    <RepositoryType>git</RepositoryType>
+    <NeutralLanguage>en</NeutralLanguage>
+    <PublishTrimmed>true</PublishTrimmed>
+    <PublishSingleFile>false</PublishSingleFile>
+    <Product>BSL430.NET.Console</Product>
+    <PackageId>BSL430.NET.Console</PackageId>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <WarningLevel>0</WarningLevel>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BSL430.NET\BSL430.NET.csproj" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="%25windir%25\system32\xcopy /Y &quot;$(TargetDir)*.*&quot; &quot;$(SolutionDir)..\build\BSL430.NET.Console\*.*&quot;&#xD;&#xA;%25windir%25\system32\xcopy /Y &quot;$(TargetDir)*.*&quot; &quot;$(TargetDir)win-x86\*.*&quot;" />
+  </Target>
+
+</Project>

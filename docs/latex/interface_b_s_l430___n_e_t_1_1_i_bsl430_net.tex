@@ -1,0 +1,324 @@
+\hypertarget{interface_b_s_l430___n_e_t_1_1_i_bsl430_net}{}\section{B\+S\+L430\+\_\+\+N\+E\+T.\+I\+Bsl430\+Net Interface Reference}
+\label{interface_b_s_l430___n_e_t_1_1_i_bsl430_net}\index{BSL430\_NET.IBsl430Net@{BSL430\_NET.IBsl430Net}}
+
+
+Public interface of B\+S\+L430.\+N\+ET library.  
+
+
+Inheritance diagram for B\+S\+L430\+\_\+\+N\+E\+T.\+I\+Bsl430\+Net\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{interface_b_s_l430___n_e_t_1_1_i_bsl430_net}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a1606c2050b2244c9c5558b55f31a76ae}\label{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a1606c2050b2244c9c5558b55f31a76ae}} 
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status}{Status}} \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status}{Status}} \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status}{Status}} \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status}{Status}} serial {\bfseries Scan\+All} (out List$<$ \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_comm_1_1_f_t_d_i___device}{F\+T\+D\+I\+\_\+\+Device}} $>$ ftdi\+\_\+devices, out List$<$ \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_comm_1_1_libftdi___device}{Libftdi\+\_\+\+Device}} $>$ libftdi\+\_\+devices, out List$<$ \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_comm_1_1_u_s_b___h_i_d___device}{U\+S\+B\+\_\+\+H\+I\+D\+\_\+\+Device}} $>$ usb\+\_\+devices, out List$<$ \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_comm_1_1_serial___device}{Serial\+\_\+\+Device}} $>$ serial\+\_\+devices, \mbox{\hyperlink{namespace_b_s_l430___n_e_t_a4cd6f8166a2a97ccb3405df2287d4ba8}{Scan\+Options}} scan\+\_\+opt=\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a4cd6f8166a2a97ccb3405df2287d4ba8a6adf97f83acf6453d4a6a4b1070f3754}{Scan\+Options.\+None}})
+\item 
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status}{Status}} \mbox{\hyperlink{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_ab6f53bec39332434e99912ce3413dbcd}{Scan$<$ Tdev $>$}} (out List$<$ Tdev $>$ device\+\_\+list, \mbox{\hyperlink{namespace_b_s_l430___n_e_t_a4cd6f8166a2a97ccb3405df2287d4ba8}{Scan\+Options}} scan\+\_\+opt=\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a4cd6f8166a2a97ccb3405df2287d4ba8a6adf97f83acf6453d4a6a4b1070f3754}{Scan\+Options.\+None}})
+\begin{DoxyCompactList}\small\item\em Scan for devices in single mode (F\+T\+DI, libftdi, U\+SB or Serial). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status_ex}{Status\+Ex}} \mbox{\hyperlink{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_af85d5a5f5f2b4bfb577ba5c16d268252}{Erase}} (\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_bsl430_net_device}{Bsl430\+Net\+Device}} device=null)
+\begin{DoxyCompactList}\small\item\em Mass erase deletes the entire flash memory area except Information Memory if protocol 5xx6xx is used. Please see M\+CU datasheet for detailed information, or TI B\+SL doc (slau319t.\+pdf). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status_ex}{Status\+Ex}} \mbox{\hyperlink{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a54980ac32c18ed1202db2c9ff4e38a7a}{Erase}} (string device\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Mass erase deletes the entire flash memory area except Information Memory if protocol 5xx6xx is used. Please see M\+CU datasheet for detailed information, or TI B\+SL doc (slau319t.\+pdf). device\+\_\+name case dont matter. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status_ex}{Status\+Ex}} \mbox{\hyperlink{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a598587fc08c2f9082b08abb65c058eaa}{Upload}} (string firmware\+\_\+path, \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_bsl430_net_device}{Bsl430\+Net\+Device}} device=null, byte\mbox{[}$\,$\mbox{]} password=null)
+\begin{DoxyCompactList}\small\item\em Uploads data from firmware\+\_\+path to target M\+CU. Supported file formats are T\+I-\/\+T\+XT, Intel-\/\+H\+EX and E\+LF. If none, null or invalid password is entered, mass erase is executed first. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status_ex}{Status\+Ex}} \mbox{\hyperlink{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a3bc860bea764dd0ad0ee9c7a05fe4ecc}{Upload}} (string firmware, string device\+\_\+name, byte\mbox{[}$\,$\mbox{]} password=null)
+\begin{DoxyCompactList}\small\item\em Uploads data from firmware\+\_\+path to target M\+CU. Supported file formats are T\+I-\/\+T\+XT, Intel-\/\+H\+EX and E\+LF. If none, null or invalid password is entered, mass erase is executed first. device\+\_\+name case dont matter. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status_ex}{Status\+Ex}} \mbox{\hyperlink{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_abd3e49c1f00bfa2f42d58094e2ae3526}{Download}} (byte\mbox{[}$\,$\mbox{]} password, int addr\+\_\+start, int data\+\_\+size, out List$<$ byte $>$ data, \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_bsl430_net_device}{Bsl430\+Net\+Device}} device=null)
+\begin{DoxyCompactList}\small\item\em Downloads bytes from target M\+CU starting from address \textquotesingle{}addr\+\_\+start\textquotesingle{} to \textquotesingle{}addr\+\_\+start\textquotesingle{} + \textquotesingle{}data\+\_\+size\textquotesingle{}. If wrong password is entered, mass erase is auto executed as a safety measure, erasing entire flash. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status_ex}{Status\+Ex}} \mbox{\hyperlink{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a416c9d925e98bc5ed00a89e76c4a8501}{Download}} (byte\mbox{[}$\,$\mbox{]} password, int addr\+\_\+start, int data\+\_\+size, out List$<$ byte $>$ data, string device\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Downloads bytes from target M\+CU starting from address \textquotesingle{}addr\+\_\+start\textquotesingle{} to \textquotesingle{}addr\+\_\+start\textquotesingle{} + \textquotesingle{}data\+\_\+size\textquotesingle{}. If wrong password is entered, mass erase is auto executed as a safety measure, erasing entire flash. device\+\_\+name case dont matter. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status}{Status}} \mbox{\hyperlink{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a4ce151c0bd961d76dc9dfa2b07788b99}{Set\+Baud\+Rate}} (\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a8d30c263598635a481840944d38aeb70}{Baud\+Rate}} \mbox{\hyperlink{namespace_b_s_l430___n_e_t_a8d30c263598635a481840944d38aeb70}{Baud\+Rate}})
+\begin{DoxyCompactList}\small\item\em Sets baud rate. Default is 9600 bps (9600). Baud rate is applicable only in U\+A\+RT mode and only in some B\+SL revs. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status}{Status}} \mbox{\hyperlink{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a5edac897ededd878d53097ac4e9c6782}{Set\+Invoke\+Mechanism}} (\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a6571fdf0fbbc8408b8428f4d642c1305}{Invoke\+Mechanism}} invoke\+\_\+mechanism)
+\begin{DoxyCompactList}\small\item\em Sets invoke mechanism mode. Default is D\+T\+R\+\_\+\+R\+S\+T\+\_\+\+\_\+\+R\+T\+S\+\_\+\+T\+E\+ST (0). Note that U\+SB H\+ID mode requires manual B\+SL invocation. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status}{Status}} \mbox{\hyperlink{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_ab73461fb74eb2d85fd06ece052558b0d}{Set\+M\+CU}} (\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490}{M\+CU}} mcu)
+\begin{DoxyCompactList}\small\item\em Sets M\+CU family. Default is M\+S\+P430\+\_\+\+F5xx (4). Please see TI B\+SL doc (slau319t.\+pdf) for supported M\+C\+Us and their modes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a8d30c263598635a481840944d38aeb70}{Baud\+Rate}} \mbox{\hyperlink{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a96d263e6860582cd135b5d5ac90d792a}{Get\+Baud\+Rate}} ()
+\begin{DoxyCompactList}\small\item\em Returns currently set baud rate. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a6571fdf0fbbc8408b8428f4d642c1305}{Invoke\+Mechanism}} \mbox{\hyperlink{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a2b6319eca4ebe15b214212e719c4ddb5}{Get\+Invoke\+Mechanism}} ()
+\begin{DoxyCompactList}\small\item\em Returns currently set invoke mechanism. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490}{M\+CU}} \mbox{\hyperlink{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_ad9efb6c8632e8bd971f34d58ccdeea4b}{Get\+M\+CU}} ()
+\begin{DoxyCompactList}\small\item\em Returns currently set M\+CU family. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_b_s_l430___n_e_t_aa1c6981cb6f279b5491d861ca555a1d7}{Mode}} \mbox{\hyperlink{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_abde671fd1ec4d013dd7fe5902f04ee97}{Get\+Mode}} ()
+\begin{DoxyCompactList}\small\item\em Returns current B\+S\+L430.\+N\+ET instance operating mode (U\+A\+R\+T\+\_\+\+F\+T\+D\+XX, U\+A\+R\+T\+\_\+libftdi, U\+A\+R\+T\+\_\+\+Serial, U\+S\+B\+\_\+\+H\+ID). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status}{Status}} \mbox{\hyperlink{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a2edaa235290e3b3b5551db0a60bc0781}{ftdi}}
+\begin{DoxyCompactList}\small\item\em Scan for all available devices in multimode (F\+T\+DI, libftdi, U\+SB and Serial). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a3c0d0859f1353071808e688bbb8b5e58}\label{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a3c0d0859f1353071808e688bbb8b5e58}} 
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status}{Status}} \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status}{Status}} {\bfseries libftdi}
+\item 
+\mbox{\Hypertarget{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a6e713a4c541b3f822d8eef19e9d2c75c}\label{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a6e713a4c541b3f822d8eef19e9d2c75c}} 
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status}{Status}} \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status}{Status}} \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status}{Status}} {\bfseries usb}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Public interface of B\+S\+L430.\+N\+ET library. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_abd3e49c1f00bfa2f42d58094e2ae3526}\label{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_abd3e49c1f00bfa2f42d58094e2ae3526}} 
+\index{BSL430\_NET.IBsl430Net@{BSL430\_NET.IBsl430Net}!Download@{Download}}
+\index{Download@{Download}!BSL430\_NET.IBsl430Net@{BSL430\_NET.IBsl430Net}}
+\subsubsection{\texorpdfstring{Download()}{Download()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status_ex}{Status\+Ex}} B\+S\+L430\+\_\+\+N\+E\+T.\+I\+Bsl430\+Net.\+Download (\begin{DoxyParamCaption}\item[{byte \mbox{[}$\,$\mbox{]}}]{password,  }\item[{int}]{addr\+\_\+start,  }\item[{int}]{data\+\_\+size,  }\item[{out List$<$ byte $>$}]{data,  }\item[{\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_bsl430_net_device}{Bsl430\+Net\+Device}}}]{device = {\ttfamily null} }\end{DoxyParamCaption})}
+
+
+
+Downloads bytes from target M\+CU starting from address \textquotesingle{}addr\+\_\+start\textquotesingle{} to \textquotesingle{}addr\+\_\+start\textquotesingle{} + \textquotesingle{}data\+\_\+size\textquotesingle{}. If wrong password is entered, mass erase is auto executed as a safety measure, erasing entire flash. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_bsl430_net_exception}{Bsl430\+Net\+Exception}}} & \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_b_s_l430_n_e_t_a76453c32bcc4006f08720bbede236583}{B\+S\+L430\+\_\+\+N\+E\+T.\+B\+S\+L430\+N\+ET}}.
+
+\mbox{\Hypertarget{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a416c9d925e98bc5ed00a89e76c4a8501}\label{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a416c9d925e98bc5ed00a89e76c4a8501}} 
+\index{BSL430\_NET.IBsl430Net@{BSL430\_NET.IBsl430Net}!Download@{Download}}
+\index{Download@{Download}!BSL430\_NET.IBsl430Net@{BSL430\_NET.IBsl430Net}}
+\subsubsection{\texorpdfstring{Download()}{Download()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status_ex}{Status\+Ex}} B\+S\+L430\+\_\+\+N\+E\+T.\+I\+Bsl430\+Net.\+Download (\begin{DoxyParamCaption}\item[{byte \mbox{[}$\,$\mbox{]}}]{password,  }\item[{int}]{addr\+\_\+start,  }\item[{int}]{data\+\_\+size,  }\item[{out List$<$ byte $>$}]{data,  }\item[{string}]{device\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Downloads bytes from target M\+CU starting from address \textquotesingle{}addr\+\_\+start\textquotesingle{} to \textquotesingle{}addr\+\_\+start\textquotesingle{} + \textquotesingle{}data\+\_\+size\textquotesingle{}. If wrong password is entered, mass erase is auto executed as a safety measure, erasing entire flash. device\+\_\+name case dont matter. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_bsl430_net_exception}{Bsl430\+Net\+Exception}}} & \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_b_s_l430_n_e_t_ad7b703fdca5e09026e64027bf5947848}{B\+S\+L430\+\_\+\+N\+E\+T.\+B\+S\+L430\+N\+ET}}.
+
+\mbox{\Hypertarget{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_af85d5a5f5f2b4bfb577ba5c16d268252}\label{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_af85d5a5f5f2b4bfb577ba5c16d268252}} 
+\index{BSL430\_NET.IBsl430Net@{BSL430\_NET.IBsl430Net}!Erase@{Erase}}
+\index{Erase@{Erase}!BSL430\_NET.IBsl430Net@{BSL430\_NET.IBsl430Net}}
+\subsubsection{\texorpdfstring{Erase()}{Erase()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status_ex}{Status\+Ex}} B\+S\+L430\+\_\+\+N\+E\+T.\+I\+Bsl430\+Net.\+Erase (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_bsl430_net_device}{Bsl430\+Net\+Device}}}]{device = {\ttfamily null} }\end{DoxyParamCaption})}
+
+
+
+Mass erase deletes the entire flash memory area except Information Memory if protocol 5xx6xx is used. Please see M\+CU datasheet for detailed information, or TI B\+SL doc (slau319t.\+pdf). 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_bsl430_net_exception}{Bsl430\+Net\+Exception}}} & \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_b_s_l430_n_e_t_a355e17f3dd02eb96810a36661f8e4b8d}{B\+S\+L430\+\_\+\+N\+E\+T.\+B\+S\+L430\+N\+ET}}.
+
+\mbox{\Hypertarget{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a54980ac32c18ed1202db2c9ff4e38a7a}\label{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a54980ac32c18ed1202db2c9ff4e38a7a}} 
+\index{BSL430\_NET.IBsl430Net@{BSL430\_NET.IBsl430Net}!Erase@{Erase}}
+\index{Erase@{Erase}!BSL430\_NET.IBsl430Net@{BSL430\_NET.IBsl430Net}}
+\subsubsection{\texorpdfstring{Erase()}{Erase()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status_ex}{Status\+Ex}} B\+S\+L430\+\_\+\+N\+E\+T.\+I\+Bsl430\+Net.\+Erase (\begin{DoxyParamCaption}\item[{string}]{device\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Mass erase deletes the entire flash memory area except Information Memory if protocol 5xx6xx is used. Please see M\+CU datasheet for detailed information, or TI B\+SL doc (slau319t.\+pdf). device\+\_\+name case dont matter. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_bsl430_net_exception}{Bsl430\+Net\+Exception}}} & \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_b_s_l430_n_e_t_a994ac47f526248a23eeb108d38404366}{B\+S\+L430\+\_\+\+N\+E\+T.\+B\+S\+L430\+N\+ET}}.
+
+\mbox{\Hypertarget{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a96d263e6860582cd135b5d5ac90d792a}\label{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a96d263e6860582cd135b5d5ac90d792a}} 
+\index{BSL430\_NET.IBsl430Net@{BSL430\_NET.IBsl430Net}!GetBaudRate@{GetBaudRate}}
+\index{GetBaudRate@{GetBaudRate}!BSL430\_NET.IBsl430Net@{BSL430\_NET.IBsl430Net}}
+\subsubsection{\texorpdfstring{GetBaudRate()}{GetBaudRate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_b_s_l430___n_e_t_a8d30c263598635a481840944d38aeb70}{Baud\+Rate}} B\+S\+L430\+\_\+\+N\+E\+T.\+I\+Bsl430\+Net.\+Get\+Baud\+Rate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns currently set baud rate. 
+
+
+
+Implemented in \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_b_s_l430_n_e_t_aa2a47062b93eab1ff0ba09d7c0ff11c3}{B\+S\+L430\+\_\+\+N\+E\+T.\+B\+S\+L430\+N\+ET}}.
+
+\mbox{\Hypertarget{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a2b6319eca4ebe15b214212e719c4ddb5}\label{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a2b6319eca4ebe15b214212e719c4ddb5}} 
+\index{BSL430\_NET.IBsl430Net@{BSL430\_NET.IBsl430Net}!GetInvokeMechanism@{GetInvokeMechanism}}
+\index{GetInvokeMechanism@{GetInvokeMechanism}!BSL430\_NET.IBsl430Net@{BSL430\_NET.IBsl430Net}}
+\subsubsection{\texorpdfstring{GetInvokeMechanism()}{GetInvokeMechanism()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_b_s_l430___n_e_t_a6571fdf0fbbc8408b8428f4d642c1305}{Invoke\+Mechanism}} B\+S\+L430\+\_\+\+N\+E\+T.\+I\+Bsl430\+Net.\+Get\+Invoke\+Mechanism (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns currently set invoke mechanism. 
+
+
+
+Implemented in \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_b_s_l430_n_e_t_aaf38a4fb21714699bbe2950108ae5c6d}{B\+S\+L430\+\_\+\+N\+E\+T.\+B\+S\+L430\+N\+ET}}.
+
+\mbox{\Hypertarget{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_ad9efb6c8632e8bd971f34d58ccdeea4b}\label{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_ad9efb6c8632e8bd971f34d58ccdeea4b}} 
+\index{BSL430\_NET.IBsl430Net@{BSL430\_NET.IBsl430Net}!GetMCU@{GetMCU}}
+\index{GetMCU@{GetMCU}!BSL430\_NET.IBsl430Net@{BSL430\_NET.IBsl430Net}}
+\subsubsection{\texorpdfstring{GetMCU()}{GetMCU()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490}{M\+CU}} B\+S\+L430\+\_\+\+N\+E\+T.\+I\+Bsl430\+Net.\+Get\+M\+CU (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns currently set M\+CU family. 
+
+
+
+Implemented in \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_b_s_l430_n_e_t_ac9bd1e8e4adc0355b5562a24717cfa35}{B\+S\+L430\+\_\+\+N\+E\+T.\+B\+S\+L430\+N\+ET}}.
+
+\mbox{\Hypertarget{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_abde671fd1ec4d013dd7fe5902f04ee97}\label{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_abde671fd1ec4d013dd7fe5902f04ee97}} 
+\index{BSL430\_NET.IBsl430Net@{BSL430\_NET.IBsl430Net}!GetMode@{GetMode}}
+\index{GetMode@{GetMode}!BSL430\_NET.IBsl430Net@{BSL430\_NET.IBsl430Net}}
+\subsubsection{\texorpdfstring{GetMode()}{GetMode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_b_s_l430___n_e_t_aa1c6981cb6f279b5491d861ca555a1d7}{Mode}} B\+S\+L430\+\_\+\+N\+E\+T.\+I\+Bsl430\+Net.\+Get\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns current B\+S\+L430.\+N\+ET instance operating mode (U\+A\+R\+T\+\_\+\+F\+T\+D\+XX, U\+A\+R\+T\+\_\+libftdi, U\+A\+R\+T\+\_\+\+Serial, U\+S\+B\+\_\+\+H\+ID). 
+
+
+
+Implemented in \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_b_s_l430_n_e_t_af98024781d260383a8b869a6338cbeb9}{B\+S\+L430\+\_\+\+N\+E\+T.\+B\+S\+L430\+N\+ET}}.
+
+\mbox{\Hypertarget{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_ab6f53bec39332434e99912ce3413dbcd}\label{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_ab6f53bec39332434e99912ce3413dbcd}} 
+\index{BSL430\_NET.IBsl430Net@{BSL430\_NET.IBsl430Net}!Scan$<$ Tdev $>$@{Scan$<$ Tdev $>$}}
+\index{Scan$<$ Tdev $>$@{Scan$<$ Tdev $>$}!BSL430\_NET.IBsl430Net@{BSL430\_NET.IBsl430Net}}
+\subsubsection{\texorpdfstring{Scan$<$ Tdev $>$()}{Scan< Tdev >()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status}{Status}} B\+S\+L430\+\_\+\+N\+E\+T.\+I\+Bsl430\+Net.\+Scan$<$ Tdev $>$ (\begin{DoxyParamCaption}\item[{out List$<$ Tdev $>$}]{device\+\_\+list,  }\item[{\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a4cd6f8166a2a97ccb3405df2287d4ba8}{Scan\+Options}}}]{scan\+\_\+opt = {\ttfamily \mbox{\hyperlink{namespace_b_s_l430___n_e_t_a4cd6f8166a2a97ccb3405df2287d4ba8a6adf97f83acf6453d4a6a4b1070f3754}{Scan\+Options.\+None}}} }\end{DoxyParamCaption})}
+
+
+
+Scan for devices in single mode (F\+T\+DI, libftdi, U\+SB or Serial). 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_bsl430_net_exception}{Bsl430\+Net\+Exception}}} & \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_b_s_l430_n_e_t_a0299d3468b1a5c2f4facf0bacfaa6bb0}{B\+S\+L430\+\_\+\+N\+E\+T.\+B\+S\+L430\+N\+ET}}.
+
+\begin{Desc}
+\item[Type Constraints]\begin{description}
+\item[{\em Tdev} : {\em Bsl430\+Net\+Device}]\end{description}
+\end{Desc}
+\mbox{\Hypertarget{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a4ce151c0bd961d76dc9dfa2b07788b99}\label{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a4ce151c0bd961d76dc9dfa2b07788b99}} 
+\index{BSL430\_NET.IBsl430Net@{BSL430\_NET.IBsl430Net}!SetBaudRate@{SetBaudRate}}
+\index{SetBaudRate@{SetBaudRate}!BSL430\_NET.IBsl430Net@{BSL430\_NET.IBsl430Net}}
+\subsubsection{\texorpdfstring{SetBaudRate()}{SetBaudRate()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status}{Status}} B\+S\+L430\+\_\+\+N\+E\+T.\+I\+Bsl430\+Net.\+Set\+Baud\+Rate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a8d30c263598635a481840944d38aeb70}{Baud\+Rate}}}]{Baud\+Rate }\end{DoxyParamCaption})}
+
+
+
+Sets baud rate. Default is 9600 bps (9600). Baud rate is applicable only in U\+A\+RT mode and only in some B\+SL revs. 
+
+
+
+Implemented in \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_b_s_l430_n_e_t_a6d01c3021cc44318ab8ee695a910ecfd}{B\+S\+L430\+\_\+\+N\+E\+T.\+B\+S\+L430\+N\+ET}}.
+
+\mbox{\Hypertarget{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a5edac897ededd878d53097ac4e9c6782}\label{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a5edac897ededd878d53097ac4e9c6782}} 
+\index{BSL430\_NET.IBsl430Net@{BSL430\_NET.IBsl430Net}!SetInvokeMechanism@{SetInvokeMechanism}}
+\index{SetInvokeMechanism@{SetInvokeMechanism}!BSL430\_NET.IBsl430Net@{BSL430\_NET.IBsl430Net}}
+\subsubsection{\texorpdfstring{SetInvokeMechanism()}{SetInvokeMechanism()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status}{Status}} B\+S\+L430\+\_\+\+N\+E\+T.\+I\+Bsl430\+Net.\+Set\+Invoke\+Mechanism (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a6571fdf0fbbc8408b8428f4d642c1305}{Invoke\+Mechanism}}}]{invoke\+\_\+mechanism }\end{DoxyParamCaption})}
+
+
+
+Sets invoke mechanism mode. Default is D\+T\+R\+\_\+\+R\+S\+T\+\_\+\+\_\+\+R\+T\+S\+\_\+\+T\+E\+ST (0). Note that U\+SB H\+ID mode requires manual B\+SL invocation. 
+
+
+
+Implemented in \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_b_s_l430_n_e_t_ad8ec7dceb979a98e30bf59f7c5fde620}{B\+S\+L430\+\_\+\+N\+E\+T.\+B\+S\+L430\+N\+ET}}.
+
+\mbox{\Hypertarget{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_ab73461fb74eb2d85fd06ece052558b0d}\label{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_ab73461fb74eb2d85fd06ece052558b0d}} 
+\index{BSL430\_NET.IBsl430Net@{BSL430\_NET.IBsl430Net}!SetMCU@{SetMCU}}
+\index{SetMCU@{SetMCU}!BSL430\_NET.IBsl430Net@{BSL430\_NET.IBsl430Net}}
+\subsubsection{\texorpdfstring{SetMCU()}{SetMCU()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status}{Status}} B\+S\+L430\+\_\+\+N\+E\+T.\+I\+Bsl430\+Net.\+Set\+M\+CU (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_b_s_l430___n_e_t_a2cdaa65be7e1679fc8ca77610b19a490}{M\+CU}}}]{mcu }\end{DoxyParamCaption})}
+
+
+
+Sets M\+CU family. Default is M\+S\+P430\+\_\+\+F5xx (4). Please see TI B\+SL doc (slau319t.\+pdf) for supported M\+C\+Us and their modes. 
+
+
+
+Implemented in \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_b_s_l430_n_e_t_a22d6c0af4298026d7939bc993e9791ad}{B\+S\+L430\+\_\+\+N\+E\+T.\+B\+S\+L430\+N\+ET}}.
+
+\mbox{\Hypertarget{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a598587fc08c2f9082b08abb65c058eaa}\label{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a598587fc08c2f9082b08abb65c058eaa}} 
+\index{BSL430\_NET.IBsl430Net@{BSL430\_NET.IBsl430Net}!Upload@{Upload}}
+\index{Upload@{Upload}!BSL430\_NET.IBsl430Net@{BSL430\_NET.IBsl430Net}}
+\subsubsection{\texorpdfstring{Upload()}{Upload()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status_ex}{Status\+Ex}} B\+S\+L430\+\_\+\+N\+E\+T.\+I\+Bsl430\+Net.\+Upload (\begin{DoxyParamCaption}\item[{string}]{firmware\+\_\+path,  }\item[{\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_bsl430_net_device}{Bsl430\+Net\+Device}}}]{device = {\ttfamily null},  }\item[{byte \mbox{[}$\,$\mbox{]}}]{password = {\ttfamily null} }\end{DoxyParamCaption})}
+
+
+
+Uploads data from firmware\+\_\+path to target M\+CU. Supported file formats are T\+I-\/\+T\+XT, Intel-\/\+H\+EX and E\+LF. If none, null or invalid password is entered, mass erase is executed first. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_bsl430_net_exception}{Bsl430\+Net\+Exception}}} & \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_b_s_l430_n_e_t_aaa54534dbbc4b9b255bffe5d6e29ba40}{B\+S\+L430\+\_\+\+N\+E\+T.\+B\+S\+L430\+N\+ET}}.
+
+\mbox{\Hypertarget{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a3bc860bea764dd0ad0ee9c7a05fe4ecc}\label{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a3bc860bea764dd0ad0ee9c7a05fe4ecc}} 
+\index{BSL430\_NET.IBsl430Net@{BSL430\_NET.IBsl430Net}!Upload@{Upload}}
+\index{Upload@{Upload}!BSL430\_NET.IBsl430Net@{BSL430\_NET.IBsl430Net}}
+\subsubsection{\texorpdfstring{Upload()}{Upload()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status_ex}{Status\+Ex}} B\+S\+L430\+\_\+\+N\+E\+T.\+I\+Bsl430\+Net.\+Upload (\begin{DoxyParamCaption}\item[{string}]{firmware,  }\item[{string}]{device\+\_\+name,  }\item[{byte \mbox{[}$\,$\mbox{]}}]{password = {\ttfamily null} }\end{DoxyParamCaption})}
+
+
+
+Uploads data from firmware\+\_\+path to target M\+CU. Supported file formats are T\+I-\/\+T\+XT, Intel-\/\+H\+EX and E\+LF. If none, null or invalid password is entered, mass erase is executed first. device\+\_\+name case dont matter. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_bsl430_net_exception}{Bsl430\+Net\+Exception}}} & \\
+\hline
+\end{DoxyExceptions}
+
+
+Implemented in \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_b_s_l430_n_e_t_a34ea55282fe44a886e4382caf4e391fc}{B\+S\+L430\+\_\+\+N\+E\+T.\+B\+S\+L430\+N\+ET}}.
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a2edaa235290e3b3b5551db0a60bc0781}\label{interface_b_s_l430___n_e_t_1_1_i_bsl430_net_a2edaa235290e3b3b5551db0a60bc0781}} 
+\index{BSL430\_NET.IBsl430Net@{BSL430\_NET.IBsl430Net}!ftdi@{ftdi}}
+\index{ftdi@{ftdi}!BSL430\_NET.IBsl430Net@{BSL430\_NET.IBsl430Net}}
+\subsubsection{\texorpdfstring{ftdi}{ftdi}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_status}{Status}} B\+S\+L430\+\_\+\+N\+E\+T.\+I\+Bsl430\+Net.\+ftdi}
+
+
+
+Scan for all available devices in multimode (F\+T\+DI, libftdi, U\+SB and Serial). 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_bsl430_net_exception}{Bsl430\+Net\+Exception}}} & \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this interface was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+P\+R\+O\+J\+E\+C\+T\+S/\+C\#/\+B\+S\+L430.\+N\+E\+T/src/\+B\+S\+L430.\+N\+E\+T/I\+Bsl430\+Net.\+cs\end{DoxyCompactItemize}

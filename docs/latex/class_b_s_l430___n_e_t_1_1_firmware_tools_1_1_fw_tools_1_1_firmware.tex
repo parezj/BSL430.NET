@@ -1,0 +1,80 @@
+\hypertarget{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_firmware}{}\section{B\+S\+L430\+\_\+\+N\+E\+T.\+Firmware\+Tools.\+Fw\+Tools.\+Firmware Class Reference}
+\label{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_firmware}\index{BSL430\_NET.FirmwareTools.FwTools.Firmware@{BSL430\_NET.FirmwareTools.FwTools.Firmware}}
+
+
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_firmware}{Firmware}} object representation. Nodes is collection of \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_node}{Fw\+Node}} (Addr+\+Data) and Info is \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info}{Fw\+Info}} class.  
+
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_firmware_ade815c90607d3ca2499a1d192ede9362}{Firmware}} (List$<$ \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_node}{Fw\+Node}} $>$ nodes, Fw\+Format format, int size\+\_\+buffer=0, int reset\+\_\+vector\+\_\+addr=-\/1)
+\begin{DoxyCompactList}\small\item\em Init \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_firmware}{Firmware}} with passed Nodes and created \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info}{Fw\+Info}} class based on valid input data. \end{DoxyCompactList}\item 
+int? \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_firmware_a554bd13e5c9a17d68c017d20e1d391fa}{Set\+Reset\+Vector}} (int reset\+\_\+vector\+\_\+addr)
+\begin{DoxyCompactList}\small\item\em Sets Reset Vector property to valid data, calculated from Nodes. reset\+\_\+vector\+\_\+addr is usually 0x\+F\+F\+FE. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info}{Fw\+Info}} \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_firmware_ab0d46ec0a0f7ddfdd93e2fc0407a78b8}{Info}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info}{Fw\+Info}} provides info about firmware, like first and last addresses, C\+RC, code size and reset vector. \end{DoxyCompactList}\item 
+List$<$ \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_node}{Fw\+Node}} $>$ \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_firmware_a5538ddda063e61683bc7ce23d329afc2}{Nodes}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em List of \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_node}{Fw\+Node}}, what firmware consits of, representated by single byte with 16bit address. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_firmware}{Firmware}} object representation. Nodes is collection of \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_node}{Fw\+Node}} (Addr+\+Data) and Info is \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info}{Fw\+Info}} class. 
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_firmware_ade815c90607d3ca2499a1d192ede9362}\label{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_firmware_ade815c90607d3ca2499a1d192ede9362}} 
+\index{BSL430\_NET.FirmwareTools.FwTools.Firmware@{BSL430\_NET.FirmwareTools.FwTools.Firmware}!Firmware@{Firmware}}
+\index{Firmware@{Firmware}!BSL430\_NET.FirmwareTools.FwTools.Firmware@{BSL430\_NET.FirmwareTools.FwTools.Firmware}}
+\subsubsection{\texorpdfstring{Firmware()}{Firmware()}}
+{\footnotesize\ttfamily B\+S\+L430\+\_\+\+N\+E\+T.\+Firmware\+Tools.\+Fw\+Tools.\+Firmware.\+Firmware (\begin{DoxyParamCaption}\item[{List$<$ \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_node}{Fw\+Node}} $>$}]{nodes,  }\item[{Fw\+Format}]{format,  }\item[{int}]{size\+\_\+buffer = {\ttfamily 0},  }\item[{int}]{reset\+\_\+vector\+\_\+addr = {\ttfamily -\/1} }\end{DoxyParamCaption})}
+
+
+
+Init \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_firmware}{Firmware}} with passed Nodes and created \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info}{Fw\+Info}} class based on valid input data. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_firmware_a554bd13e5c9a17d68c017d20e1d391fa}\label{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_firmware_a554bd13e5c9a17d68c017d20e1d391fa}} 
+\index{BSL430\_NET.FirmwareTools.FwTools.Firmware@{BSL430\_NET.FirmwareTools.FwTools.Firmware}!SetResetVector@{SetResetVector}}
+\index{SetResetVector@{SetResetVector}!BSL430\_NET.FirmwareTools.FwTools.Firmware@{BSL430\_NET.FirmwareTools.FwTools.Firmware}}
+\subsubsection{\texorpdfstring{SetResetVector()}{SetResetVector()}}
+{\footnotesize\ttfamily int? B\+S\+L430\+\_\+\+N\+E\+T.\+Firmware\+Tools.\+Fw\+Tools.\+Firmware.\+Set\+Reset\+Vector (\begin{DoxyParamCaption}\item[{int}]{reset\+\_\+vector\+\_\+addr }\end{DoxyParamCaption})}
+
+
+
+Sets Reset Vector property to valid data, calculated from Nodes. reset\+\_\+vector\+\_\+addr is usually 0x\+F\+F\+FE. 
+
+
+
+\subsection{Property Documentation}
+\mbox{\Hypertarget{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_firmware_ab0d46ec0a0f7ddfdd93e2fc0407a78b8}\label{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_firmware_ab0d46ec0a0f7ddfdd93e2fc0407a78b8}} 
+\index{BSL430\_NET.FirmwareTools.FwTools.Firmware@{BSL430\_NET.FirmwareTools.FwTools.Firmware}!Info@{Info}}
+\index{Info@{Info}!BSL430\_NET.FirmwareTools.FwTools.Firmware@{BSL430\_NET.FirmwareTools.FwTools.Firmware}}
+\subsubsection{\texorpdfstring{Info}{Info}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info}{Fw\+Info}} B\+S\+L430\+\_\+\+N\+E\+T.\+Firmware\+Tools.\+Fw\+Tools.\+Firmware.\+Info\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_info}{Fw\+Info}} provides info about firmware, like first and last addresses, C\+RC, code size and reset vector. 
+
+\mbox{\Hypertarget{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_firmware_a5538ddda063e61683bc7ce23d329afc2}\label{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_firmware_a5538ddda063e61683bc7ce23d329afc2}} 
+\index{BSL430\_NET.FirmwareTools.FwTools.Firmware@{BSL430\_NET.FirmwareTools.FwTools.Firmware}!Nodes@{Nodes}}
+\index{Nodes@{Nodes}!BSL430\_NET.FirmwareTools.FwTools.Firmware@{BSL430\_NET.FirmwareTools.FwTools.Firmware}}
+\subsubsection{\texorpdfstring{Nodes}{Nodes}}
+{\footnotesize\ttfamily List$<$\mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_node}{Fw\+Node}}$>$ B\+S\+L430\+\_\+\+N\+E\+T.\+Firmware\+Tools.\+Fw\+Tools.\+Firmware.\+Nodes\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+List of \mbox{\hyperlink{class_b_s_l430___n_e_t_1_1_firmware_tools_1_1_fw_tools_1_1_fw_node}{Fw\+Node}}, what firmware consits of, representated by single byte with 16bit address. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+P\+R\+O\+J\+E\+C\+T\+S/\+C\#/\+B\+S\+L430.\+N\+E\+T/src/\+B\+S\+L430.\+N\+E\+T/Firmware\+Tools.\+cs\end{DoxyCompactItemize}

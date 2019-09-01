@@ -1,0 +1,88 @@
+.TH "FTD2XX_NET.FTDI.FT_BIT_MODES" 3 "Sat Jun 22 2019" "Version 1.2.1" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+FTD2XX_NET.FTDI.FT_BIT_MODES \- Permitted bit mode values for \fBFTDI\fP devices\&. For use with SetBitMode  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const byte \fBFT_BIT_MODE_RESET\fP = 0x00"
+.br
+.RI "Reset bit mode "
+.ti -1c
+.RI "const byte \fBFT_BIT_MODE_ASYNC_BITBANG\fP = 0x01"
+.br
+.RI "Asynchronous bit-bang mode "
+.ti -1c
+.RI "const byte \fBFT_BIT_MODE_MPSSE\fP = 0x02"
+.br
+.RI "MPSSE bit mode - only available on FT2232, FT2232H, FT4232H and FT232H "
+.ti -1c
+.RI "const byte \fBFT_BIT_MODE_SYNC_BITBANG\fP = 0x04"
+.br
+.RI "Synchronous bit-bang mode "
+.ti -1c
+.RI "const byte \fBFT_BIT_MODE_MCU_HOST\fP = 0x08"
+.br
+.RI "MCU host bus emulation mode - only available on FT2232, FT2232H, FT4232H and FT232H "
+.ti -1c
+.RI "const byte \fBFT_BIT_MODE_FAST_SERIAL\fP = 0x10"
+.br
+.RI "Fast opto-isolated serial mode - only available on FT2232, FT2232H, FT4232H and FT232H "
+.ti -1c
+.RI "const byte \fBFT_BIT_MODE_CBUS_BITBANG\fP = 0x20"
+.br
+.RI "CBUS bit-bang mode - only available on FT232R and FT232H "
+.ti -1c
+.RI "const byte \fBFT_BIT_MODE_SYNC_FIFO\fP = 0x40"
+.br
+.RI "Single channel synchronous 245 FIFO mode - only available on FT2232H channel A and FT232H "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Permitted bit mode values for \fBFTDI\fP devices\&. For use with SetBitMode 
+
+
+.SH "Member Data Documentation"
+.PP 
+.SS "const byte FTD2XX_NET\&.FTDI\&.FT_BIT_MODES\&.FT_BIT_MODE_ASYNC_BITBANG = 0x01"
+
+.PP
+Asynchronous bit-bang mode 
+.SS "const byte FTD2XX_NET\&.FTDI\&.FT_BIT_MODES\&.FT_BIT_MODE_CBUS_BITBANG = 0x20"
+
+.PP
+CBUS bit-bang mode - only available on FT232R and FT232H 
+.SS "const byte FTD2XX_NET\&.FTDI\&.FT_BIT_MODES\&.FT_BIT_MODE_FAST_SERIAL = 0x10"
+
+.PP
+Fast opto-isolated serial mode - only available on FT2232, FT2232H, FT4232H and FT232H 
+.SS "const byte FTD2XX_NET\&.FTDI\&.FT_BIT_MODES\&.FT_BIT_MODE_MCU_HOST = 0x08"
+
+.PP
+MCU host bus emulation mode - only available on FT2232, FT2232H, FT4232H and FT232H 
+.SS "const byte FTD2XX_NET\&.FTDI\&.FT_BIT_MODES\&.FT_BIT_MODE_MPSSE = 0x02"
+
+.PP
+MPSSE bit mode - only available on FT2232, FT2232H, FT4232H and FT232H 
+.SS "const byte FTD2XX_NET\&.FTDI\&.FT_BIT_MODES\&.FT_BIT_MODE_RESET = 0x00"
+
+.PP
+Reset bit mode 
+.SS "const byte FTD2XX_NET\&.FTDI\&.FT_BIT_MODES\&.FT_BIT_MODE_SYNC_BITBANG = 0x04"
+
+.PP
+Synchronous bit-bang mode 
+.SS "const byte FTD2XX_NET\&.FTDI\&.FT_BIT_MODES\&.FT_BIT_MODE_SYNC_FIFO = 0x40"
+
+.PP
+Single channel synchronous 245 FIFO mode - only available on FT2232H channel A and FT232H 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

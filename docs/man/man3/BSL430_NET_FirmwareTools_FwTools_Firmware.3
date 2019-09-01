@@ -1,0 +1,64 @@
+.TH "BSL430_NET.FirmwareTools.FwTools.Firmware" 3 "Sat Jun 22 2019" "Version 1.2.1" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BSL430_NET.FirmwareTools.FwTools.Firmware \- \fBFirmware\fP object representation\&. Nodes is collection of \fBFwNode\fP (Addr+Data) and Info is \fBFwInfo\fP class\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFirmware\fP (List< \fBFwNode\fP > nodes, FwFormat format, int size_buffer=0, int reset_vector_addr=\-1)"
+.br
+.RI "Init \fBFirmware\fP with passed Nodes and created \fBFwInfo\fP class based on valid input data\&. "
+.ti -1c
+.RI "int? \fBSetResetVector\fP (int reset_vector_addr)"
+.br
+.RI "Sets Reset Vector property to valid data, calculated from Nodes\&. reset_vector_addr is usually 0xFFFE\&. "
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBFwInfo\fP \fBInfo\fP\fC [get]\fP"
+.br
+.RI "\fBFwInfo\fP provides info about firmware, like first and last addresses, CRC, code size and reset vector\&. "
+.ti -1c
+.RI "List< \fBFwNode\fP > \fBNodes\fP\fC [get]\fP"
+.br
+.RI "List of \fBFwNode\fP, what firmware consits of, representated by single byte with 16bit address\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBFirmware\fP object representation\&. Nodes is collection of \fBFwNode\fP (Addr+Data) and Info is \fBFwInfo\fP class\&. 
+
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "BSL430_NET\&.FirmwareTools\&.FwTools\&.Firmware\&.Firmware (List< \fBFwNode\fP > nodes, FwFormat format, int size_buffer = \fC0\fP, int reset_vector_addr = \fC\-1\fP)"
+
+.PP
+Init \fBFirmware\fP with passed Nodes and created \fBFwInfo\fP class based on valid input data\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "int? BSL430_NET\&.FirmwareTools\&.FwTools\&.Firmware\&.SetResetVector (int reset_vector_addr)"
+
+.PP
+Sets Reset Vector property to valid data, calculated from Nodes\&. reset_vector_addr is usually 0xFFFE\&. 
+.SH "Property Documentation"
+.PP 
+.SS "\fBFwInfo\fP BSL430_NET\&.FirmwareTools\&.FwTools\&.Firmware\&.Info\fC [get]\fP"
+
+.PP
+\fBFwInfo\fP provides info about firmware, like first and last addresses, CRC, code size and reset vector\&. 
+.SS "List<\fBFwNode\fP> BSL430_NET\&.FirmwareTools\&.FwTools\&.Firmware\&.Nodes\fC [get]\fP"
+
+.PP
+List of \fBFwNode\fP, what firmware consits of, representated by single byte with 16bit address\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

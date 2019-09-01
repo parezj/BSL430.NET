@@ -1,0 +1,215 @@
+\hypertarget{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop}{}\section{R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Windows.\+Native\+Methods.\+Comm\+Prop Struct Reference}
+\label{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop}\index{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}}
+
+
+Contains information about a communications driver  
+
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+ushort \mbox{\hyperlink{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a75141afc157dd3b6714266b89d63f99c}{w\+Packet\+Length}}
+\begin{DoxyCompactList}\small\item\em The size of the entire data packet, regardless of the amount of data requested, in bytes \end{DoxyCompactList}\item 
+ushort \mbox{\hyperlink{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a579629c742ed914537ca579f201c3ba3}{w\+Packet\+Version}}
+\begin{DoxyCompactList}\small\item\em The version of the structure \end{DoxyCompactList}\item 
+uint \mbox{\hyperlink{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a1c0471e4fd83977bb830c3d53308f275}{dw\+Service\+Mask}}
+\begin{DoxyCompactList}\small\item\em A bit mask indicating which services are implemented by this provider. The S\+P\+\_\+\+S\+E\+R\+I\+A\+L\+C\+O\+MM value is always specified for communications providers, including modem providers \end{DoxyCompactList}\item 
+uint \mbox{\hyperlink{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_abdc156d3d158840281478898db5acffc}{dw\+Max\+Tx\+Queue}}
+\begin{DoxyCompactList}\small\item\em The maximum size of the driver\textquotesingle{}s internal output buffer, in bytes. A value of zero indicates that no maximum value is imposed by the serial provider. \end{DoxyCompactList}\item 
+uint \mbox{\hyperlink{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a9496496ea68a920905c6c1c5b86d960c}{dw\+Max\+Rx\+Queue}}
+\begin{DoxyCompactList}\small\item\em The maximum size of the driver\textquotesingle{}s internal input buffer, in bytes. A value of zero indicates that no maximum value is imposed by the serial provider \end{DoxyCompactList}\item 
+Bit\+Vector32 \mbox{\hyperlink{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a651e9836aff0866270a637334e31c3b2}{dw\+Max\+Baud}}
+\begin{DoxyCompactList}\small\item\em The maximum allowable baud rate, in bits per second (bps) \end{DoxyCompactList}\item 
+Prov\+Sub\+Type \mbox{\hyperlink{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a10c6548bf288f9f58ded370d103fea22}{dw\+Prov\+Sub\+Type}}
+\begin{DoxyCompactList}\small\item\em The communications-\/provider type \end{DoxyCompactList}\item 
+Bit\+Vector32 \mbox{\hyperlink{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a9871f8b1addd6daebc87bb2b86e058cc}{dw\+Prov\+Capabilities}}
+\begin{DoxyCompactList}\small\item\em A bit mask indicating the capabilities offered by the provider \end{DoxyCompactList}\item 
+Bit\+Vector32 \mbox{\hyperlink{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a9a656bcec6b0ffb1176d72586a154401}{dw\+Settable\+Params}}
+\begin{DoxyCompactList}\small\item\em The communications parameter that can be changed \end{DoxyCompactList}\item 
+Bit\+Vector32 \mbox{\hyperlink{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_ae4f5b82a8a5c361dcf472261d7308c25}{dw\+Settable\+Baud}}
+\begin{DoxyCompactList}\small\item\em The baud rates that can be used \end{DoxyCompactList}\item 
+Bit\+Vector32 \mbox{\hyperlink{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a050f4e4326571ae732ddf7ba2cdad533}{dw\+Settable\+Data\+Stop\+Parity}}
+\begin{DoxyCompactList}\small\item\em The number of data bits that can be set, stop and parity bits in the second half \end{DoxyCompactList}\item 
+uint \mbox{\hyperlink{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_af6c4aea9de72caaf761545809d9a8f6f}{dw\+Current\+Tx\+Queue}}
+\begin{DoxyCompactList}\small\item\em The size of the driver\textquotesingle{}s internal output buffer, in bytes. A value of zero indicates that the value is unavailable \end{DoxyCompactList}\item 
+uint \mbox{\hyperlink{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a10e84563613b137b9ad63929cad68dd3}{dw\+Current\+Rx\+Queue}}
+\begin{DoxyCompactList}\small\item\em The size of the driver\textquotesingle{}s internal input buffer, in bytes. A value of zero indicates that the value is unavailable \end{DoxyCompactList}\item 
+uint \mbox{\hyperlink{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_ad0b639080531b9afa3dd25263d20dbae}{dw\+Prov\+Spec1}}
+\begin{DoxyCompactList}\small\item\em Any provider-\/specific data \end{DoxyCompactList}\item 
+uint \mbox{\hyperlink{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a80b5079799210f84eeb42bcb04fec314}{dw\+Prov\+Spec2}}
+\begin{DoxyCompactList}\small\item\em Any provider-\/specific data \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a0815a4dea68f1ee0650187a9ca32f3f1}{wc\+Prov\+Char}}
+\begin{DoxyCompactList}\small\item\em Any provider-\/specific data \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Contains information about a communications driver 
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a10e84563613b137b9ad63929cad68dd3}\label{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a10e84563613b137b9ad63929cad68dd3}} 
+\index{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}!dwCurrentRxQueue@{dwCurrentRxQueue}}
+\index{dwCurrentRxQueue@{dwCurrentRxQueue}!RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}}
+\subsubsection{\texorpdfstring{dwCurrentRxQueue}{dwCurrentRxQueue}}
+{\footnotesize\ttfamily uint R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Windows.\+Native\+Methods.\+Comm\+Prop.\+dw\+Current\+Rx\+Queue}
+
+
+
+The size of the driver\textquotesingle{}s internal input buffer, in bytes. A value of zero indicates that the value is unavailable 
+
+\mbox{\Hypertarget{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_af6c4aea9de72caaf761545809d9a8f6f}\label{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_af6c4aea9de72caaf761545809d9a8f6f}} 
+\index{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}!dwCurrentTxQueue@{dwCurrentTxQueue}}
+\index{dwCurrentTxQueue@{dwCurrentTxQueue}!RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}}
+\subsubsection{\texorpdfstring{dwCurrentTxQueue}{dwCurrentTxQueue}}
+{\footnotesize\ttfamily uint R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Windows.\+Native\+Methods.\+Comm\+Prop.\+dw\+Current\+Tx\+Queue}
+
+
+
+The size of the driver\textquotesingle{}s internal output buffer, in bytes. A value of zero indicates that the value is unavailable 
+
+\mbox{\Hypertarget{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a651e9836aff0866270a637334e31c3b2}\label{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a651e9836aff0866270a637334e31c3b2}} 
+\index{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}!dwMaxBaud@{dwMaxBaud}}
+\index{dwMaxBaud@{dwMaxBaud}!RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}}
+\subsubsection{\texorpdfstring{dwMaxBaud}{dwMaxBaud}}
+{\footnotesize\ttfamily Bit\+Vector32 R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Windows.\+Native\+Methods.\+Comm\+Prop.\+dw\+Max\+Baud}
+
+
+
+The maximum allowable baud rate, in bits per second (bps) 
+
+\mbox{\Hypertarget{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a9496496ea68a920905c6c1c5b86d960c}\label{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a9496496ea68a920905c6c1c5b86d960c}} 
+\index{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}!dwMaxRxQueue@{dwMaxRxQueue}}
+\index{dwMaxRxQueue@{dwMaxRxQueue}!RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}}
+\subsubsection{\texorpdfstring{dwMaxRxQueue}{dwMaxRxQueue}}
+{\footnotesize\ttfamily uint R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Windows.\+Native\+Methods.\+Comm\+Prop.\+dw\+Max\+Rx\+Queue}
+
+
+
+The maximum size of the driver\textquotesingle{}s internal input buffer, in bytes. A value of zero indicates that no maximum value is imposed by the serial provider 
+
+\mbox{\Hypertarget{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_abdc156d3d158840281478898db5acffc}\label{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_abdc156d3d158840281478898db5acffc}} 
+\index{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}!dwMaxTxQueue@{dwMaxTxQueue}}
+\index{dwMaxTxQueue@{dwMaxTxQueue}!RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}}
+\subsubsection{\texorpdfstring{dwMaxTxQueue}{dwMaxTxQueue}}
+{\footnotesize\ttfamily uint R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Windows.\+Native\+Methods.\+Comm\+Prop.\+dw\+Max\+Tx\+Queue}
+
+
+
+The maximum size of the driver\textquotesingle{}s internal output buffer, in bytes. A value of zero indicates that no maximum value is imposed by the serial provider. 
+
+\mbox{\Hypertarget{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a9871f8b1addd6daebc87bb2b86e058cc}\label{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a9871f8b1addd6daebc87bb2b86e058cc}} 
+\index{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}!dwProvCapabilities@{dwProvCapabilities}}
+\index{dwProvCapabilities@{dwProvCapabilities}!RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}}
+\subsubsection{\texorpdfstring{dwProvCapabilities}{dwProvCapabilities}}
+{\footnotesize\ttfamily Bit\+Vector32 R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Windows.\+Native\+Methods.\+Comm\+Prop.\+dw\+Prov\+Capabilities}
+
+
+
+A bit mask indicating the capabilities offered by the provider 
+
+\mbox{\Hypertarget{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_ad0b639080531b9afa3dd25263d20dbae}\label{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_ad0b639080531b9afa3dd25263d20dbae}} 
+\index{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}!dwProvSpec1@{dwProvSpec1}}
+\index{dwProvSpec1@{dwProvSpec1}!RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}}
+\subsubsection{\texorpdfstring{dwProvSpec1}{dwProvSpec1}}
+{\footnotesize\ttfamily uint R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Windows.\+Native\+Methods.\+Comm\+Prop.\+dw\+Prov\+Spec1}
+
+
+
+Any provider-\/specific data 
+
+Applications should ignore this member unless they have detailed information about the format of the data required by the provider. Set this member to C\+O\+M\+M\+P\+R\+O\+P\+\_\+\+I\+N\+I\+T\+I\+A\+L\+I\+Z\+ED before calling the Get\+Comm\+Properties function to indicate that the w\+Packet\+Length member is already valid \mbox{\Hypertarget{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a80b5079799210f84eeb42bcb04fec314}\label{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a80b5079799210f84eeb42bcb04fec314}} 
+\index{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}!dwProvSpec2@{dwProvSpec2}}
+\index{dwProvSpec2@{dwProvSpec2}!RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}}
+\subsubsection{\texorpdfstring{dwProvSpec2}{dwProvSpec2}}
+{\footnotesize\ttfamily uint R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Windows.\+Native\+Methods.\+Comm\+Prop.\+dw\+Prov\+Spec2}
+
+
+
+Any provider-\/specific data 
+
+Applications should ignore this member unless they have detailed information about the format of the data required by the provider. \mbox{\Hypertarget{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a10c6548bf288f9f58ded370d103fea22}\label{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a10c6548bf288f9f58ded370d103fea22}} 
+\index{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}!dwProvSubType@{dwProvSubType}}
+\index{dwProvSubType@{dwProvSubType}!RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}}
+\subsubsection{\texorpdfstring{dwProvSubType}{dwProvSubType}}
+{\footnotesize\ttfamily Prov\+Sub\+Type R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Windows.\+Native\+Methods.\+Comm\+Prop.\+dw\+Prov\+Sub\+Type}
+
+
+
+The communications-\/provider type 
+
+\mbox{\Hypertarget{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a1c0471e4fd83977bb830c3d53308f275}\label{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a1c0471e4fd83977bb830c3d53308f275}} 
+\index{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}!dwServiceMask@{dwServiceMask}}
+\index{dwServiceMask@{dwServiceMask}!RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}}
+\subsubsection{\texorpdfstring{dwServiceMask}{dwServiceMask}}
+{\footnotesize\ttfamily uint R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Windows.\+Native\+Methods.\+Comm\+Prop.\+dw\+Service\+Mask}
+
+
+
+A bit mask indicating which services are implemented by this provider. The S\+P\+\_\+\+S\+E\+R\+I\+A\+L\+C\+O\+MM value is always specified for communications providers, including modem providers 
+
+\mbox{\Hypertarget{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_ae4f5b82a8a5c361dcf472261d7308c25}\label{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_ae4f5b82a8a5c361dcf472261d7308c25}} 
+\index{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}!dwSettableBaud@{dwSettableBaud}}
+\index{dwSettableBaud@{dwSettableBaud}!RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}}
+\subsubsection{\texorpdfstring{dwSettableBaud}{dwSettableBaud}}
+{\footnotesize\ttfamily Bit\+Vector32 R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Windows.\+Native\+Methods.\+Comm\+Prop.\+dw\+Settable\+Baud}
+
+
+
+The baud rates that can be used 
+
+\mbox{\Hypertarget{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a050f4e4326571ae732ddf7ba2cdad533}\label{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a050f4e4326571ae732ddf7ba2cdad533}} 
+\index{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}!dwSettableDataStopParity@{dwSettableDataStopParity}}
+\index{dwSettableDataStopParity@{dwSettableDataStopParity}!RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}}
+\subsubsection{\texorpdfstring{dwSettableDataStopParity}{dwSettableDataStopParity}}
+{\footnotesize\ttfamily Bit\+Vector32 R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Windows.\+Native\+Methods.\+Comm\+Prop.\+dw\+Settable\+Data\+Stop\+Parity}
+
+
+
+The number of data bits that can be set, stop and parity bits in the second half 
+
+\mbox{\Hypertarget{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a9a656bcec6b0ffb1176d72586a154401}\label{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a9a656bcec6b0ffb1176d72586a154401}} 
+\index{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}!dwSettableParams@{dwSettableParams}}
+\index{dwSettableParams@{dwSettableParams}!RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}}
+\subsubsection{\texorpdfstring{dwSettableParams}{dwSettableParams}}
+{\footnotesize\ttfamily Bit\+Vector32 R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Windows.\+Native\+Methods.\+Comm\+Prop.\+dw\+Settable\+Params}
+
+
+
+The communications parameter that can be changed 
+
+\mbox{\Hypertarget{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a0815a4dea68f1ee0650187a9ca32f3f1}\label{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a0815a4dea68f1ee0650187a9ca32f3f1}} 
+\index{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}!wcProvChar@{wcProvChar}}
+\index{wcProvChar@{wcProvChar}!RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}}
+\subsubsection{\texorpdfstring{wcProvChar}{wcProvChar}}
+{\footnotesize\ttfamily char R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Windows.\+Native\+Methods.\+Comm\+Prop.\+wc\+Prov\+Char}
+
+
+
+Any provider-\/specific data 
+
+Applications should ignore this member unless they have detailed information about the format of the data required by the provider. \mbox{\Hypertarget{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a75141afc157dd3b6714266b89d63f99c}\label{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a75141afc157dd3b6714266b89d63f99c}} 
+\index{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}!wPacketLength@{wPacketLength}}
+\index{wPacketLength@{wPacketLength}!RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}}
+\subsubsection{\texorpdfstring{wPacketLength}{wPacketLength}}
+{\footnotesize\ttfamily ushort R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Windows.\+Native\+Methods.\+Comm\+Prop.\+w\+Packet\+Length}
+
+
+
+The size of the entire data packet, regardless of the amount of data requested, in bytes 
+
+\mbox{\Hypertarget{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a579629c742ed914537ca579f201c3ba3}\label{struct_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows_1_1_native_methods_1_1_comm_prop_a579629c742ed914537ca579f201c3ba3}} 
+\index{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}!wPacketVersion@{wPacketVersion}}
+\index{wPacketVersion@{wPacketVersion}!RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp@{RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp}}
+\subsubsection{\texorpdfstring{wPacketVersion}{wPacketVersion}}
+{\footnotesize\ttfamily ushort R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Windows.\+Native\+Methods.\+Comm\+Prop.\+w\+Packet\+Version}
+
+
+
+The version of the structure 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+P\+R\+O\+J\+E\+C\+T\+S/\+C\#/\+B\+S\+L430.\+N\+E\+T/src/\+B\+S\+L430.\+N\+E\+T/\+Library/serialportstream/2.\+1.\+4/src/\+Native/\+Windows/Native\+Methods.\+cs\end{DoxyCompactItemize}

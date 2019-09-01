@@ -1,0 +1,86 @@
+.TH "RJCP.IO.Ports.Native.Unix" 3 "Sat Jun 22 2019" "Version 1.2.1" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+RJCP.IO.Ports.Native.Unix
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "interface \fBINativeSerialDll\fP"
+.br
+.ti -1c
+.RI "class \fBSafeNativeMethods\fP"
+.br
+.ti -1c
+.RI "class \fBSafeSerialHandle\fP"
+.br
+.ti -1c
+.RI "class \fBSerialUnix\fP"
+.br
+.ti -1c
+.RI "class \fBUnsafeNativeMethods\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBSerialReadWriteEvent\fP { \fBError\fP = -1, \fBNoEvent\fP = 0, \fBReadEvent\fP = 1, \fBWriteEvent\fP = 2, \fBReadWriteEvent\fP = 3 }"
+.br
+.ti -1c
+.RI "enum \fBSysErrNo\fP { \fBSysErrNo\&.NETFX_OK\fP = 0, \fBSysErrNo\&.NETFX_EINVAL\fP = 1, \fBSysErrNo\&.NETFX_EACCES\fP = 2, \fBSysErrNo\&.NETFX_ENOMEM\fP = 3, \fBSysErrNo\&.NETFX_EBADF\fP = 4, \fBSysErrNo\&.NETFX_ENOSYS\fP = 5, \fBSysErrNo\&.NETFX_EIO\fP = 6, \fBSysErrNo\&.NETFX_EAGAIN\fP = 7, \fBSysErrNo\&.NETFX_EWOULDBLOCK\fP = 8, \fBSysErrNo\&.NETFX_EINTR\fP = 9, \fBSysErrNo\&.NETFX_UNKNOWN\fP = -1 }"
+.br
+.RI "Mapped C-Library errors to constants for Managed Code "
+.ti -1c
+.RI "enum \fBWaitForModemEvent\fP { \fBError\fP = -1, \fBNone\fP = 0, \fBDataCarrierDetect\fP = 1, \fBRingIndicator\fP = 2, \fBDataSetReady\fP = 4, \fBClearToSend\fP = 8 }"
+.br
+.in -1c
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBRJCP\&.IO\&.Ports\&.Native\&.Unix\&.SysErrNo\fP\fC [strong]\fP"
+
+.PP
+Mapped C-Library errors to constants for Managed Code > This table must be identical to the enumeration values defined in the C-Sources netfx\&.h and netfx\&.c\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINETFX_OK \fP\fP
+No error detected\&. 
+.TP
+\fB\fINETFX_EINVAL \fP\fP
+ArgumentException 
+.TP
+\fB\fINETFX_EACCES \fP\fP
+UnauthorizedAccessException 
+.TP
+\fB\fINETFX_ENOMEM \fP\fP
+OutOfMemoryException 
+.TP
+\fB\fINETFX_EBADF \fP\fP
+InvalidOperationException 
+.TP
+\fB\fINETFX_ENOSYS \fP\fP
+PlatformNotSupportedException 
+.TP
+\fB\fINETFX_EIO \fP\fP
+IOException 
+.TP
+\fB\fINETFX_EAGAIN \fP\fP
+No error\&. 
+.TP
+\fB\fINETFX_EWOULDBLOCK \fP\fP
+No error\&. 
+.TP
+\fB\fINETFX_EINTR \fP\fP
+No error\&. 
+.TP
+\fB\fINETFX_UNKNOWN \fP\fP
+Unmapped error\&. InvalidOperationException 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

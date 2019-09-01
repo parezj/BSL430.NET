@@ -1,0 +1,152 @@
+.TH "RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp" 3 "Sat Jun 22 2019" "Version 1.2.1" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+RJCP.IO.Ports.Native.Windows.NativeMethods.CommProp \- Contains information about a communications driver  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "ushort \fBwPacketLength\fP"
+.br
+.RI "The size of the entire data packet, regardless of the amount of data requested, in bytes "
+.ti -1c
+.RI "ushort \fBwPacketVersion\fP"
+.br
+.RI "The version of the structure "
+.ti -1c
+.RI "uint \fBdwServiceMask\fP"
+.br
+.RI "A bit mask indicating which services are implemented by this provider\&. The SP_SERIALCOMM value is always specified for communications providers, including modem providers "
+.ti -1c
+.RI "uint \fBdwMaxTxQueue\fP"
+.br
+.RI "The maximum size of the driver's internal output buffer, in bytes\&. A value of zero indicates that no maximum value is imposed by the serial provider\&. "
+.ti -1c
+.RI "uint \fBdwMaxRxQueue\fP"
+.br
+.RI "The maximum size of the driver's internal input buffer, in bytes\&. A value of zero indicates that no maximum value is imposed by the serial provider "
+.ti -1c
+.RI "BitVector32 \fBdwMaxBaud\fP"
+.br
+.RI "The maximum allowable baud rate, in bits per second (bps) "
+.ti -1c
+.RI "ProvSubType \fBdwProvSubType\fP"
+.br
+.RI "The communications-provider type "
+.ti -1c
+.RI "BitVector32 \fBdwProvCapabilities\fP"
+.br
+.RI "A bit mask indicating the capabilities offered by the provider "
+.ti -1c
+.RI "BitVector32 \fBdwSettableParams\fP"
+.br
+.RI "The communications parameter that can be changed "
+.ti -1c
+.RI "BitVector32 \fBdwSettableBaud\fP"
+.br
+.RI "The baud rates that can be used "
+.ti -1c
+.RI "BitVector32 \fBdwSettableDataStopParity\fP"
+.br
+.RI "The number of data bits that can be set, stop and parity bits in the second half "
+.ti -1c
+.RI "uint \fBdwCurrentTxQueue\fP"
+.br
+.RI "The size of the driver's internal output buffer, in bytes\&. A value of zero indicates that the value is unavailable "
+.ti -1c
+.RI "uint \fBdwCurrentRxQueue\fP"
+.br
+.RI "The size of the driver's internal input buffer, in bytes\&. A value of zero indicates that the value is unavailable "
+.ti -1c
+.RI "uint \fBdwProvSpec1\fP"
+.br
+.RI "Any provider-specific data "
+.ti -1c
+.RI "uint \fBdwProvSpec2\fP"
+.br
+.RI "Any provider-specific data "
+.ti -1c
+.RI "char \fBwcProvChar\fP"
+.br
+.RI "Any provider-specific data "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Contains information about a communications driver 
+
+
+.SH "Member Data Documentation"
+.PP 
+.SS "uint RJCP\&.IO\&.Ports\&.Native\&.Windows\&.NativeMethods\&.CommProp\&.dwCurrentRxQueue"
+
+.PP
+The size of the driver's internal input buffer, in bytes\&. A value of zero indicates that the value is unavailable 
+.SS "uint RJCP\&.IO\&.Ports\&.Native\&.Windows\&.NativeMethods\&.CommProp\&.dwCurrentTxQueue"
+
+.PP
+The size of the driver's internal output buffer, in bytes\&. A value of zero indicates that the value is unavailable 
+.SS "BitVector32 RJCP\&.IO\&.Ports\&.Native\&.Windows\&.NativeMethods\&.CommProp\&.dwMaxBaud"
+
+.PP
+The maximum allowable baud rate, in bits per second (bps) 
+.SS "uint RJCP\&.IO\&.Ports\&.Native\&.Windows\&.NativeMethods\&.CommProp\&.dwMaxRxQueue"
+
+.PP
+The maximum size of the driver's internal input buffer, in bytes\&. A value of zero indicates that no maximum value is imposed by the serial provider 
+.SS "uint RJCP\&.IO\&.Ports\&.Native\&.Windows\&.NativeMethods\&.CommProp\&.dwMaxTxQueue"
+
+.PP
+The maximum size of the driver's internal output buffer, in bytes\&. A value of zero indicates that no maximum value is imposed by the serial provider\&. 
+.SS "BitVector32 RJCP\&.IO\&.Ports\&.Native\&.Windows\&.NativeMethods\&.CommProp\&.dwProvCapabilities"
+
+.PP
+A bit mask indicating the capabilities offered by the provider 
+.SS "uint RJCP\&.IO\&.Ports\&.Native\&.Windows\&.NativeMethods\&.CommProp\&.dwProvSpec1"
+
+.PP
+Any provider-specific data Applications should ignore this member unless they have detailed information about the format of the data required by the provider\&. Set this member to COMMPROP_INITIALIZED before calling the GetCommProperties function to indicate that the wPacketLength member is already valid 
+.SS "uint RJCP\&.IO\&.Ports\&.Native\&.Windows\&.NativeMethods\&.CommProp\&.dwProvSpec2"
+
+.PP
+Any provider-specific data Applications should ignore this member unless they have detailed information about the format of the data required by the provider\&. 
+.SS "ProvSubType RJCP\&.IO\&.Ports\&.Native\&.Windows\&.NativeMethods\&.CommProp\&.dwProvSubType"
+
+.PP
+The communications-provider type 
+.SS "uint RJCP\&.IO\&.Ports\&.Native\&.Windows\&.NativeMethods\&.CommProp\&.dwServiceMask"
+
+.PP
+A bit mask indicating which services are implemented by this provider\&. The SP_SERIALCOMM value is always specified for communications providers, including modem providers 
+.SS "BitVector32 RJCP\&.IO\&.Ports\&.Native\&.Windows\&.NativeMethods\&.CommProp\&.dwSettableBaud"
+
+.PP
+The baud rates that can be used 
+.SS "BitVector32 RJCP\&.IO\&.Ports\&.Native\&.Windows\&.NativeMethods\&.CommProp\&.dwSettableDataStopParity"
+
+.PP
+The number of data bits that can be set, stop and parity bits in the second half 
+.SS "BitVector32 RJCP\&.IO\&.Ports\&.Native\&.Windows\&.NativeMethods\&.CommProp\&.dwSettableParams"
+
+.PP
+The communications parameter that can be changed 
+.SS "char RJCP\&.IO\&.Ports\&.Native\&.Windows\&.NativeMethods\&.CommProp\&.wcProvChar"
+
+.PP
+Any provider-specific data Applications should ignore this member unless they have detailed information about the format of the data required by the provider\&. 
+.SS "ushort RJCP\&.IO\&.Ports\&.Native\&.Windows\&.NativeMethods\&.CommProp\&.wPacketLength"
+
+.PP
+The size of the entire data packet, regardless of the amount of data requested, in bytes 
+.SS "ushort RJCP\&.IO\&.Ports\&.Native\&.Windows\&.NativeMethods\&.CommProp\&.wPacketVersion"
+
+.PP
+The version of the structure 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

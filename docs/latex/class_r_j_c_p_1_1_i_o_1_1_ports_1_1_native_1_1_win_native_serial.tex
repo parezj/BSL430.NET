@@ -1,0 +1,875 @@
+\hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial}{}\section{R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial Class Reference}
+\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial}\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+
+
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows}{Windows}} implementation for a \mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native}{Native}} Serial connection.  
+
+
+Inheritance diagram for R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a880da1abd27221e2c6369668f8408485}{Get\+Port\+Names}} ()
+\begin{DoxyCompactList}\small\item\em Gets an array of serial port names for the current computer. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_port_description}{Port\+Description}} \mbox{[}$\,$\mbox{]} \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a8e8c6fdc7f6249e5c6a23fd1d4170b29}{Get\+Port\+Descriptions}} ()
+\begin{DoxyCompactList}\small\item\em Gets an array of serial port names and descriptions for the current computer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a1649b6bcb63367419fc2c1701e9cab94}{Discard\+In\+Buffer}} ()
+\begin{DoxyCompactList}\small\item\em Discards the input queue buffer of the driver. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a860e9325fe9be729a4cd102d975dc890}{Discard\+Out\+Buffer}} ()
+\begin{DoxyCompactList}\small\item\em Discards the output queue buffer of the driver. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a105066f9892f3f00900691a51d5ce40d}{Get\+Port\+Settings}} ()
+\begin{DoxyCompactList}\small\item\em Gets the port settings and updates the properties of the object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a662e00be7fe361aa0d49fb8530721f91}{Set\+Port\+Settings}} ()
+\begin{DoxyCompactList}\small\item\em Writes the settings of the serial port as set in this object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a2f975efd9e94bbc338ba4dbee68a6754}{Open}} ()
+\begin{DoxyCompactList}\small\item\em Opens the serial port specified by \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a4c6f1a987cf89e84721d484d1c702070}{Port\+Name}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a4bd7bf6de34d7d8f70a4d245a00ffa77}{Close}} ()
+\begin{DoxyCompactList}\small\item\em Closes the serial port. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_serial_buffer}{Serial\+Buffer}} \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_ad36215a4957349cba6078c7196dc6db3}{Create\+Serial\+Buffer}} (int read\+Buffer, int write\+Buffer)
+\begin{DoxyCompactList}\small\item\em Creates the serial buffer suitable for monitoring. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_af8513c10fdf373932ec07a2bb033d0c4}{Start\+Monitor}} (\mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_serial_buffer}{Serial\+Buffer}} buffer, string name)
+\begin{DoxyCompactList}\small\item\em Start the monitor thread, that will watch over the serial port. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a7b91c1fe65afccb7d64490c0c9e3e382}{Dispose}} ()
+\begin{DoxyCompactList}\small\item\em Performs application-\/defined tasks associated with freeing, releasing, or resetting unmanaged resources. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_ac927fc2e62ce46556e64761ca84c14d2}{On\+Data\+Received}} (object sender, \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_serial_data_received_event_args}{Serial\+Data\+Received\+Event\+Args}} args)
+\begin{DoxyCompactList}\small\item\em Called when data is received, or the E\+OF character is detected by the driver. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_ac40ba5f302e120f59c241c05b26aaf68}{On\+Comm\+Error}} (object sender, \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_serial_error_received_event_args}{Serial\+Error\+Received\+Event\+Args}} args)
+\begin{DoxyCompactList}\small\item\em Called when an error condition is detected. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a2ab6155ff7c5c31143a3f7fba479057b}{On\+Pin\+Changed}} (object sender, \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_serial_pin_changed_event_args}{Serial\+Pin\+Changed\+Event\+Args}} args)
+\begin{DoxyCompactList}\small\item\em Called when modem pin changes are detected. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_aff7fb25de681a40096de254df90aae88}{Dispose}} (bool disposing)
+\begin{DoxyCompactList}\small\item\em Releases unmanaged and -\/ optionally -\/ managed resources. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_af33c3f24df2bd80588552611b850a64d}{Version}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the version of the implementation in use. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a4c6f1a987cf89e84721d484d1c702070}{Port\+Name}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the port device path. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_abff2ea83a6ab8c97b685db440361967c}{Baud\+Rate}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the baud rate. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_ac931f68d7ac798d373d43012c070da7e}{Data\+Bits}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the data bits. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a35c8c760a80dd0392e605dd3ad169954}{Parity}} \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a0dab99500103a53dde02bd034cba7b11}{Parity}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the parity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a56a13b591d46736acafe20f2976c84fa}{Stop\+Bits}} \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a40d3b2270c75dfafc0aa9be692f721be}{Stop\+Bits}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the stop bits. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_aa48c6da74cbb78d90cbe9d4d3096a281}{Discard\+Null}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets a value if null bytes should be discarded or not. \end{DoxyCompactList}\item 
+byte \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a51bde1eff52dc341d76923bc0b06ac48}{Parity\+Replace}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the parity replace byte. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a415c1567a4d70a4cd03408a82819f224}{Tx\+Continue\+On\+X\+Off}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets a value indicating whether transmission should still be sent when the input buffer is full and if the X\+Off character has been sent. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_ac4878755331de1a7ad9f30d50ddf8928}{X\+Off\+Limit}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the X\+Off limit input when the X\+Off character should be sent. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a33c81ce663d8a1a78c74be34fe80492b}{X\+On\+Limit}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the X\+On limit when the input buffer is below when the X\+On character should be sent. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a0bfc3c17e97b361b7cf1963eea9a5daa}{Break\+State}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the break state of the serial port. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a896990d639f535f06bfe41e8343f8494}{Driver\+In\+Queue}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the driver input queue size. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a5bcff144464e9623c2f705e9aa12c3f8}{Driver\+Out\+Queue}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the driver output queue size. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_ab4ff2e42c520b5d86773f996bf1af716}{Bytes\+To\+Read}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the number of bytes in the driver queue still to be read. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a7575be31e3a48e5c5900dfc0a75e8349}{Bytes\+To\+Write}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the number of bytes in the output buffer of the driver still to write (not any managed buffers). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a1e55b7e746f3f937f1e781ac77e66fc9}{C\+D\+Holding}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the state of the Carrier Detect pin on the serial port. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a52a403357d7070da6e2db9943c4f64fe}{Cts\+Holding}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the state of the Clear To Send pin on the serial port. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a595390049f1a30dc59a4715736919597}{Dsr\+Holding}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the state of the Data Set Ready pin on the serial port. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a7d54b52a54d9117d27067351898e7bff}{Ring\+Holding}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets the state of the Ring Indicator pin on the serial port. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a4c9fbf48b230bb81917e8157f216786b}{Dtr\+Enable}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the Data Terminal Ready pin of the serial port. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a29a44c81c9193aa7687178a2219cbed1}{Rts\+Enable}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the Request To Send pin of the serial port. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a5328e888558ed5726b3fb7b8b692527c}{Handshake}} \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_abdd9c9b2d62c5ef94b975adfdd961dab}{Handshake}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets or sets the handshake to use on the serial port. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a4dfb0aaa0ac8a6591d682133bff22a37}{Is\+Open}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets a value indicating whether the serial port has been opened. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a1a0acd17c0516b73d5b1437631f71aa5}{Is\+Running}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\begin{DoxyCompactList}\small\item\em Gets a value indicating whether the thread for monitoring the serial port is running. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Events}
+\begin{DoxyCompactItemize}
+\item 
+Event\+Handler$<$ \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_serial_data_received_event_args}{Serial\+Data\+Received\+Event\+Args}} $>$ \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a70c1e2700aceb87a61f626af238f4ce8}{Data\+Received}}
+\begin{DoxyCompactList}\small\item\em Occurs when data is received, or the E\+OF character is detected by the driver. \end{DoxyCompactList}\item 
+Event\+Handler$<$ \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_serial_error_received_event_args}{Serial\+Error\+Received\+Event\+Args}} $>$ \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a38516663cb2df0644f512fae0d4bd65d}{Error\+Received}}
+\begin{DoxyCompactList}\small\item\em Occurs when an error condition is detected. \end{DoxyCompactList}\item 
+Event\+Handler$<$ \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_serial_pin_changed_event_args}{Serial\+Pin\+Changed\+Event\+Args}} $>$ \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a792fefde319c63e680f024a48023617a}{Pin\+Changed}}
+\begin{DoxyCompactList}\small\item\em Occurs when modem pin changes are detected. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows}{Windows}} implementation for a \mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native}{Native}} Serial connection. 
+
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_native_serial}{R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+I\+Native\+Serial}}
+
+
+\end{DoxySeeAlso}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a4bd7bf6de34d7d8f70a4d245a00ffa77}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a4bd7bf6de34d7d8f70a4d245a00ffa77}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!Close@{Close}}
+\index{Close@{Close}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{Close()}{Close()}}
+{\footnotesize\ttfamily void R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Closes the serial port. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Object\+Disposed\+Exception} & Closing the serial port invalidates actions that can be done to the serial port, but it does not prevent the serial port from being reopened \\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \mbox{\hyperlink{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_native_serial_adb88604917c61a951ee180962aa81ce1}{R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+I\+Native\+Serial}}.
+
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_ad36215a4957349cba6078c7196dc6db3}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_ad36215a4957349cba6078c7196dc6db3}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!CreateSerialBuffer@{CreateSerialBuffer}}
+\index{CreateSerialBuffer@{CreateSerialBuffer}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{CreateSerialBuffer()}{CreateSerialBuffer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_serial_buffer}{Serial\+Buffer}} R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Create\+Serial\+Buffer (\begin{DoxyParamCaption}\item[{int}]{read\+Buffer,  }\item[{int}]{write\+Buffer }\end{DoxyParamCaption})}
+
+
+
+Creates the serial buffer suitable for monitoring. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em read\+Buffer} & The read buffer size to allocate.\\
+\hline
+{\em write\+Buffer} & The write buffer size to allocate.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A serial buffer object that can be given to \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_af8513c10fdf373932ec07a2bb033d0c4}{Start\+Monitor}}
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_native_serial_a15155443dbfd8aead3cc4ade53b1fa2b}{R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+I\+Native\+Serial}}.
+
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a1649b6bcb63367419fc2c1701e9cab94}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a1649b6bcb63367419fc2c1701e9cab94}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!DiscardInBuffer@{DiscardInBuffer}}
+\index{DiscardInBuffer@{DiscardInBuffer}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{DiscardInBuffer()}{DiscardInBuffer()}}
+{\footnotesize\ttfamily void R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Discard\+In\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Discards the input queue buffer of the driver. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Object\+Disposed\+Exception} & 
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Invalid\+Operation\+Exception} & Port not open.\\
+\hline
+\end{DoxyExceptions}
+\\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \mbox{\hyperlink{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_native_serial_a686c3cba30f5d5f706d7d3260c4feea5}{R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+I\+Native\+Serial}}.
+
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a860e9325fe9be729a4cd102d975dc890}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a860e9325fe9be729a4cd102d975dc890}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!DiscardOutBuffer@{DiscardOutBuffer}}
+\index{DiscardOutBuffer@{DiscardOutBuffer}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{DiscardOutBuffer()}{DiscardOutBuffer()}}
+{\footnotesize\ttfamily void R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Discard\+Out\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Discards the output queue buffer of the driver. 
+
+
+
+Implements \mbox{\hyperlink{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_native_serial_a1faafeb15779e3f998fd76601332ec8f}{R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+I\+Native\+Serial}}.
+
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a7b91c1fe65afccb7d64490c0c9e3e382}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a7b91c1fe65afccb7d64490c0c9e3e382}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!Dispose@{Dispose}}
+\index{Dispose@{Dispose}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{Dispose()}{Dispose()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Dispose (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Performs application-\/defined tasks associated with freeing, releasing, or resetting unmanaged resources. 
+
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_aff7fb25de681a40096de254df90aae88}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_aff7fb25de681a40096de254df90aae88}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!Dispose@{Dispose}}
+\index{Dispose@{Dispose}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{Dispose()}{Dispose()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily virtual void R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Dispose (\begin{DoxyParamCaption}\item[{bool}]{disposing }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Releases unmanaged and -\/ optionally -\/ managed resources. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em disposing} & {\ttfamily true} to release both managed and unmanaged resources; {\ttfamily false} to release only unmanaged resources.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a8e8c6fdc7f6249e5c6a23fd1d4170b29}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a8e8c6fdc7f6249e5c6a23fd1d4170b29}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!GetPortDescriptions@{GetPortDescriptions}}
+\index{GetPortDescriptions@{GetPortDescriptions}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{GetPortDescriptions()}{GetPortDescriptions()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_port_description}{Port\+Description}} \mbox{[}$\,$\mbox{]} R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Get\+Port\+Descriptions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets an array of serial port names and descriptions for the current computer. 
+
+This method uses the \mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows}{Windows}} Management Interface to obtain its information. Therefore, the list may be different to the list obtained using the \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a880da1abd27221e2c6369668f8408485}{Get\+Port\+Names()}} method which uses other techniques. 
+
+On \mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows}{Windows}} 7, this method shows to return normal C\+OM ports, but not those associated with a modem driver.
+
+\begin{DoxyReturn}{Returns}
+An array of serial ports for the current computer.
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_native_serial_a7921194ade6a62e4b373cf8faec01c3f}{R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+I\+Native\+Serial}}.
+
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a880da1abd27221e2c6369668f8408485}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a880da1abd27221e2c6369668f8408485}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!GetPortNames@{GetPortNames}}
+\index{GetPortNames@{GetPortNames}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{GetPortNames()}{GetPortNames()}}
+{\footnotesize\ttfamily string \mbox{[}$\,$\mbox{]} R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Get\+Port\+Names (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets an array of serial port names for the current computer. 
+
+\begin{DoxyReturn}{Returns}
+An array of serial port names for the current computer.
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_native_serial_a5c29356160f31a94f992a9a023a78ff3}{R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+I\+Native\+Serial}}.
+
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a105066f9892f3f00900691a51d5ce40d}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a105066f9892f3f00900691a51d5ce40d}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!GetPortSettings@{GetPortSettings}}
+\index{GetPortSettings@{GetPortSettings}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{GetPortSettings()}{GetPortSettings()}}
+{\footnotesize\ttfamily void R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Get\+Port\+Settings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the port settings and updates the properties of the object. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Object\+Disposed\+Exception} & 
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Invalid\+Operation\+Exception} & Port not open.\\
+\hline
+\end{DoxyExceptions}
+\\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \mbox{\hyperlink{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_native_serial_aee35b004a7e64a44e11271261e635107}{R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+I\+Native\+Serial}}.
+
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_ac40ba5f302e120f59c241c05b26aaf68}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_ac40ba5f302e120f59c241c05b26aaf68}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!OnCommError@{OnCommError}}
+\index{OnCommError@{OnCommError}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{OnCommError()}{OnCommError()}}
+{\footnotesize\ttfamily virtual void R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+On\+Comm\+Error (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{\mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_serial_error_received_event_args}{Serial\+Error\+Received\+Event\+Args}}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Called when an error condition is detected. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sender} & The sender.\\
+\hline
+{\em args} & The \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_serial_error_received_event_args}{Serial\+Error\+Received\+Event\+Args}} instance containing the event data.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_ac927fc2e62ce46556e64761ca84c14d2}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_ac927fc2e62ce46556e64761ca84c14d2}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!OnDataReceived@{OnDataReceived}}
+\index{OnDataReceived@{OnDataReceived}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{OnDataReceived()}{OnDataReceived()}}
+{\footnotesize\ttfamily virtual void R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+On\+Data\+Received (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{\mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_serial_data_received_event_args}{Serial\+Data\+Received\+Event\+Args}}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Called when data is received, or the E\+OF character is detected by the driver. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sender} & The sender.\\
+\hline
+{\em args} & The \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_serial_data_received_event_args}{Serial\+Data\+Received\+Event\+Args}} instance containing the event data.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a2ab6155ff7c5c31143a3f7fba479057b}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a2ab6155ff7c5c31143a3f7fba479057b}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!OnPinChanged@{OnPinChanged}}
+\index{OnPinChanged@{OnPinChanged}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{OnPinChanged()}{OnPinChanged()}}
+{\footnotesize\ttfamily virtual void R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+On\+Pin\+Changed (\begin{DoxyParamCaption}\item[{object}]{sender,  }\item[{\mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_serial_pin_changed_event_args}{Serial\+Pin\+Changed\+Event\+Args}}}]{args }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Called when modem pin changes are detected. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sender} & The sender.\\
+\hline
+{\em args} & The \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_serial_pin_changed_event_args}{Serial\+Pin\+Changed\+Event\+Args}} instance containing the event data.\\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a2f975efd9e94bbc338ba4dbee68a6754}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a2f975efd9e94bbc338ba4dbee68a6754}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!Open@{Open}}
+\index{Open@{Open}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{Open()}{Open()}}
+{\footnotesize\ttfamily void R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Open (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Opens the serial port specified by \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a4c6f1a987cf89e84721d484d1c702070}{Port\+Name}}. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Object\+Disposed\+Exception} & 
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Invalid\+Operation\+Exception} & Port must first be set; or Serial Port currently open. \\
+\hline
+{\em System.\+I\+O.\+I\+O\+Exception} & Wrong file type.\\
+\hline
+\end{DoxyExceptions}
+\\
+\hline
+\end{DoxyExceptions}
+Opening the serial port does not set any settings (such as baud rate, etc.). On the windows implementation, it only sets the internal driver input and output queue. 
+
+Implements \mbox{\hyperlink{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_native_serial_aad8e5adb7a536fd4645f387003bed473}{R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+I\+Native\+Serial}}.
+
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a662e00be7fe361aa0d49fb8530721f91}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a662e00be7fe361aa0d49fb8530721f91}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!SetPortSettings@{SetPortSettings}}
+\index{SetPortSettings@{SetPortSettings}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{SetPortSettings()}{SetPortSettings()}}
+{\footnotesize\ttfamily void R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Set\+Port\+Settings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Writes the settings of the serial port as set in this object. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Object\+Disposed\+Exception} & 
+\begin{DoxyExceptions}{Exceptions}
+{\em Invalid\+Operation\+Exception} & Port not open.\\
+\hline
+\end{DoxyExceptions}
+\\
+\hline
+\end{DoxyExceptions}
+
+
+Implements \mbox{\hyperlink{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_native_serial_a56ae928a722facd5c4a885eee8c72455}{R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+I\+Native\+Serial}}.
+
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_af8513c10fdf373932ec07a2bb033d0c4}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_af8513c10fdf373932ec07a2bb033d0c4}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!StartMonitor@{StartMonitor}}
+\index{StartMonitor@{StartMonitor}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{StartMonitor()}{StartMonitor()}}
+{\footnotesize\ttfamily void R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Start\+Monitor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_serial_buffer}{Serial\+Buffer}}}]{buffer,  }\item[{string}]{name }\end{DoxyParamCaption})}
+
+
+
+Start the monitor thread, that will watch over the serial port. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer} & The buffer structure that should be used to read data into and write data from.\\
+\hline
+{\em name} & The name of the thread to use.\\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_i_native_serial_a64481becda92f402e2eb7728ceb9de06}{R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+I\+Native\+Serial}}.
+
+
+
+\subsection{Property Documentation}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_abff2ea83a6ab8c97b685db440361967c}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_abff2ea83a6ab8c97b685db440361967c}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!BaudRate@{BaudRate}}
+\index{BaudRate@{BaudRate}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{BaudRate}{BaudRate}}
+{\footnotesize\ttfamily int R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Baud\+Rate\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the baud rate. 
+
+The baud rate. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Object\+Disposed\+Exception} & 
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Argument\+Out\+Of\+Range\+Exception} & Baud rate must be positive.\\
+\hline
+\end{DoxyExceptions}
+\\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a0bfc3c17e97b361b7cf1963eea9a5daa}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a0bfc3c17e97b361b7cf1963eea9a5daa}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!BreakState@{BreakState}}
+\index{BreakState@{BreakState}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{BreakState}{BreakState}}
+{\footnotesize\ttfamily bool R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Break\+State\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the break state of the serial port. 
+
+{\ttfamily true} if in the break state; otherwise, {\ttfamily false}. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Object\+Disposed\+Exception} & 
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Invalid\+Operation\+Exception} & Port not open.\\
+\hline
+\end{DoxyExceptions}
+\\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_ab4ff2e42c520b5d86773f996bf1af716}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_ab4ff2e42c520b5d86773f996bf1af716}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!BytesToRead@{BytesToRead}}
+\index{BytesToRead@{BytesToRead}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{BytesToRead}{BytesToRead}}
+{\footnotesize\ttfamily int R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Bytes\+To\+Read\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Gets the number of bytes in the driver queue still to be read. 
+
+The bytes to read. \mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a7575be31e3a48e5c5900dfc0a75e8349}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a7575be31e3a48e5c5900dfc0a75e8349}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!BytesToWrite@{BytesToWrite}}
+\index{BytesToWrite@{BytesToWrite}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{BytesToWrite}{BytesToWrite}}
+{\footnotesize\ttfamily int R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Bytes\+To\+Write\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Gets the number of bytes in the output buffer of the driver still to write (not any managed buffers). 
+
+The number of bytes in the driver queue for writing. If this value is not supported, zero is returned. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Object\+Disposed\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a1e55b7e746f3f937f1e781ac77e66fc9}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a1e55b7e746f3f937f1e781ac77e66fc9}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!CDHolding@{CDHolding}}
+\index{CDHolding@{CDHolding}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{CDHolding}{CDHolding}}
+{\footnotesize\ttfamily bool R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+C\+D\+Holding\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Gets the state of the Carrier Detect pin on the serial port. 
+
+{\ttfamily true} if carrier detect pin is active; otherwise, {\ttfamily false}. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Object\+Disposed\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a52a403357d7070da6e2db9943c4f64fe}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a52a403357d7070da6e2db9943c4f64fe}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!CtsHolding@{CtsHolding}}
+\index{CtsHolding@{CtsHolding}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{CtsHolding}{CtsHolding}}
+{\footnotesize\ttfamily bool R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Cts\+Holding\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Gets the state of the Clear To Send pin on the serial port. 
+
+{\ttfamily true} if the clear to send pin is active; otherwise, {\ttfamily false}. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Object\+Disposed\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_ac931f68d7ac798d373d43012c070da7e}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_ac931f68d7ac798d373d43012c070da7e}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!DataBits@{DataBits}}
+\index{DataBits@{DataBits}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{DataBits}{DataBits}}
+{\footnotesize\ttfamily int R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Data\+Bits\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the data bits. 
+
+The data bits. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Object\+Disposed\+Exception} & 
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Argument\+Out\+Of\+Range\+Exception} & May only be 5, 6, 7, 8 or 16.\\
+\hline
+\end{DoxyExceptions}
+\\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_aa48c6da74cbb78d90cbe9d4d3096a281}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_aa48c6da74cbb78d90cbe9d4d3096a281}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!DiscardNull@{DiscardNull}}
+\index{DiscardNull@{DiscardNull}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{DiscardNull}{DiscardNull}}
+{\footnotesize\ttfamily bool R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Discard\+Null\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets a value if null bytes should be discarded or not. 
+
+{\ttfamily true} if null bytes should be discarded; otherwise, {\ttfamily false}. \mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a896990d639f535f06bfe41e8343f8494}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a896990d639f535f06bfe41e8343f8494}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!DriverInQueue@{DriverInQueue}}
+\index{DriverInQueue@{DriverInQueue}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{DriverInQueue}{DriverInQueue}}
+{\footnotesize\ttfamily int R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Driver\+In\+Queue\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the driver input queue size. 
+
+The driver input queue size. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Object\+Disposed\+Exception} & 
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Argument\+Out\+Of\+Range\+Exception} & value must be a positive integer.\\
+\hline
+\end{DoxyExceptions}
+\\
+\hline
+\end{DoxyExceptions}
+This method is typically available with \mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows}{Windows}} A\+PI only. \mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a5bcff144464e9623c2f705e9aa12c3f8}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a5bcff144464e9623c2f705e9aa12c3f8}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!DriverOutQueue@{DriverOutQueue}}
+\index{DriverOutQueue@{DriverOutQueue}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{DriverOutQueue}{DriverOutQueue}}
+{\footnotesize\ttfamily int R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Driver\+Out\+Queue\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the driver output queue size. 
+
+The driver output queue size. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Object\+Disposed\+Exception} & 
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Argument\+Out\+Of\+Range\+Exception} & value must be a positive integer.\\
+\hline
+\end{DoxyExceptions}
+\\
+\hline
+\end{DoxyExceptions}
+This method is typically available with \mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_windows}{Windows}} A\+PI only. \mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a595390049f1a30dc59a4715736919597}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a595390049f1a30dc59a4715736919597}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!DsrHolding@{DsrHolding}}
+\index{DsrHolding@{DsrHolding}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{DsrHolding}{DsrHolding}}
+{\footnotesize\ttfamily bool R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Dsr\+Holding\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Gets the state of the Data Set Ready pin on the serial port. 
+
+{\ttfamily true} if data set ready pin is active; otherwise, {\ttfamily false}. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Object\+Disposed\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a4c9fbf48b230bb81917e8157f216786b}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a4c9fbf48b230bb81917e8157f216786b}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!DtrEnable@{DtrEnable}}
+\index{DtrEnable@{DtrEnable}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{DtrEnable}{DtrEnable}}
+{\footnotesize\ttfamily bool R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Dtr\+Enable\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the Data Terminal Ready pin of the serial port. 
+
+{\ttfamily true} if data terminal pin is active; otherwise, {\ttfamily false}. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Object\+Disposed\+Exception} & This pin only has an effect if handshaking for D\+T\+R/\+D\+TS is disabled. Reading from this pin returns the state that should be requested. Setting this pin then changing the handshake mode to disabled results in the D\+TR pin being set as per this property. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_abdd9c9b2d62c5ef94b975adfdd961dab}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_abdd9c9b2d62c5ef94b975adfdd961dab}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!Handshake@{Handshake}}
+\index{Handshake@{Handshake}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{Handshake}{Handshake}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a5328e888558ed5726b3fb7b8b692527c}{Handshake}} R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Handshake\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the handshake to use on the serial port. 
+
+The handshake mode to use on the serial port. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Argument\+Out\+Of\+Range\+Exception} & Unknown value for Handshake.\\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a4dfb0aaa0ac8a6591d682133bff22a37}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a4dfb0aaa0ac8a6591d682133bff22a37}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!IsOpen@{IsOpen}}
+\index{IsOpen@{IsOpen}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{IsOpen}{IsOpen}}
+{\footnotesize\ttfamily bool R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Is\+Open\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Gets a value indicating whether the serial port has been opened. 
+
+{\ttfamily true} if this instance is open; otherwise, {\ttfamily false}. \mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a1a0acd17c0516b73d5b1437631f71aa5}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a1a0acd17c0516b73d5b1437631f71aa5}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!IsRunning@{IsRunning}}
+\index{IsRunning@{IsRunning}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{IsRunning}{IsRunning}}
+{\footnotesize\ttfamily bool R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Is\+Running\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Gets a value indicating whether the thread for monitoring the serial port is running. 
+
+{\ttfamily true} if this instance is running; otherwise, {\ttfamily false}. 
+
+This property differs slightly from \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a4dfb0aaa0ac8a6591d682133bff22a37}{Is\+Open}}, as this returns status if the monitoring thread for reading/writing data is actually running. If the thread is not running for whatever reason, we can expect no data updates in the buffer provided to \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_af8513c10fdf373932ec07a2bb033d0c4}{Start\+Monitor(\+Serial\+Buffer, string)}}. \mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a0dab99500103a53dde02bd034cba7b11}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a0dab99500103a53dde02bd034cba7b11}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!Parity@{Parity}}
+\index{Parity@{Parity}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{Parity}{Parity}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a35c8c760a80dd0392e605dd3ad169954}{Parity}} R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Parity\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the parity. 
+
+The parity. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Object\+Disposed\+Exception} & 
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Argument\+Out\+Of\+Range\+Exception} & Unknown value for Parity.\\
+\hline
+\end{DoxyExceptions}
+\\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a51bde1eff52dc341d76923bc0b06ac48}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a51bde1eff52dc341d76923bc0b06ac48}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!ParityReplace@{ParityReplace}}
+\index{ParityReplace@{ParityReplace}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{ParityReplace}{ParityReplace}}
+{\footnotesize\ttfamily byte R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Parity\+Replace\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the parity replace byte. 
+
+The byte to use on parity errors. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Argument\+Out\+Of\+Range\+Exception} & Must be a byte value from 0 to 255.\\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a4c6f1a987cf89e84721d484d1c702070}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a4c6f1a987cf89e84721d484d1c702070}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!PortName@{PortName}}
+\index{PortName@{PortName}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{PortName}{PortName}}
+{\footnotesize\ttfamily string R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Port\+Name\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the port device path. 
+
+The port device path. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Object\+Disposed\+Exception} & 
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Invalid\+Operation\+Exception} & Port already open.\\
+\hline
+\end{DoxyExceptions}
+\\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a7d54b52a54d9117d27067351898e7bff}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a7d54b52a54d9117d27067351898e7bff}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!RingHolding@{RingHolding}}
+\index{RingHolding@{RingHolding}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{RingHolding}{RingHolding}}
+{\footnotesize\ttfamily bool R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Ring\+Holding\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Gets the state of the Ring Indicator pin on the serial port. 
+
+{\ttfamily true} if ring indicator state is active; otherwise, {\ttfamily false}. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Object\+Disposed\+Exception} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a29a44c81c9193aa7687178a2219cbed1}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a29a44c81c9193aa7687178a2219cbed1}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!RtsEnable@{RtsEnable}}
+\index{RtsEnable@{RtsEnable}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{RtsEnable}{RtsEnable}}
+{\footnotesize\ttfamily bool R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Rts\+Enable\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the Request To Send pin of the serial port. 
+
+{\ttfamily true} if \mbox{[}R\+TS enable\mbox{]}; otherwise, {\ttfamily false}. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Object\+Disposed\+Exception} & This pin only has an effect if the handshaking for R\+T\+S/\+C\+TS is disabled. Reading from this pin returns the state that should be requested. Setting this pin then changing the handshake mode to disabled results in the R\+TS pin being set as per this property. \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a40d3b2270c75dfafc0aa9be692f721be}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a40d3b2270c75dfafc0aa9be692f721be}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!StopBits@{StopBits}}
+\index{StopBits@{StopBits}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{StopBits}{StopBits}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_a56a13b591d46736acafe20f2976c84fa}{Stop\+Bits}} R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Stop\+Bits\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the stop bits. 
+
+The stop bits. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Argument\+Out\+Of\+Range\+Exception} & Unknown value for Stop Bits.\\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a415c1567a4d70a4cd03408a82819f224}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a415c1567a4d70a4cd03408a82819f224}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!TxContinueOnXOff@{TxContinueOnXOff}}
+\index{TxContinueOnXOff@{TxContinueOnXOff}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{TxContinueOnXOff}{TxContinueOnXOff}}
+{\footnotesize\ttfamily bool R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Tx\+Continue\+On\+X\+Off\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets a value indicating whether transmission should still be sent when the input buffer is full and if the X\+Off character has been sent. 
+
+{\ttfamily true} if transmission should continue after the input buffer is within \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_ac4878755331de1a7ad9f30d50ddf8928}{X\+Off\+Limit}} bytes of being full and the driver has sent the X\+Off character; otherwise, {\ttfamily false} that transmission should stop and only continue when the input buffer is within \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a33c81ce663d8a1a78c74be34fe80492b}{X\+On\+Limit}} bytes of being empty and the driver has sent the X\+On character. \mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_af33c3f24df2bd80588552611b850a64d}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_af33c3f24df2bd80588552611b850a64d}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!Version@{Version}}
+\index{Version@{Version}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{Version}{Version}}
+{\footnotesize\ttfamily string R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Version\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+Gets the version of the implementation in use. 
+
+The version of the implementation in use. \mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_ac4878755331de1a7ad9f30d50ddf8928}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_ac4878755331de1a7ad9f30d50ddf8928}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!XOffLimit@{XOffLimit}}
+\index{XOffLimit@{XOffLimit}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{XOffLimit}{XOffLimit}}
+{\footnotesize\ttfamily int R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+X\+Off\+Limit\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the X\+Off limit input when the X\+Off character should be sent. 
+
+The X\+Off buffer limit. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Argument\+Out\+Of\+Range\+Exception} & X\+Off\+Limit must be positive.\\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a33c81ce663d8a1a78c74be34fe80492b}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a33c81ce663d8a1a78c74be34fe80492b}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!XOnLimit@{XOnLimit}}
+\index{XOnLimit@{XOnLimit}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{XOnLimit}{XOnLimit}}
+{\footnotesize\ttfamily int R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+X\+On\+Limit\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+Gets or sets the X\+On limit when the input buffer is below when the X\+On character should be sent. 
+
+The X\+On buffer limit. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em System.\+Argument\+Out\+Of\+Range\+Exception} & X\+Off\+Limit must be positive.\\
+\hline
+\end{DoxyExceptions}
+
+
+\subsection{Event Documentation}
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a70c1e2700aceb87a61f626af238f4ce8}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a70c1e2700aceb87a61f626af238f4ce8}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!DataReceived@{DataReceived}}
+\index{DataReceived@{DataReceived}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{DataReceived}{DataReceived}}
+{\footnotesize\ttfamily Event\+Handler$<$\mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_serial_data_received_event_args}{Serial\+Data\+Received\+Event\+Args}}$>$ R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Data\+Received}
+
+
+
+Occurs when data is received, or the E\+OF character is detected by the driver. 
+
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a38516663cb2df0644f512fae0d4bd65d}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a38516663cb2df0644f512fae0d4bd65d}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!ErrorReceived@{ErrorReceived}}
+\index{ErrorReceived@{ErrorReceived}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{ErrorReceived}{ErrorReceived}}
+{\footnotesize\ttfamily Event\+Handler$<$\mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_serial_error_received_event_args}{Serial\+Error\+Received\+Event\+Args}}$>$ R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Error\+Received}
+
+
+
+Occurs when an error condition is detected. 
+
+\mbox{\Hypertarget{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a792fefde319c63e680f024a48023617a}\label{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_win_native_serial_a792fefde319c63e680f024a48023617a}} 
+\index{RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}!PinChanged@{PinChanged}}
+\index{PinChanged@{PinChanged}!RJCP.IO.Ports.Native.WinNativeSerial@{RJCP.IO.Ports.Native.WinNativeSerial}}
+\subsubsection{\texorpdfstring{PinChanged}{PinChanged}}
+{\footnotesize\ttfamily Event\+Handler$<$\mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_serial_pin_changed_event_args}{Serial\+Pin\+Changed\+Event\+Args}}$>$ R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Win\+Native\+Serial.\+Pin\+Changed}
+
+
+
+Occurs when modem pin changes are detected. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+P\+R\+O\+J\+E\+C\+T\+S/\+C\#/\+B\+S\+L430.\+N\+E\+T/src/\+B\+S\+L430.\+N\+E\+T/\+Library/serialportstream/2.\+1.\+4/src/\+Native/Win\+Native\+Serial.\+cs\end{DoxyCompactItemize}

@@ -1,0 +1,129 @@
+﻿<Dialog:CustomDialog x:Name="DialogFwToolsCombineViewN"
+                     x:Class="BSL430_NET_WPF.Views.DialogFwToolsCombineView"
+                     Style="{StaticResource CustomDialogStyle}"
+                     Background="{DynamicResource WindowBackgroundBrush}"
+                     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"    
+                     xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+                     xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                     xmlns:cal="http://www.caliburnproject.org"
+                     VerticalAlignment="Stretch"
+                     xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+                     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                     PreviewKeyDown="DialogFwToolsCombineViewN_PreviewKeyDown">
+    
+    <Grid VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="5,0" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+            <Label Content="Second Firmware Path (TI-TXT, Intel-HEX, SREC, ELF)" Margin="15,0,0,0" FontWeight="Normal" FontSize="20"></Label>
+            <Border Margin="15,0" CornerRadius="7" BorderThickness="0" BorderBrush="Black" Background="{DynamicResource BasicHover}">
+                <Grid Margin="15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0" 
+                             x:Name="CombineWith" 
+                             Text="{Binding CombineWith, Mode=TwoWay}" 
+                             FontWeight="Normal" 
+                             FontSize="22" 
+                             HorizontalAlignment="Stretch" 
+                             Controls:TextBoxHelper.ClearTextButton="True"/>
+                    <Button Grid.Column="1" 
+                            x:Name="CombineBrowse" 
+                            HorizontalAlignment="Right" 
+                            Width="120" 
+                            Cursor="Hand"
+                            Style="{DynamicResource MetroFlatButton}" 
+                            cal:Message.Attach="CombineBrowse">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <iconPacks:PackIconEntypo Margin="0,0,10,0" Kind="Folder" VerticalAlignment="Center" Width="20" Height="20" />
+                            <TextBlock Text="Browse" VerticalAlignment="Center" FontWeight="Thin" FontSize="20"/>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+            </Border>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Margin="5,0" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+            <Label Content="Destination Path" Margin="15,0,0,0" FontWeight="Normal" FontSize="20"></Label>
+            <Border Margin="15,0,15,15" CornerRadius="7" BorderThickness="0" BorderBrush="Black" Background="{DynamicResource BasicHover}">
+                <Grid Margin="15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox Grid.Column="0" 
+                             x:Name="CombineDestination" 
+                             Text="{Binding CombineDestination, Mode=TwoWay}" 
+                             FontWeight="Normal" 
+                             FontSize="22" 
+                             HorizontalAlignment="Stretch" 
+                             Controls:TextBoxHelper.ClearTextButton="True"/>
+                    <Button Grid.Column="1" 
+                            x:Name="CombineSaveAs" 
+                            HorizontalAlignment="Right" 
+                            Width="120" 
+                            Cursor="Hand"
+                            Style="{DynamicResource MetroFlatButton}" 
+                            cal:Message.Attach="CombineSaveAs">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <iconPacks:PackIconEntypo Margin="0,0,10,0" Kind="Save" VerticalAlignment="Center" Width="20" Height="20" />
+                            <TextBlock Text="Save As" VerticalAlignment="Center" FontWeight="Thin" FontSize="20"/>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+            </Border>
+        </StackPanel>
+
+        <WrapPanel Grid.Row="2" Margin="15,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+            <Label Content="Force output monolithic structure as missing address nodes will be filled with 0xFF " FontWeight="Thin" FontSize="22"/>
+            <Controls:ToggleSwitch x:Name="CombineFF" 
+                                   IsChecked="{Binding CombineFillFF, Mode=TwoWay}" 
+                                   VerticalAlignment="Center" 
+                                   Width="Auto" 
+                                   Cursor="Hand"
+                                   Style="{StaticResource MahApps.Metro.Styles.ToggleSwitch.Win10}" 
+                                   HorizontalAlignment="Center" 
+                                   OffLabel="" 
+                                   OnLabel="" />
+        </WrapPanel>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10,30,10,20" >
+            <Button x:Name="OK" 
+                    Content="Combine" 
+                    Margin="10,0" 
+                    Width="150" 
+                    Padding="20, 10" 
+                    FontWeight="Bold" 
+                    FontSize="22" 
+                    Cursor="Hand"
+                    HorizontalAlignment="Center" 
+                    BorderThickness="0" 
+                    Controls:ControlsHelper.ContentCharacterCasing="Normal" 
+                    Style="{DynamicResource AccentedSquareButtonStyle}" 
+                    cal:Message.Attach="Combine"/>
+            <Button x:Name="Cancel" 
+                    Content="Cancel" 
+                    Margin="10,0" 
+                    Width="150" 
+                    Padding="20, 10" 
+                    FontWeight="Bold" 
+                    FontSize="22" 
+                    Cursor="Hand"
+                    HorizontalAlignment="Center" 
+                    Controls:ControlsHelper.ContentCharacterCasing="Normal" 
+                    Style="{DynamicResource SquareButtonStyle}" 
+                    cal:Message.Attach="CombineCancel"/>
+        </StackPanel>
+        
+    </Grid>
+</Dialog:CustomDialog>

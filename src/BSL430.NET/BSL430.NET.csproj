@@ -1,0 +1,88 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <RootNamespace>BSL430_NET</RootNamespace>
+    <Authors>Jakub Parez</Authors>
+    <Company>Jakub Parez</Company>
+    <Description>BSL430.NET - MSP430 bootloader (BSL) .NET toolchain</Description>
+    <Copyright>Copyright (c) 2018 Jakub Parez</Copyright>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <RuntimeIdentifiers>win-x86;win-x64;osx-x64;linux-x64;centos-x64;debian-x64;fedora-x64;ubuntu-x64;opensuse-x64;android</RuntimeIdentifiers>
+    <Platforms>x86</Platforms>
+    <ApplicationIcon />
+    <OutputType>Library</OutputType>
+    <StartupObject />
+    <Version>1.2.6</Version>
+    <PackageLicenseUrl></PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/parezj/BSL430.NET</PackageProjectUrl>
+    <PackageIconUrl>https://github.com/parezj/BSL430.NET/src/BSL430.NET.WPF/Img/logo2.png?raw=true</PackageIconUrl>
+    <RepositoryUrl>https://github.com/parezj/BSL430.NET</RepositoryUrl>
+    <PackageTags>TI Texas Instruments MSP430 MSP 430 MCU BSL bootloader flash memory toolchain BSL430 BSL430.NET download upload erase FTDI FT232 Serial COM USB</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|x86'">
+    <DocumentationFile>BSL430.NET.xml</DocumentationFile>
+    <OutputPath />
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|x86'">
+    <DocumentationFile>BSL430.NET.xml</DocumentationFile>
+    <OutputPath>bin\x86\Release\netstandard2.0\win-x86\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Library\**" />
+    <EmbeddedResource Remove="Library\**" />
+    <None Remove="Library\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="HidSharp" Version="2.1.0" />
+    <PackageReference Include="LibUsbDotNet" Version="2.2.29" />
+    <PackageReference Include="SerialPortStream" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="dll\amd64\ftd2xx64.dll">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="dll\amd64\libftdi1.dll">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="dll\amd64\libusb-1.0.dll">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="dll\ftd2xx.dll">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="dll\libftdi1.dll">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="dll\libusb-1.0.dll">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="%25windir%25\system32\xcopy /Y &quot;$(TargetDir)*.*&quot; &quot;$(SolutionDir)..\build\BSL430.NET\*.*&quot;&#xD;&#xA;%25windir%25\system32\xcopy /Y &quot;$(TargetDir)*.*&quot; &quot;$(TargetDir)win-x86\*.*&quot;" />
+  </Target>
+
+</Project>

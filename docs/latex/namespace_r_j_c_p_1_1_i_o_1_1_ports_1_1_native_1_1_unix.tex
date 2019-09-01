@@ -1,0 +1,114 @@
+\hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix}{}\section{R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Unix Namespace Reference}
+\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix}\index{RJCP.IO.Ports.Native.Unix@{RJCP.IO.Ports.Native.Unix}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+interface \mbox{\hyperlink{interface_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_1_1_i_native_serial_dll}{I\+Native\+Serial\+Dll}}
+\item 
+class {\bfseries Safe\+Native\+Methods}
+\item 
+class \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_1_1_safe_serial_handle}{Safe\+Serial\+Handle}}
+\item 
+class \mbox{\hyperlink{class_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_1_1_serial_unix}{Serial\+Unix}}
+\item 
+class {\bfseries Unsafe\+Native\+Methods}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_adddbcb262868ed8d2d9ddc2fa7c41e7f}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_adddbcb262868ed8d2d9ddc2fa7c41e7f}} 
+enum {\bfseries Serial\+Read\+Write\+Event} \{ \newline
+{\bfseries Error} = -\/1, 
+{\bfseries No\+Event} = 0, 
+{\bfseries Read\+Event} = 1, 
+{\bfseries Write\+Event} = 2, 
+\newline
+{\bfseries Read\+Write\+Event} = 3
+ \}
+\item 
+enum \mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872}{Sys\+Err\+No}} \{ \newline
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872affeae610b77b370ce107312ab6a52101}{Sys\+Err\+No.\+N\+E\+T\+F\+X\+\_\+\+OK}} = 0, 
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872aea369b61c6eb5caa434343c919e7bc14}{Sys\+Err\+No.\+N\+E\+T\+F\+X\+\_\+\+E\+I\+N\+V\+AL}} = 1, 
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872a7715a115f1a373cf258ea3894612a750}{Sys\+Err\+No.\+N\+E\+T\+F\+X\+\_\+\+E\+A\+C\+C\+ES}} = 2, 
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872a82a1d5b4df5396342f7c582934d8ba8f}{Sys\+Err\+No.\+N\+E\+T\+F\+X\+\_\+\+E\+N\+O\+M\+EM}} = 3, 
+\newline
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872a60c38255c77ebd5417808af21aaf6e5a}{Sys\+Err\+No.\+N\+E\+T\+F\+X\+\_\+\+E\+B\+A\+DF}} = 4, 
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872ad6412a0a0ee00de59f38aaa70dab5fa9}{Sys\+Err\+No.\+N\+E\+T\+F\+X\+\_\+\+E\+N\+O\+S\+YS}} = 5, 
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872aa4c51eb5105687252db2c4e694f1470f}{Sys\+Err\+No.\+N\+E\+T\+F\+X\+\_\+\+E\+IO}} = 6, 
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872ab2d0f3d0a2cc4bbcc80f52c67bd6e3fd}{Sys\+Err\+No.\+N\+E\+T\+F\+X\+\_\+\+E\+A\+G\+A\+IN}} = 7, 
+\newline
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872a26e39b9f7d1baa3962d835b7c03400b7}{Sys\+Err\+No.\+N\+E\+T\+F\+X\+\_\+\+E\+W\+O\+U\+L\+D\+B\+L\+O\+CK}} = 8, 
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872a093e87bc223eb4f831f9952fc32b9da0}{Sys\+Err\+No.\+N\+E\+T\+F\+X\+\_\+\+E\+I\+N\+TR}} = 9, 
+\mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872aa415d52dc2a951b0bbe2c5e71ea1e61b}{Sys\+Err\+No.\+N\+E\+T\+F\+X\+\_\+\+U\+N\+K\+N\+O\+WN}} = -\/1
+ \}
+\begin{DoxyCompactList}\small\item\em Mapped C-\/\+Library errors to constants for Managed Code \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_aecb7aa4738bc033b7b22332084b0eb13}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_aecb7aa4738bc033b7b22332084b0eb13}} 
+enum {\bfseries Wait\+For\+Modem\+Event} \{ \newline
+{\bfseries Error} = -\/1, 
+{\bfseries None} = 0, 
+{\bfseries Data\+Carrier\+Detect} = 1, 
+{\bfseries Ring\+Indicator} = 2, 
+\newline
+{\bfseries Data\+Set\+Ready} = 4, 
+{\bfseries Clear\+To\+Send} = 8
+ \}
+\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872}} 
+\index{RJCP.IO.Ports.Native.Unix@{RJCP.IO.Ports.Native.Unix}!SysErrNo@{SysErrNo}}
+\index{SysErrNo@{SysErrNo}!RJCP.IO.Ports.Native.Unix@{RJCP.IO.Ports.Native.Unix}}
+\subsubsection{\texorpdfstring{SysErrNo}{SysErrNo}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872}{R\+J\+C\+P.\+I\+O.\+Ports.\+Native.\+Unix.\+Sys\+Err\+No}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Mapped C-\/\+Library errors to constants for Managed Code 
+
+$>$ This table must be identical to the enumeration values defined in the C-\/\+Sources netfx.\+h and netfx.\+c. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NETFX\_OK@{NETFX\_OK}!RJCP.IO.Ports.Native.Unix@{RJCP.IO.Ports.Native.Unix}}\index{RJCP.IO.Ports.Native.Unix@{RJCP.IO.Ports.Native.Unix}!NETFX\_OK@{NETFX\_OK}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872affeae610b77b370ce107312ab6a52101}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872affeae610b77b370ce107312ab6a52101}} 
+N\+E\+T\+F\+X\+\_\+\+OK&No error detected. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NETFX\_EINVAL@{NETFX\_EINVAL}!RJCP.IO.Ports.Native.Unix@{RJCP.IO.Ports.Native.Unix}}\index{RJCP.IO.Ports.Native.Unix@{RJCP.IO.Ports.Native.Unix}!NETFX\_EINVAL@{NETFX\_EINVAL}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872aea369b61c6eb5caa434343c919e7bc14}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872aea369b61c6eb5caa434343c919e7bc14}} 
+N\+E\+T\+F\+X\+\_\+\+E\+I\+N\+V\+AL&Argument\+Exception \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NETFX\_EACCES@{NETFX\_EACCES}!RJCP.IO.Ports.Native.Unix@{RJCP.IO.Ports.Native.Unix}}\index{RJCP.IO.Ports.Native.Unix@{RJCP.IO.Ports.Native.Unix}!NETFX\_EACCES@{NETFX\_EACCES}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872a7715a115f1a373cf258ea3894612a750}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872a7715a115f1a373cf258ea3894612a750}} 
+N\+E\+T\+F\+X\+\_\+\+E\+A\+C\+C\+ES&Unauthorized\+Access\+Exception \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NETFX\_ENOMEM@{NETFX\_ENOMEM}!RJCP.IO.Ports.Native.Unix@{RJCP.IO.Ports.Native.Unix}}\index{RJCP.IO.Ports.Native.Unix@{RJCP.IO.Ports.Native.Unix}!NETFX\_ENOMEM@{NETFX\_ENOMEM}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872a82a1d5b4df5396342f7c582934d8ba8f}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872a82a1d5b4df5396342f7c582934d8ba8f}} 
+N\+E\+T\+F\+X\+\_\+\+E\+N\+O\+M\+EM&Out\+Of\+Memory\+Exception \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NETFX\_EBADF@{NETFX\_EBADF}!RJCP.IO.Ports.Native.Unix@{RJCP.IO.Ports.Native.Unix}}\index{RJCP.IO.Ports.Native.Unix@{RJCP.IO.Ports.Native.Unix}!NETFX\_EBADF@{NETFX\_EBADF}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872a60c38255c77ebd5417808af21aaf6e5a}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872a60c38255c77ebd5417808af21aaf6e5a}} 
+N\+E\+T\+F\+X\+\_\+\+E\+B\+A\+DF&Invalid\+Operation\+Exception \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NETFX\_ENOSYS@{NETFX\_ENOSYS}!RJCP.IO.Ports.Native.Unix@{RJCP.IO.Ports.Native.Unix}}\index{RJCP.IO.Ports.Native.Unix@{RJCP.IO.Ports.Native.Unix}!NETFX\_ENOSYS@{NETFX\_ENOSYS}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872ad6412a0a0ee00de59f38aaa70dab5fa9}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872ad6412a0a0ee00de59f38aaa70dab5fa9}} 
+N\+E\+T\+F\+X\+\_\+\+E\+N\+O\+S\+YS&Platform\+Not\+Supported\+Exception \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NETFX\_EIO@{NETFX\_EIO}!RJCP.IO.Ports.Native.Unix@{RJCP.IO.Ports.Native.Unix}}\index{RJCP.IO.Ports.Native.Unix@{RJCP.IO.Ports.Native.Unix}!NETFX\_EIO@{NETFX\_EIO}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872aa4c51eb5105687252db2c4e694f1470f}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872aa4c51eb5105687252db2c4e694f1470f}} 
+N\+E\+T\+F\+X\+\_\+\+E\+IO&I\+O\+Exception \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NETFX\_EAGAIN@{NETFX\_EAGAIN}!RJCP.IO.Ports.Native.Unix@{RJCP.IO.Ports.Native.Unix}}\index{RJCP.IO.Ports.Native.Unix@{RJCP.IO.Ports.Native.Unix}!NETFX\_EAGAIN@{NETFX\_EAGAIN}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872ab2d0f3d0a2cc4bbcc80f52c67bd6e3fd}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872ab2d0f3d0a2cc4bbcc80f52c67bd6e3fd}} 
+N\+E\+T\+F\+X\+\_\+\+E\+A\+G\+A\+IN&No error. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NETFX\_EWOULDBLOCK@{NETFX\_EWOULDBLOCK}!RJCP.IO.Ports.Native.Unix@{RJCP.IO.Ports.Native.Unix}}\index{RJCP.IO.Ports.Native.Unix@{RJCP.IO.Ports.Native.Unix}!NETFX\_EWOULDBLOCK@{NETFX\_EWOULDBLOCK}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872a26e39b9f7d1baa3962d835b7c03400b7}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872a26e39b9f7d1baa3962d835b7c03400b7}} 
+N\+E\+T\+F\+X\+\_\+\+E\+W\+O\+U\+L\+D\+B\+L\+O\+CK&No error. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NETFX\_EINTR@{NETFX\_EINTR}!RJCP.IO.Ports.Native.Unix@{RJCP.IO.Ports.Native.Unix}}\index{RJCP.IO.Ports.Native.Unix@{RJCP.IO.Ports.Native.Unix}!NETFX\_EINTR@{NETFX\_EINTR}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872a093e87bc223eb4f831f9952fc32b9da0}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872a093e87bc223eb4f831f9952fc32b9da0}} 
+N\+E\+T\+F\+X\+\_\+\+E\+I\+N\+TR&No error. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NETFX\_UNKNOWN@{NETFX\_UNKNOWN}!RJCP.IO.Ports.Native.Unix@{RJCP.IO.Ports.Native.Unix}}\index{RJCP.IO.Ports.Native.Unix@{RJCP.IO.Ports.Native.Unix}!NETFX\_UNKNOWN@{NETFX\_UNKNOWN}}}\mbox{\Hypertarget{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872aa415d52dc2a951b0bbe2c5e71ea1e61b}\label{namespace_r_j_c_p_1_1_i_o_1_1_ports_1_1_native_1_1_unix_a2572bff8d7f2e644fdffa38ae8565872aa415d52dc2a951b0bbe2c5e71ea1e61b}} 
+N\+E\+T\+F\+X\+\_\+\+U\+N\+K\+N\+O\+WN&Unmapped error. Invalid\+Operation\+Exception \\
+\hline
+
+\end{DoxyEnumFields}

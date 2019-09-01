@@ -1,0 +1,66 @@
+.TH "BSL430_NET.Status" 3 "Sat Jun 22 2019" "Version 1.2.1" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BSL430_NET.Status \- \fBStatus\fP class is an Error Cluster with int, bool and string status with Core and UART messages\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBBSL430_NET\&.StatusEx\fP\&.
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBError\fP = 0\fC [get, set]\fP"
+.br
+.RI "Numeric representation of status, any value other then 0 indicates an error\&. "
+.ti -1c
+.RI "bool \fBOK\fP = false\fC [get, set]\fP"
+.br
+.RI "Boolean representation of status, true means OK, false means ERROR\&. "
+.ti -1c
+.RI "string \fBMsg\fP = 'unknown error'\fC [get, set]\fP"
+.br
+.RI "String representation of status\&. "
+.ti -1c
+.RI "\fBBslCoreMessage\fP \fBCoreStatus\fP = \fBBslCoreMessage\&.NotAvailable\fP\fC [get, set]\fP"
+.br
+.RI "BslCoreMessage status\&. "
+.ti -1c
+.RI "\fBBslUartMessage\fP \fBUartStatus\fP = \fBBslUartMessage\&.NotAvailable\fP\fC [get, set]\fP"
+.br
+.RI "BslUartMessage status\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBStatus\fP class is an Error Cluster with int, bool and string status with Core and UART messages\&. 
+
+
+.SH "Property Documentation"
+.PP 
+.SS "\fBBslCoreMessage\fP BSL430_NET\&.Status\&.CoreStatus = \fBBslCoreMessage\&.NotAvailable\fP\fC [get]\fP, \fC [set]\fP"
+
+.PP
+BslCoreMessage status\&. 
+.SS "int BSL430_NET\&.Status\&.Error = 0\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Numeric representation of status, any value other then 0 indicates an error\&. 
+.SS "string BSL430_NET\&.Status\&.Msg = 'unknown error'\fC [get]\fP, \fC [set]\fP"
+
+.PP
+String representation of status\&. 
+.SS "bool BSL430_NET\&.Status\&.OK = false\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Boolean representation of status, true means OK, false means ERROR\&. 
+.SS "\fBBslUartMessage\fP BSL430_NET\&.Status\&.UartStatus = \fBBslUartMessage\&.NotAvailable\fP\fC [get]\fP, \fC [set]\fP"
+
+.PP
+BslUartMessage status\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

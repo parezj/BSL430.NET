@@ -1,0 +1,53 @@
+.TH "RJCP.IO.Ports.Native.Windows.CommModemStatus" 3 "Sat Jun 22 2019" "Version 1.2.1" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+RJCP.IO.Ports.Native.Windows.CommModemStatus \- Abstracts the Win32 API GetCommModemStatus()\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBGetCommModemStatus\fP ()"
+.br
+.ti -1c
+.RI "void \fBClearCommBreak\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetCommBreak\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetDtr\fP (bool value)"
+.br
+.ti -1c
+.RI "void \fBSetRts\fP (bool value)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBCts\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBDsr\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBRing\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBRlsd\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Abstracts the Win32 API GetCommModemStatus()\&. 
+
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.
