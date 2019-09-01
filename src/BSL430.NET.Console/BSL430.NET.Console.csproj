@@ -15,13 +15,13 @@
     <ApplicationIcon>logo2.ico</ApplicationIcon>
     <RuntimeIdentifiers>win-x86</RuntimeIdentifiers>
     <Version>1.2.7</Version>
-    <PackageTags>TI Texas Instruments MSP430 MSP 430 MCU BSL bootloader flash memory toolchain BSL430 BSL430.NET download upload erase</PackageTags>
+    <PackageTags>MSP430 Texas Instruments MSP 430 firmware MCU BSL bootloader flash memory toolchain BSL430 BSL430.NET download upload erase FTDI FT232 Serial COM USB Intel HEX TI-TXT SREC ELF</PackageTags>
     <RepositoryUrl>https://github.com/parezj/BSL430.NET</RepositoryUrl>
     <PackageProjectUrl>https://github.com/parezj/BSL430.NET</PackageProjectUrl>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageIconUrl>https://github.com/parezj/BSL430.NET/src/BSL430.NET.WPF/Img/logo2.png?raw=true</PackageIconUrl>
-    <RepositoryType>git</RepositoryType>
+    <PackageIconUrl>https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/logo/Img/logo2.png</PackageIconUrl>
+    <RepositoryType>Github</RepositoryType>
     <NeutralLanguage>en</NeutralLanguage>
     <PublishTrimmed>true</PublishTrimmed>
     <PublishSingleFile>false</PublishSingleFile>
@@ -51,7 +51,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="%25windir%25\system32\xcopy /Y &quot;$(TargetDir)*.*&quot; &quot;$(SolutionDir)..\build\BSL430.NET.Console\*.*&quot;&#xD;&#xA;%25windir%25\system32\xcopy /Y &quot;$(TargetDir)*.*&quot; &quot;$(TargetDir)win-x86\*.*&quot;" />
+    <Exec Command="%25windir%25\system32\xcopy /Y &quot;$(TargetDir)*.*&quot; &quot;$(SolutionDir)..\build\BSL430.NET.Console\*.*&quot;&#xD;&#xA;%25windir%25\system32\xcopy /Y &quot;$(TargetDir)*.*&quot; &quot;$(ProjectDir)bin\Debug\win-x86\*.*&quot;" />
   </Target>
 
 </Project>

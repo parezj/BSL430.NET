@@ -1,12 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
     <RootNamespace>BSL430_NET</RootNamespace>
     <Authors>Jakub Parez</Authors>
     <Company>Jakub Parez</Company>
-    <Description>BSL430.NET - MSP430 bootloader (BSL) .NET toolchain</Description>
-    <Copyright>Copyright (c) 2018 Jakub Parez</Copyright>
+    <Description>BSL430.NET - TI MSP430 Bootloader (BSL) .NET Cross-Platform Toolchain &amp; Firmware Tools
+-replace expensive original MSP FET programmer with cheap FTDI FT232 or Serial COM port
+-upload, download or erase MSP430 memory with minimal effort with generic UART convertes
+-firmware tools: convert, combine, validate, hex edit or get password from TI-TXT, Intel-HEX, SREC or ELF</Description>
+    <Copyright>Copyright (c) 2019 Jakub Parez</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -20,24 +23,26 @@
     <Version>1.2.6</Version>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/parezj/BSL430.NET</PackageProjectUrl>
-    <PackageIconUrl>https://github.com/parezj/BSL430.NET/src/BSL430.NET.WPF/Img/logo2.png?raw=true</PackageIconUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/logo/Img/logo2.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/parezj/BSL430.NET</RepositoryUrl>
-    <PackageTags>TI Texas Instruments MSP430 MSP 430 MCU BSL bootloader flash memory toolchain BSL430 BSL430.NET download upload erase FTDI FT232 Serial COM USB</PackageTags>
+    <PackageTags>MSP430 Texas Instruments MSP 430 firmware MCU BSL bootloader flash memory toolchain BSL430 BSL430.NET download upload erase FTDI FT232 Serial COM USB Intel HEX TI-TXT SREC ELF</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryType>git</RepositoryType>
+    <RepositoryType>Github</RepositoryType>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
-    <PlatformTarget>x86</PlatformTarget>
+  
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0'">
+    <DefineConstants>NETCORE;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
-    <PlatformTarget>x86</PlatformTarget>
+  
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'net461'">
+	<DefineConstants>NET461;NETFULL</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|x86'">
+    <PlatformTarget>x86</PlatformTarget>
     <DocumentationFile>BSL430.NET.xml</DocumentationFile>
-    <OutputPath />
+    <OutputPath>bin\x86\Debug\netstandard2.0\</OutputPath>
     <WarningLevel>4</WarningLevel>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
@@ -45,7 +50,21 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|x86'">
     <DocumentationFile>BSL430.NET.xml</DocumentationFile>
-    <OutputPath>bin\x86\Release\netstandard2.0\win-x86\</OutputPath>
+    <OutputPath>bin\x86\Release\netstandard2.0\</OutputPath>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net461|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <DocumentationFile>BSL430.NET.xml</DocumentationFile>
+    <OutputPath>bin\x86\Debug\net461\</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net461|x86'">
+    <DocumentationFile>BSL430.NET.xml</DocumentationFile>
+    <OutputPath>bin\x86\Release\net461\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -58,18 +77,10 @@
     <PackageReference Include="HidSharp" Version="2.1.0" />
     <PackageReference Include="LibUsbDotNet" Version="2.2.29" />
     <PackageReference Include="SerialPortStream" Version="2.2.0" />
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="dll\amd64\ftd2xx64.dll">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="dll\amd64\libftdi1.dll">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="dll\amd64\libusb-1.0.dll">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
     <None Update="dll\ftd2xx.dll">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
@@ -79,10 +90,19 @@
     <None Update="dll\libusb-1.0.dll">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
+    <None Update="lib\ftd2xx.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\libftdi1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="lib\libusb-1.0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="%25windir%25\system32\xcopy /Y &quot;$(TargetDir)*.*&quot; &quot;$(SolutionDir)..\build\BSL430.NET\*.*&quot;&#xD;&#xA;%25windir%25\system32\xcopy /Y &quot;$(TargetDir)*.*&quot; &quot;$(TargetDir)win-x86\*.*&quot;" />
+    <Exec Command="%25windir%25\system32\xcopy /Y &quot;$(TargetDir)*.*&quot; &quot;$(SolutionDir)..\build\BSL430.NET\$(TargetFramework)\*.*&quot;&#xD;&#xA;if $(TargetFramework) ==  netstandard2.0 (&#xD;&#xA;  %25windir%25\system32\xcopy /Y &quot;$(TargetDir)*.*&quot; &quot;$(ProjectDir)bin\Debug\win-x86\*.*&quot;&#xD;&#xA;)" />
   </Target>
 
 </Project>

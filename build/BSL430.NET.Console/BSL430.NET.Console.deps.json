@@ -409,11 +409,13 @@
           "System.Runtime.Handles": "4.3.0"
         }
       },
+      "System.ValueTuple/4.5.0": {},
       "BSL430.NET/1.2.6": {
         "dependencies": {
           "HidSharp": "2.1.0",
           "LibUsbDotNet": "2.2.29",
-          "SerialPortStream": "2.2.0"
+          "SerialPortStream": "2.2.0",
+          "System.ValueTuple": "4.5.0"
         },
         "runtime": {
           "BSL430.NET.dll": {}
@@ -741,6 +743,13 @@
       "sha512": "sha512-k/+g4b7vjdd4aix83sTgC9VG6oXYKAktSfNIJUNGxPEj7ryEOfzHHhfnmsZvjxawwcD9HyWXKCXmPjX8U4zeSw==",
       "path": "system.threading.threadpool/4.3.0",
       "hashPath": "system.threading.threadpool.4.3.0.nupkg.sha512"
+    },
+    "System.ValueTuple/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-okurQJO6NRE/apDIP23ajJ0hpiNmJ+f0BwOlB/cSqTLQlw5upkf+5+96+iG2Jw40G1fCVCyPz/FhIABUjMR+RQ==",
+      "path": "system.valuetuple/4.5.0",
+      "hashPath": "system.valuetuple.4.5.0.nupkg.sha512"
     },
     "BSL430.NET/1.2.6": {
       "type": "project",

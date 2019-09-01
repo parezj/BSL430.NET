@@ -348,7 +348,6 @@ namespace BSL430_NET_Console
                 Timer timer = null;
                 Console.WriteLine();
                 Stopwatch sw = new Stopwatch();
-                string firmware = "";
 
                 if (options.File == "")
                 {
@@ -823,7 +822,6 @@ namespace BSL430_NET_Console
                     lf = " ";
                 }
            
-                string result = "";
                 string pad_name = Str(' ', 33 - args.Report.Name.Length - mark.Length);
 
                 string _progress = "";
