@@ -11,6 +11,7 @@
     <description>TI MSP430 Bootloader (BSL) .NET Cross-Platform Toolchain with Firmware Tools. With generic UART converter can easily flash MCU memory, Intel-HEX, TI-TXT, ELF, SREC support.</description>
     <releaseNotes>Initial nuget package release</releaseNotes>
     <copyright>Copyright (c) 2019 Jakub Parez</copyright>
+    <license type="expression">MIT</license>
     <tags>MSP430 Texas Instruments MSP 430 firmware MCU BSL bootloader flash memory toolchain BSL430 BSL430.NET download upload erase FTDI FT232 Serial COM USB Intel HEX TI-TXT SREC ELF</tags>
     <dependencies>
       <dependency id="HidSharp" version="2.1.0" />
