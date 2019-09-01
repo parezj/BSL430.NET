@@ -23,7 +23,7 @@
     <Version>1.2.6</Version>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/parezj/BSL430.NET</PackageProjectUrl>
-    <PackageIconUrl>https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/logo/Img/logo2.png</PackageIconUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/logo/logo2.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/parezj/BSL430.NET</RepositoryUrl>
     <PackageTags>MSP430 Texas Instruments MSP 430 firmware MCU BSL bootloader flash memory toolchain BSL430 BSL430.NET download upload erase FTDI FT232 Serial COM USB Intel HEX TI-TXT SREC ELF</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

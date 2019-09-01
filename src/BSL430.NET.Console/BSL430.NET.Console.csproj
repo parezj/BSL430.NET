@@ -20,7 +20,7 @@
     <PackageProjectUrl>https://github.com/parezj/BSL430.NET</PackageProjectUrl>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageIconUrl>https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/logo/Img/logo2.png</PackageIconUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/logo/logo2.png</PackageIconUrl>
     <RepositoryType>Github</RepositoryType>
     <NeutralLanguage>en</NeutralLanguage>
     <PublishTrimmed>true</PublishTrimmed>
