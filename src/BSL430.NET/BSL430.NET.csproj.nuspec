@@ -8,7 +8,7 @@
     <projectUrl>https://github.com/parezj/BSL430.NET</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/logo/logo2.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>TI MSP430 Bootloader (BSL) .NET Cross-Platform Toolchain with Firmware Tools. With generic UART converter can easily flash MCU memory, Intel-HEX, TI-TXT, ELF, SREC support.</description>
+    <description>TI MSP430 Bootloader (BSL) .NET Cross-Platform Toolchain and Firmware Tools. With generic UART converter can easily flash MCU memory, Intel-HEX, TI-TXT, ELF, SREC support.</description>
     <releaseNotes>Initial nuget package release</releaseNotes>
     <copyright>Copyright (c) 2019 Jakub Parez</copyright>
     <license type="expression">MIT</license>
