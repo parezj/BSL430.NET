@@ -1,5 +1,5 @@
 # <img src="https://raw.githubusercontent.com/parezj/BSL430.NET/master/src/BSL430.NET.WPF/Img/logo2.png" alt="BSL430.NET" width="80" height="80"> BSL430.NET 
-## TI MSP430 Toolchain & Firmware Tools
+[![NuGet version (BSL430.NET)](https://img.shields.io/nuget/v/BSL430.NET.svg?style=flat-square)](https://www.nuget.org/packages/BSL430.NET/)
 
 > TI MSP430 Bootloader (BSL) .NET Cross-Platform Toolchain & Firmware Tools
 
