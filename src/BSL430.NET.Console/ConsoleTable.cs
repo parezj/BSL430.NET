@@ -228,16 +228,12 @@ namespace ConsoleTables
             {
                 case ConsoleTables.Format.Default:
                     return ToString();
-                    break;
                 case ConsoleTables.Format.MarkDown:
                     return  ToMarkDownString();
-                    break;
                 case ConsoleTables.Format.Alternative:
                     return  ToStringAlternative(horizontal);
-                    break;
                 case ConsoleTables.Format.Minimal:
                     return  ToMinimalString();
-                    break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(format), format, null);
             }

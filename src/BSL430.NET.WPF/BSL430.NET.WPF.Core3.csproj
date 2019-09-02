@@ -33,7 +33,7 @@
     <UseWPF>true</UseWPF>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <PostBuildEvent>%25windir%25\system32\xcopy /Y "$(TargetDir)*.*" "$(SolutionDir)..\build\BSL430.NET.WPF\*.*"</PostBuildEvent>
-    <Platforms>x86</Platforms>
+    <Platforms>x86;x64</Platforms>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -43,11 +43,27 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+    <PlatformTarget>x86</PlatformTarget>
+    <DefineConstants>DEBUG;TRACE;X86</DefineConstants>
     <DebugType>portable</DebugType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
     <DebugType>portable</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <DefineConstants>TRACE;X86</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+    <DefineConstants>DEBUG;TRACE;AMD64</DefineConstants>
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+    <DebugType>portable</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <DefineConstants>TRACE;AMD64</DefineConstants>
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>false</SignManifests>
@@ -86,15 +102,17 @@
     <Resource Include="Resources\Img\TexasInstruments-Logo_dark.png" />
     <Resource Include="Resources\Img\TexasInstruments-Logo_light.png" />
   </ItemGroup>
-  <ItemGroup>
+  <ItemGroup Condition=" '$(Platform)' == 'x86' ">
     <EmbeddedResource Include="costura32\ftd2xx.dll" />
     <EmbeddedResource Include="costura32\libftdi1.dll" />
     <EmbeddedResource Include="costura32\libusb-1.0.dll" />
   </ItemGroup>
+  <ItemGroup Condition=" '$(Platform)' == 'x64' ">
+    <EmbeddedResource Include="costura64\ftd2xx.dll" />
+    <EmbeddedResource Include="costura64\libftdi1.dll" />
+    <EmbeddedResource Include="costura64\libusb-1.0.dll" />
+  </ItemGroup>
   <ItemGroup>
-    <Content Include="costura64\ftd2xx64.dll" />
-    <Content Include="costura64\libftdi1.dll" />
-    <Content Include="costura64\libusb-1.0.dll" />
     <Content Include="lib\WPFHexaEditor.dll" />
     <EmbeddedResource Include="Resources\file.ico" />
     <EmbeddedResource Include="Resources\logo2.ico" />

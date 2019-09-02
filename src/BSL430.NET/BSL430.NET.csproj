@@ -113,7 +113,7 @@
   </ItemGroup>
 
   <ItemGroup Condition=" '$(Platform)' == 'x64' ">
-    <ContentWithTargetPath Include="lib\__amd64__\ftd2xx64.dll">
+    <ContentWithTargetPath Include="lib\__amd64__\ftd2xx.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <TargetPath>ftd2xx.dll</TargetPath>
     </ContentWithTargetPath>

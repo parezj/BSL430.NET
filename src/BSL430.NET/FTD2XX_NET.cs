@@ -1,6 +1,6 @@
 /*
 
-Copyright © Future Technology Devices International Limited
+Copyright Future Technology Devices International Limited
 
 FTDI FTD2XX_NET.dll may be used only in conjunction with products based on FTDI parts.
 
@@ -11,7 +11,7 @@ ALL FTDI COMPONENTS MAY BE DISTRIBUTED IN ANY FORM AS LONG AS OUR LICENSE INFORM
 
 ** FTD2XX_NET.cs
 **
-** Copyright © 2009-2013 Future Technology Devices International Limited
+** Copyright 2009-2013 Future Technology Devices International Limited
 **
 ** C# Source file for .NET wrapper of the Windows FTD2XX.dll API calls.
 ** Main module
@@ -58,16 +58,16 @@ namespace FTD2XX_NET
             if (hFTD2XXDLL == IntPtr.Zero)
             {
                 // Load our FTD2XX.DLL library
-                hFTD2XXDLL = LoadLibrary(@"FTD2XX.DLL");
+
+                hFTD2XXDLL = LoadLibrary(@"ftd2xx.dll");
+
                 if (hFTD2XXDLL == IntPtr.Zero)
                 {
                     // Failed to load our FTD2XX.DLL library from System32 or the application directory
                     // Try the same directory that this FTD2XX_NET DLL is in
                     //Console.WriteLine("Attempting to load FTD2XX.DLL from:\n" + Path.GetDirectoryName(GetType().Assembly.Location));
-#if DEBUG
 
-#endif
-                    hFTD2XXDLL = LoadLibrary(@Path.GetDirectoryName(GetType().Assembly.Location) + "\\FTD2XX.DLL");
+                    hFTD2XXDLL = LoadLibrary(@Path.GetDirectoryName(GetType().Assembly.Location) + "\\ftd2xx.dll");
                 }
             }
 
