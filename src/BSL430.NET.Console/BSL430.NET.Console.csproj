@@ -11,10 +11,10 @@
 -upload, download or erase MSP430 memory with minimal effort with generic UART convertes
 -firmware tools: convert, combine, validate, hex edit or get password from TI-TXT, Intel-HEX, SREC or ELF</Description>
     <RootNamespace>BSL430_NET_Console</RootNamespace>
-    <Platforms>x86;x64</Platforms>
+    <Platforms>x86;x64;AnyCPU</Platforms>
     <ApplicationIcon>logo2.ico</ApplicationIcon>
     <RuntimeIdentifiers>win-x86</RuntimeIdentifiers>
-    <Version>1.2.7</Version>
+    <Version>1.3.0</Version>
     <PackageTags>MSP430 Texas Instruments MSP 430 firmware MCU BSL bootloader flash memory toolchain BSL430 BSL430.NET download upload erase FTDI FT232 Serial COM USB Intel HEX TI-TXT SREC ELF</PackageTags>
     <RepositoryUrl>https://github.com/parezj/BSL430.NET</RepositoryUrl>
     <PackageProjectUrl>https://github.com/parezj/BSL430.NET</PackageProjectUrl>
@@ -46,6 +46,14 @@
     <DebugSymbols>true</DebugSymbols>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <WarningLevel>0</WarningLevel>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
   
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <PlatformTarget>x86</PlatformTarget>
@@ -54,6 +62,11 @@
   
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <PlatformTarget>x64</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
@@ -66,7 +79,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="%25windir%25\system32\xcopy /Y &quot;$(TargetDir)*.*&quot; &quot;$(SolutionDir)..\build\BSL430.NET.Console\$(Platform)\*.*&quot;&#xD;&#xA;%25windir%25\system32\xcopy /Y &quot;$(TargetDir)*.*&quot; &quot;$(ProjectDir)bin\Debug\win-$(Platform)\*.*&quot;" />
+    <Exec Command="%25windir%25\system32\xcopy /Y &quot;$(TargetDir)*.*&quot; &quot;$(SolutionDir)..\build\BSL430.NET.Console\$(Platform)\*.*&quot;&#xD;&#xA;%25windir%25\system32\xcopy /Y &quot;$(TargetDir)*.*&quot; &quot;$(ProjectDir)\bin\Debug\win-$(Platform)\*.*&quot;" />
   </Target>
 
 </Project>

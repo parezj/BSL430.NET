@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"> 
-  <Target Name="CopyMyPackageFiles" AfterTargets="AfterBuild"> 
+  <Target Name="CopyMyPackageFiles" AfterTargets="AfterBuild" Condition=" '$(Platform)' == 'x86' "> 
     <ItemGroup> 
-      <MyPackageFiles Include="$(MSBuildThisFileDirectory)..\lib\*.*"/> 
+      <MyPackageFiles Include="$(MSBuildThisFileDirectory)..\runtimes\win-x86\native\*.*"/> 
+    </ItemGroup> 
+    <Copy SourceFiles="@(MyPackageFiles)" DestinationFolder="$(OutputPath)" > 
+    </Copy> 
+  </Target> 
+  <Target Name="CopyMyPackageFiles" AfterTargets="AfterBuild" Condition=" '$(Platform)' == 'x64' "> 
+    <ItemGroup> 
+      <MyPackageFiles Include="$(MSBuildThisFileDirectory)..\runtimes\win-x64\native\*.*"/> 
     </ItemGroup> 
     <Copy SourceFiles="@(MyPackageFiles)" DestinationFolder="$(OutputPath)" > 
     </Copy> 

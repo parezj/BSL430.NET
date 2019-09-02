@@ -65,6 +65,18 @@
     <PlatformTarget>x64</PlatformTarget>
     <DefineConstants>TRACE;AMD64</DefineConstants>
   </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DefineConstants>DEBUG;TRACE;</DefineConstants>
+    <DebugType>portable</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+    <DebugType>portable</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DefineConstants>TRACE;</DefineConstants>
+  </PropertyGroup>
   <PropertyGroup>
     <SignManifests>false</SignManifests>
   </PropertyGroup>
@@ -78,10 +90,25 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/parezj/BSL430.NET</PackageProjectUrl>
   </PropertyGroup>
-  <ItemGroup>
+  <ItemGroup Condition=" '$(Platform)' == 'x86' ">
+    <Content Include="lib\__x86__\WPFHexaEditor.dll" />
     <Reference Include="WPFHexaEditor, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <HintPath>lib\WPFHexaEditor.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\__x86__\WPFHexaEditor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup Condition=" '$(Platform)' == 'x64' ">
+    <Content Include="lib\__amd64__\WPFHexaEditor.dll" />
+    <Reference Include="WPFHexaEditor, Version=1.0.0.0, Culture=neutral, processorArchitecture=x64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\__amd64__\WPFHexaEditor.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <Content Include="lib\__AnyCPU__\WPFHexaEditor.dll" />
+    <Reference Include="WPFHexaEditor, Version=1.0.0.0, Culture=neutral, processorArchitecture=AnyCPU">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\__AnyCPU__\WPFHexaEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -113,7 +140,6 @@
     <EmbeddedResource Include="costura64\libusb-1.0.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="lib\WPFHexaEditor.dll" />
     <EmbeddedResource Include="Resources\file.ico" />
     <EmbeddedResource Include="Resources\logo2.ico" />
     <None Include="Resources\Img\TexasInstruments-Logo_dark_f.png" />
