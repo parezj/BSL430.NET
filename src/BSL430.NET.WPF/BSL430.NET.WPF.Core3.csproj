@@ -56,7 +56,7 @@
     <ManifestCertificateThumbprint>89DA8E4FC31C377B5EE2C477F2BD1A478977F84E</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>%25windir%25\system32\xcopy /Y "$(TargetDir)*.*" "$(SolutionDir)..\build\BSL430.NET.WPF\*.*"</PostBuildEvent>
+    <PostBuildEvent>%25windir%25\system32\xcopy /Y "$(TargetDir)*.*" "$(SolutionDir)..\build\BSL430.NET.WPF\$(Platform)\*.*"</PostBuildEvent>
     <AssemblyName>BSL430.NET.WPF</AssemblyName>
     <Authors>Jakub Parez</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>

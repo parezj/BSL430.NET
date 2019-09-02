@@ -16,7 +16,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <RuntimeIdentifiers>win-x86;win-x64;osx-x64;linux-x64;centos-x64;debian-x64;fedora-x64;ubuntu-x64;opensuse-x64;android</RuntimeIdentifiers>
-    <Platforms>x86</Platforms>
+    <Platforms>x86;x64</Platforms>
     <ApplicationIcon />
     <OutputType>Library</OutputType>
     <StartupObject />
@@ -48,9 +48,25 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <DocumentationFile>BSL430.NET.xml</DocumentationFile>
+    <OutputPath>bin\x64\Debug\netstandard2.0\</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|x86'">
+    <PlatformTarget>x86</PlatformTarget>
     <DocumentationFile>BSL430.NET.xml</DocumentationFile>
     <OutputPath>bin\x86\Release\netstandard2.0\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <DocumentationFile>BSL430.NET.xml</DocumentationFile>
+    <OutputPath>bin\x64\Release\netstandard2.0\</OutputPath>
   </PropertyGroup>
   
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net461|x86'">
@@ -61,10 +77,26 @@
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net461|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <DocumentationFile>BSL430.NET.xml</DocumentationFile>
+    <OutputPath>bin\x64\Debug\net461\</OutputPath>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net461|x86'">
+    <PlatformTarget>x86</PlatformTarget>
     <DocumentationFile>BSL430.NET.xml</DocumentationFile>
     <OutputPath>bin\x86\Release\net461\</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net461|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <DocumentationFile>BSL430.NET.xml</DocumentationFile>
+    <OutputPath>bin\x64\Release\net461\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -80,29 +112,38 @@
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="dll\ftd2xx.dll">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="dll\libftdi1.dll">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="dll\libusb-1.0.dll">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="lib\ftd2xx.dll">
+  <ItemGroup Condition=" '$(Platform)' == 'x64' ">
+    <ContentWithTargetPath Include="lib\__amd64__\ftd2xx64.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="lib\libftdi1.dll">
+      <TargetPath>ftd2xx.dll</TargetPath>
+    </ContentWithTargetPath>
+    <ContentWithTargetPath Include="lib\__amd64__\libftdi1.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="lib\libusb-1.0.dll">
+      <TargetPath>libftdi1.dll</TargetPath>
+    </ContentWithTargetPath>
+    <ContentWithTargetPath Include="lib\__amd64__\libusb-1.0.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+      <TargetPath>libusb-1.0.dll</TargetPath>
+    </ContentWithTargetPath>
+  </ItemGroup>
+  
+  <ItemGroup Condition=" '$(Platform)' == 'x86' ">
+    <ContentWithTargetPath Include="lib\__x86__\ftd2xx.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>ftd2xx.dll</TargetPath>
+    </ContentWithTargetPath>
+    <ContentWithTargetPath Include="lib\__x86__\libftdi1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>libftdi1.dll</TargetPath>
+    </ContentWithTargetPath>
+    <ContentWithTargetPath Include="lib\__x86__\libusb-1.0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>libusb-1.0.dll</TargetPath>
+    </ContentWithTargetPath>
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="%25windir%25\system32\xcopy /Y &quot;$(TargetDir)*.*&quot; &quot;$(SolutionDir)..\build\BSL430.NET\$(TargetFramework)\*.*&quot;&#xD;&#xA;if $(TargetFramework) ==  netstandard2.0 (&#xD;&#xA;  %25windir%25\system32\xcopy /Y &quot;$(TargetDir)*.*&quot; &quot;$(ProjectDir)bin\Debug\win-x86\*.*&quot;&#xD;&#xA;)" />
+    <Exec Command="%25windir%25\system32\xcopy /Y &quot;$(TargetDir)*.*&quot; &quot;$(SolutionDir)..\build\BSL430.NET\$(Platform)\$(TargetFramework)\*.*&quot;&#xD;&#xA;if $(TargetFramework) ==  netstandard2.0 (&#xD;&#xA;  %25windir%25\system32\xcopy /Y &quot;$(TargetDir)*.*&quot; &quot;$(ProjectDir)bin\Debug\win-$(Platform)\*.*&quot;&#xD;&#xA;)" />
   </Target>
 
 </Project>
