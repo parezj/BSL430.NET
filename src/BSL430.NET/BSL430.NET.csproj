@@ -39,24 +39,6 @@
 	<DefineConstants>NET461;NETFULL</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|x86'">
-    <PlatformTarget>x86</PlatformTarget>
-    <DocumentationFile>BSL430.NET.xml</DocumentationFile>
-    <OutputPath>bin\x86\Debug\netstandard2.0\</OutputPath>
-    <WarningLevel>4</WarningLevel>
-    <DebugType>full</DebugType>
-    <DebugSymbols>true</DebugSymbols>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|x64'">
-    <PlatformTarget>x64</PlatformTarget>
-    <DocumentationFile>BSL430.NET.xml</DocumentationFile>
-    <OutputPath>bin\x64\Debug\netstandard2.0\</OutputPath>
-    <WarningLevel>4</WarningLevel>
-    <DebugType>full</DebugType>
-    <DebugSymbols>true</DebugSymbols>
-  </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DocumentationFile>BSL430.NET.xml</DocumentationFile>
@@ -64,44 +46,16 @@
     <WarningLevel>4</WarningLevel>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|x86'">
-    <PlatformTarget>x86</PlatformTarget>
-    <DocumentationFile>BSL430.NET.xml</DocumentationFile>
-    <OutputPath>bin\x86\Release\netstandard2.0\</OutputPath>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|x64'">
-    <PlatformTarget>x64</PlatformTarget>
-    <DocumentationFile>BSL430.NET.xml</DocumentationFile>
-    <OutputPath>bin\x64\Release\netstandard2.0\</OutputPath>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DocumentationFile>BSL430.NET.xml</DocumentationFile>
     <OutputPath>bin\AnyCPU\Release\netstandard2.0\</OutputPath>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
-  
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net461|x86'">
-    <PlatformTarget>x86</PlatformTarget>
-    <DocumentationFile>BSL430.NET.xml</DocumentationFile>
-    <OutputPath>bin\x86\Debug\net461\</OutputPath>
-    <WarningLevel>4</WarningLevel>
-    <DebugType>full</DebugType>
-    <DebugSymbols>true</DebugSymbols>
-  </PropertyGroup>
-  
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net461|x64'">
-    <PlatformTarget>x64</PlatformTarget>
-    <DocumentationFile>BSL430.NET.xml</DocumentationFile>
-    <OutputPath>bin\x64\Debug\net461\</OutputPath>
-    <WarningLevel>4</WarningLevel>
-    <DebugType>full</DebugType>
-    <DebugSymbols>true</DebugSymbols>
-  </PropertyGroup>
-  
+    
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net461|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DocumentationFile>BSL430.NET.xml</DocumentationFile>
@@ -109,24 +63,14 @@
     <WarningLevel>4</WarningLevel>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net461|x86'">
-    <PlatformTarget>x86</PlatformTarget>
-    <DocumentationFile>BSL430.NET.xml</DocumentationFile>
-    <OutputPath>bin\x86\Release\net461\</OutputPath>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net461|x64'">
-    <PlatformTarget>x64</PlatformTarget>
-    <DocumentationFile>BSL430.NET.xml</DocumentationFile>
-    <OutputPath>bin\x64\Release\net461\</OutputPath>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net461|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DocumentationFile>BSL430.NET.xml</DocumentationFile>
     <OutputPath>bin\AnyCPU\Release\net461\</OutputPath>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
 
   <ItemGroup>
@@ -142,30 +86,48 @@
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ContentWithTargetPath Include="lib\__amd64__\ftd2xx.dll">
+  <ItemGroup Condition=" ('$(Platform)' == 'x86' OR '$(Platform)' == 'AnyCPU') AND '$(IsWindows)'=='true' ">
+    <ContentWithTargetPath Include="lib\win-x86\ftd2xx.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <TargetPath>lib\amd64\ftd2xx.dll</TargetPath>
+      <TargetPath>ftd2xx.dll</TargetPath>
     </ContentWithTargetPath>
-    <ContentWithTargetPath Include="lib\__amd64__\libftdi1.dll">
+    <ContentWithTargetPath Include="lib\win-x86\libftdi1.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <TargetPath>lib\amd64\libftdi1.dll</TargetPath>
+      <TargetPath>libftdi1.dll</TargetPath>
     </ContentWithTargetPath>
-    <ContentWithTargetPath Include="lib\__amd64__\libusb-1.0.dll">
+    <ContentWithTargetPath Include="lib\win-x86\libusb-1.0.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <TargetPath>lib\amd64\libusb-1.0.dll</TargetPath>
+      <TargetPath>libusb-1.0.dll</TargetPath>
     </ContentWithTargetPath>
-    <ContentWithTargetPath Include="lib\__x86__\ftd2xx.dll">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        <TargetPath>lib\x86\ftd2xx.dll</TargetPath>
+  </ItemGroup>
+    
+  <ItemGroup Condition=" '$(Platform)' == 'x64' AND '$(IsWindows)'=='true' ">
+    <ContentWithTargetPath Include="lib\win-amd64\ftd2xx.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>ftd2xx.dll</TargetPath>
     </ContentWithTargetPath>
-    <ContentWithTargetPath Include="lib\__x86__\libftdi1.dll">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        <TargetPath>lib\x86\libftdi1.dll</TargetPath>
+    <ContentWithTargetPath Include="lib\win-amd64\libftdi1.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>libftdi1.dll</TargetPath>
     </ContentWithTargetPath>
-    <ContentWithTargetPath Include="lib\__x86__\libusb-1.0.dll">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-        <TargetPath>lib\x86\libusb-1.0.dll</TargetPath>
+    <ContentWithTargetPath Include="lib\win-amd64\libusb-1.0.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>libusb-1.0.dll</TargetPath>
+    </ContentWithTargetPath>
+  </ItemGroup>
+    
+  <ItemGroup Condition=" '$(Platform)' == 'x64' AND '$(IsLinux)'=='true' ">
+    <ContentWithTargetPath Include="lib\linux-amd64\libftd2xx.so.1.4.8">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>libftd2xx.so.1.4.8</TargetPath>
+    </ContentWithTargetPath>
+    <ContentWithTargetPath Include="lib\linux-amd64\libftdi1.so.2.4.0">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>libftdi1.so.2.4.0</TargetPath>
+    </ContentWithTargetPath>
+    <ContentWithTargetPath Include="lib\linux-amd64\libusb-1.0.so.0.1.0">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>libusb-1.0.so.0.1.0</TargetPath>
     </ContentWithTargetPath>
   </ItemGroup>
 

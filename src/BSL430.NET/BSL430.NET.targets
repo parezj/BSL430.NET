@@ -1,17 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?> 
-<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"> 
-  <Target Name="CopyMyPackageFiles" AfterTargets="AfterBuild" Condition=" '$(Platform)' == 'x86' "> 
-    <ItemGroup> 
-      <MyPackageFiles Include="$(MSBuildThisFileDirectory)..\runtimes\win-x86\native\*.*"/> 
-    </ItemGroup> 
-    <Copy SourceFiles="@(MyPackageFiles)" DestinationFolder="$(OutputPath)" > 
-    </Copy> 
-  </Target> 
-  <Target Name="CopyMyPackageFiles" AfterTargets="AfterBuild" Condition=" '$(Platform)' == 'x64' "> 
-    <ItemGroup> 
-      <MyPackageFiles Include="$(MSBuildThisFileDirectory)..\runtimes\win-x64\native\*.*"/> 
-    </ItemGroup> 
-    <Copy SourceFiles="@(MyPackageFiles)" DestinationFolder="$(OutputPath)" > 
-    </Copy> 
-  </Target> 
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+    <ItemGroup Condition=" ('$(Platform)' == 'x86' OR '$(Platform)' == 'AnyCPU') AND '$(IsWindows)'=='true' ">
+        <Content Include="$(MSBuildThisFileDirectory)..\..\runtimes\win-x86\native\ftd2xx.dll">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Link>ftd2xx.dll</Link>
+        </Content>
+        <Content Include="$(MSBuildThisFileDirectory)..\..\runtimes\win-x86\native\libftdi1.dll">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Link>libftdi1.dll</Link>
+        </Content>
+        <Content Include="$(MSBuildThisFileDirectory)..\..\runtimes\win-x86\native\libusb-1.0.dll">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Link>libusb-1.0.dll</Link>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup Condition=" '$(Platform)' == 'x64' AND '$(IsWindows)'=='true' ">
+        <Content Include="$(MSBuildThisFileDirectory)..\..\runtimes\win-x64\native\ftd2xx.dll">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Link>ftd2xx.dll</Link>
+        </Content>
+        <Content Include="$(MSBuildThisFileDirectory)..\..\runtimes\win-x64\native\libftdi1.dll">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Link>libftdi1.dll</Link>
+        </Content>
+        <Content Include="$(MSBuildThisFileDirectory)..\..\runtimes\win-x64\native\libusb-1.0.dll">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Link>libusb-1.0.dll</Link>
+        </Content>
+    </ItemGroup>
+
+    <ItemGroup Condition=" '$(Platform)' == 'x64' AND '$(IsLinux)'=='true' ">
+        <Content Include="$(MSBuildThisFileDirectory)..\..\runtimes\linux-x64\native\libftd2xx.so.1.4.8">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Link>libftd2xx.so.1.4.8</Link>
+        </Content>
+        <Content Include="$(MSBuildThisFileDirectory)..\..\runtimes\linux-x64\native\libftdi1.so.2.4.0">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Link>libftdi1.so.2.4.0</Link>
+        </Content>
+        <Content Include="$(MSBuildThisFileDirectory)..\..\runtimes\linux-x64\native\libusb-1.0.so.0.1.0">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <Link>libusb-1.0.so.0.1.0</Link>
+        </Content>
+    </ItemGroup>
+    
 </Project>
+
+<!--<Target Name="CopyMyPackageFiles" AfterTargets="AfterBuild" Condition=" '$(Platform)' == 'x64' ">
+    <ItemGroup>
+        <MyPackageFiles Include="$(MSBuildThisFileDirectory)..\runtimes\win-x64\native\*.*"/>
+    </ItemGroup>
+    <Copy SourceFiles="@(MyPackageFiles)" DestinationFolder="$(OutputPath)" >
+    </Copy>
+</Target>-->

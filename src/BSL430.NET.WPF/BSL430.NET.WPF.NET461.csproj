@@ -108,24 +108,24 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup Condition=" '$(Platform)' == 'x86' ">
-    <Content Include="lib\__x86__\WPFHexaEditor.dll" />
+    <Content Include="lib\win-x86\WPFHexaEditor.dll" />
     <Reference Include="WPFHexaEditor, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\__x86__\WPFHexaEditor.dll</HintPath>
+      <HintPath>lib\win-x86\WPFHexaEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup Condition=" '$(Platform)' == 'x64' ">
-    <Content Include="lib\__amd64__\WPFHexaEditor.dll" />
+    <Content Include="lib\win-amd64\WPFHexaEditor.dll" />
     <Reference Include="WPFHexaEditor, Version=1.0.0.0, Culture=neutral, processorArchitecture=x64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\__amd64__\WPFHexaEditor.dll</HintPath>
+      <HintPath>lib\win-amd64\WPFHexaEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup Condition=" '$(Platform)' == 'AnyCPU' ">
-    <Content Include="lib\__AnyCPU__\WPFHexaEditor.dll" />
+    <Content Include="lib\win-AnyCPU\WPFHexaEditor.dll" />
     <Reference Include="WPFHexaEditor, Version=1.0.0.0, Culture=neutral, processorArchitecture=AnyCPU">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\__AnyCPU__\WPFHexaEditor.dll</HintPath>
+      <HintPath>lib\win-AnyCPU\WPFHexaEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

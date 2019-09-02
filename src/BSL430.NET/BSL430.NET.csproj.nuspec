@@ -26,8 +26,9 @@
     <file src="bin\AnyCPU\Debug\net461\BSL430.NET.dll" target="lib/net461" />
     <file src="bin\AnyCPU\Debug\net461\BSL430.NET.xml" target="lib/net461" />
         
-    <file src="lib\__amd64__\*.*" target="lib/native/x64/" />
-    <file src="lib\__x86__\*.*" target="lib/native/x86/" />
+    <file src="lib\win-amd64\*.*" target="runtimes/win-x64/native/" />
+    <file src="lib\win-x86\*.*" target="runtimes/win-x86/native/" />
+    <file src="lib\linux-amd64\*.*" target="runtimes/linux-x64/native/" />
     
     <file src="BSL430.NET.targets" target="build" />
   </files>
