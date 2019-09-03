@@ -87,21 +87,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-  <ItemGroup Condition=" '$(Platform)' == 'x86' ">
-    <Content Include="lib\win-x86\WPFHexaEditor.dll" />
-    <Reference Include="WPFHexaEditor, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\win-x86\WPFHexaEditor.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup Condition=" '$(Platform)' == 'x64' ">
-    <Content Include="lib\win-amd64\WPFHexaEditor.dll" />
-    <Reference Include="WPFHexaEditor, Version=1.0.0.0, Culture=neutral, processorArchitecture=x64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\win-amd64\WPFHexaEditor.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+  <ItemGroup>
     <Content Include="lib\win-AnyCPU\WPFHexaEditor.dll" />
     <Reference Include="WPFHexaEditor, Version=1.0.0.0, Culture=neutral, processorArchitecture=AnyCPU">
       <SpecificVersion>False</SpecificVersion>
@@ -284,7 +270,7 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <None Include="app.config" />
+    <EmbeddedResource Include="app.config" />
     <EmbeddedResource Include="Resources\XML_dark.xshd" />
     <EmbeddedResource Include="Resources\XML_light.xshd" />
   </ItemGroup>
@@ -383,6 +369,21 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>%25windir%25\system32\xcopy /Y "$(TargetDir)*.*" "$(SolutionDir)..\build\BSL430.NET.WPF\$(Platform)\*.*"</PostBuildEvent>
+    <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
   </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>mkdir "$(SolutionDir)..\build"
+mkdir "$(SolutionDir)..\build\BSL430.NET.WPF"
+mkdir "$(SolutionDir)..\build\BSL430.NET.WPF\$(Platform)"
+copy /Y "$(TargetDir)BSL430.NET.WPF.exe" "$(SolutionDir)..\build\BSL430.NET.WPF\$(Platform)\BSL430.NET.exe"
+</PostBuildEvent>
+  </PropertyGroup>
+  <Target Name="PostBuildScript" AfterTargets="Build">
+    <ItemGroup>
+      <DllsAtTarget Include="$(TargetDir)*.dll" />
+      <DllsAtBuild Include="$(SolutionDir)..\build\BSL430.NET.WPF\$(Platform)\*.dll" />
+    </ItemGroup>
+    <Delete Files="@(DllsAtTarget)" />
+    <Delete Files="@(DllsAtBuild)" />
+  </Target>
 </Project>

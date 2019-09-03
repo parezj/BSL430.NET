@@ -84,7 +84,6 @@
     <ManifestCertificateThumbprint>89DA8E4FC31C377B5EE2C477F2BD1A478977F84E</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>%25windir%25\system32\xcopy /Y "$(TargetDir)*.*" "$(SolutionDir)..\build\BSL430.NET.WPF\$(Platform)\*.*"</PostBuildEvent>
     <AssemblyName>BSL430.NET.WPF</AssemblyName>
     <Authors>Jakub Parez</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -172,4 +171,22 @@
     <PackageReference Include="System.Management" Version="4.5.0" />
     <PackageReference Include="WindowsBase" Version="4.6.1055" />
   </ItemGroup>
+  <PropertyGroup>
+    <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
+  </PropertyGroup>
+  <PropertyGroup>
+      <PostBuildEvent>mkdir "$(SolutionDir)..\build"
+mkdir "$(SolutionDir)..\build\BSL430.NET.WPF"
+mkdir "$(SolutionDir)..\build\BSL430.NET.WPF\$(Platform)"
+copy /Y "$(TargetDir)BSL430.NET.WPF.exe" "$(SolutionDir)..\build\BSL430.NET.WPF\$(Platform)\BSL430.NET.exe"
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Target Name="PostBuildScript" AfterTargets="Build">
+    <ItemGroup>
+      <DllsAtTarget Include="$(TargetDir)*.dll" />
+      <DllsAtBuild Include="$(SolutionDir)..\build\BSL430.NET.WPF\$(Platform)\*.dll" />
+    </ItemGroup>
+    <Delete Files="@(DllsAtTarget)" />
+    <Delete Files="@(DllsAtBuild)" />
+  </Target>
 </Project>

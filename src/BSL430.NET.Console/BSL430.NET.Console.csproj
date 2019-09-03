@@ -66,7 +66,7 @@
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="%25windir%25\system32\xcopy /Y &quot;$(TargetDir)*.*&quot; &quot;$(SolutionDir)..\build\BSL430.NET.Console\$(Platform)\*.*&quot;&#xD;&#xA;%25windir%25\system32\xcopy /Y &quot;$(TargetDir)*.*&quot; &quot;$(ProjectDir)\bin\Debug\win-$(Platform)\*.*&quot;" />
+    <Exec Command="%25windir%25\system32\xcopy /R /Y &quot;$(TargetDir)*.*&quot; &quot;$(SolutionDir)..\build\BSL430.NET.Console\$(Platform)\*.*&quot;&#xD;&#xA;%25windir%25\system32\xcopy /R /Y &quot;$(TargetDir)*.*&quot; &quot;$(ProjectDir)\bin\Debug\win-$(Platform)\*.*&quot;" />
   </Target>
 
 </Project>
