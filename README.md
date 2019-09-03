@@ -1,4 +1,4 @@
-# <img src="https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/logo/logo2.png" alt="BSL430.NET" width="80" height="80"> BSL430.NET - The cheapest way to flash MSP430 MCU
+# <img src="https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/logo/logo2.png" alt="BSL430.NET" width="80" height="80"> BSL430.NET - The cheapest way to flash MSP430
 [![Github tag (BSL430.NET)](https://img.shields.io/github/v/release/parezj/BSL430.NET?include_prereleases&color=orange)](https://github.com/parezj/BSL430.NET/releases/latest)
 [![NuGet version (BSL430.NET)](https://img.shields.io/nuget/v/BSL430.NET.svg)](https://www.nuget.org/packages/BSL430.NET/)
 [![fuget version (BSL430.NET)](https://www.fuget.org/packages/BSL430.NET/badge.svg)](https://www.fuget.org/packages/BSL430.NET)
