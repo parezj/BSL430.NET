@@ -9,4 +9,4 @@
 * replace expensive original MSP FET programmer with cheap FTDI FT232 or Serial COM port
 * upload, download or erase MSP430 memory with minimal effort with generic UART convertes
 * fexible way how to upgrade device firmware with .NET library that can be integrated to any app
-* firmware tools: convert, combine, validate, hex edit or get password from TI-TXT, Intel-HEX, SREC or ELF
+* firmware tools: convert, combine, validate, hex edit or get password from TI-TXT, Intel-HEX, SREC or ELF32
