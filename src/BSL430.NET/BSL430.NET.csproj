@@ -46,14 +46,12 @@
     <WarningLevel>4</WarningLevel>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
-    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DocumentationFile>BSL430.NET.xml</DocumentationFile>
     <OutputPath>bin\AnyCPU\Release\netstandard2.0\</OutputPath>
-    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
     
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net461|AnyCPU'">
@@ -63,14 +61,12 @@
     <WarningLevel>4</WarningLevel>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
-    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net461|AnyCPU'">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DocumentationFile>BSL430.NET.xml</DocumentationFile>
     <OutputPath>bin\AnyCPU\Release\net461\</OutputPath>
-    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
 
   <ItemGroup>
@@ -86,7 +82,7 @@
     <PackageReference Include="System.ValueTuple" Version="4.5.0" />
   </ItemGroup>
 
-  <ItemGroup Condition=" ('$(Platform)' == 'x86' OR '$(Platform)' == 'AnyCPU') AND '$(IsWindows)'=='true' ">
+  <ItemGroup Condition=" ('$(PlatformShortName)' == 'x86' OR '$(Platform)' == 'AnyCPU') AND '$(IsWindows)'=='true' ">
     <ContentWithTargetPath Include="lib\win-x86\ftd2xx.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <TargetPath>ftd2xx.dll</TargetPath>
@@ -101,7 +97,7 @@
     </ContentWithTargetPath>
   </ItemGroup>
     
-  <ItemGroup Condition=" '$(Platform)' == 'x64' AND '$(IsWindows)'=='true' ">
+  <ItemGroup Condition=" '$(PlatformShortName)' == 'x64' AND '$(IsWindows)'=='true' ">
     <ContentWithTargetPath Include="lib\win-amd64\ftd2xx.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <TargetPath>ftd2xx.dll</TargetPath>
@@ -116,7 +112,7 @@
     </ContentWithTargetPath>
   </ItemGroup>
     
-  <ItemGroup Condition=" '$(Platform)' == 'x64' AND '$(IsLinux)'=='true' ">
+  <ItemGroup Condition=" '$(PlatformShortName)' == 'x64' AND '$(IsLinux)'=='true' ">
     <ContentWithTargetPath Include="lib\linux-amd64\libftd2xx.so.1.4.8">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <TargetPath>libftd2xx.so.1.4.8</TargetPath>
