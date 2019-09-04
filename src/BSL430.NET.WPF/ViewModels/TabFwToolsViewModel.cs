@@ -215,7 +215,9 @@ namespace BSL430_NET_WPF.ViewModels
             {
                 try
                 {
-                    this.ValidateData = BSL430_NET.FirmwareTools.FwTools.Validate(this.FwPath);   
+                    StringWriter sw = new StringWriter();
+                    this.ValidateData = BSL430_NET.FirmwareTools.FwTools.Validate(this.FwPath, sw);
+                    this.FwParseLog = sw.ToString();
                 }
                 catch (BSL430_NET.Bsl430NetException)
                 {
@@ -240,7 +242,7 @@ namespace BSL430_NET_WPF.ViewModels
                     BSL430_NET.FirmwareTools.FwTools.Firmware fw = null;
                     if (hexViewClosed)
                     {
-                        fw = BSL430_NET.FirmwareTools.FwTools.Parse(this.FwPath, FillFF: true, Verbose: false);
+                        fw = BSL430_NET.FirmwareTools.FwTools.Parse(this.FwPath, FillFF: true);
                     }
 
                     if (this.hexView == null)
@@ -419,6 +421,10 @@ namespace BSL430_NET_WPF.ViewModels
         {
             HandleArgs(this.args);
         }
+        public void DisplayParseLog()
+        {
+            MessageBox.Show(this.FwParseLog, "BSL430.NET", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
         #endregion
 
         #region Public Interface
@@ -438,6 +444,17 @@ namespace BSL430_NET_WPF.ViewModels
 
         #region Properties
         public bool IsDialogOpen { get; set; } = false;
+
+        private string _FwParseLog = "";
+        public string FwParseLog
+        {
+            get => _FwParseLog;
+            set
+            {
+                _FwParseLog = value;
+                NotifyOfPropertyChange(() => FwParseLog);
+            }
+        }
 
         private string _FwPath = BslSettings.Instance.FwToolsFwPath;
         public string FwPath

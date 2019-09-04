@@ -1,0 +1,151 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
+        <RootNamespace>BSL430_NET.FirmwareTools</RootNamespace>
+        <Authors>Jakub Parez</Authors>
+        <Company>Jakub Parez</Company>
+        <Description>
+            Firmware Tools - combine, convert, validate, parse and create Intel-HEX, TI-TXT, ELF and SREC formatted firmware files.
+        </Description>
+        <Copyright>Copyright (c) 2019 Jakub Parez</Copyright>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+        <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+        <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <RuntimeIdentifiers>win-x86;win-x64;linux-x86;linux-x64;</RuntimeIdentifiers>
+        <Platforms>x86;x64;AnyCPU</Platforms>
+        <ApplicationIcon />
+        <OutputType>Library</OutputType>
+        <StartupObject />
+        <Version>1.3.0</Version>
+        <PackageLicenseUrl></PackageLicenseUrl>
+        <PackageProjectUrl>https://github.com/parezj/BSL430.NET</PackageProjectUrl>
+        <PackageIconUrl>https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/logo/logo2.png</PackageIconUrl>
+        <RepositoryUrl>https://github.com/parezj/BSL430.NET</RepositoryUrl>
+        <PackageTags>firmware fw tools MCU BSL430 BSL430.NET Intel HEX TI TXT SREC ELF convert combine validate parse create</PackageTags>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryType>Github</RepositoryType>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <AssemblyName>BSL430.NET.FirmwareTools</AssemblyName> 
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0'">
+        <DefineConstants>NETCORE;NETSTANDARD;NETSTANDARD2_0</DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(TargetFramework)' == 'net461'">
+        <DefineConstants>NET461;NETFULL</DefineConstants>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
+        <OutputPath>bin\AnyCPU\Debug\netstandard2.0\</OutputPath>
+        <WarningLevel>4</WarningLevel>
+        <DebugType>full</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
+        <OutputPath>bin\AnyCPU\Release\netstandard2.0\</OutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net461|AnyCPU'">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
+        <OutputPath>bin\AnyCPU\Debug\net461\</OutputPath>
+        <WarningLevel>4</WarningLevel>
+        <DebugType>full</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net461|AnyCPU'">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
+        <OutputPath>bin\AnyCPU\Release\net461\</OutputPath>
+    </PropertyGroup>
+    
+    
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|x86'">
+        <PlatformTarget>x86</PlatformTarget>
+        <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
+        <OutputPath>bin\x86\Debug\netstandard2.0\</OutputPath>
+        <WarningLevel>4</WarningLevel>
+        <DebugType>full</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|x86'">
+        <PlatformTarget>x86</PlatformTarget>
+        <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
+        <OutputPath>bin\x86\Release\netstandard2.0\</OutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net461|x86'">
+        <PlatformTarget>x86</PlatformTarget>
+        <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
+        <OutputPath>bin\x86\Debug\net461\</OutputPath>
+        <WarningLevel>4</WarningLevel>
+        <DebugType>full</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net461|x86'">
+        <PlatformTarget>x86</PlatformTarget>
+        <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
+        <OutputPath>bin\x86\Release\net461\</OutputPath>
+    </PropertyGroup>
+    
+    
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|x64'">
+        <PlatformTarget>x64</PlatformTarget>
+        <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
+        <OutputPath>bin\x64\Debug\netstandard2.0\</OutputPath>
+        <WarningLevel>4</WarningLevel>
+        <DebugType>full</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|x64'">
+        <PlatformTarget>x64</PlatformTarget>
+        <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
+        <OutputPath>bin\x64\Release\netstandard2.0\</OutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net461|x64'">
+        <PlatformTarget>x64</PlatformTarget>
+        <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
+        <OutputPath>bin\x64\Debug\net461\</OutputPath>
+        <WarningLevel>4</WarningLevel>
+        <DebugType>full</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net461|x64'">
+        <PlatformTarget>x64</PlatformTarget>
+        <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
+        <OutputPath>bin\x64\Release\net461\</OutputPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Remove="Library\**" />
+        <None Remove="Library\**" />
+        <Compile Include="..\BSL430.NET\FirmwareTools.cs" />
+        <Compile Include="..\BSL430.NET\StatAndExcept.cs" />
+        <Compile Include="..\BSL430.NET\Utility.cs" />
+        <Compile Include="..\BSL430.NET\Constants.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+    </ItemGroup>
+
+    <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+        <Exec Command="%25windir%25\system32\xcopy /R /Y &quot;$(TargetDir)*.*&quot; &quot;$(SolutionDir)..\build\BSL430.NET.FirmwareTools\$(Platform)\$(TargetFramework)\*.*&quot;" />
+    </Target>
+
+</Project>

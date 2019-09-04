@@ -12,6 +12,7 @@
                      xmlns:cal="http://www.caliburnproject.org"
                      VerticalAlignment="Stretch"
                      xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+                     xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                      PreviewKeyDown="DialogFwToolsValidateViewN_PreviewKeyDown">
     
     <Grid VerticalAlignment="Center">
@@ -160,6 +161,36 @@
                     Controls:ControlsHelper.ContentCharacterCasing="Normal"
                     Style="{DynamicResource AccentedSquareButtonStyle}" 
                     cal:Message.Attach="ValidateClose"/>
+
+            <Button x:Name="Log" 
+                    Margin="10,0" 
+                    Width="250" 
+                    Padding="20, 10"
+                    FontWeight="Bold"
+                    FontSize="22" 
+                    Cursor="Hand"
+                    HorizontalAlignment="Center"
+                    Controls:ControlsHelper.ContentCharacterCasing="Normal"
+                    cal:Message.Attach="DisplayParseLog">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <iconPacks:PackIconFontAwesome Margin="0,0,10,0" 
+                                                                  Kind="InfoSolid" 
+                                                                  VerticalAlignment="Center" 
+                                                                  Width="22" 
+                                                                  Height="22"/>
+                    <TextBlock Text="Show Parse Log" VerticalAlignment="Center" FontWeight="Thin" FontSize="22" Padding="0,0,0,1"/>
+                </StackPanel>
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource SquareButtonStyle}">
+                        <Setter Property="Visibility" Value="Visible"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding FwParseLog}" Value="">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
         </StackPanel>
         
     </Grid>

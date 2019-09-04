@@ -114,77 +114,6 @@
         <member name="F:BSL430_NET.MCU.MSP432_P401R">
             <summary>MSP432 P401R</summary>
         </member>
-        <member name="T:BSL430_NET.BslUartMessage">
-            <summary>
-            BLS UART Message. If there are any errors with the data transmission, an error message is sent back.
-            This message is sent only when 5xx or 6xx protocol version is used.
-            </summary>
-        </member>
-        <member name="F:BSL430_NET.BslUartMessage.ACK">
-            <summary>ACK - Success.</summary>
-        </member>
-        <member name="F:BSL430_NET.BslUartMessage.HeaderIncorrect">
-            <summary>Header incorrect. The packet did not begin with the required 0x80 value.</summary>
-        </member>
-        <member name="F:BSL430_NET.BslUartMessage.ChecksumIncorrect">
-            <summary>Checksum incorrect. The packet did not have the correct checksum value.</summary>
-        </member>
-        <member name="F:BSL430_NET.BslUartMessage.PacketSizeZero">
-            <summary>Packet size zero. The size for the BSL core command was given as 0.</summary>
-        </member>
-        <member name="F:BSL430_NET.BslUartMessage.PacketSizeOverflow">
-            <summary>Packet size exceeds buffer. The packet size given is too big for the RX buffer.</summary>
-        </member>
-        <member name="F:BSL430_NET.BslUartMessage.UnknownError">
-            <summary>Unknown UART error.</summary>
-        </member>
-        <member name="F:BSL430_NET.BslUartMessage.UnknownBaudRate">
-            <summary>Unknown baud rate. The supplied data for baud rate change is not a known value.</summary>
-        </member>
-        <member name="F:BSL430_NET.BslUartMessage.NotAvailable">
-            <summary>BSL UART Message is not available.</summary>
-        </member>
-        <member name="T:BSL430_NET.BslCoreMessage">
-            <summary>
-            BSL Core Message is a response to Erase or Download action. (Mass Erase, TX Data Block)
-            This message is sent only when 5xx or 6xx protocol version is used.
-            </summary>
-        </member>
-        <member name="F:BSL430_NET.BslCoreMessage.Success">
-            <summary>Operation Successful.</summary>
-        </member>
-        <member name="F:BSL430_NET.BslCoreMessage.FlashWriteCheckFail">
-            <summary>Flash Write Check Failed. After programming, a CRC is run on the programmed data.
-            If the CRC does not match the expected result, this error is returned.
-            </summary>
-        </member>
-        <member name="F:BSL430_NET.BslCoreMessage.FlashFailBitSet">
-            <summary>Flash Fail Bit Set. An operation set the FAIL bit in the flash controller
-            (see the MSP430x5xx and MSP430x6xx Family User's Guide for more details on the flash fail bit).</summary>
-        </member>
-        <member name="F:BSL430_NET.BslCoreMessage.VoltageChanged">
-            <summary>Voltage Change During Program. The VPE was set during the requested write operation
-            (see the MSP430x5xx and MSP430x6xx Family User's Guide for more details on the VPE bit).</summary>
-        </member>
-        <member name="F:BSL430_NET.BslCoreMessage.BSLLocked">
-            <summary>BSL Locked. The correct password has not yet been supplied to unlock the BSL.</summary>
-        </member>
-        <member name="F:BSL430_NET.BslCoreMessage.BSLPasswordError">
-            <summary>BSL Password Error. An incorrect password was supplied to the BSL when attempting an unlock.</summary>
-        </member>
-        <member name="F:BSL430_NET.BslCoreMessage.ByteWriteForbidden">
-            <summary>Byte Write Forbidden. This error is returned when a byte write is attempted in a flash area.</summary>
-        </member>
-        <member name="F:BSL430_NET.BslCoreMessage.UnknownCommand">
-            <summary>Unknown Command. The command given to the BSL was not recognized.</summary>
-        </member>
-        <member name="F:BSL430_NET.BslCoreMessage.PacketLengthOverflow">
-            <summary>Packet Length Exceeds Buffer Size.
-            The supplied packet length value is too large to be held in the BSL receive buffer.</summary>
-        </member>
-        <member name="F:BSL430_NET.BslCoreMessage.NotAvailable">
-            <summary>BSL Core Message is not available.</summary>
-        </member>
         <member name="T:BSL430_NET.ScanOptions">
             <summary>
             [Flags] Scan Options adjust scanner behavior, use it like this: (UsbHid_IgnoreTexasVid | Ftdi_IgnoreUnknownDev)
@@ -247,91 +176,6 @@
             Returns FormattedDescription of current device.
             </summary>
         </member>
-        <member name="T:BSL430_NET.Status">
-            <summary>
-            Status class is an Error Cluster with int, bool and string status with Core and UART messages.
-            </summary>
-        </member>
-        <member name="P:BSL430_NET.Status.Error">
-            <summary>Numeric representation of status, any value other then 0 indicates an error.</summary>
-        </member>
-        <member name="P:BSL430_NET.Status.OK">
-            <summary>Boolean representation of status, true means OK, false means ERROR.</summary>
-        </member>
-        <member name="P:BSL430_NET.Status.Msg">
-            <summary>String representation of status.</summary>
-        </member>
-        <member name="P:BSL430_NET.Status.Extra">
-            <summary>Additional info, that can be used for detailed problem analysis.</summary>
-        </member>
-        <member name="P:BSL430_NET.Status.CoreStatus">
-            <summary>BslCoreMessage status.</summary>
-        </member>
-        <member name="P:BSL430_NET.Status.UartStatus">
-            <summary>BslUartMessage status.</summary>
-        </member>
-        <member name="P:BSL430_NET.Status.InnerStatus">
-            <summary>Inner Status like inner exception can contain the previous Status, usually with error.</summary>
-        </member>
-        <member name="M:BSL430_NET.Status.FormattedString(BSL430_NET.Status,System.Boolean)">
-            <summary>Formatted status from single object.</summary>
-        </member>
-        <member name="M:BSL430_NET.Status.ToString">
-            <summary>
-            Formatted Status chain, that is built from Msg and InnerStatus Msg properties, with Extra and optional Core/Uart Status.
-            </summary>
-        </member>
-        <member name="T:BSL430_NET.StatusEx">
-            <summary>
-            StatusEx is Status extended with Report List, returned as a result of main public methods.
-            </summary>
-        </member>
-        <member name="P:BSL430_NET.StatusEx.BytesProcessed">
-            <summary>Number of bytes that were processed (uploaded/downloaded to/from target MCU).</summary>
-        </member>
-        <member name="P:BSL430_NET.StatusEx.BSLVersion">
-            <summary>Null, 4-byte or 10-byte array, meaning differs, please see TI BSL doc (slau319t.pdf).</summary>
-        </member>
-        <member name="P:BSL430_NET.StatusEx.Reports">
-            <summary>Report List.</summary>
-        </member>
-        <member name="M:BSL430_NET.StatusEx.ToString">
-            <summary>
-            Formatted StatusEx chain, that is built from Msg and InnerStatus Msg properties, with Extra and optional Core/Uart Status,
-            and with BSL detail info like BytesProcessed and BSLVersion.
-            </summary>
-        </member>
-        <member name="T:BSL430_NET.Report">
-            <summary>
-            Report is result of an action block with Name, Result and Timestamp.
-            </summary>
-        </member>
-        <member name="P:BSL430_NET.Report.Name">
-            <summary>Report Name is headline of action.</summary>
-        </member>
-        <member name="P:BSL430_NET.Report.Result">
-            <summary>Report Result indicates the result of action.</summary>
-        </member>
-        <member name="P:BSL430_NET.Report.Timestamp">
-            <summary>Report Timestamp is timestamp of Report creation.</summary>
-        </member>
-        <member name="T:BSL430_NET.ReportResult">
-            <summary>
-            Report result.
-            </summary>
-        </member>
-        <member name="F:BSL430_NET.ReportResult.SUCCESS">
-            <summary>Action headlined by Report Name completed successfully.</summary>
-        </member>
-        <member name="F:BSL430_NET.ReportResult.SKIPPED">
-            <summary>Action headlined by Report Name was skipped.</summary>
-        </member>
-        <member name="F:BSL430_NET.ReportResult.FAILED">
-            <summary>Action headlined by Report Name failed.</summary>
-        </member>
-        <member name="F:BSL430_NET.ReportResult.PENDING">
-            <summary>Action headlined by Report Name is currently in progress.</summary>
-        </member>
         <member name="T:BSL430_NET.Bsl430NetEventHandler">
             <summary>
             BSL430.NET Event handler.
@@ -347,39 +191,6 @@
         </member>
         <member name="P:BSL430_NET.Bsl430NetEventArgs.Report">
             <summary>Current report which is in progress at the moment.</summary>
-        </member>
-        <member name="T:BSL430_NET.Bsl430NetException">
-            <summary>
-            BSL430.NET Exception is generic Exception extended with Status object.
-            </summary>
-        </member>
-        <member name="P:BSL430_NET.Bsl430NetException.Status">
-            <summary>BSL430.NET Status</summary>
-        </member>
-        <member name="M:BSL430_NET.Bsl430NetException.#ctor(System.String)">
-            <summary>
-            Bsl430NetException constructor
-            </summary>
-        </member>
-        <member name="M:BSL430_NET.Bsl430NetException.#ctor(BSL430_NET.Status)">
-            <summary>
-            Bsl430NetException constructor
-            </summary>
-        </member>
-        <member name="M:BSL430_NET.Bsl430NetException.#ctor(System.Int32)">
-            <summary>
-            Bsl430NetException constructor
-            </summary>
-        </member>
-        <member name="M:BSL430_NET.Bsl430NetException.#ctor(System.Int32,System.Exception)">
-            <summary>
-            Bsl430NetException constructor
-            </summary>
-        </member>
-        <member name="M:BSL430_NET.Bsl430NetException.#ctor(System.Int32,System.String)">
-            <summary>
-            Bsl430NetException constructor
-            </summary>
         </member>
         <member name="T:BSL430_NET.BSL430NET">
             <summary>
@@ -778,13 +589,14 @@
             Sets Reset Vector property to valid data, calculated from nodes. ResetVectorAddr is usually 0xFFFE.
             </summary>
         </member>
-        <member name="M:BSL430_NET.FirmwareTools.FwTools.Parse(System.String,BSL430_NET.FirmwareTools.FwTools.FwFormat,System.Boolean,System.Boolean)">
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.Parse(System.String,BSL430_NET.FirmwareTools.FwTools.FwFormat,System.Boolean,System.IO.StringWriter)">
             <summary>
             Parse firmware file from FirmwarePath in TI-TXT, Intel-HEX or ELF format and returns List of FwNode 
             (Data+Addr) and Info. Auto Mode reads data and based on some particular characters determine
-            what firmare format it should be. Verbose has effect only when parsing ELF.
+            what firmare format it should be.
             <para/>FillFF is optional parameter forcing to fill missing addr nodes with 0xFF 
             and return monolithic piece of code, which is usefull for crc calc or overwriting whole memory in mcu.
+            <para/>Log writes text (new line formatted) output only when parsing ELF firmware file.
             </summary>
             <exception cref="T:BSL430_NET.Bsl430NetException"></exception>
         </member>
@@ -832,10 +644,11 @@
             (last 16 bytes of interrupt vector table 0xFFE0 - 0xFFFF)
             </summary>
         </member>
-        <member name="M:BSL430_NET.FirmwareTools.FwTools.Validate(System.String)">
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.Validate(System.String,System.IO.StringWriter)">
             <summary>
             Validate firmware file and return FwInfo class, with specific firmware information.
             ResetVector and SizeBuffer are MSP430 specifics, other properties are universal.
+            <para/>Log writes text (new line formatted) output only when parsing ELF firmware file.
             </summary>
             <exception cref="T:BSL430_NET.Bsl430NetException"></exception>
         </member>
@@ -967,6 +780,195 @@
         <member name="M:BSL430_NET.IBsl430Net.GetMode">
             <summary>
             Returns current BSL430.NET instance operating mode (UART_FTDXX, UART_libftdi, UART_Serial, USB_HID).
+            </summary>
+        </member>
+        <member name="T:BSL430_NET.BslUartMessage">
+            <summary>
+            BLS UART Message. If there are any errors with the data transmission, an error message is sent back.
+            This message is sent only when 5xx or 6xx protocol version is used.
+            </summary>
+        </member>
+        <member name="F:BSL430_NET.BslUartMessage.ACK">
+            <summary>ACK - Success.</summary>
+        </member>
+        <member name="F:BSL430_NET.BslUartMessage.HeaderIncorrect">
+            <summary>Header incorrect. The packet did not begin with the required 0x80 value.</summary>
+        </member>
+        <member name="F:BSL430_NET.BslUartMessage.ChecksumIncorrect">
+            <summary>Checksum incorrect. The packet did not have the correct checksum value.</summary>
+        </member>
+        <member name="F:BSL430_NET.BslUartMessage.PacketSizeZero">
+            <summary>Packet size zero. The size for the BSL core command was given as 0.</summary>
+        </member>
+        <member name="F:BSL430_NET.BslUartMessage.PacketSizeOverflow">
+            <summary>Packet size exceeds buffer. The packet size given is too big for the RX buffer.</summary>
+        </member>
+        <member name="F:BSL430_NET.BslUartMessage.UnknownError">
+            <summary>Unknown UART error.</summary>
+        </member>
+        <member name="F:BSL430_NET.BslUartMessage.UnknownBaudRate">
+            <summary>Unknown baud rate. The supplied data for baud rate change is not a known value.</summary>
+        </member>
+        <member name="F:BSL430_NET.BslUartMessage.NotAvailable">
+            <summary>BSL UART Message is not available.</summary>
+        </member>
+        <member name="T:BSL430_NET.BslCoreMessage">
+            <summary>
+            BSL Core Message is a response to Erase or Download action. (Mass Erase, TX Data Block)
+            This message is sent only when 5xx or 6xx protocol version is used.
+            </summary>
+        </member>
+        <member name="F:BSL430_NET.BslCoreMessage.Success">
+            <summary>Operation Successful.</summary>
+        </member>
+        <member name="F:BSL430_NET.BslCoreMessage.FlashWriteCheckFail">
+            <summary>Flash Write Check Failed. After programming, a CRC is run on the programmed data.
+            If the CRC does not match the expected result, this error is returned.
+            </summary>
+        </member>
+        <member name="F:BSL430_NET.BslCoreMessage.FlashFailBitSet">
+            <summary>Flash Fail Bit Set. An operation set the FAIL bit in the flash controller
+            (see the MSP430x5xx and MSP430x6xx Family User's Guide for more details on the flash fail bit).</summary>
+        </member>
+        <member name="F:BSL430_NET.BslCoreMessage.VoltageChanged">
+            <summary>Voltage Change During Program. The VPE was set during the requested write operation
+            (see the MSP430x5xx and MSP430x6xx Family User's Guide for more details on the VPE bit).</summary>
+        </member>
+        <member name="F:BSL430_NET.BslCoreMessage.BSLLocked">
+            <summary>BSL Locked. The correct password has not yet been supplied to unlock the BSL.</summary>
+        </member>
+        <member name="F:BSL430_NET.BslCoreMessage.BSLPasswordError">
+            <summary>BSL Password Error. An incorrect password was supplied to the BSL when attempting an unlock.</summary>
+        </member>
+        <member name="F:BSL430_NET.BslCoreMessage.ByteWriteForbidden">
+            <summary>Byte Write Forbidden. This error is returned when a byte write is attempted in a flash area.</summary>
+        </member>
+        <member name="F:BSL430_NET.BslCoreMessage.UnknownCommand">
+            <summary>Unknown Command. The command given to the BSL was not recognized.</summary>
+        </member>
+        <member name="F:BSL430_NET.BslCoreMessage.PacketLengthOverflow">
+            <summary>Packet Length Exceeds Buffer Size.
+            The supplied packet length value is too large to be held in the BSL receive buffer.</summary>
+        </member>
+        <member name="F:BSL430_NET.BslCoreMessage.NotAvailable">
+            <summary>BSL Core Message is not available.</summary>
+        </member>
+        <member name="T:BSL430_NET.Status">
+            <summary>
+            Status class is an Error Cluster with int, bool and string status with Core and UART messages.
+            </summary>
+        </member>
+        <member name="P:BSL430_NET.Status.Error">
+            <summary>Numeric representation of status, any value other then 0 indicates an error.</summary>
+        </member>
+        <member name="P:BSL430_NET.Status.OK">
+            <summary>Boolean representation of status, true means OK, false means ERROR.</summary>
+        </member>
+        <member name="P:BSL430_NET.Status.Msg">
+            <summary>String representation of status.</summary>
+        </member>
+        <member name="P:BSL430_NET.Status.Extra">
+            <summary>Additional info, that can be used for detailed problem analysis.</summary>
+        </member>
+        <member name="P:BSL430_NET.Status.CoreStatus">
+            <summary>BslCoreMessage status.</summary>
+        </member>
+        <member name="P:BSL430_NET.Status.UartStatus">
+            <summary>BslUartMessage status.</summary>
+        </member>
+        <member name="P:BSL430_NET.Status.InnerStatus">
+            <summary>Inner Status like inner exception can contain the previous Status, usually with error.</summary>
+        </member>
+        <member name="M:BSL430_NET.Status.FormattedString(BSL430_NET.Status,System.Boolean)">
+            <summary>Formatted status from single object.</summary>
+        </member>
+        <member name="M:BSL430_NET.Status.ToString">
+            <summary>
+            Formatted Status chain, that is built from Msg and InnerStatus Msg properties, with Extra and optional Core/Uart Status.
+            </summary>
+        </member>
+        <member name="T:BSL430_NET.StatusEx">
+            <summary>
+            StatusEx is Status extended with Report List, returned as a result of main public methods.
+            </summary>
+        </member>
+        <member name="P:BSL430_NET.StatusEx.BytesProcessed">
+            <summary>Number of bytes that were processed (uploaded/downloaded to/from target MCU).</summary>
+        </member>
+        <member name="P:BSL430_NET.StatusEx.BSLVersion">
+            <summary>Null, 4-byte or 10-byte array, meaning differs, please see TI BSL doc (slau319t.pdf).</summary>
+        </member>
+        <member name="P:BSL430_NET.StatusEx.Reports">
+            <summary>Report List.</summary>
+        </member>
+        <member name="M:BSL430_NET.StatusEx.ToString">
+            <summary>
+            Formatted StatusEx chain, that is built from Msg and InnerStatus Msg properties, with Extra and optional Core/Uart Status,
+            and with BSL detail info like BytesProcessed and BSLVersion.
+            </summary>
+        </member>
+        <member name="T:BSL430_NET.Report">
+            <summary>
+            Report is result of an action block with Name, Result and Timestamp.
+            </summary>
+        </member>
+        <member name="P:BSL430_NET.Report.Name">
+            <summary>Report Name is headline of action.</summary>
+        </member>
+        <member name="P:BSL430_NET.Report.Result">
+            <summary>Report Result indicates the result of action.</summary>
+        </member>
+        <member name="P:BSL430_NET.Report.Timestamp">
+            <summary>Report Timestamp is timestamp of Report creation.</summary>
+        </member>
+        <member name="T:BSL430_NET.ReportResult">
+            <summary>
+            Report result.
+            </summary>
+        </member>
+        <member name="F:BSL430_NET.ReportResult.SUCCESS">
+            <summary>Action headlined by Report Name completed successfully.</summary>
+        </member>
+        <member name="F:BSL430_NET.ReportResult.SKIPPED">
+            <summary>Action headlined by Report Name was skipped.</summary>
+        </member>
+        <member name="F:BSL430_NET.ReportResult.FAILED">
+            <summary>Action headlined by Report Name failed.</summary>
+        </member>
+        <member name="F:BSL430_NET.ReportResult.PENDING">
+            <summary>Action headlined by Report Name is currently in progress.</summary>
+        </member>
+        <member name="T:BSL430_NET.Bsl430NetException">
+            <summary>
+            BSL430.NET Exception is generic Exception extended with Status object.
+            </summary>
+        </member>
+        <member name="P:BSL430_NET.Bsl430NetException.Status">
+            <summary>BSL430.NET Status</summary>
+        </member>
+        <member name="M:BSL430_NET.Bsl430NetException.#ctor(System.String)">
+            <summary>
+            Bsl430NetException constructor
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.Bsl430NetException.#ctor(BSL430_NET.Status)">
+            <summary>
+            Bsl430NetException constructor
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.Bsl430NetException.#ctor(System.Int32)">
+            <summary>
+            Bsl430NetException constructor
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.Bsl430NetException.#ctor(System.Int32,System.Exception)">
+            <summary>
+            Bsl430NetException constructor
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.Bsl430NetException.#ctor(System.Int32,System.String)">
+            <summary>
+            Bsl430NetException constructor
             </summary>
         </member>
         <member name="T:BSL430_NET.Utility.Utility">

@@ -302,7 +302,7 @@ namespace BSL430_NET.Test
         {
             foreach (TestData.Fw fw in fw_paths.GetFlags())
             {
-                FwTools.Firmware ret = FwTools.Parse(TestData.GetFwPath(fw), format, fill_FF, true);
+                FwTools.Firmware ret = FwTools.Parse(TestData.GetFwPath(fw), format, fill_FF);
 
                 Assert.NotNull(ret);
                 Assert.NotNull(ret.Nodes);

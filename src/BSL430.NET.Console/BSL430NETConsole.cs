@@ -653,7 +653,7 @@ namespace BSL430_NET_Console
             {
                 string suff = (dev.Count > 1) ? "s" : "";
                 Console.WriteLine($" {mode}:{Str(' ', 10 - mode.Length)}{dev.Count} device{suff}");
-                ConsoleTable table = new ConsoleTable("");
+                ConsoleTable table;
                 if (typeof(T).Equals(typeof(FTDI_Device)))
                 {
                     table = new ConsoleTable("Name", "Description", "Type", "SN", "VID", "PID");
@@ -738,7 +738,7 @@ namespace BSL430_NET_Console
             //string mark = (ok) ? ReportResult.SUCCESS.ToString() : ReportResult.FAILED.ToString();
             string result = "";
             string seconds = sec.ToString("F2", CultureInfo.InvariantCulture);
-            NumberFormatInfo num_format = new NumberFormatInfo { NumberGroupSeparator = " " };
+            //NumberFormatInfo num_format = new NumberFormatInfo { NumberGroupSeparator = " " };
             if (!ok)
                 color = ConsoleColor.Red;
             if (options.Upload != "")

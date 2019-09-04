@@ -25,7 +25,6 @@
     SOFTWARE.
 */
 
-using BSL430_NET.Utility;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,6 +32,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+
+using BSL430_NET;
+using BSL430_NET.Utility;
 
 
 namespace BSL430_NET
@@ -249,24 +251,25 @@ namespace BSL430_NET
             /// <summary>
             /// Parse firmware file from FirmwarePath in TI-TXT, Intel-HEX or ELF format and returns List of FwNode 
             /// (Data+Addr) and Info. Auto Mode reads data and based on some particular characters determine
-            /// what firmare format it should be. Verbose has effect only when parsing ELF.
+            /// what firmare format it should be.
             /// <para/>FillFF is optional parameter forcing to fill missing addr nodes with 0xFF 
             /// and return monolithic piece of code, which is usefull for crc calc or overwriting whole memory in mcu.
+            /// <para/>Log writes text (new line formatted) output only when parsing ELF firmware file.
             /// </summary>
             /// <exception cref="Bsl430NetException"></exception>
             public static Firmware Parse(string FirmwarePath, 
                                          FwFormat Format = FwFormat.AUTO,
-                                         bool FillFF = false, 
-                                         bool Verbose = true)
+                                         bool FillFF = false,
+                                         StringWriter Log = null)
             {
                 switch(Format)
                 {
                     default:
-                    case FwFormat.AUTO:      return ParseAutoDetect(FirmwarePath, FillFF, _verbose: Verbose);
+                    case FwFormat.AUTO:      return ParseAutoDetect(FirmwarePath, FillFF, log: Log);
                     case FwFormat.TI_TXT:    return ParseTiTxt(FirmwarePath, FillFF);
                     case FwFormat.INTEL_HEX: return ParseIntelHex(FirmwarePath, FillFF);
                     case FwFormat.SREC:      return ParseSrec(FirmwarePath, FillFF);
-                    case FwFormat.ELF:       return ParseElf32(FirmwarePath, FillFF, _verbose: Verbose);
+                    case FwFormat.ELF:       return ParseElf32(FirmwarePath, FillFF, log: Log);
                 }
             }
 
@@ -365,7 +368,7 @@ namespace BSL430_NET
                 List<byte> ret = new List<byte>();
                 uint start_addr = 0xFFE0;
 
-                Firmware fw = ParseAutoDetect(FirmwarePath, true, false);
+                Firmware fw = ParseAutoDetect(FirmwarePath, true, null);
 
                 if (fw == null || fw.Nodes == null || fw.Nodes.Count < 16)
                     return null;
@@ -387,11 +390,12 @@ namespace BSL430_NET
             /// <summary>
             /// Validate firmware file and return FwInfo class, with specific firmware information.
             /// ResetVector and SizeBuffer are MSP430 specifics, other properties are universal.
+            /// <para/>Log writes text (new line formatted) output only when parsing ELF firmware file.
             /// </summary>
             /// <exception cref="Bsl430NetException"></exception>
-            public static FwInfo Validate(string FirmwarePath)
+            public static FwInfo Validate(string FirmwarePath, StringWriter Log = null)
             {
-                Firmware ret = Parse(FirmwarePath);
+                Firmware ret = Parse(FirmwarePath, Log: Log);
                 ret.SetResetVector(0xFFFE);
                 return ret.Info;
             }
@@ -420,7 +424,7 @@ namespace BSL430_NET
             #endregion
 
             #region Private Core Methods
-            private static Firmware ParseAutoDetect(string firmware_path, bool fill_FF = false, bool _verbose = true)
+            private static Firmware ParseAutoDetect(string firmware_path, bool fill_FF = false, StringWriter log = null)
             {
                 if (!System.IO.File.Exists(firmware_path))
                     throw new Bsl430NetException(473);
@@ -445,7 +449,7 @@ namespace BSL430_NET
                     data_binary[2] == 0x4C &&
                     data_binary[3] == 0x46)  // ELF
                 {
-                    return ParseElf32("", fill_FF, data_binary, _verbose);
+                    return ParseElf32("", fill_FF, data_binary, log);
                 }
                 else if (data_text.Contains("@"))  // TI-TXT
                 {
@@ -733,8 +737,8 @@ namespace BSL430_NET
 
             private static Firmware ParseElf32(string firmware_path, 
                                                bool fill_FF = false, 
-                                               byte[] _data = null, 
-                                               bool _verbose = true)
+                                               byte[] _data = null,
+                                               StringWriter log = null)
             {
                 List<FwNode> ret = new List<FwNode>();
                 try
@@ -769,16 +773,29 @@ namespace BSL430_NET
                     if ((ushort)(data[17] << 8 | data[16]) != 0x02)
                         throw new Bsl430NetException(478);  // only executable file type
 
-                    if (_verbose)
-                    {
-                        Console.WriteLine("\nELF info:  32-bit/little-endian/executable ELF file (0x01/0x01/0x02)");
-                        if ((ushort)(data[19] << 8 | data[18]) == 0x69)
-                            Console.WriteLine("machine:   Texas Instrument embedded microcontroller MSP430 (0x69)");
-                        else if ((ushort)(data[19] << 8 | data[18]) == 0x69)
-                            Console.WriteLine("machine: ARM 32-bit architecture (AARCH32) (0x28)");
-                        else throw new Bsl430NetException(479);  // only TI MSP430 or ARM (MSP432) machine
-                        Console.WriteLine("=====================================================================");
-                    }
+                    ushort machine = (ushort)(data[19] << 8 | data[18]);
+                    string machineStr = $"machine: unknown (0x{machine.ToString("X4")})";
+
+                    if (machine == 0x69)
+                        machineStr = "machine: Texas Instrument embedded microcontroller MSP430 (0x69)";
+                    else if (machine == 0x28)
+                        machineStr = "machine: ARM 32-bit architecture (AARCH32) (0x28)";
+                    else if (machine == 0x53)
+                        machineStr = "machine: Atmel AVR 8-bit microcontroller (0x53)";
+                    else if (machine == 0xB9) 
+                        machineStr = "machine: Atmel Corporation 32-bit microprocessor family (0xB9)";
+                    else if (machine == 0x03)
+                        machineStr = "machine: Intel 80386 (0x03)";
+                    else if (machine == 0x07)
+                        machineStr = "machine: Intel 80860 (0x07)";
+                    else if (machine == 0x04)
+                        machineStr = "machine: Motorola 68000 (0x04)";
+                    //else throw new Bsl430NetException(479);  // only TI MSP430 or ARM (MSP432) machine
+
+                    log?.WriteLine("\nELF info:  32-bit/little-endian/executable ELF file (0x01/0x01/0x02)");
+                    log?.WriteLine(machineStr);
+                    log?.WriteLine("=============================================");
+                        
 
                     uint entry = (uint)(data[27] << 24 | data[26] << 16 | data[25] << 8 | data[24]);
                     uint phoff = (uint)(data[31] << 24 | data[30] << 16 | data[29] << 8 | data[28]);
@@ -793,22 +810,19 @@ namespace BSL430_NET
                     uint shstrtab_off =  (uint)(data[shstrab_head + 19] << 24 | data[shstrab_head + 18] << 16 |
                                                 data[shstrab_head + 17] << 8 | data[shstrab_head + 16]);
 
-                    if (_verbose)
-                    {
-                        Console.WriteLine("header:");
-                        Console.WriteLine($"  entry:      0x{entry.ToString("X8")}");
-                        Console.WriteLine($"  phoff:      0x{phoff.ToString("X8")}");
-                        Console.WriteLine($"  shoff:      0x{shoff.ToString("X8")}");
-                        Console.WriteLine($"  phentsize:  0x{phentsize.ToString("X4")}");
-                        Console.WriteLine($"  phnum:      0x{phnum.ToString("X4")}");
-                        Console.WriteLine($"  shentsize:  0x{shentsize.ToString("X4")}");
-                        Console.WriteLine($"  shnum:      0x{shnum.ToString("X4")}");
-                        Console.WriteLine($"  shstrndx:   0x{shstrndx.ToString("X4")}");
+                    log?.WriteLine("header:\n");
+                    log?.WriteLine($"  entry:      0x{entry.ToString("X8")}");
+                    log?.WriteLine($"  phoff:      0x{phoff.ToString("X8")}");
+                    log?.WriteLine($"  shoff:      0x{shoff.ToString("X8")}");
+                    log?.WriteLine($"  phentsize:  0x{phentsize.ToString("X4")}");
+                    log?.WriteLine($"  phnum:      0x{phnum.ToString("X4")}");
+                    log?.WriteLine($"  shentsize:  0x{shentsize.ToString("X4")}");
+                    log?.WriteLine($"  shnum:      0x{shnum.ToString("X4")}");
+                    log?.WriteLine($"  shstrndx:   0x{shstrndx.ToString("X4")}");
 
-                        Console.WriteLine("=====================================================================");
-                        Console.WriteLine("sections:");
-                        Console.WriteLine("  num name                address         offset          size");
-                    }
+                    log?.WriteLine("=============================================");
+                    log?.WriteLine("sections:\n");
+                    log?.WriteLine("  num name                address         offset          size");
                 
                     List<(string sh_name, uint sh_addr, uint sh_off, uint sh_size)> sections = 
                         new List<(string sh_name, uint sh_addr, uint sh_off, uint sh_size)>();
@@ -842,22 +856,20 @@ namespace BSL430_NET
                         {
                             sections.Add((sh_name_str, sh_addr, sh_off, sh_size));
                             int str_pad = (sh_name_str.Length > 20) ? 0 : 20 - sh_name_str.Length;
-                            if (_verbose) Console.WriteLine($"  {s}{new String(' ', 4 - s.ToString().Length)}" +
-                                                            $"{sh_name_str}{new String(' ', str_pad)}" +
-                                                            $"0x{sh_addr.ToString("X8")}" +
-                                                            $"{new String(' ', 14 - sh_addr.ToString("X8").Length)}" +
-                                                            $"0x{sh_off.ToString("X8")}" +
-                                                            $"{new String(' ', 14 - sh_off.ToString("X8").Length)}" +
-                                                            $"0x{sh_size.ToString("X8")}");
+                            log?.WriteLine($"  {s}{new String(' ', 4 - s.ToString().Length)}" +
+                                           $"{sh_name_str}{new String(' ', str_pad)}" +
+                                           $"0x{sh_addr.ToString("X8")}" +
+                                           $"{new String(' ', 14 - sh_addr.ToString("X8").Length)}" +
+                                           $"0x{sh_off.ToString("X8")}" +
+                                           $"{new String(' ', 14 - sh_off.ToString("X8").Length)}" +
+                                           $"0x{sh_size.ToString("X8")}");
                         }
                     }
 
-                    if (_verbose)
-                    {
-                        Console.WriteLine("=====================================================================");
-                        Console.WriteLine("program:");
-                        Console.WriteLine("  offset          physaddr        memsize         flags align");
-                    }
+                    log?.WriteLine("=============================================");
+                    log?.WriteLine("program:\n");
+                    log?.WriteLine("  offset          physaddr        memsize         flags align");
+
 
                     List<(uint p_offset, uint p_paddr, uint p_filesz, uint p_align)> program =
                         new List<(uint p_offset, uint p_paddr, uint p_filesz, uint p_align)>();
@@ -889,20 +901,19 @@ namespace BSL430_NET
                         if (p_type == 0x01 && p_filesz > 0)  // LOAD type only
                         {
                             program.Add((p_offset, p_paddr, p_filesz, p_align));
-                            if (_verbose) Console.WriteLine($"  0x{p_offset.ToString("X8")}" +
-                                                            $"{new String(' ', 14 - p_offset.ToString("X8").Length)}" +
-                                                            $"0x{p_paddr.ToString("X8")}" +
-                                                            $"{new String(' ', 14 - p_paddr.ToString("X8").Length)}" +
-                                                            $"0x{p_filesz.ToString("X8")}" +
-                                                            $"{new String(' ', 14 - p_filesz.ToString("X8").Length)}" +
-                                                            $"{flags}" +
-                                                            $"{new String(' ', 6 - flags.Length)}" +
-                                                            $"0x{p_align.ToString("X1")}");
+                            log?.WriteLine($"  0x{p_offset.ToString("X8")}" +
+                                           $"{new String(' ', 14 - p_offset.ToString("X8").Length)}" +
+                                           $"0x{p_paddr.ToString("X8")}" +
+                                           $"{new String(' ', 14 - p_paddr.ToString("X8").Length)}" +
+                                           $"0x{p_filesz.ToString("X8")}" +
+                                           $"{new String(' ', 14 - p_filesz.ToString("X8").Length)}" +
+                                           $"{flags}" +
+                                           $"{new String(' ', 6 - flags.Length)}" +
+                                           $"0x{p_align.ToString("X1")}");
                         }
                     }
 
-                    if (_verbose)
-                        Console.WriteLine("=====================================================================");
+                    log?.WriteLine("=============================================");
 
                     foreach (var (p_offset, p_paddr, p_filesz, p_align) in program)
                     {

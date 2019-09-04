@@ -711,8 +711,8 @@ namespace BSL430_NET
 
                 try
                 {
-                    code_to_upload = FwTools.Parse(firmware_path, FillFF: fill_FF, Verbose: false);
-                    code_full_for_crc = FwTools.Parse(firmware_path, FillFF: true, Verbose: false);
+                    code_to_upload = FwTools.Parse(firmware_path, FillFF: fill_FF);
+                    code_full_for_crc = FwTools.Parse(firmware_path, FillFF: true);
 
                     // slice data to bigger blocks that fit buffer size
                     int buff_size = GetBufferSize(protocol);
