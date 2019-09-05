@@ -8,7 +8,7 @@
     <projectUrl>https://github.com/parezj/BSL430.NET</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/logo/logo2.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Firmware Tools - combine, convert, validate, parse and create Intel-HEX, TI-TXT, ELF and SREC formatted firmware files.</description>
+    <description>Firmware Tools - convert, parse, create, combine, validate and compare Intel-HEX, TI-TXT, ELF and SREC formatted firmware files.</description>
     <releaseNotes>First pre-release of package.</releaseNotes>
     <copyright>Copyright (c) 2019 Jakub Parez</copyright>
     <license type="expression">MIT</license>

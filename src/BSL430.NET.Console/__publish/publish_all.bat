@@ -1,0 +1,7 @@
+call __publish_linux_fdd.bat
+call __publish_linux_scd.bat
+call __publish_win_x64_fdd.bat
+call __publish_win_x64_scd.bat
+call __publish_win_x86_fdd.bat
+call __publish_win_x86_scd.bat
+pause

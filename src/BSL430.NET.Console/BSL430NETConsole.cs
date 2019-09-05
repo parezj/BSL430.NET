@@ -101,13 +101,16 @@ namespace BSL430_NET_Console
             [Option('r', "get-password", Required = false, HelpText = "== Main Command == Read and parse firmware file (format auto-detected; TI-TXT, Intel-HEX, SREC and ELF supported) and print BSL password (last 16 bytes of interrupt vector table 0xFFE0 - 0xFFFF).")]
             public string GetPassword { get; set; } = "";
 
+            [Option('k', "compare", Required = false, HelpText = "== Main Command == Compare two firmware files (format auto-detected; TI-TXT, Intel-HEX, SREC and ELF supported) and print result (Equal - True/False, Match - percentage [0.0 ; 100.0] %, BytesDiff - count of different byte nodes).")]
+            public string Compare { get; set; } = "";
+
             // -- Parameters
 
             [Option('f', "file", Required = false, HelpText = "Full or relative path to firmware file. (TI-TXT, Intel-HEX, SREC or ELF).")]
             public string File { get; set; } = "";
 
-            [Option('j', "combine-with", Required = false, HelpText = "Full or relative path to firmware file, that will be combined with the first one. (TI-TXT, Intel-HEX, SREC or ELF).")]
-            public string CombineWith { get; set; } = "";
+            [Option('j', "second-file", Required = false, HelpText = "Full or relative path to another firmware file, usually for Combine or Compare. (TI-TXT, Intel-HEX, SREC or ELF).")]
+            public string SecondFile { get; set; } = "";
 
             [Option('p', "password", Required = false, HelpText = "BSL password is 16 bytes long. Enter 32 chars long hex string. For upload and erase this is optional.")]
             public string Password { get; set; } = "";
@@ -159,7 +162,8 @@ namespace BSL430_NET_Console
                 new Example($"-\nErase device", new Options { Erase = "serial3", MCU = "MSP430_F5xx" }),
                 new Example($"-\nConvert firmware to Intel-HEX", new Options { Convert = "fw_ti.txt", File = "fw_intel.hex", OutputFormat = "INTEL_HEX", FillFF = false, FwLineLength = 64 }),
                 new Example($"-\nConvert firmware to monolithic TI-TXT", new Options { Convert = "fw_elf.out", File = "fw_ti.txt",  OutputFormat = "TI_TXT", FillFF = true, FwLineLength = 32 }),
-                new Example($"-\nCombine TI-TXT firmware with INTEL-HEX firmware", new Options { Combine = "fw_ti.txt", CombineWith = "fw_intel.hex", File = "fw_combined_ti.txt",  OutputFormat = "TI_TXT" }),
+                new Example($"-\nCombine TI-TXT firmware with INTEL-HEX firmware", new Options { Combine = "fw_ti.txt", SecondFile = "fw_intel.hex", File = "fw_combined_ti.txt",  OutputFormat = "TI_TXT" }),
+                new Example($"-\nCompare ELF firmware with TI-TXT firmware", new Options { Compare = "fw_elf.out", SecondFile = "fw_ti.txt" }),
                 new Example($"-\nGet BSL password from firmware", new Options { GetPassword = "fw_elf.out" }),
                 new Example($"-\nValidate firmware file", new Options { Validate = "fw_elf.out" })
             };
@@ -524,7 +528,7 @@ namespace BSL430_NET_Console
                     if (fw_format.stat != "")
                         Console.WriteLine(fw_format.stat);
 
-                    var output = FwTools.ConvertTo(options.Convert, fw_format.fw_format, options.FillFF);
+                    var output = FwTools.Convert(options.Convert, fw_format.fw_format, options.FillFF);
 
                     if (output.Fw == "")
                         throw new Exception("Unknown error occured while converting firmware.\n");
@@ -551,7 +555,7 @@ namespace BSL430_NET_Console
                 Console.WriteLine();
                 try
                 {
-                    if (options.CombineWith == "")
+                    if (options.SecondFile == "")
                         throw new Exception("Second firmware path parameter missing. Set -j second firmware path. (-j second_fw.hex)\n");
 
                     if (options.File == "")
@@ -561,7 +565,7 @@ namespace BSL430_NET_Console
                     if (fw_format.stat != "")
                         Console.WriteLine(fw_format.stat);
 
-                    var output = FwTools.Combine(options.Combine, options.CombineWith, fw_format.fw_format, options.FillFF);
+                    var output = FwTools.Combine(options.Combine, options.SecondFile, fw_format.fw_format, options.FillFF);
 
                     if (output.Fw == "")
                         throw new Exception("Unknown error occured while converting firmware.\n");
@@ -632,6 +636,37 @@ namespace BSL430_NET_Console
                     ConsoleColor _color = Console.ForegroundColor;
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"Firmware file '{System.IO.Path.GetFileName(options.Validate)}' is OK.");
+                    Console.ForegroundColor = _color;
+                }
+                catch (Exception ex)
+                {
+                    PrintRedError(ex.Message);
+                    return;
+                }
+            }
+            else if (options.Compare != "")
+            {
+                Console.WriteLine();
+                try
+                {
+                    if (options.SecondFile == "")
+                        throw new Exception("Second firmware path parameter missing. Set -j second firmware path. (-j second_fw.hex)\n");
+
+                    var output = FwTools.Compare(options.Compare, options.SecondFile);
+
+                    ConsoleColor _color = Console.ForegroundColor;
+
+                    if (output.Equal)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine($"Firmwares are equal!");
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine($"Firmwares are NOT equal! Match: {(output.Match * 100.0):F1} %, BytesDiff: {output.BytesDiff}");
+                    }
+
                     Console.ForegroundColor = _color;
                 }
                 catch (Exception ex)

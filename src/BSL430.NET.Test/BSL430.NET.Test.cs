@@ -338,7 +338,7 @@ namespace BSL430_NET.Test
         {
             foreach (TestData.Fw fw in fw_paths.GetFlags())
             {
-                var (Fw, Format) = FwTools.ConvertTo(TestData.GetFwPath(fw), format);
+                var (Fw, Format) = FwTools.Convert(TestData.GetFwPath(fw), format);
 
                 Assert.True(Fw.Length > 0);
             }

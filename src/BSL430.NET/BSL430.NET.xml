@@ -173,7 +173,7 @@
         </member>
         <member name="M:BSL430_NET.Bsl430NetDevice.ToString">
             <summary>
-            Returns FormattedDescription of current device.
+            FormattedDescription of current device.
             </summary>
         </member>
         <member name="T:BSL430_NET.Bsl430NetEventHandler">
@@ -466,7 +466,8 @@
         </member>
         <member name="T:BSL430_NET.FirmwareTools.FwTools">
             <summary>
-            Utility class providing basic manipulation (Parse, Create, ConvertTo, Combine) with Intel-HEX, TI-TXT, SREC and ELF firmware formats.
+            FwTools class provides basic manipulation (Parse, Create, Convert, Combine, Validate, Compare) with Intel-HEX, 
+            TI-TXT, SREC and ELF firmware formatted files.
             </summary>
         </member>
         <member name="T:BSL430_NET.FirmwareTools.FwTools.FwFormat">
@@ -492,14 +493,21 @@
         </member>
         <member name="T:BSL430_NET.FirmwareTools.FwTools.Firmware">
             <summary>
-            Firmware object representation. Nodes is collection of FwNode (Addr+Data) and Info is FwInfo class.
+            Firmware object representation. Nodes is collection of FwNode (Addr + Data) and Info is FwInfo class.
+            ToString, Equal and Euqality Operators (==, !=) overides are available.
             </summary>
         </member>
         <member name="P:BSL430_NET.FirmwareTools.FwTools.Firmware.Info">
-            <summary>FwInfo provides info about firmware, like first and last addresses, CRC, code size and reset vector.</summary>
+            <summary>
+            FwInfo provides info about firmware, like first and last addresses, CRC, code size and 
+            reset vector.
+            </summary>
         </member>
         <member name="P:BSL430_NET.FirmwareTools.FwTools.Firmware.Nodes">
-            <summary>List of FwNode, what firmware consits of, representated by single byte with 16bit address.</summary>
+            <summary>
+            List of FwNode, what firmware consits of, representated by single byte with max 32-bit, 
+            usually 16-bit address.
+            </summary>
         </member>
         <member name="P:BSL430_NET.FirmwareTools.FwTools.Firmware.MemoryStream">
             <summary>Memory Stream is sequence of raw bytes.</summary>
@@ -522,9 +530,37 @@
             Sets Reset Vector property to valid data, calculated from Nodes. ResetVectorAddr is usually 0xFFFE.
             </summary>
         </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.Firmware.ToString">
+            <summary>
+            Formatted important properites describing current Firmware, taken from FwInfo class.
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.Firmware.Equals(System.Object)">
+            <summary>
+            True if two Firmwares are the same, meaning ale nodes (Address and Data) are the same, else false.
+            Returns false if any or even if both Firmwares are null.
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.Firmware.GetHashCode">
+            <summary>
+            Hash Code created by XORing Address and Data from all Nodes of Firmware.
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.Firmware.op_Equality(BSL430_NET.FirmwareTools.FwTools.Firmware,BSL430_NET.FirmwareTools.FwTools.Firmware)">
+            <summary>
+            Equality operator for comparing two Firmwares via overiden Equals and so public Compare.
+            Unlikely in Equals and also Compare, here two null Firmwares return True.
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.Firmware.op_Inequality(BSL430_NET.FirmwareTools.FwTools.Firmware,BSL430_NET.FirmwareTools.FwTools.Firmware)">
+            <summary>
+            Not Equality operator for comparing two Firmwares via overiden Equals and so public Compare. 
+            Unlikely in Equals, here two null Firmwares return True.
+            </summary>
+        </member>
         <member name="T:BSL430_NET.FirmwareTools.FwTools.FwNode">
             <summary>
-            Atomic unit which every firmware consits of representated by single byte with 16bit address.
+            Atomic unit which every firmware consits of representated by single byte with max 32-bit long address.
             </summary>
         </member>
         <member name="P:BSL430_NET.FirmwareTools.FwTools.FwNode.Data">
@@ -566,7 +602,10 @@
             <summary>Help property for later firmware manipulation, like slicing in buffer blocks.</summary>
         </member>
         <member name="P:BSL430_NET.FirmwareTools.FwTools.FwInfo.FilledFFAddr">
-            <summary>When parsing FW, FillFF can be set, to output code in single piece. Addresses, that dont belong to original FW, are in this list.</summary>
+            <summary>
+            When parsing FW, FillFF can be set, to output code in single piece. Addresses, that dont belong to 
+            original FW, are in this list.
+            </summary>
         </member>
         <member name="M:BSL430_NET.FirmwareTools.FwTools.FwInfo.#ctor">
             <summary>
@@ -587,6 +626,11 @@
         <member name="M:BSL430_NET.FirmwareTools.FwTools.FwInfo.SetResetVector(System.Collections.Generic.ICollection{BSL430_NET.FirmwareTools.FwTools.FwNode},System.Int64)">
             <summary>
             Sets Reset Vector property to valid data, calculated from nodes. ResetVectorAddr is usually 0xFFFE.
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.FwInfo.ToString">
+            <summary>
+            Formatted important properites describing current firmware.
             </summary>
         </member>
         <member name="M:BSL430_NET.FirmwareTools.FwTools.Parse(System.String,BSL430_NET.FirmwareTools.FwTools.FwFormat,System.Boolean,System.IO.StringWriter)">
@@ -627,7 +671,7 @@
             </summary>
             <exception cref="T:BSL430_NET.Bsl430NetException"></exception>
         </member>
-        <member name="M:BSL430_NET.FirmwareTools.FwTools.ConvertTo(System.String,BSL430_NET.FirmwareTools.FwTools.FwFormat,System.Boolean,System.Int32)">
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.Convert(System.String,BSL430_NET.FirmwareTools.FwTools.FwFormat,System.Boolean,System.Int32)">
             <summary>
             Convert firmware TI-TXT, Intel-HEX or ELF format (auto detected) to firmware in TI-TX or Intel-HEX format.
             Returned fw is firmware and format is useful for auto-detect feedback.
@@ -664,6 +708,26 @@
             </summary>
             <exception cref="T:BSL430_NET.Bsl430NetException"></exception>
         </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.Compare(System.String,System.String)">
+            <summary>
+            Compare two Firmware files. First, auto-detects format, then parse Nodes (Address + Data) and finally run compare.
+            <para/>Equal = True if both files contains exactly same set of Firmware Nodes, in other case result is false.
+            <para/>Equal = False if any Firmware is null or if any Firmware Node count is zero.
+            <para/>Match [0.0 ; 1.0] is match when 1.0 is full match and Equal = True, and 0.0 is different fw.
+            <para/>BytesDiff is count of bytes (Data nodes) which both firmwares differ at. 0 means full match.
+            </summary>
+            <exception cref="T:BSL430_NET.Bsl430NetException"></exception>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwTools.Compare(BSL430_NET.FirmwareTools.FwTools.Firmware,BSL430_NET.FirmwareTools.FwTools.Firmware)">
+            <summary>
+            Compare two already parsed Firmware objects (Address + Data).
+            <para/>Equal = True if both files contains exactly same set of Firmware Nodes, in other case result is false.
+            <para/>Equal = False if any Firmware is null or if any Firmware Node count is zero.
+            <para/>Match [0.0 ; 1.0] is match when 1.0 is full match and Equal = True, and 0.0 is  different fw.
+            <para/>BytesDiff is count of bytes (Data nodes) which both firmwares differ at. 0 means full match.
+            </summary>
+            <exception cref="T:BSL430_NET.Bsl430NetException"></exception>
+        </member>
         <member name="T:BSL430_NET.FirmwareTools.FwExtensions">
             <summary>
             Extensions class wrapping some extensions methods like CRC calc.
@@ -682,6 +746,36 @@
         <member name="M:BSL430_NET.FirmwareTools.FwExtensions.Crc16(System.Collections.Generic.IEnumerable{System.Byte},System.Int32,System.Int32)">
             <summary>
             CRC-16 generic implementation that needs a specific polynom and initial values.
+            </summary>
+        </member>
+        <member name="T:BSL430_NET.FirmwareTools.FwNodeComparer">
+            <summary>
+            Compares whole Firmware Node, address and data. Useful when comparing two firmware files.
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwNodeComparer.Equals(BSL430_NET.FirmwareTools.FwTools.FwNode,BSL430_NET.FirmwareTools.FwTools.FwNode)">
+            <summary>
+            True if addresses and data match.
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwNodeComparer.GetHashCode(BSL430_NET.FirmwareTools.FwTools.FwNode)">
+            <summary>
+            Hash Code created by XORing Address and Data.
+            </summary>
+        </member>
+        <member name="T:BSL430_NET.FirmwareTools.FwNodeAddrComparer">
+            <summary>
+            Compares Firmware Node addresses only. Useful when searching for fw addr overlap between two files.
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwNodeAddrComparer.Equals(BSL430_NET.FirmwareTools.FwTools.FwNode,BSL430_NET.FirmwareTools.FwTools.FwNode)">
+            <summary>
+            True if addresses match.
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.FwNodeAddrComparer.GetHashCode(BSL430_NET.FirmwareTools.FwTools.FwNode)">
+            <summary>
+            Hash Code created from Address.
             </summary>
         </member>
         <member name="T:BSL430_NET.IBsl430Net">
