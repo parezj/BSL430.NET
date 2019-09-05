@@ -42,7 +42,8 @@ namespace BSL430_NET
     namespace FirmwareTools
     {
         /// <summary>
-        /// Utility class providing basic manipulation (Parse, Create, ConvertTo, Combine) with Intel-HEX, TI-TXT, SREC and ELF firmware formats.
+        /// Utility class providing basic manipulation (Parse, Create, Convert, Combine, Validate, Compare) with Intel-HEX, 
+        /// TI-TXT, SREC and ELF firmware formatted files.
         /// </summary>
         public static class FwTools
         {
@@ -80,9 +81,15 @@ namespace BSL430_NET
             /// </summary>
             public class Firmware
             {
-                /// <summary>FwInfo provides info about firmware, like first and last addresses, CRC, code size and reset vector.</summary>
+                /// <summary>
+                /// FwInfo provides info about firmware, like first and last addresses, CRC, code size and 
+                /// reset vector.
+                /// </summary>
                 public FwInfo Info { get; }
-                /// <summary>List of FwNode, what firmware consits of, representated by single byte with 16bit address.</summary>
+                /// <summary>
+                /// List of FwNode, what firmware consits of, representated by single byte with max 32-bit, 
+                /// usually 16-bit address.
+                /// </summary>
                 public List<FwNode> Nodes { get; }
                 /// <summary>Memory Stream is sequence of raw bytes.</summary>
                 public MemoryStream MemoryStream
@@ -142,10 +149,66 @@ namespace BSL430_NET
                         return Info.SetResetVector(Nodes, ResetVectorAddr);
                     else return null;
                 }
+
+                /// <summary>
+                /// Formatted important properites describing current Firmware, taken from FwInfo class.
+                /// </summary>
+                public override string ToString()
+                {
+                    if (this.Info != null)
+                        return this.Info.ToString();
+                    else
+                        return $"Unknown.";
+                }
+
+                /// <summary>
+                /// True if two Firmwares are the same, meaning ale nodes (Address and Data) are the same, else false.
+                /// Returns false if any or even if both Firmwares are null.
+                /// </summary>
+                public override bool Equals(object value)
+                {
+                    Firmware fw = value as Firmware;
+
+                    if ((fw.Nodes == null && this.Nodes == null) || (fw.Nodes.Count == 0 && this.Nodes.Count == 0))
+                        return false;
+                    if (fw.Nodes.Count != this.Nodes.Count)
+                        return false;
+
+                    var matches = this.Nodes.Intersect(fw.Nodes, new FwNodeComparer());
+                    if (matches == null || matches.Count() != this.Nodes.Count)
+                        return false;
+
+                    return true;
+                }
+
+                /// <summary>
+                /// Hash Code created by XORing Address and Data from all Nodes of Firmware.
+                /// </summary>
+                public override int GetHashCode()
+                {
+                    return null; // TODO
+                }
+
+
+                /// <summary>
+                /// Equality operator overide 
+                /// </summary>
+                public static bool operator ==(Firmware fw1, Firmware fw2)
+                {
+                    // Implementation
+                }
+
+                /// <summary>
+                /// Not Equality operator overide 
+                /// </summary>
+                public static bool operator !=(Firmware fw1, Firmware fw2)
+                {
+                    return !(numberA == numberB);
+                }
             }
 
             /// <summary>
-            /// Atomic unit which every firmware consits of representated by single byte with 16bit address.
+            /// Atomic unit which every firmware consits of representated by single byte with max 32-bit long address.
             /// </summary>
             public class FwNode
             {
@@ -178,7 +241,10 @@ namespace BSL430_NET
                 public long? ResetVector { get; set; } = 0;
                 /// <summary>Help property for later firmware manipulation, like slicing in buffer blocks.</summary>
                 public int SizeBuffer { get; set; } = 0;
-                /// <summary>When parsing FW, FillFF can be set, to output code in single piece. Addresses, that dont belong to original FW, are in this list.</summary>
+                /// <summary>
+                /// When parsing FW, FillFF can be set, to output code in single piece. Addresses, that dont belong to 
+                /// original FW, are in this list.
+                /// </summary>
                 public List<long> FilledFFAddr { get; set; }
 
                 /// <summary>
@@ -242,6 +308,22 @@ namespace BSL430_NET
                         }
                     }
                     return null;
+                }
+
+                /// <summary>
+                /// Formatted important properites describing current firmware.
+                /// </summary>
+                public override string ToString()
+                {
+                    if (this.Valid)
+                    {
+                        return $"Format: {this.Format}, Addresses: 0x{this.AddrFirst:X}-0x{this.AddrLast:X}, " +
+                        $"Sizes: {this.SizeCode}/{this.SizeFull}, CRC16: {this.Crc16},";
+                    }
+                    else
+                    {
+                        return $"Invalid firmware.";
+                    }                     
                 }
             }
             #endregion
@@ -331,10 +413,10 @@ namespace BSL430_NET
             /// (TI-TXT = 16, Intel-HEX = 32, SREC = 32).
             /// </summary>
             /// <exception cref="Bsl430NetException"></exception>
-            public static (string Fw, FwFormat Format) ConvertTo(string FirmwarePath, 
-                                                                 FwFormat Format, 
-                                                                 bool FillFF = false, 
-                                                                 int LineLength = 0)
+            public static (string Fw, FwFormat Format) Convert(string FirmwarePath, 
+                                                               FwFormat Format, 
+                                                               bool FillFF = false, 
+                                                               int LineLength = 0)
             { 
                 switch (Format)
                 {
@@ -421,6 +503,20 @@ namespace BSL430_NET
                 return (Create(CombineFw(fw1, fw2, FillFF), Format, LineLength), fw1.Info.Format, fw2.Info.Format);
             }
 
+            /// <summary>
+            /// Compare two firmware files, auto-detects format, parse Nodes (Address + Data) and compare them.
+            /// Returns true if both files contains exactly same set of Firmware Nodes, in other case result is false.
+            /// Returns false if any or even if both Firmwares are null.
+            /// </summary>
+            /// <exception cref="Bsl430NetException"></exception>
+            public static bool Compare(string FirmwarePath1, string FirmwarePath2)
+            {
+                Firmware fw1 = ParseAutoDetect(FirmwarePath1, false);
+                Firmware fw2 = ParseAutoDetect(FirmwarePath2, false);
+
+                return fw1 == fw2;
+            }
+
             #endregion
 
             #region Private Core Methods
@@ -498,11 +594,11 @@ namespace BSL430_NET
                         {
                             string line = dat.Trim();
 
-                            byte seg_size = Convert.ToByte(line.Substring(0, 2), 16);
-                            uint seg_addr = Convert.ToUInt32(line.Substring(2, 4), 16);
-                            byte seg_rec = Convert.ToByte(line.Substring(6, 2), 16);
+                            byte seg_size = System.Convert.ToByte(line.Substring(0, 2), 16);
+                            uint seg_addr = System.Convert.ToUInt32(line.Substring(2, 4), 16);
+                            byte seg_rec = System.Convert.ToByte(line.Substring(6, 2), 16);
                             byte[] seg_data = line.Substring(8, (seg_size * 2)).ToByteArray();
-                            byte seg_chck = Convert.ToByte(line.Substring(8 + (seg_size * 2), 2), 16);
+                            byte seg_chck = System.Convert.ToByte(line.Substring(8 + (seg_size * 2), 2), 16);
 
                             byte chck_sum = 0;
                             foreach (byte sm in line.Substring(0, line.Length - 2).ToByteArray())
@@ -592,7 +688,7 @@ namespace BSL430_NET
 
                     uint[] addresses = Regex.Matches(data, regex_header)
                                             .Cast<Match>()
-                                            .Select(a => Convert.ToUInt32(a.ToString().Replace("@", ""), 16)).ToArray();
+                                            .Select(a => System.Convert.ToUInt32(a.ToString().Replace("@", ""), 16)).ToArray();
 
                     if (addresses == null || blocks == null || blocks.Length != addresses.Length)
                         throw new Bsl430NetException(445);
@@ -623,7 +719,7 @@ namespace BSL430_NET
 
                         foreach (string dat in bytes)
                         {
-                            ret.Add(new FwNode { Data = Convert.ToByte(dat, 16), Addr = address });
+                            ret.Add(new FwNode { Data = System.Convert.ToByte(dat, 16), Addr = address });
                             address++;
                         }
                     }
@@ -674,7 +770,7 @@ namespace BSL430_NET
                             string line = dat.Trim();
                             int addr_sclr = 0;
 
-                            byte rec_type = Convert.ToByte(line.Substring(0, 1), 16);
+                            byte rec_type = System.Convert.ToByte(line.Substring(0, 1), 16);
 
                             if (rec_type == 1)
                                 addr_sclr = 0;
@@ -689,10 +785,10 @@ namespace BSL430_NET
                             else
                                 continue;
 
-                            byte rec_count = Convert.ToByte(line.Substring(1, 2), 16);
-                            uint rec_addr = Convert.ToUInt32(line.Substring(3, 4 + addr_sclr), 16);
+                            byte rec_count = System.Convert.ToByte(line.Substring(1, 2), 16);
+                            uint rec_addr = System.Convert.ToUInt32(line.Substring(3, 4 + addr_sclr), 16);
                             byte[] rec_data = line.Substring(7 + addr_sclr, (rec_count * 2) - 6 - addr_sclr).ToByteArray();
-                            byte rec_chck = Convert.ToByte(line.Substring(line.Length - 2, 2), 16);
+                            byte rec_chck = System.Convert.ToByte(line.Substring(line.Length - 2, 2), 16);
 
                             int _chck_sum = 0;
                             foreach (byte sm in line.Substring(1, line.Length - 3).ToByteArray())
@@ -1179,21 +1275,6 @@ namespace BSL430_NET
                         throw new Bsl430NetException(470, ex);
                 }
             }
-            private class FwNodeAddrComparer : IEqualityComparer<FwNode>
-            {
-                public bool Equals(FwNode fw1, FwNode fw2)
-                {
-                    if (fw1.Addr == fw2.Addr)
-                    {
-                        return true;
-                    }
-                    return false;
-                }
-                public int GetHashCode(FwNode obj)
-                {
-                    return obj.Addr.GetHashCode();
-                }
-            }
             private static ICollection<FwNode> CombineFw(Firmware fw1, Firmware fw2, bool fillFF = false)
             {
                 if (fw1 == null  || fw2 == null)
@@ -1278,8 +1359,58 @@ namespace BSL430_NET
                 return crc;
             }
         }
+        #endregion
 
-    #endregion
+        #region Equality Comparers
+        /// <summary>
+        /// Compares whole Firmware Node, address and data. Useful when comparing two firmware files.
+        /// </summary>
+        public class FwNodeComparer : IEqualityComparer<FwTools.FwNode>
+        {
+            /// <summary>
+            /// True if addresses and data match.
+            /// </summary>
+            public bool Equals(FwTools.FwNode fw1, FwTools.FwNode fw2)
+            {
+                if (fw1.Addr == fw2.Addr && fw1.Data == fw2.Data)
+                {
+                    return true;
+                }
+                return false;
+            }
+            /// <summary>
+            /// Hash Code created by XORing Address and Data.
+            /// </summary>
+            public int GetHashCode(FwTools.FwNode obj)
+            {
+                return obj.Addr.GetHashCode() ^ obj.Data.GetHashCode();
+            }
+        }
 
+        /// <summary>
+        /// Compares Firmware Node addresses only. Useful when searching for fw addr overlap between two files.
+        /// </summary>
+        public class FwNodeAddrComparer : IEqualityComparer<FwTools.FwNode>
+        {
+            /// <summary>
+            /// True if addresses match.
+            /// </summary>
+            public bool Equals(FwTools.FwNode fw1, FwTools.FwNode fw2)
+            {
+                if (fw1.Addr == fw2.Addr)
+                {
+                    return true;
+                }
+                return false;
+            }
+            /// <summary>
+            /// Hash Code created from Address.
+            /// </summary>
+            public int GetHashCode(FwTools.FwNode obj)
+            {
+                return obj.Addr.GetHashCode();
+            }
+        }
+        #endregion
     }
 }

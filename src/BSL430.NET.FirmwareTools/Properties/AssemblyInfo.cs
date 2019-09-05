@@ -34,7 +34,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("BSL430.NET - Firmware Tools")]
-[assembly: AssemblyDescription("Firmware Tools - combine, convert, validate, parse and create Intel-HEX, TI-TXT, ELF and SREC formatted firmware files.")]
+[assembly: AssemblyDescription("Firmware Tools - convert, parse, create, combine, validate and compare Intel-HEX, TI-TXT, ELF and SREC formatted firmware files.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Jakub Parez")]
 [assembly: AssemblyProduct("BSL430.NET.FirmwareTools")]

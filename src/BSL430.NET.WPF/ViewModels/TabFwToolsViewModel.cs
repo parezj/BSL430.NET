@@ -67,8 +67,9 @@ namespace BSL430_NET_WPF.ViewModels
         private readonly IThemeProvider themeProvider;
         private readonly Dictionary<string, string> args;
         private HexView hexView;
-        private bool hexViewClosed = true;
         private IHexView IhexView;
+        private bool hexViewClosed = true;
+        private bool argsHandled = false;
 
         private const string CONVERT_SUCCESS = "Firmware was successfuly converted and saved here:";
         private const string COMBINE_SUCCESS = "Firmware files were successfuly combined and saved here:";
@@ -331,7 +332,7 @@ namespace BSL430_NET_WPF.ViewModels
 
             try
             {
-                var (Fw, Format) = BSL430_NET.FirmwareTools.FwTools.ConvertTo(this.FwPath, 
+                var (Fw, Format) = BSL430_NET.FirmwareTools.FwTools.Convert(this.FwPath, 
                                                                               this.ConvertFormat, 
                                                                               this.ConvertFillFF, 
                                                                               BslSettings.Instance.FwWriteLineLength);
@@ -419,7 +420,11 @@ namespace BSL430_NET_WPF.ViewModels
         }
         public void Loaded()
         {
-            HandleArgs(this.args);
+            if (this.argsHandled)
+            {
+                this.argsHandled = true;
+                HandleArgs(this.args);
+            }
         }
         public void DisplayParseLog()
         {

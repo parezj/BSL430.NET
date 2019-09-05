@@ -208,7 +208,7 @@ namespace BSL430_NET
             this.Kind = Kind;
         }
         /// <summary>
-        /// Returns FormattedDescription of current device.
+        /// FormattedDescription of current device.
         /// </summary>
         public override string ToString()
         {

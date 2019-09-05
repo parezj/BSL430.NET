@@ -524,7 +524,7 @@ namespace BSL430_NET_Console
                     if (fw_format.stat != "")
                         Console.WriteLine(fw_format.stat);
 
-                    var output = FwTools.ConvertTo(options.Convert, fw_format.fw_format, options.FillFF);
+                    var output = FwTools.Convert(options.Convert, fw_format.fw_format, options.FillFF);
 
                     if (output.Fw == "")
                         throw new Exception("Unknown error occured while converting firmware.\n");
