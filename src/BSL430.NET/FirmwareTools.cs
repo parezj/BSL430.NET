@@ -42,7 +42,7 @@ namespace BSL430_NET
     namespace FirmwareTools
     {
         /// <summary>
-        /// Utility class providing basic manipulation (Parse, Create, ConvertTo, Combine) with Intel-HEX, TI-TXT, SREC and ELF firmware formats.
+        /// Utility class providing basic manipulation (Parse, Create, Convert, Combine, Validate) with Intel-HEX, TI-TXT, SREC and ELF formatted firmware files.
         /// </summary>
         public static class FwTools
         {
