@@ -33,7 +33,7 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("BSL430.NET - MSP430 Toolchain & Firmware Tools")]
+[assembly: AssemblyTitle("BSL430.NET - MSP430 Toolchain (flash MCU memory via UART/FT232/COM - download, upload, erase)")]
 [assembly: AssemblyDescription("BSL430.NET - TI MSP430 Bootloader (BSL) .NET Cross-Platform Toolchain & Firmware Tools\r\n-replace expensive original MSP FET programmer with cheap FTDI FT232 or Serial COM port\r\n-upload, download or erase MSP430 memory with minimal effort with generic UART convertes\r\n-firmware tools: convert, combine, validate, hex edit or get password from TI-TXT, Intel-HEX, SREC or ELF")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Jakub Parez")]

@@ -44,6 +44,7 @@ using System.Xml.Serialization;
 using BSL430_NET;
 using BSL430_NET.Comm;
 using BSL430_NET.FirmwareTools;
+using BSL430_NET.FirmwareTools.Helpers;
 using BSL430_NET.Utility;
 
 using CommandLine;
@@ -55,20 +56,25 @@ namespace BSL430_NET_Console
 {
     class BSL430NETConsole
     {
+        #region Public Consts
         public const string ALIAS_FTDI = "ftdi";
         public const string ALIAS_LIBFTDI = "libftdi";
         public const string ALIAS_USBHID = "usb";
         public const string ALIAS_SERIAL = "serial";
         public const string ALIAS_ALL = "all";
         public const int SPINNER_PERIOD = 70;
+        #endregion
 
+        #region Private Data
         private object lock1 = new object();
         private Options options;
         private int spinner = 0;
         private string vertical = "│";
         private string horizontal = "─";
         private char progress = '█'; // ■
+        #endregion
 
+        #region Args Options
         class Options
         {
             // -- Main Commands
@@ -193,7 +199,9 @@ namespace BSL430_NET_Console
                 Console.WriteLine();
             }
         }
+        #endregion
 
+        #region Entry Point - Main
         static void Main(string[] args)
         {
             System.AppDomain.CurrentDomain.UnhandledException += UnhandledExceptionTrapper;
@@ -204,7 +212,9 @@ namespace BSL430_NET_Console
                 WinSetConsoleFont.SetConsoleFont();
             main.BSL430NET(args);
         }
+        #endregion
 
+        #region Main Core Method
         private void BSL430NET(string[] args)
         {
             bool blank = false;
@@ -337,7 +347,8 @@ namespace BSL430_NET_Console
                     timer.Dispose();
                     ConsoleColor _color = Console.ForegroundColor;
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine(String.Format($" {options.ScanMode}:{Str(' ', 10 - options.ScanMode.Length)}ERROR:\n\n{ex.Message}\n"));
+                    Console.WriteLine(String.Format($" {options.ScanMode}:{Str(' ', 10 - options.ScanMode.Length)}ERROR:\n\n" +
+                        $"{((ex is Bsl430NetException) ? ((Bsl430NetException)ex).Status.ToString() : ex.Message)}\n"));
                     Console.ForegroundColor = _color; 
                 }
             }
@@ -389,7 +400,7 @@ namespace BSL430_NET_Console
                 catch (Exception ex)
                 {
                     timer?.Dispose();
-                    PrintRedError(ex.Message);
+                    PrintRedError((ex is Bsl430NetException) ? ((Bsl430NetException)ex).Status.ToString() : ex.Message);
                     return;
                 }
             }
@@ -463,7 +474,7 @@ namespace BSL430_NET_Console
                 catch (Exception ex)
                 {
                     timer?.Dispose();
-                    PrintRedError(ex.Message);
+                    PrintRedError((ex is Bsl430NetException) ? ((Bsl430NetException)ex).Status.ToString() : ex.Message);
                     return;
                 }
             }   
@@ -506,7 +517,7 @@ namespace BSL430_NET_Console
                 catch (Exception ex)
                 {
                     timer?.Dispose();
-                    PrintRedError(ex.Message);
+                    PrintRedError((ex is Bsl430NetException) ? ((Bsl430NetException)ex).Status.ToString() : ex.Message);
                     return;
                 }
             }
@@ -540,7 +551,7 @@ namespace BSL430_NET_Console
                 }
                 catch (Exception ex)
                 {
-                    PrintRedError(ex.Message);
+                    PrintRedError(GetExceptionMsg(ex));
                     return;
                 }
             }
@@ -577,7 +588,7 @@ namespace BSL430_NET_Console
                 }
                 catch (Exception ex)
                 {
-                    PrintRedError(ex.Message);
+                    PrintRedError(GetExceptionMsg(ex));
                     return;
                 }
             }
@@ -601,7 +612,7 @@ namespace BSL430_NET_Console
                 }
                 catch (Exception ex)
                 {
-                    PrintRedError(ex.Message);
+                    PrintRedError(GetExceptionMsg(ex));
                     return;
                 }
             }
@@ -634,7 +645,7 @@ namespace BSL430_NET_Console
                 }
                 catch (Exception ex)
                 {
-                    PrintRedError(ex.Message);
+                    PrintRedError(GetExceptionMsg(ex));
                     return;
                 }
             }
@@ -665,12 +676,14 @@ namespace BSL430_NET_Console
                 }
                 catch (Exception ex)
                 {
-                    PrintRedError(ex.Message);
+                    PrintRedError(GetExceptionMsg(ex));
                     return;
                 }
             }
         }
+        #endregion
 
+        #region Private Methods
         private void PrintDevices<T>(string mode, Status stat, List<T> dev) where T: Bsl430NetDevice
         {
             ConsoleColor _color = Console.ForegroundColor;
@@ -1090,10 +1103,6 @@ namespace BSL430_NET_Console
             //Console.Write("Wrong input arguments.");
             Environment.Exit(-1);
         }
-        public string HandleEmptyStr(string str)
-        {
-            return (str == String.Empty) ? "-" : str;
-        }
         private static string GetEnumInfo<T1,T2>(char vertical_separator, string horizontal_delim, int pad)
         {
             return String.Join(vertical_separator, Enum.GetValues(typeof(T1)).Cast<T2>()
@@ -1108,6 +1117,31 @@ namespace BSL430_NET_Console
             Console.ReadLine();
             Environment.Exit(1);
         }
+        private string GetExceptionMsg(Exception ex)
+        {
+            string msg = ex.Message;
+            if (ex is Bsl430NetException)
+            {
+                msg = ((Bsl430NetException)ex).Status.ToString();
+            }
+            else if (ex is FirmwareToolsException)
+            {
+                msg = new Status()
+                {
+                    Error = ((FirmwareToolsException)ex).Error,
+                    Msg = ((FirmwareToolsException)ex).Msg,
+                    OK = false
+                }.ToString();
+            }
+            return msg;
+        }
+        #endregion
+
+        #region Public Helpers
+        public string HandleEmptyStr(string str)
+        {
+            return (str == String.Empty) ? "-" : str;
+        }
         public static string Str(char ch, int count)
         {
             return new String(ch, count);
@@ -1116,7 +1150,10 @@ namespace BSL430_NET_Console
         {
             return items;
         }
+        #endregion
     }
+
+    #region Extensions
     public static class Extensions
     {
         public static string Truncate(this string value, int maxChars)
@@ -1124,4 +1161,5 @@ namespace BSL430_NET_Console
             return value.Length <= maxChars ? value : value.Substring(0, maxChars) + "...";
         }
     }
+    #endregion
 }

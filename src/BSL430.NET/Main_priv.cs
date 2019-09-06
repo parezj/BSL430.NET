@@ -35,7 +35,7 @@ using System.Globalization;
 using BSL430_NET.Utility;
 using BSL430_NET.FirmwareTools;
 using BSL430_NET.Constants;
-
+using BSL430_NET.FirmwareTools.Helpers;
 
 namespace BSL430_NET
 {
@@ -758,10 +758,23 @@ namespace BSL430_NET
                 catch (Exception ex)
                 {
                     if (ex is Bsl430NetException)
+                    {
                         return Utils.StatusCreate(450, ((Bsl430NetException)ex).Status);
+                    }               
+                    else if (ex is FirmwareToolsException)
+                    {
+                        Status fw_ex = new Status()
+                        {
+                            Error = ((FirmwareToolsException)ex).Error,
+                            Msg = ((FirmwareToolsException)ex).Msg
+                        };
+                        return Utils.StatusCreate(450, fw_ex);
+                    }                   
                     else
+                    {
                         return Utils.StatusCreate(450, ex.Message);
-                }
+                    }                     
+                }  
             }
             private int GetBufferSize(Protocol _protocol)
             {

@@ -252,40 +252,24 @@ namespace BSL430_NET.Test
         }
 
         [Fact]
-        public void ScanAll()
+        public void ScanAllEx()
         {
             using (var dev = new BSL430NET())
             {
-                var stat = dev.ScanAll(out List<FTDI_Device> ftdi,
-                                       out List<Libftdi_Device> libftdi,
-                                       out List<USB_HID_Device> usb,
-                                       out List<Serial_Device> serial,
-                                       ScanOptions.None);
+                var ret = dev.ScanAllEx(ScanOptions.None);
 
-                Assert.NotNull(stat.Ftdi);
-                Assert.NotNull(stat.Libftdi);
-                Assert.NotNull(stat.Usb);
-                Assert.NotNull(stat.Serial);
-                Assert.True(stat.Ftdi.OK);
-                Assert.True(stat.Libftdi.OK);
-                Assert.True(stat.Usb.OK);
-                Assert.True(stat.Serial.OK);
-            }
-        }
-
-        [Theory]
-        [InlineData(Mode.UART_FTD2XX)]
-        [InlineData(Mode.UART_libftdi)]
-        [InlineData(Mode.USB_HID)]
-        [InlineData(Mode.UART_Serial)]
-        public void Scan(Mode mode)
-        {
-            using (var dev = new BSL430NET(mode))
-            {
-                Status stat = dev.Scan(out List<Bsl430NetDevice> devices, ScanOptions.None);
-
-                Assert.NotNull(stat);
-                Assert.True(stat.OK);
+                Assert.NotNull(ret.FtdiDevices);
+                Assert.NotNull(ret.LibftdiDevices);
+                Assert.NotNull(ret.UsbDevices);
+                Assert.NotNull(ret.SerialDevices);
+                Assert.NotNull(ret.FtdiDevices.Status);
+                Assert.NotNull(ret.LibftdiDevices.Status);
+                Assert.NotNull(ret.UsbDevices.Status);
+                Assert.NotNull(ret.SerialDevices.Status);
+                Assert.True(ret.FtdiDevices.Status.OK);
+                Assert.True(ret.LibftdiDevices.Status.OK);
+                Assert.True(ret.UsbDevices.Status.OK);
+                Assert.True(ret.SerialDevices.Status.OK);
             }
         }
     }

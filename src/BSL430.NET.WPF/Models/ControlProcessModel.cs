@@ -45,15 +45,17 @@ using System.Windows.Input;
 using System.Xml;
 using System.Xml.Serialization;
 
+using Caliburn.Micro;
+
 using BSL430_NET;
 using BSL430_NET.Comm;
 using BSL430_NET.FirmwareTools;
 using BSL430_NET.Utility;
+using BSL430_NET_WPF.Helpers;
 using BSL430_NET_WPF.Models;
 using BSL430_NET_WPF.Settings;
 using BSL430_NET_WPF.ViewModels;
 using BSL430_NET_WPF.Views;
-using Caliburn.Micro;
 
 
 namespace BSL430_NET_WPF.Models
@@ -156,14 +158,14 @@ namespace BSL430_NET_WPF.Models
                     WriteXML(GetLogRoot(_xml, "ScanAllEx"));
                 }
             }
-            catch (Bsl430NetException ex)
+            catch (Exception ex)
             {
-                WriteXML(GetLogRoot(ex, "Failed.Exception"));
+                WriteXML(GetLogRoot((ex is Bsl430NetException) ? (Bsl430NetException)ex : ex, "Failed.Exception"));
                 System.Windows.Application.Current.Dispatcher.Invoke((System.Action)(() =>
                 {
                     //MessageBox.Show($"Operation Failed!\nError: {retStat.Error}\n\n{retStat.Msg.Replace("\n[", "\n\n[")}", "BSL430.NET",
                     //MessageBoxButton.OK, MessageBoxImage.Error);
-                    MessageBox.Show($"{retStat.ToString()}", "BSL430.NET", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show($"{ex.GetExceptionMsg()}", "BSL430.NET", MessageBoxButton.OK, MessageBoxImage.Error);
                 }));
             }
 
@@ -225,9 +227,9 @@ namespace BSL430_NET_WPF.Models
                     retStat = dev.Upload(this.viewModel.FwPathUpload, Password: this.viewModel.Password.ToByteArray());
                 }
             }
-            catch (Bsl430NetException ex)
+            catch (Exception ex)
             {
-                WriteXML(GetLogRoot(ex, "Failed.Exception"));
+                WriteXML(GetLogRoot((ex is Bsl430NetException) ? (Bsl430NetException)ex : ex, "Failed.Exception"));
             }
         }
         public void ProcessDownloadTask()
@@ -254,9 +256,9 @@ namespace BSL430_NET_WPF.Models
                     }
                 }
             }
-            catch (Bsl430NetException ex)
+            catch (Exception ex)
             {
-                WriteXML(GetLogRoot(ex, "Failed.Exception"));
+                WriteXML(GetLogRoot((ex is Bsl430NetException) ? (Bsl430NetException)ex : ex, "Failed.Exception"));
             }
         }
         private void ProcessEraseTask()
@@ -272,9 +274,9 @@ namespace BSL430_NET_WPF.Models
                     retStat = dev.Erase();
                 }
             }
-            catch (Bsl430NetException ex)
+            catch (Exception ex)
             {
-                WriteXML(GetLogRoot(ex, "Failed.Exception"));
+                WriteXML(GetLogRoot((ex is Bsl430NetException) ? (Bsl430NetException)ex : ex, "Failed.Exception"));
             }
         }
         #endregion

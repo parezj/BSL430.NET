@@ -9,7 +9,7 @@
              xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:cal="http://www.caliburnproject.org"
-             xmlns:BSL430_NET_FW="clr-namespace:BSL430_NET.FirmwareTools;assembly=BSL430.NET"
+             xmlns:BSL430_NET_FW="clr-namespace:BSL430_NET.FirmwareTools;assembly=BSL430.NET.FirmwareTools"
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d">
     <Grid>

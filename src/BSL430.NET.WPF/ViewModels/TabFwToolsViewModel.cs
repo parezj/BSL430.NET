@@ -29,17 +29,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 
+using Caliburn.Micro;
+using MahApps.Metro.Controls.Dialogs;
+
+using BSL430_NET;
 using BSL430_NET.FirmwareTools;
 using BSL430_NET_WPF.Views;
 using BSL430_NET_WPF.Settings;
 using BSL430_NET_WPF.Models;
-using Caliburn.Micro;
-using MahApps.Metro.Controls.Dialogs;
-using System.IO;
-
+using BSL430_NET_WPF.Helpers;
 
 namespace BSL430_NET_WPF.ViewModels
 {
@@ -217,13 +219,13 @@ namespace BSL430_NET_WPF.ViewModels
                 try
                 {
                     StringWriter sw = new StringWriter();
-                    this.ValidateData = BSL430_NET.FirmwareTools.FwTools.Validate(this.FwPath, sw);
+                    this.ValidateData = FwTools.Validate(this.FwPath, sw);
                     this.FwParseLog = sw.ToString();
                 }
-                catch (BSL430_NET.Bsl430NetException ex)
+                catch (Exception ex)
                 {
-                    this.ValidateData = new BSL430_NET.FirmwareTools.FwTools.FwInfo();
-                    this.FwParseLog = ex.Status.ToString();
+                    this.ValidateData = new FwTools.FwInfo();
+                    this.FwParseLog = ex.GetExceptionMsg();
                 }
 
                 this.IsDialogOpen = true;
@@ -241,10 +243,10 @@ namespace BSL430_NET_WPF.ViewModels
             {
                 try
                 {
-                    BSL430_NET.FirmwareTools.FwTools.Firmware fw = null;
+                    FwTools.Firmware fw = null;
                     if (hexViewClosed)
                     {
-                        fw = BSL430_NET.FirmwareTools.FwTools.Parse(this.FwPath, FillFF: true);
+                        fw = FwTools.Parse(this.FwPath, FillFF: true);
                     }
 
                     if (this.hexView == null)
@@ -283,9 +285,9 @@ namespace BSL430_NET_WPF.ViewModels
                     this.hexView.ShowDialog();
                     //this.hexView.Activate();
                 }
-                catch (BSL430_NET.Bsl430NetException ex)
+                catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Status.ToString(), "BSL430.NET", MessageBoxButton.OK, MessageBoxImage.Error);           
+                    MessageBox.Show(ex.GetExceptionMsg(), "BSL430.NET", MessageBoxButton.OK, MessageBoxImage.Error);           
                 }
             }
             else
@@ -300,7 +302,7 @@ namespace BSL430_NET_WPF.ViewModels
             {
                 try
                 {
-                    byte[] pw = BSL430_NET.FirmwareTools.FwTools.GetPassword(this.FwPath);
+                    byte[] pw = FwTools.GetPassword(this.FwPath);
                     if (pw == null || pw.Length != 16)
                     {
                         MessageBox.Show(ERR4, "BSL430.NET", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -312,9 +314,9 @@ namespace BSL430_NET_WPF.ViewModels
                         await coordinator.ShowMetroDialogAsync(this, dialogGetPassword, dialogSettings);
                     }
                 }
-                catch (BSL430_NET.Bsl430NetException ex)
+                catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Status.ToString(), "BSL430.NET", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(ex.GetExceptionMsg(), "BSL430.NET", MessageBoxButton.OK, MessageBoxImage.Error);
                 }  
             }
             else
@@ -333,10 +335,10 @@ namespace BSL430_NET_WPF.ViewModels
 
             try
             {
-                var (Fw, Format) = BSL430_NET.FirmwareTools.FwTools.Convert(this.FwPath, 
-                                                                              this.ConvertFormat, 
-                                                                              this.ConvertFillFF, 
-                                                                              BslSettings.Instance.FwWriteLineLength);
+                var (Fw, Format) = FwTools.Convert(this.FwPath, 
+                                                   this.ConvertFormat, 
+                                                   this.ConvertFillFF, 
+                                                   BslSettings.Instance.FwWriteLineLength);
 
                 using (StreamWriter wr = new StreamWriter(this.ConvertDestination, false))
                 {
@@ -345,9 +347,9 @@ namespace BSL430_NET_WPF.ViewModels
                 MessageBox.Show($"{CONVERT_SUCCESS}\n{this.ConvertDestination}", "BS430.NET", MessageBoxButton.OK, MessageBoxImage.Information);
                 coordinator.HideMetroDialogAsync(this, dialogConvert, dialogSettings);
             }
-            catch (BSL430_NET.Bsl430NetException ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Status.ToString(), "BSL430.NET", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.GetExceptionMsg(), "BSL430.NET", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }
@@ -369,11 +371,11 @@ namespace BSL430_NET_WPF.ViewModels
 
             try
             {
-                var (Fw, Format1, Format2) = BSL430_NET.FirmwareTools.FwTools.Combine(this.FwPath, 
-                                                                                      this.CombineWith, 
-                                                                                      this.CombineFormat, 
-                                                                                      this.CombineFillFF, 
-                                                                                      BslSettings.Instance.FwWriteLineLength);
+                var (Fw, Format1, Format2) = FwTools.Combine(this.FwPath, 
+                                                             this.CombineWith, 
+                                                             this.CombineFormat, 
+                                                             this.CombineFillFF, 
+                                                             BslSettings.Instance.FwWriteLineLength);
                 using (StreamWriter wr = new StreamWriter(this.CombineDestination, false))
                 {
                     wr.Write(Fw);
@@ -381,9 +383,9 @@ namespace BSL430_NET_WPF.ViewModels
                 MessageBox.Show($"{COMBINE_SUCCESS}\n{this.CombineDestination}", "BS430.NET", MessageBoxButton.OK, MessageBoxImage.Information);
                 coordinator.HideMetroDialogAsync(this, dialogCombine, dialogSettings);
             }
-            catch (BSL430_NET.Bsl430NetException ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Status.ToString(), "BSL430.NET", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.GetExceptionMsg(), "BSL430.NET", MessageBoxButton.OK, MessageBoxImage.Error);
             }            
         }
         public void ConvertCancel()
@@ -473,8 +475,8 @@ namespace BSL430_NET_WPF.ViewModels
                 NotifyOfPropertyChange(() => FwPath);
             }
         }
-        private BSL430_NET.FirmwareTools.FwTools.FwFormat _ConvertFormat = BslSettings.Instance.FwToolsConvertFormat;
-        public BSL430_NET.FirmwareTools.FwTools.FwFormat ConvertFormat
+        private FwTools.FwFormat _ConvertFormat = BslSettings.Instance.FwToolsConvertFormat;
+        public FwTools.FwFormat ConvertFormat
         {
             get => _ConvertFormat;
             set
@@ -484,8 +486,8 @@ namespace BSL430_NET_WPF.ViewModels
                 NotifyOfPropertyChange(() => ConvertFormat);
             }
         }
-        private BSL430_NET.FirmwareTools.FwTools.FwFormat _CombineFormat = BslSettings.Instance.FwToolsCombineFormat;
-        public BSL430_NET.FirmwareTools.FwTools.FwFormat CombineFormat
+        private FwTools.FwFormat _CombineFormat = BslSettings.Instance.FwToolsCombineFormat;
+        public FwTools.FwFormat CombineFormat
         {
             get => _CombineFormat;
             set
@@ -548,8 +550,8 @@ namespace BSL430_NET_WPF.ViewModels
                 NotifyOfPropertyChange(() => CombineFillFF);
             }
         }
-        private BSL430_NET.FirmwareTools.FwTools.FwInfo _ValidateData;
-        public BSL430_NET.FirmwareTools.FwTools.FwInfo ValidateData
+        private FwTools.FwInfo _ValidateData;
+        public FwTools.FwInfo ValidateData
         {
             get => _ValidateData;
             set

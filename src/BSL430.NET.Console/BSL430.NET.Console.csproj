@@ -62,6 +62,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BSL430.NET.FirmwareTools\BSL430.NET.FirmwareTools.csproj" />
     <ProjectReference Include="..\BSL430.NET\BSL430.NET.csproj" />
   </ItemGroup>
 

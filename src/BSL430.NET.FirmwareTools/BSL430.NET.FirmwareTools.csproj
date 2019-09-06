@@ -134,10 +134,6 @@
     <ItemGroup>
         <EmbeddedResource Remove="Library\**" />
         <None Remove="Library\**" />
-        <Compile Include="..\BSL430.NET\FirmwareTools.cs" />
-        <Compile Include="..\BSL430.NET\StatAndExcept.cs" />
-        <Compile Include="..\BSL430.NET\Utility.cs" />
-        <Compile Include="..\BSL430.NET\Constants.cs" />
     </ItemGroup>
 
     <ItemGroup>

@@ -278,6 +278,10 @@
     <Resource Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BSL430.NET.FirmwareTools\BSL430.NET.FirmwareTools.csproj">
+      <Project>{ff373710-ee3b-4add-8037-c577addf7b1a}</Project>
+      <Name>BSL430.NET.FirmwareTools</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BSL430.NET\BSL430.NET.csproj">
       <Project>{f2581d99-9c2f-44b1-a672-9cf0e08b3c61}</Project>
       <Name>BSL430.NET</Name>

@@ -9,7 +9,7 @@
              xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:cal="http://www.caliburnproject.org"
              xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro" 
-             xmlns:BSL430_NET_FW="clr-namespace:BSL430_NET.FirmwareTools;assembly=BSL430.NET"
+             xmlns:BSL430_NET_FW="clr-namespace:BSL430_NET.FirmwareTools;assembly=BSL430.NET.FirmwareTools"
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              xmlns:Converters="clr-namespace:BSL430_NET_WPF.Converters"
              Dialog:DialogParticipation.Register="{Binding}"

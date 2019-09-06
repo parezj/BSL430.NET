@@ -58,64 +58,6 @@ namespace BSL430_NET
             }
         }
 
-        /// <summary>
-        /// Extension class with some helpful methods.
-        /// </summary>
-        public static class Extensions
-        {
-            /// <summary>
-            /// Covnerts hex string to byte array.
-            /// </summary>
-            public static byte[] ToByteArray(this string HexString)
-            {
-                int NumberChars = HexString.Length;
-                byte[] bytes = new byte[NumberChars / 2];
-                for (int i = 0; i < NumberChars; i += 2)
-                {
-                    bytes[i / 2] = Convert.ToByte(HexString.Substring(i, 2), 16);
-                }
-                return bytes;
-            }
-
-            /// <summary>
-            /// Converts byte array to hex string.
-            /// </summary>
-            public static string ToHexString(this byte[] ba)
-            {
-                return BitConverter.ToString(ba).Replace("-", " ");
-            }
-
-            /// <summary>
-            /// Gets all enum flags.
-            /// </summary>
-            public static IEnumerable<Enum> GetFlags(this Enum input)
-            {
-                foreach (Enum value in Enum.GetValues(input.GetType()))
-                    if (input.HasFlag(value))
-                        yield return value;
-            }
-
-            /// <summary>
-            /// Gets enum string description.
-            /// </summary>
-            public static string GetEnumDescription(this Enum value)
-            {
-                FieldInfo fi = value.GetType().GetField(value.ToString());
-                if (fi.GetCustomAttributes(typeof(DescriptionAttribute), false) is DescriptionAttribute[] attributes && attributes.Any())
-                {
-                    return attributes.First().Description;
-                }
-                return value.ToString();
-            }
-
-            /// <summary>
-            /// Truncate string with a postfix or three dots by default.
-            /// </summary>
-            public static string Truncate(this string value, int maxChars, string postfix = "...")
-            {
-                return value.Length <= maxChars ? value : value.Substring(0, maxChars) + postfix;
-            }
-        }
         internal sealed class Utils
         {
             public static Status StatusCreate(int value)
@@ -189,29 +131,15 @@ namespace BSL430_NET
                     case 441: err_msg = "Parsing Response failed! at: [parse_resp()]."; break;
                     case 442: err_msg = "Building Message failed! at: [build_msg()]."; break;
                     case 443: err_msg = "Processing Message failed! at: [process_msg()]."; break;
+                    case 445: err_msg = "Invalid or corrupted firmware file. Intel-HEX, TI-TXT, SREC and ELF formats are supported."; break;
                     case 446: err_msg = "Main Communication Handler failed! at: [comm_xfer()]."; break;
                     case 447: err_msg = "Building Message failed! at: [build_msg()]."; break;
                     case 448: err_msg = "Parsing Response failed! at: [parse_resp()]."; break;
                     case 449: err_msg = "Parsing Response failed! at: [parse_resp() - File.ReadAllText]."; break;
                     case 450: err_msg = "Preparing Firmware for upload failed!"; break;
                     case 463: err_msg = "Operation failed because of an error."; break;
-                    case 467: err_msg = "Main Process Sequence failed! at: [loadEx()]."; break;
-                    case 444: err_msg = "Parsing firmware failed! Invalid or corrupted firmware file. Intel-HEX, TI-TXT, SREC and ELF formats are supported."; break;
-                    case 445: err_msg = "Invalid or corrupted firmware file. Intel-HEX, TI-TXT, SREC and ELF formats are supported."; break;
+                    case 467: err_msg = "Main Process Sequence failed! at: [loadEx()]."; break;                 
                     case 460: err_msg = "[BUG] Type mismatch at Parsing Response. This is a develop time error."; break;
-
-                    case 470: err_msg = "Failed to create firmware."; break;
-                    case 471: err_msg = "Failed to create firmware. Input data is empty."; break;
-                    case 472: err_msg = "ELF firmware format is not supported yet as output."; break;
-                    case 473: err_msg = "File does not exists."; break;
-                    case 474: err_msg = "Exception aborted execution while trying to read file."; break;
-                    case 475: err_msg = "Auto-detect firmware format failed. Most likely wrong or corrupted file. Intel-HEX, TI-TXT, SREC and ELF formats are supported."; break;
-                    case 476: err_msg = "Only 32-bit ELF format is supported."; break;
-                    case 477: err_msg = "Only little endian ELF format is supported."; break;
-                    case 478: err_msg = "Only executable file type ELF format is supported."; break;
-                    case 479: err_msg = "Only TI-MSP430 or ARM32 (MSP432) machine ELF format is supported."; break;
-                    case 480: err_msg = "Wrong or corrupted file. ELF magic number (7F-45-4C-46) mismatch."; break;
-                    case 481: err_msg = "Firmware address conflict. There is an overlap between both firmware files, combining them would result in corrupted firmware."; break;
 
                     case 461: err_msg = "Bad device. Input <Bsl430NetDevice> object is null or property Name is empty."; break;
                     case 462: err_msg = "Device does not exist."; break;

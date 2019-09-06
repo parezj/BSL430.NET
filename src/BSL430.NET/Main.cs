@@ -35,15 +35,15 @@ using System.Diagnostics;
 using System.Globalization;
 
 using BSL430_NET.Utility;
-using BSL430_NET.FirmwareTools;
 using BSL430_NET.Constants;
+using BSL430_NET.FirmwareTools;
 
 
 namespace BSL430_NET
 {
     namespace Main
     {
-#region Interfaces
+        #region Interfaces
         internal interface IDevice : IDisposable
         {
             Status Scan<Tdev>(out List<Tdev> device_list, ScanOptions scan_opt = ScanOptions.None) where Tdev : Bsl430NetDevice;
@@ -70,11 +70,11 @@ namespace BSL430_NET
             Bsl430NetDevice CommGetDefaultDevice();
             Status CommXfer(out byte[] msg_rx, byte[] msg_tx, int rx_size);
         }
-#endregion
+        #endregion
 
         internal abstract partial class Core : IDevice, ICommable
         {
-#region Public Method Declaration
+            #region Public Method Declaration
             public abstract void CommOpen(Bsl430NetDevice device);
             public abstract void CommSet(BaudRate baud_rate);
             public abstract void CommDtr(bool val = true, bool ignore_err = false);
@@ -89,9 +89,9 @@ namespace BSL430_NET
             public BaudRate GetBaudRate() { return baud_rate; }
             public InvokeMechanism GetInvoke() { return invoke; }
             public MCU GetMCU() { return mcu; }
-#endregion
+            #endregion
 
-#region Private Enum Declaration
+            #region Private Enum Declaration
             private enum Protocol
             {
                 UART_1_2_4 = 250,
@@ -110,9 +110,9 @@ namespace BSL430_NET
                 LoadPC
                 //UnLockInfo TODO
             }
-#endregion
+            #endregion
 
-#region Private Class Declaration
+            #region Private Class Declaration
             private abstract class CmdStat
             {
                 public Command command;
@@ -147,9 +147,9 @@ namespace BSL430_NET
                 public int addr;
                 public byte[] data;
             }
-#endregion
+            #endregion
 
-#region Private Data     
+            #region Private Data     
             private BaudRate baud_rate = BaudRate.BAUD_115200;
             private MCU mcu = MCU.MSP430_F5xx;    
             private Protocol protocol = Protocol.UART_5_6;
@@ -161,9 +161,9 @@ namespace BSL430_NET
             private bool skipped;
             private bool block_pending;
             private double progress_pending;
-#endregion
+            #endregion
 
-#region Constructor
+            #region Constructor
             public Core(BSL430NET _root, Mode _mode)
             {
                 mode = _mode;
@@ -173,9 +173,9 @@ namespace BSL430_NET
                 
                 report = new Report { Name = "START" };
             }
-#endregion
+            #endregion
 
-#region Main Public Methods
+            #region Main Public Methods
             public StatusEx Erase(Bsl430NetDevice device)
             {
                 return LoadEx(device, Command.MassErase, null, "", null, null, out _);
@@ -192,9 +192,9 @@ namespace BSL430_NET
             {
                 return LoadEx(device, Command.Upload, password, firmware_path, null, null, out _);
             }
-#endregion
+            #endregion
 
-#region LoadEx Code Core Method
+            #region LoadEx Code Core Method
             private StatusEx LoadEx(Bsl430NetDevice device, 
                                     Command cmd, byte[] password,
                                     string firmware_path, 
@@ -590,9 +590,9 @@ namespace BSL430_NET
                     }
                 }
             }
-#endregion
+            #endregion
 
-#region Setters/Helpers
+            #region Setters/Helpers
             private void BlockStart(string name, double val, bool _skipped = false)
             {
                 block_pending = true;
@@ -689,9 +689,9 @@ namespace BSL430_NET
                 }
                 return Utils.StatusCreate(0);
             }
-#endregion
+            #endregion
 
-#region IDisposable Support
+            #region IDisposable Support
             private bool disposedValue = false;
 
             void Dispose(bool disposing)
@@ -717,7 +717,7 @@ namespace BSL430_NET
             {
                 Dispose(true);
             }
-#endregion
+            #endregion
         }
     }
 }

@@ -33,8 +33,12 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
+using BSL430_NET;
+using BSL430_NET.FirmwareTools.Helpers;
+
 namespace BSL430_NET_WPF.Helpers
 {
+    /*
     // Original from: https://stackoverflow.com/questions/3652688/mutually-exclusive-checkable-menu-items
     public class MenuItemExtensions : DependencyObject
     {
@@ -104,6 +108,28 @@ namespace BSL430_NET_WPF.Helpers
                     item.Key.IsChecked = false;
                 }
             }
+        }
+    }
+    */
+    public static class Extensions
+    {
+        public static string GetExceptionMsg(this Exception ex)
+        {
+            string msg = ex.Message;
+            if (ex is Bsl430NetException)
+            {
+                msg = ((Bsl430NetException)ex).Status.ToString();
+            }
+            else if (ex is FirmwareToolsException)
+            {
+                msg = new Status()
+                {
+                    Error = ((FirmwareToolsException)ex).Error,
+                    Msg = ((FirmwareToolsException)ex).Msg,
+                    OK = false
+                }.ToString();
+            }
+            return msg;
         }
     }
 }

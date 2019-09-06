@@ -4,7 +4,36 @@
         <name>BSL430.NET.FirmwareTools</name>
     </assembly>
     <members>
+        <member name="T:BSL430_NET.FirmwareTools.Extensions">
+            <summary>
+            Extensions class wrapping some extensions methods like CRC calc, ToByteArray or ToExt.
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.Extensions.ToByteArray(System.String)">
+            <summary>
+            Covnerts hex string to byte array.
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.Extensions.ToExt(BSL430_NET.FirmwareTools.FwTools.FwFormat)">
+            <summary>
+            Extension method to provide firmware format ext string with dot.
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.Extensions.Crc16Ccitt(System.Collections.Generic.IEnumerable{System.Byte})">
+            <summary>
+            CRC-16-CCITT: Polynom = 0x1021, Initial = 0xFFFF
+            </summary>
+        </member>
+        <member name="M:BSL430_NET.FirmwareTools.Extensions.Crc16(System.Collections.Generic.IEnumerable{System.Byte},System.Int32,System.Int32)">
+            <summary>
+            CRC-16 generic implementation that needs a specific polynom and initial values.
+            </summary>
+        </member>
         <member name="T:BSL430_NET.FirmwareTools.FwTools">
+            <summary>
+            FwTools class provides basic manipulation (Parse, Create, Convert, Combine, Validate, Compare) with Intel-HEX, 
+            TI-TXT, SREC and ELF firmware formatted files.
+            </summary>
             <summary>
             FwTools class provides basic manipulation (Parse, Create, Convert, Combine, Validate, Compare) with Intel-HEX, 
             TI-TXT, SREC and ELF firmware formatted files.
@@ -20,13 +49,15 @@
             <summary>When chosen AUTO, Parse will auto detect fw format, and Create will use TI-TXT.</summary>
         </member>
         <member name="F:BSL430_NET.FirmwareTools.FwTools.FwFormat.TI_TXT">
-            <summary>TI-TXT format described at: <see href="http://srecord.sourceforge.net/man/man5/srec_ti_txt.html">HERE</see></summary>
+            <summary>TI-TXT format described at: <see href="http://srecord.sourceforge.net/man/man5/srec_ti_txt.html">
+            HERE</see></summary>
         </member>
         <member name="F:BSL430_NET.FirmwareTools.FwTools.FwFormat.INTEL_HEX">
             <summary>Intel-HEX format described at: <see href="https://en.wikipedia.org/wiki/Intel_HEX">HERE</see></summary>
         </member>
         <member name="F:BSL430_NET.FirmwareTools.FwTools.FwFormat.SREC">
-            <summary>Motorola-SREC S-Record format described at: <see href="https://en.wikipedia.org/wiki/SREC_(file_format)">HERE</see></summary>
+            <summary>Motorola-SREC S-Record format described at: <see href="https://en.wikipedia.org/wiki/SREC_(file_format)">
+            HERE</see></summary>
         </member>
         <member name="F:BSL430_NET.FirmwareTools.FwTools.FwFormat.ELF">
             <summary>ELF format described at: <see href="http://man7.org/linux/man-pages/man5/elf.5.html">HERE</see></summary>
@@ -182,7 +213,7 @@
             and return monolithic piece of code, which is usefull for crc calc or overwriting whole memory in mcu.
             <para/>Log writes text (new line formatted) output only when parsing ELF firmware file.
             </summary>
-            <exception cref="T:BSL430_NET.Bsl430NetException"></exception>
+            <exception cref="T:BSL430_NET.FirmwareTools.Helpers.FirmwareToolsException"></exception>
         </member>
         <member name="M:BSL430_NET.FirmwareTools.FwTools.Create(BSL430_NET.FirmwareTools.FwTools.Firmware,BSL430_NET.FirmwareTools.FwTools.FwFormat,System.Int32)">
             <summary>
@@ -191,7 +222,7 @@
             <para/>LineLength defines amount of data bytes per one text row. When = 0, default values are set
             (TI-TXT = 16, Intel-HEX = 32, SREC = 32).
             </summary>
-            <exception cref="T:BSL430_NET.Bsl430NetException"></exception>
+            <exception cref="T:BSL430_NET.FirmwareTools.Helpers.FirmwareToolsException"></exception>
         </member>
         <member name="M:BSL430_NET.FirmwareTools.FwTools.Create(System.Collections.Generic.IEnumerable{System.Byte},System.Int32,BSL430_NET.FirmwareTools.FwTools.FwFormat,System.Int32)">
             <summary>
@@ -200,7 +231,7 @@
             <para/>LineLength defines amount of data bytes per one text row. When = 0, default values are set
             (TI-TXT = 16, Intel-HEX = 32, SREC = 32).
             </summary>
-            <exception cref="T:BSL430_NET.Bsl430NetException"></exception>
+            <exception cref="T:BSL430_NET.FirmwareTools.Helpers.FirmwareToolsException"></exception>
         </member>
         <member name="M:BSL430_NET.FirmwareTools.FwTools.Create(System.Collections.Generic.ICollection{BSL430_NET.FirmwareTools.FwTools.FwNode},BSL430_NET.FirmwareTools.FwTools.FwFormat,System.Int32)">
             <summary>
@@ -209,7 +240,7 @@
             <para/>LineLength defines amount of data bytes per one text row. When = 0, default values are set
             (TI-TXT = 16, Intel-HEX = 32, SREC = 32).
             </summary>
-            <exception cref="T:BSL430_NET.Bsl430NetException"></exception>
+            <exception cref="T:BSL430_NET.FirmwareTools.Helpers.FirmwareToolsException"></exception>
         </member>
         <member name="M:BSL430_NET.FirmwareTools.FwTools.Convert(System.String,BSL430_NET.FirmwareTools.FwTools.FwFormat,System.Boolean,System.Int32)">
             <summary>
@@ -220,7 +251,7 @@
             <para/>LineLength defines amount of data bytes per one text row. When = 0, default values are set
             (TI-TXT = 16, Intel-HEX = 32, SREC = 32).
             </summary>
-            <exception cref="T:BSL430_NET.Bsl430NetException"></exception>
+            <exception cref="T:BSL430_NET.FirmwareTools.Helpers.FirmwareToolsException"></exception>
         </member>
         <member name="M:BSL430_NET.FirmwareTools.FwTools.GetPassword(System.String)">
             <summary>
@@ -234,7 +265,7 @@
             ResetVector and SizeBuffer are MSP430 specifics, other properties are universal.
             <para/>Log writes text (new line formatted) output only when parsing ELF firmware file.
             </summary>
-            <exception cref="T:BSL430_NET.Bsl430NetException"></exception>
+            <exception cref="T:BSL430_NET.FirmwareTools.Helpers.FirmwareToolsException"></exception>
         </member>
         <member name="M:BSL430_NET.FirmwareTools.FwTools.Combine(System.String,System.String,BSL430_NET.FirmwareTools.FwTools.FwFormat,System.Boolean,System.Int32)">
             <summary>
@@ -246,7 +277,7 @@
             <para/>LineLength defines amount of data bytes per one text row. When = 0, default values are set
             (TI-TXT = 16, Intel-HEX = 32, SREC = 32).
             </summary>
-            <exception cref="T:BSL430_NET.Bsl430NetException"></exception>
+            <exception cref="T:BSL430_NET.FirmwareTools.Helpers.FirmwareToolsException"></exception>
         </member>
         <member name="M:BSL430_NET.FirmwareTools.FwTools.Compare(System.String,System.String)">
             <summary>
@@ -256,7 +287,7 @@
             <para/>Match [0.0 ; 1.0] is match when 1.0 is full match and Equal = True, and 0.0 is different fw.
             <para/>BytesDiff is count of bytes (Data nodes) which both firmwares differ at. 0 means full match.
             </summary>
-            <exception cref="T:BSL430_NET.Bsl430NetException"></exception>
+            <exception cref="T:BSL430_NET.FirmwareTools.Helpers.FirmwareToolsException"></exception>
         </member>
         <member name="M:BSL430_NET.FirmwareTools.FwTools.Compare(BSL430_NET.FirmwareTools.FwTools.Firmware,BSL430_NET.FirmwareTools.FwTools.Firmware)">
             <summary>
@@ -266,285 +297,52 @@
             <para/>Match [0.0 ; 1.0] is match when 1.0 is full match and Equal = True, and 0.0 is  different fw.
             <para/>BytesDiff is count of bytes (Data nodes) which both firmwares differ at. 0 means full match.
             </summary>
-            <exception cref="T:BSL430_NET.Bsl430NetException"></exception>
+            <exception cref="T:BSL430_NET.FirmwareTools.Helpers.FirmwareToolsException"></exception>
         </member>
-        <member name="T:BSL430_NET.FirmwareTools.FwExtensions">
-            <summary>
-            Extensions class wrapping some extensions methods like CRC calc.
-            </summary>
-        </member>
-        <member name="M:BSL430_NET.FirmwareTools.FwExtensions.ToExt(BSL430_NET.FirmwareTools.FwTools.FwFormat)">
-            <summary>
-            Extension method to provide firmware format ext string with dot.
-            </summary>
-        </member>
-        <member name="M:BSL430_NET.FirmwareTools.FwExtensions.Crc16Ccitt(System.Collections.Generic.IEnumerable{System.Byte})">
-            <summary>
-            CRC-16-CCITT: Polynom = 0x1021, Initial = 0xFFFF
-            </summary>
-        </member>
-        <member name="M:BSL430_NET.FirmwareTools.FwExtensions.Crc16(System.Collections.Generic.IEnumerable{System.Byte},System.Int32,System.Int32)">
-            <summary>
-            CRC-16 generic implementation that needs a specific polynom and initial values.
-            </summary>
-        </member>
-        <member name="T:BSL430_NET.FirmwareTools.FwNodeComparer">
+        <member name="T:BSL430_NET.FirmwareTools.Helpers.FwNodeComparer">
             <summary>
             Compares whole Firmware Node, address and data. Useful when comparing two firmware files.
             </summary>
         </member>
-        <member name="M:BSL430_NET.FirmwareTools.FwNodeComparer.Equals(BSL430_NET.FirmwareTools.FwTools.FwNode,BSL430_NET.FirmwareTools.FwTools.FwNode)">
+        <member name="M:BSL430_NET.FirmwareTools.Helpers.FwNodeComparer.Equals(BSL430_NET.FirmwareTools.FwTools.FwNode,BSL430_NET.FirmwareTools.FwTools.FwNode)">
             <summary>
             True if addresses and data match.
             </summary>
         </member>
-        <member name="M:BSL430_NET.FirmwareTools.FwNodeComparer.GetHashCode(BSL430_NET.FirmwareTools.FwTools.FwNode)">
+        <member name="M:BSL430_NET.FirmwareTools.Helpers.FwNodeComparer.GetHashCode(BSL430_NET.FirmwareTools.FwTools.FwNode)">
             <summary>
             Hash Code created by XORing Address and Data.
             </summary>
         </member>
-        <member name="T:BSL430_NET.FirmwareTools.FwNodeAddrComparer">
+        <member name="T:BSL430_NET.FirmwareTools.Helpers.FwNodeAddrComparer">
             <summary>
             Compares Firmware Node addresses only. Useful when searching for fw addr overlap between two files.
             </summary>
         </member>
-        <member name="M:BSL430_NET.FirmwareTools.FwNodeAddrComparer.Equals(BSL430_NET.FirmwareTools.FwTools.FwNode,BSL430_NET.FirmwareTools.FwTools.FwNode)">
+        <member name="M:BSL430_NET.FirmwareTools.Helpers.FwNodeAddrComparer.Equals(BSL430_NET.FirmwareTools.FwTools.FwNode,BSL430_NET.FirmwareTools.FwTools.FwNode)">
             <summary>
             True if addresses match.
             </summary>
         </member>
-        <member name="M:BSL430_NET.FirmwareTools.FwNodeAddrComparer.GetHashCode(BSL430_NET.FirmwareTools.FwTools.FwNode)">
+        <member name="M:BSL430_NET.FirmwareTools.Helpers.FwNodeAddrComparer.GetHashCode(BSL430_NET.FirmwareTools.FwTools.FwNode)">
             <summary>
             Hash Code created from Address.
             </summary>
         </member>
-        <member name="T:BSL430_NET.BslUartMessage">
+        <member name="T:BSL430_NET.FirmwareTools.Helpers.FirmwareToolsException">
             <summary>
-            BLS UART Message. If there are any errors with the data transmission, an error message is sent back.
-            This message is sent only when 5xx or 6xx protocol version is used.
+            Firmware Tools Exception is generic Exception extended with Error and Msg (status) objects.
             </summary>
         </member>
-        <member name="F:BSL430_NET.BslUartMessage.ACK">
-            <summary>ACK - Success.</summary>
+        <member name="P:BSL430_NET.FirmwareTools.Helpers.FirmwareToolsException.Error">
+            <summary>Numeric representation of exception.</summary>
         </member>
-        <member name="F:BSL430_NET.BslUartMessage.HeaderIncorrect">
-            <summary>Header incorrect. The packet did not begin with the required 0x80 value.</summary>
-        </member>
-        <member name="F:BSL430_NET.BslUartMessage.ChecksumIncorrect">
-            <summary>Checksum incorrect. The packet did not have the correct checksum value.</summary>
-        </member>
-        <member name="F:BSL430_NET.BslUartMessage.PacketSizeZero">
-            <summary>Packet size zero. The size for the BSL core command was given as 0.</summary>
-        </member>
-        <member name="F:BSL430_NET.BslUartMessage.PacketSizeOverflow">
-            <summary>Packet size exceeds buffer. The packet size given is too big for the RX buffer.</summary>
-        </member>
-        <member name="F:BSL430_NET.BslUartMessage.UnknownError">
-            <summary>Unknown UART error.</summary>
-        </member>
-        <member name="F:BSL430_NET.BslUartMessage.UnknownBaudRate">
-            <summary>Unknown baud rate. The supplied data for baud rate change is not a known value.</summary>
-        </member>
-        <member name="F:BSL430_NET.BslUartMessage.NotAvailable">
-            <summary>BSL UART Message is not available.</summary>
-        </member>
-        <member name="T:BSL430_NET.BslCoreMessage">
-            <summary>
-            BSL Core Message is a response to Erase or Download action. (Mass Erase, TX Data Block)
-            This message is sent only when 5xx or 6xx protocol version is used.
-            </summary>
-        </member>
-        <member name="F:BSL430_NET.BslCoreMessage.Success">
-            <summary>Operation Successful.</summary>
-        </member>
-        <member name="F:BSL430_NET.BslCoreMessage.FlashWriteCheckFail">
-            <summary>Flash Write Check Failed. After programming, a CRC is run on the programmed data.
-            If the CRC does not match the expected result, this error is returned.
-            </summary>
-        </member>
-        <member name="F:BSL430_NET.BslCoreMessage.FlashFailBitSet">
-            <summary>Flash Fail Bit Set. An operation set the FAIL bit in the flash controller
-            (see the MSP430x5xx and MSP430x6xx Family User's Guide for more details on the flash fail bit).</summary>
-        </member>
-        <member name="F:BSL430_NET.BslCoreMessage.VoltageChanged">
-            <summary>Voltage Change During Program. The VPE was set during the requested write operation
-            (see the MSP430x5xx and MSP430x6xx Family User's Guide for more details on the VPE bit).</summary>
-        </member>
-        <member name="F:BSL430_NET.BslCoreMessage.BSLLocked">
-            <summary>BSL Locked. The correct password has not yet been supplied to unlock the BSL.</summary>
-        </member>
-        <member name="F:BSL430_NET.BslCoreMessage.BSLPasswordError">
-            <summary>BSL Password Error. An incorrect password was supplied to the BSL when attempting an unlock.</summary>
-        </member>
-        <member name="F:BSL430_NET.BslCoreMessage.ByteWriteForbidden">
-            <summary>Byte Write Forbidden. This error is returned when a byte write is attempted in a flash area.</summary>
-        </member>
-        <member name="F:BSL430_NET.BslCoreMessage.UnknownCommand">
-            <summary>Unknown Command. The command given to the BSL was not recognized.</summary>
-        </member>
-        <member name="F:BSL430_NET.BslCoreMessage.PacketLengthOverflow">
-            <summary>Packet Length Exceeds Buffer Size.
-            The supplied packet length value is too large to be held in the BSL receive buffer.</summary>
-        </member>
-        <member name="F:BSL430_NET.BslCoreMessage.NotAvailable">
-            <summary>BSL Core Message is not available.</summary>
-        </member>
-        <member name="T:BSL430_NET.Status">
-            <summary>
-            Status class is an Error Cluster with int, bool and string status with Core and UART messages.
-            </summary>
-        </member>
-        <member name="P:BSL430_NET.Status.Error">
-            <summary>Numeric representation of status, any value other then 0 indicates an error.</summary>
-        </member>
-        <member name="P:BSL430_NET.Status.OK">
-            <summary>Boolean representation of status, true means OK, false means ERROR.</summary>
-        </member>
-        <member name="P:BSL430_NET.Status.Msg">
+        <member name="P:BSL430_NET.FirmwareTools.Helpers.FirmwareToolsException.Msg">
             <summary>String representation of status.</summary>
         </member>
-        <member name="P:BSL430_NET.Status.Extra">
-            <summary>Additional info, that can be used for detailed problem analysis.</summary>
-        </member>
-        <member name="P:BSL430_NET.Status.CoreStatus">
-            <summary>BslCoreMessage status.</summary>
-        </member>
-        <member name="P:BSL430_NET.Status.UartStatus">
-            <summary>BslUartMessage status.</summary>
-        </member>
-        <member name="P:BSL430_NET.Status.InnerStatus">
-            <summary>Inner Status like inner exception can contain the previous Status, usually with error.</summary>
-        </member>
-        <member name="M:BSL430_NET.Status.FormattedString(BSL430_NET.Status,System.Boolean)">
-            <summary>Formatted status from single object.</summary>
-        </member>
-        <member name="M:BSL430_NET.Status.ToString">
+        <member name="M:BSL430_NET.FirmwareTools.Helpers.FirmwareToolsException.#ctor(System.Int32,System.String)">
             <summary>
-            Formatted Status chain, that is built from Msg and InnerStatus Msg properties, with Extra and optional Core/Uart Status.
-            </summary>
-        </member>
-        <member name="T:BSL430_NET.StatusEx">
-            <summary>
-            StatusEx is Status extended with Report List, returned as a result of main public methods.
-            </summary>
-        </member>
-        <member name="P:BSL430_NET.StatusEx.BytesProcessed">
-            <summary>Number of bytes that were processed (uploaded/downloaded to/from target MCU).</summary>
-        </member>
-        <member name="P:BSL430_NET.StatusEx.BSLVersion">
-            <summary>Null, 4-byte or 10-byte array, meaning differs, please see TI BSL doc (slau319t.pdf).</summary>
-        </member>
-        <member name="P:BSL430_NET.StatusEx.Reports">
-            <summary>Report List.</summary>
-        </member>
-        <member name="M:BSL430_NET.StatusEx.ToString">
-            <summary>
-            Formatted StatusEx chain, that is built from Msg and InnerStatus Msg properties, with Extra and optional Core/Uart Status,
-            and with BSL detail info like BytesProcessed and BSLVersion.
-            </summary>
-        </member>
-        <member name="T:BSL430_NET.Report">
-            <summary>
-            Report is result of an action block with Name, Result and Timestamp.
-            </summary>
-        </member>
-        <member name="P:BSL430_NET.Report.Name">
-            <summary>Report Name is headline of action.</summary>
-        </member>
-        <member name="P:BSL430_NET.Report.Result">
-            <summary>Report Result indicates the result of action.</summary>
-        </member>
-        <member name="P:BSL430_NET.Report.Timestamp">
-            <summary>Report Timestamp is timestamp of Report creation.</summary>
-        </member>
-        <member name="T:BSL430_NET.ReportResult">
-            <summary>
-            Report result.
-            </summary>
-        </member>
-        <member name="F:BSL430_NET.ReportResult.SUCCESS">
-            <summary>Action headlined by Report Name completed successfully.</summary>
-        </member>
-        <member name="F:BSL430_NET.ReportResult.SKIPPED">
-            <summary>Action headlined by Report Name was skipped.</summary>
-        </member>
-        <member name="F:BSL430_NET.ReportResult.FAILED">
-            <summary>Action headlined by Report Name failed.</summary>
-        </member>
-        <member name="F:BSL430_NET.ReportResult.PENDING">
-            <summary>Action headlined by Report Name is currently in progress.</summary>
-        </member>
-        <member name="T:BSL430_NET.Bsl430NetException">
-            <summary>
-            BSL430.NET Exception is generic Exception extended with Status object.
-            </summary>
-        </member>
-        <member name="P:BSL430_NET.Bsl430NetException.Status">
-            <summary>BSL430.NET Status</summary>
-        </member>
-        <member name="M:BSL430_NET.Bsl430NetException.#ctor(System.String)">
-            <summary>
-            Bsl430NetException constructor
-            </summary>
-        </member>
-        <member name="M:BSL430_NET.Bsl430NetException.#ctor(BSL430_NET.Status)">
-            <summary>
-            Bsl430NetException constructor
-            </summary>
-        </member>
-        <member name="M:BSL430_NET.Bsl430NetException.#ctor(System.Int32)">
-            <summary>
-            Bsl430NetException constructor
-            </summary>
-        </member>
-        <member name="M:BSL430_NET.Bsl430NetException.#ctor(System.Int32,System.Exception)">
-            <summary>
-            Bsl430NetException constructor
-            </summary>
-        </member>
-        <member name="M:BSL430_NET.Bsl430NetException.#ctor(System.Int32,System.String)">
-            <summary>
-            Bsl430NetException constructor
-            </summary>
-        </member>
-        <member name="T:BSL430_NET.Utility.Utility">
-            <summary>
-            Utility class providing some helpful methods.
-            </summary>
-        </member>
-        <member name="M:BSL430_NET.Utility.Utility.GetEnumDefaultValue``1">
-            <summary>
-            Gets default value of enum/struct, which is declared as DefaultValue attribute.
-            </summary>
-        </member>
-        <member name="T:BSL430_NET.Utility.Extensions">
-            <summary>
-            Extension class with some helpful methods.
-            </summary>
-        </member>
-        <member name="M:BSL430_NET.Utility.Extensions.ToByteArray(System.String)">
-            <summary>
-            Covnerts hex string to byte array.
-            </summary>
-        </member>
-        <member name="M:BSL430_NET.Utility.Extensions.ToHexString(System.Byte[])">
-            <summary>
-            Converts byte array to hex string.
-            </summary>
-        </member>
-        <member name="M:BSL430_NET.Utility.Extensions.GetFlags(System.Enum)">
-            <summary>
-            Gets all enum flags.
-            </summary>
-        </member>
-        <member name="M:BSL430_NET.Utility.Extensions.GetEnumDescription(System.Enum)">
-            <summary>
-            Gets enum string description.
-            </summary>
-        </member>
-        <member name="M:BSL430_NET.Utility.Extensions.Truncate(System.String,System.Int32,System.String)">
-            <summary>
-            Truncate string with a postfix or three dots by default.
+            FirmwareToolsException constructor
             </summary>
         </member>
     </members>
