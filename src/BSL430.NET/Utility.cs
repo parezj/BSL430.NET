@@ -218,6 +218,7 @@ namespace BSL430_NET
                     case 464: err_msg = "Unknown or disconnected device."; break;
                     case 465: err_msg = ""; break;  // blank error
                     case 466: err_msg = "BSL430.NET instance was created with zero parameters, therefore can do nothing except ScanAll."; break;
+                    case 469: err_msg = "BSL430.NET instance was created with different Mode than Scan was called with."; break;
                     case 468: err_msg = "Firmware address out of range - not supported address mode, try with lower address range."; break;
 
                     case 801: err_msg = "build_msg() failed. wrong input parameters."; break;

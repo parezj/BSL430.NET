@@ -918,9 +918,9 @@ namespace BSL430_NET
                         machineStr = "machine: Motorola 68000 (0x04)";
                     //else throw new Bsl430NetException(479);  // only TI MSP430 or ARM (MSP432) machine
 
-                    log?.WriteLine("\nELF info:  32-bit/little-endian/executable ELF file (0x01/0x01/0x02)");
+                    log?.WriteLine("\nELF info:  32-bit/little-endian/executable (0x1/0x1/0x2)");
                     log?.WriteLine(machineStr);
-                    log?.WriteLine("=============================================");
+                    log?.WriteLine("=======================================");
                         
 
                     uint entry = (uint)(data[27] << 24 | data[26] << 16 | data[25] << 8 | data[24]);
@@ -946,7 +946,7 @@ namespace BSL430_NET
                     log?.WriteLine($"  shnum:      0x{shnum.ToString("X4")}");
                     log?.WriteLine($"  shstrndx:   0x{shstrndx.ToString("X4")}");
 
-                    log?.WriteLine("=============================================");
+                    log?.WriteLine("=======================================");
                     log?.WriteLine("sections:\n");
                     log?.WriteLine("  num name                address         offset          size");
                 
@@ -992,7 +992,7 @@ namespace BSL430_NET
                         }
                     }
 
-                    log?.WriteLine("=============================================");
+                    log?.WriteLine("=======================================");
                     log?.WriteLine("program:\n");
                     log?.WriteLine("  offset          physaddr        memsize         flags align");
 
@@ -1039,7 +1039,7 @@ namespace BSL430_NET
                         }
                     }
 
-                    log?.WriteLine("=============================================");
+                    log?.WriteLine("=======================================");
 
                     foreach (var (p_offset, p_paddr, p_filesz, p_align) in program)
                     {

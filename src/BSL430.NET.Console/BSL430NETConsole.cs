@@ -251,21 +251,17 @@ namespace BSL430_NET_Console
                             {
                                 using (var dev = new BSL430NET())
                                 {
-                                    var stat = dev.ScanAll(out List<FTDI_Device> ftdi,
-                                                           out List<Libftdi_Device> libftdi,
-                                                           out List<USB_HID_Device> usb,
-                                                           out List<Serial_Device> serial,
-                                                           (((options.Ftdi_IgnoreUnknownDev) ? ScanOptions.Ftdi_IgnoreUnknownDev :
-                                                                                               ScanOptions.None) |
-                                                            ((options.UsbHid_IgnoreTexasVid) ? ScanOptions.UsbHid_IgnoreTexasVid :
-                                                                                               ScanOptions.None)));
+                                    var ret = dev.ScanAllEx((((options.Ftdi_IgnoreUnknownDev) ? ScanOptions.Ftdi_IgnoreUnknownDev :
+                                                                                                 ScanOptions.None) |
+                                                              ((options.UsbHid_IgnoreTexasVid) ? ScanOptions.UsbHid_IgnoreTexasVid :
+                                                                                                 ScanOptions.None)));
 
                                     timer.Dispose();
-                                    PrintDevices(ALIAS_FTDI, stat.Ftdi.OK, stat.Ftdi.ToString(), ftdi);
-                                    PrintDevices(ALIAS_LIBFTDI, stat.Libftdi.OK, stat.Libftdi.ToString(), libftdi);
-                                    PrintDevices(ALIAS_USBHID, stat.Usb.OK, stat.Usb.ToString(), usb);
-                                    PrintDevices(ALIAS_SERIAL, stat.Serial.OK, stat.Serial.ToString(), serial);
-                                    WriteXML((ftdi, libftdi, usb, serial), "All", options.Xml);
+                                    PrintDevices(ALIAS_FTDI, ret.FtdiDevices.Status, ret.FtdiDevices.Devices);
+                                    PrintDevices(ALIAS_LIBFTDI, ret.LibftdiDevices.Status, ret.LibftdiDevices.Devices);
+                                    PrintDevices(ALIAS_USBHID, ret.UsbDevices.Status, ret.UsbDevices.Devices);
+                                    PrintDevices(ALIAS_SERIAL, ret.SerialDevices.Status, ret.SerialDevices.Devices);
+                                    WriteXML(ret, "All", options.Xml);
                                 }
                             }
                             break;
@@ -274,13 +270,12 @@ namespace BSL430_NET_Console
                             {
                                 using (var dev = new BSL430NET(Mode.UART_FTD2XX))
                                 {
-                                    Status stat = dev.Scan(out List<FTDI_Device> devices,
-                                                           (options.Ftdi_IgnoreUnknownDev) ? ScanOptions.Ftdi_IgnoreUnknownDev :
-                                                                                             ScanOptions.None);
+                                    var ret = dev.Scan<FTDI_Device>((options.Ftdi_IgnoreUnknownDev) ? 
+                                                                    ScanOptions.Ftdi_IgnoreUnknownDev : ScanOptions.None);
 
                                     timer.Dispose();
-                                    PrintDevices(ALIAS_FTDI, stat.OK, stat.ToString(), devices);
-                                    WriteXML(devices, "FTDI", options.Xml);
+                                    PrintDevices(ALIAS_FTDI, ret.Status, ret.Devices);
+                                    WriteXML(ret, "FTDI", options.Xml);
                                 }
                             }
                             break;
@@ -289,11 +284,11 @@ namespace BSL430_NET_Console
                             {
                                 using (var dev = new BSL430NET(Mode.UART_libftdi))
                                 {
-                                    Status stat = dev.Scan(out List<Libftdi_Device> devices);
+                                    var ret = dev.Scan<Libftdi_Device>();
 
                                     timer.Dispose();
-                                    PrintDevices(ALIAS_LIBFTDI, stat.OK, stat.ToString(), devices);
-                                    WriteXML(devices, "Libftdi", options.Xml);
+                                    PrintDevices(ALIAS_LIBFTDI, ret.Status, ret.Devices);
+                                    WriteXML(ret, "Libftdi", options.Xml);
                                 }
                             }
                             break;
@@ -302,13 +297,12 @@ namespace BSL430_NET_Console
                             {
                                 using (var dev = new BSL430NET(Mode.USB_HID))
                                 {
-                                    Status stat = dev.Scan(out List<USB_HID_Device> devices,
-                                                           (options.UsbHid_IgnoreTexasVid) ? ScanOptions.UsbHid_IgnoreTexasVid : 
-                                                                                             ScanOptions.None);
+                                    var ret = dev.Scan<USB_HID_Device>((options.UsbHid_IgnoreTexasVid) ? 
+                                                                       ScanOptions.UsbHid_IgnoreTexasVid : ScanOptions.None);
                                     
                                     timer.Dispose();
-                                    PrintDevices(ALIAS_USBHID, stat.OK, stat.ToString(), devices);
-                                    WriteXML(devices, "USB", options.Xml);
+                                    PrintDevices(ALIAS_USBHID, ret.Status, ret.Devices);
+                                    WriteXML(ret, "USB", options.Xml);
                                 }
                             }
                             break;
@@ -317,11 +311,11 @@ namespace BSL430_NET_Console
                             {
                                 using (var dev = new BSL430NET(Mode.UART_Serial))
                                 {
-                                    Status stat = dev.Scan(out List<Serial_Device> devices);
+                                    var ret = dev.Scan<Serial_Device>();
 
                                     timer.Dispose();
-                                    PrintDevices(ALIAS_SERIAL, stat.OK, stat.ToString(), devices);
-                                    WriteXML(devices, "Serial", options.Xml);
+                                    PrintDevices(ALIAS_SERIAL, ret.Status, ret.Devices);
+                                    WriteXML(ret, "Serial", options.Xml);
                                 }
                             }
                             break;
@@ -677,11 +671,11 @@ namespace BSL430_NET_Console
             }
         }
 
-        private void PrintDevices<T>(string mode, bool ok, string err, List<T> dev) where T: Bsl430NetDevice
+        private void PrintDevices<T>(string mode, Status stat, List<T> dev) where T: Bsl430NetDevice
         {
             ConsoleColor _color = Console.ForegroundColor;
-            if (!ok)
-                Console.WriteLine($" {mode}:{Str(' ', 10 - mode.Length)}ERROR:\n" + err + "\n");
+            if (!stat.OK)
+                Console.WriteLine($" {mode}:{Str(' ', 10 - mode.Length)}ERROR:\n" + stat.ToString() + "\n");
             else if (dev == null || dev.Count == 0)
                 Console.WriteLine($" {mode}:{Str(' ', 10 - mode.Length)}0 devices\n");
             else

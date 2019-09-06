@@ -234,16 +234,54 @@ namespace BSL430_NET
     }
 
     /// <summary>
+    /// Scan Result wraps Status and List of Devices - Bsl430NetDevice childs (FTDI / Libftdi / Serial / USB).
+    /// </summary>
+    public class ScanResult<Tdev> where Tdev : Bsl430NetDevice
+    {
+        /// <summary>
+        /// Scan Status is result of each device scan, any error with corresponding number and message will be set.
+        /// </summary>
+        public Status Status { get; set; }
+        /// <summary>
+        /// List of Devices - Bsl430NetDevice childs. This is main device container, used as input to any operation.
+        /// </summary>
+        public List<Tdev> Devices { get; set; }
+    }
+
+    /// <summary>
+    /// Scan All Result wraps Status and List of Devices - Bsl430NetDevice childs (FTDI, Libftdi, Serial, USB).
+    /// </summary>
+    public class ScanAllResult
+    {
+        /// <summary>/// FTDI Scan Result - Status and List of Devices - Bsl430NetDevice childs.</summary>
+        public ScanResult<FTDI_Device> FtdiDevices { get; set; }
+        /// <summary>/// Libftdi Scan Result - Status and List of Devices - Bsl430NetDevice childs.</summary>
+        public ScanResult<Libftdi_Device> LibftdiDevices { get; set; }
+        /// <summary>/// Serial (COM) Scan Result - Status and List of Devices - Bsl430NetDevice childs.</summary>
+        public ScanResult<USB_HID_Device> UsbDevices { get; set; }
+        /// <summary>/// USB Scan Result - Status and List of Devices - Bsl430NetDevice childs.</summary>
+        public ScanResult<Serial_Device> SerialDevices { get; set; }
+    }
+
+    /// <summary>
     /// BSL430.NET is cross-platform toolkit to manage memory of MSP430 MCUs via UART (FTDI, libftdi), USB or Serial (COM) port.
     /// It is a cheap replacement for stock TI MSP-FET programmer without debug capability. It can Upload, Download, Erase and Scan.
     /// </summary>
     public class BSL430NET : IBsl430Net, IDisposable
     {
+        #region Public Events
         /// <summary>
         /// Event fired when progress of main action changes eg. Open -> Set -> Uploading 1 batch -> next batch ...
         /// </summary>
         public event Bsl430NetEventHandler ProgressChanged = null;
+        #endregion
 
+        #region Private Data
+        private IDevice dev;
+        private Mode mode;
+        #endregion
+
+        #region Constructors
         /// <summary>
         /// Use this constructor to exec ScanAll method only. Any other methods will return error.
         /// </summary>
@@ -302,7 +340,9 @@ namespace BSL430_NET
         {
             dev = (Core)CoreInjection; // TODO - opravdu to tak funguje?? neni treba pretypovat na potomka? list
         }
+        #endregion
 
+        #region Properties
         private Bsl430NetDevice defaultDevice = new Bsl430NetDevice();
         /// <summary>
         /// DefaultDevice is useful when call public methods without explicitly declaring target device.
@@ -317,10 +357,9 @@ namespace BSL430_NET
                     dev.DefaultDevice = value;
             }
         }
+        #endregion
 
-        private IDevice dev;
-        private Mode mode;
-
+        #region Private Methods
         private void Bsl430NetInit(Mode Mode, Bsl430NetDevice Device = null)
         {
             try
@@ -340,31 +379,36 @@ namespace BSL430_NET
                 throw new Exception(ex.Message);
             }
         }
+        #endregion
 
+        #region Public Methods - Main Interface
         /// <summary>
-        /// Scan for all available devices in multimode (FTDI, libftdi, USB and Serial) and return more specific data.
+        /// Detailed Scan for all available devices in multimode (FTDI, libftdi, USB and Serial). Returns ScanAllResult with 4
+        /// specific ScanResult classes, each with Status and List of Devices - Bsl430NetDevice childs.
         /// </summary>
-        public (Status Ftdi, Status Libftdi, Status Usb, Status Serial) ScanAll(out List<FTDI_Device> FtdiDevices,
-                                                                                out List<Libftdi_Device> LibftdiDevices,
-                                                                                out List<USB_HID_Device> UsbDevices,
-                                                                                out List<Serial_Device> SerialDevices,
-                                                                                ScanOptions ScanOpt = ScanOptions.None)
+        /// <exception cref="Bsl430NetException"></exception>
+        public ScanAllResult ScanAllEx(ScanOptions ScanOpt = ScanOptions.None)
         {
             Status status_ftdi;
             Status status_libftdi;
             Status status_usb;
             Status status_serial;
 
+            List<FTDI_Device> ftdiDevices;
+            List<Libftdi_Device> libftdiDevices;
+            List<USB_HID_Device> usbDevices;
+            List<Serial_Device> serialDevices;
+
             try
             {
                 using (IDevice dev_ftdi = new CommFTD2XX())
                 {
-                    status_ftdi = dev_ftdi.Scan(out FtdiDevices, ScanOpt);
+                    status_ftdi = dev_ftdi.Scan(out ftdiDevices, ScanOpt);
                 }
             }
             catch (Exception ex)
             {
-                FtdiDevices = new List<FTDI_Device>();
+                ftdiDevices = new List<FTDI_Device>();
                 status_ftdi = Utils.StatusCreate(465, ex.Message);
             }
 
@@ -372,12 +416,12 @@ namespace BSL430_NET
             {
                 using (IDevice dev_libftdi = new CommLibftdi())
                 {
-                    status_libftdi = dev_libftdi.Scan(out LibftdiDevices, ScanOpt);
+                    status_libftdi = dev_libftdi.Scan(out libftdiDevices, ScanOpt);
                 }
             }
             catch (Exception ex)
             {
-                LibftdiDevices = new List<Libftdi_Device>();
+                libftdiDevices = new List<Libftdi_Device>();
                 status_libftdi = Utils.StatusCreate(465, ex.Message);
             }
 
@@ -385,12 +429,12 @@ namespace BSL430_NET
             {
                 using (IDevice dev_usb = new CommUSB())
                 {
-                    status_usb = dev_usb.Scan(out UsbDevices, ScanOpt);
+                    status_usb = dev_usb.Scan(out usbDevices, ScanOpt);
                 }
             }
             catch (Exception ex)
             {
-                UsbDevices = new List<USB_HID_Device>();
+                usbDevices = new List<USB_HID_Device>();
                 status_usb = Utils.StatusCreate(465, ex.Message);
             }
 
@@ -398,46 +442,61 @@ namespace BSL430_NET
             {
                 using (IDevice dev_uart = new CommSerial())
                 {
-                    status_serial = dev_uart.Scan(out SerialDevices, ScanOpt);
+                    status_serial = dev_uart.Scan(out serialDevices, ScanOpt);
                 }
             }
             catch (Exception ex)
             {
-                SerialDevices = new List<Serial_Device>();
+                serialDevices = new List<Serial_Device>();
                 status_serial = Utils.StatusCreate(465, ex.Message);
             }
 
-            return (Ftdi: status_ftdi, Libftdi: status_libftdi, Usb: status_usb, Serial: status_serial);
+            return new ScanAllResult()
+            {
+                FtdiDevices = new ScanResult<FTDI_Device>() { Status = status_ftdi, Devices = ftdiDevices },
+                LibftdiDevices = new ScanResult<Libftdi_Device>() { Status = status_libftdi, Devices = libftdiDevices },
+                UsbDevices = new ScanResult<USB_HID_Device>() { Status = status_usb, Devices = usbDevices },
+                SerialDevices = new ScanResult<Serial_Device>() { Status = status_serial, Devices = serialDevices }
+            };
         }
 
         /// <summary>
-        /// Scan for all available devices in multimode (FTDI, libftdi, USB and Serial) and return uniform less specific data.
+        /// Scan for all available devices in multimode (FTDI, libftdi, USB and Serial). Returns generic ScanResult class
+        /// with Status and List of Devices - Bsl430NetDevice.
         /// </summary>
-        public (Status Ftdi, Status Libftdi, Status Usb, Status Serial) ScanAll(out List<Bsl430NetDevice> Devices,
-                                                                                ScanOptions ScanOpt = ScanOptions.None)
+        /// <exception cref="Bsl430NetException"></exception>
+        public ScanResult<Bsl430NetDevice> ScanAll(ScanOptions ScanOpt = ScanOptions.None)
         {
-            var ret = ScanAll(out List<FTDI_Device> _ftdi,
-                              out List<Libftdi_Device> _libftdi,
-                              out List<USB_HID_Device> _usb,
-                              out List<Serial_Device> _serial, 
-                              ScanOpt);
+            var scanAll = ScanAllEx(ScanOpt);
+            var ret = new ScanResult<Bsl430NetDevice>() { Devices = new List<Bsl430NetDevice>() };
 
-            Devices = new List<Bsl430NetDevice>();
-            Devices.AddRange(_ftdi.Select(x => new Bsl430NetDevice(x)).ToList());
-            Devices.AddRange(_libftdi.Select(x => new Bsl430NetDevice(x)).ToList());
-            Devices.AddRange(_usb.Select(x => new Bsl430NetDevice(x)).ToList());
-            Devices.AddRange(_serial.Select(x => new Bsl430NetDevice(x)).ToList());
+            ret.Devices.AddRange(scanAll.FtdiDevices.Devices.Select(x => new Bsl430NetDevice(x)).ToList());
+            ret.Devices.AddRange(scanAll.LibftdiDevices.Devices.Select(x => new Bsl430NetDevice(x)).ToList());
+            ret.Devices.AddRange(scanAll.UsbDevices.Devices.Select(x => new Bsl430NetDevice(x)).ToList());
+            ret.Devices.AddRange(scanAll.SerialDevices.Devices.Select(x => new Bsl430NetDevice(x)).ToList());
 
             return ret;
         }
 
         /// <summary>
-        /// Scan for devices in single mode (FTDI, libftdi, USB or Serial).
+        /// Detailed Scan for available devices in single mode (FTDI / libftdi / USB / Serial). Returns generic ScanResult class
+        /// with Status and List of Devices - Bsl430NetDevice.
         /// </summary>
-        public Status Scan<Tdev>(out List<Tdev> DeviceList,
-                                 ScanOptions ScanOpt = ScanOptions.None) where Tdev : Bsl430NetDevice
+        /// <exception cref="Bsl430NetException"></exception>
+        public ScanResult<Tdev> Scan<Tdev>(ScanOptions ScanOpt = ScanOptions.None) where Tdev : Bsl430NetDevice
         {
-            return dev.Scan(out DeviceList, ScanOpt) ?? Utils.StatusCreate(466);
+            if ((typeof(Tdev) == typeof(FTDI_Device) && mode == Mode.UART_FTD2XX) ||
+                (typeof(Tdev) == typeof(Libftdi_Device) && mode == Mode.UART_libftdi) ||
+                (typeof(Tdev) == typeof(Serial_Device) && mode == Mode.UART_Serial) ||
+                (typeof(Tdev) == typeof(USB_HID_Device) && mode == Mode.USB_HID))
+            {
+                Status ret = dev.Scan<Tdev>(out List<Tdev> devList, ScanOpt) ?? Utils.StatusCreate(466);
+                return new ScanResult<Tdev>() { Status = ret, Devices = devList };
+            }
+            else
+            {
+                throw new Bsl430NetException(469);
+            }
         }
 
         /// <summary>
@@ -553,7 +612,9 @@ namespace BSL430_NET
         {
             return this.mode;
         }
+        #endregion
 
+        #region Helpers
         /// <summary>
         /// Closes device, disposes all handles and suppresses any errors.
         /// </summary>
@@ -598,5 +659,6 @@ namespace BSL430_NET
         {
             this.ProgressChanged?.Invoke(this, new Bsl430NetEventArgs { Progress = Progress, Report = Report });
         }
+        #endregion
     }
 }

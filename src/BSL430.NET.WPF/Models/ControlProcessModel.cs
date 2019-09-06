@@ -111,16 +111,12 @@ namespace BSL430_NET_WPF.Models
             {
                 using (var dev = new BSL430NET())
                 {
-                    //var stat = dev.ScanAll(out List<Bsl430NetDevice> devices);
-                    var stat = dev.ScanAll(out List<FTDI_Device> ftdi,
-                                           out List<Libftdi_Device> libftdi,
-                                           out List<USB_HID_Device> usb,
-                                           out List<Serial_Device> serial);
+                    var ret = dev.ScanAllEx();
 
-                    this.Devices.AddRange(ftdi);
-                    this.Devices.AddRange(libftdi);
-                    this.Devices.AddRange(usb);
-                    this.Devices.AddRange(serial);
+                    this.Devices.AddRange(ret.FtdiDevices.Devices);
+                    this.Devices.AddRange(ret.LibftdiDevices.Devices);
+                    this.Devices.AddRange(ret.UsbDevices.Devices);
+                    this.Devices.AddRange(ret.SerialDevices.Devices);
 
                     lastDev = this.Devices.FindIndex(d => d.Name == BslSettings.Instance.MainLastDevice);
                     lastDev = (lastDev >= 0) ? this.viewModel.SelectedIndex = lastDev : 0;
@@ -129,35 +125,35 @@ namespace BSL430_NET_WPF.Models
                     {
                         FTDI = new ScanAllResult.FTDIResult()
                         {
-                            ErrorNum = stat.Ftdi.Error,
-                            Status = stat.Ftdi.ToString(),
-                            Count = ftdi.Count,
-                            Devices = ftdi
+                            ErrorNum = ret.FtdiDevices.Status.Error,
+                            Status = ret.FtdiDevices.Status.ToString(),
+                            Count = ret.FtdiDevices.Devices.Count,
+                            Devices = ret.FtdiDevices.Devices
                         },
                         Libftdi = new ScanAllResult.LibftdiResult()
                         {
-                            ErrorNum = stat.Libftdi.Error,
-                            Status = stat.Libftdi.ToString(),
-                            Count = libftdi.Count,
-                            Devices = libftdi
+                            ErrorNum = ret.LibftdiDevices.Status.Error,
+                            Status = ret.LibftdiDevices.Status.ToString(),
+                            Count = ret.LibftdiDevices.Devices.Count,
+                            Devices = ret.LibftdiDevices.Devices
                         },
                         USB = new ScanAllResult.USBResult()
                         {
-                            ErrorNum = stat.Usb.Error,
-                            Status = stat.Usb.ToString(),
-                            Count = usb.Count,
-                            Devices = usb
+                            ErrorNum = ret.UsbDevices.Status.Error,
+                            Status = ret.UsbDevices.Status.ToString(),
+                            Count = ret.UsbDevices.Devices.Count,
+                            Devices = ret.UsbDevices.Devices
                         },
                         Serial = new ScanAllResult.SerialResult()
                         {
-                            ErrorNum = stat.Serial.Error,
-                            Status = stat.Serial.ToString(),
-                            Count = serial.Count,
-                            Devices = serial
+                            ErrorNum = ret.SerialDevices.Status.Error,
+                            Status = ret.SerialDevices.Status.ToString(),
+                            Count = ret.SerialDevices.Devices.Count,
+                            Devices = ret.SerialDevices.Devices
                         }
                     };
 
-                    WriteXML(GetLogRoot(_xml, "ScanAll"));
+                    WriteXML(GetLogRoot(_xml, "ScanAllEx"));
                 }
             }
             catch (Bsl430NetException ex)

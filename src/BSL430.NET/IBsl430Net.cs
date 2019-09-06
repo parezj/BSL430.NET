@@ -47,20 +47,25 @@ namespace BSL430_NET
     public interface IBsl430Net
     {
         /// <summary>
-        /// Scan for all available devices in multimode (FTDI, libftdi, USB and Serial).
+        /// Detailed Scan for all available devices in multimode (FTDI, libftdi, USB and Serial). Returns ScanAllResult with 4
+        /// specific ScanResult classes, each with Status and List of Devices - Bsl430NetDevice childs.
         /// </summary>
         /// <exception cref="Bsl430NetException"></exception>
-        (Status Ftdi, Status Libftdi, Status Usb, Status Serial) ScanAll(out List<FTDI_Device> FtdiDevices,
-                                                                         out List<Libftdi_Device> LibftdiDevices,
-                                                                         out List<USB_HID_Device> UsbDevices,
-                                                                         out List<Serial_Device> SerialDevices,
-                                                                         ScanOptions ScanOpt = ScanOptions.None);
+        ScanAllResult ScanAllEx(ScanOptions ScanOpt = ScanOptions.None);
 
         /// <summary>
-        /// Scan for devices in single mode (FTDI, libftdi, USB or Serial).
+        /// Scan for all available devices in multimode (FTDI, libftdi, USB and Serial). Returns generic ScanResult class
+        /// with Status and List of Devices - Bsl430NetDevice.
         /// </summary>
         /// <exception cref="Bsl430NetException"></exception>
-        Status Scan<Tdev>(out List<Tdev> DeviceList, ScanOptions ScanOpt = ScanOptions.None) where Tdev : Bsl430NetDevice;
+        ScanResult<Bsl430NetDevice> ScanAll(ScanOptions ScanOpt = ScanOptions.None);
+
+        /// <summary>
+        /// Detailed Scan for available devices in single mode (FTDI / libftdi / USB / Serial). Returns generic ScanResult class
+        /// with Status and List of Devices - Bsl430NetDevice.
+        /// </summary>
+        /// <exception cref="Bsl430NetException"></exception>
+        ScanResult<Tdev> Scan<Tdev>(ScanOptions ScanOpt = ScanOptions.None) where Tdev : Bsl430NetDevice;
 
         /// <summary>
         /// Mass erase deletes the entire flash memory area except Information Memory if protocol 5xx6xx is used. 

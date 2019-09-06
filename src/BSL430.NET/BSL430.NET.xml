@@ -192,6 +192,38 @@
         <member name="P:BSL430_NET.Bsl430NetEventArgs.Report">
             <summary>Current report which is in progress at the moment.</summary>
         </member>
+        <member name="T:BSL430_NET.ScanResult`1">
+            <summary>
+            Scan Result wraps Status and List of Devices - Bsl430NetDevice childs (FTDI / Libftdi / Serial / USB).
+            </summary>
+        </member>
+        <member name="P:BSL430_NET.ScanResult`1.Status">
+            <summary>
+            Scan Status is result of each device scan, any error with corresponding number and message will be set.
+            </summary>
+        </member>
+        <member name="P:BSL430_NET.ScanResult`1.Devices">
+            <summary>
+            List of Devices - Bsl430NetDevice childs. This is main device container, used as input to any operation.
+            </summary>
+        </member>
+        <member name="T:BSL430_NET.ScanAllResult">
+            <summary>
+            Scan All Result wraps Status and List of Devices - Bsl430NetDevice childs (FTDI, Libftdi, Serial, USB).
+            </summary>
+        </member>
+        <member name="P:BSL430_NET.ScanAllResult.FtdiDevices">
+            <summary>/// FTDI Scan Result - Status and List of Devices - Bsl430NetDevice childs.</summary>
+        </member>
+        <member name="P:BSL430_NET.ScanAllResult.LibftdiDevices">
+            <summary>/// Libftdi Scan Result - Status and List of Devices - Bsl430NetDevice childs.</summary>
+        </member>
+        <member name="P:BSL430_NET.ScanAllResult.UsbDevices">
+            <summary>/// Serial (COM) Scan Result - Status and List of Devices - Bsl430NetDevice childs.</summary>
+        </member>
+        <member name="P:BSL430_NET.ScanAllResult.SerialDevices">
+            <summary>/// USB Scan Result - Status and List of Devices - Bsl430NetDevice childs.</summary>
+        </member>
         <member name="T:BSL430_NET.BSL430NET">
             <summary>
             BSL430.NET is cross-platform toolkit to manage memory of MSP430 MCUs via UART (FTDI, libftdi), USB or Serial (COM) port.
@@ -238,20 +270,26 @@
             DefaultDevice is useful when call public methods without explicitly declaring target device.
             </summary>
         </member>
-        <member name="M:BSL430_NET.BSL430NET.ScanAll(System.Collections.Generic.List{BSL430_NET.Comm.FTDI_Device}@,System.Collections.Generic.List{BSL430_NET.Comm.Libftdi_Device}@,System.Collections.Generic.List{BSL430_NET.Comm.USB_HID_Device}@,System.Collections.Generic.List{BSL430_NET.Comm.Serial_Device}@,BSL430_NET.ScanOptions)">
+        <member name="M:BSL430_NET.BSL430NET.ScanAllEx(BSL430_NET.ScanOptions)">
             <summary>
-            Scan for all available devices in multimode (FTDI, libftdi, USB and Serial) and return more specific data.
+            Detailed Scan for all available devices in multimode (FTDI, libftdi, USB and Serial). Returns ScanAllResult with 4
+            specific ScanResult classes, each with Status and List of Devices - Bsl430NetDevice childs.
             </summary>
+            <exception cref="T:BSL430_NET.Bsl430NetException"></exception>
         </member>
-        <member name="M:BSL430_NET.BSL430NET.ScanAll(System.Collections.Generic.List{BSL430_NET.Bsl430NetDevice}@,BSL430_NET.ScanOptions)">
+        <member name="M:BSL430_NET.BSL430NET.ScanAll(BSL430_NET.ScanOptions)">
             <summary>
-            Scan for all available devices in multimode (FTDI, libftdi, USB and Serial) and return uniform less specific data.
+            Scan for all available devices in multimode (FTDI, libftdi, USB and Serial). Returns generic ScanResult class
+            with Status and List of Devices - Bsl430NetDevice.
             </summary>
+            <exception cref="T:BSL430_NET.Bsl430NetException"></exception>
         </member>
-        <member name="M:BSL430_NET.BSL430NET.Scan``1(System.Collections.Generic.List{``0}@,BSL430_NET.ScanOptions)">
+        <member name="M:BSL430_NET.BSL430NET.Scan``1(BSL430_NET.ScanOptions)">
             <summary>
-            Scan for devices in single mode (FTDI, libftdi, USB or Serial).
+            Detailed Scan for available devices in single mode (FTDI / libftdi / USB / Serial). Returns generic ScanResult class
+            with Status and List of Devices - Bsl430NetDevice.
             </summary>
+            <exception cref="T:BSL430_NET.Bsl430NetException"></exception>
         </member>
         <member name="M:BSL430_NET.BSL430NET.Erase(BSL430_NET.Bsl430NetDevice)">
             <summary>
@@ -783,15 +821,24 @@
             Public interface of BSL430.NET library.
             </summary>
         </member>
-        <member name="M:BSL430_NET.IBsl430Net.ScanAll(System.Collections.Generic.List{BSL430_NET.Comm.FTDI_Device}@,System.Collections.Generic.List{BSL430_NET.Comm.Libftdi_Device}@,System.Collections.Generic.List{BSL430_NET.Comm.USB_HID_Device}@,System.Collections.Generic.List{BSL430_NET.Comm.Serial_Device}@,BSL430_NET.ScanOptions)">
+        <member name="M:BSL430_NET.IBsl430Net.ScanAllEx(BSL430_NET.ScanOptions)">
             <summary>
-            Scan for all available devices in multimode (FTDI, libftdi, USB and Serial).
+            Detailed Scan for all available devices in multimode (FTDI, libftdi, USB and Serial). Returns ScanAllResult with 4
+            specific ScanResult classes, each with Status and List of Devices - Bsl430NetDevice childs.
             </summary>
             <exception cref="T:BSL430_NET.Bsl430NetException"></exception>
         </member>
-        <member name="M:BSL430_NET.IBsl430Net.Scan``1(System.Collections.Generic.List{``0}@,BSL430_NET.ScanOptions)">
+        <member name="M:BSL430_NET.IBsl430Net.ScanAll(BSL430_NET.ScanOptions)">
             <summary>
-            Scan for devices in single mode (FTDI, libftdi, USB or Serial).
+            Scan for all available devices in multimode (FTDI, libftdi, USB and Serial). Returns generic ScanResult class
+            with Status and List of Devices - Bsl430NetDevice.
+            </summary>
+            <exception cref="T:BSL430_NET.Bsl430NetException"></exception>
+        </member>
+        <member name="M:BSL430_NET.IBsl430Net.Scan``1(BSL430_NET.ScanOptions)">
+            <summary>
+            Detailed Scan for available devices in single mode (FTDI / libftdi / USB / Serial). Returns generic ScanResult class
+            with Status and List of Devices - Bsl430NetDevice.
             </summary>
             <exception cref="T:BSL430_NET.Bsl430NetException"></exception>
         </member>
