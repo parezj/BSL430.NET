@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
+        <TargetFrameworks>netstandard2.0;net461;net45;net40</TargetFrameworks>
         <RootNamespace>BSL430_NET.FirmwareTools</RootNamespace>
         <Authors>Jakub Parez</Authors>
         <Company>Jakub Parez</Company>
@@ -38,7 +38,15 @@
     <PropertyGroup Condition=" '$(TargetFramework)' == 'net461'">
         <DefineConstants>NET461;NETFULL</DefineConstants>
     </PropertyGroup>
+    
+    <PropertyGroup Condition=" '$(TargetFramework)' == 'net45'">
+        <DefineConstants>NET45;NETFULL</DefineConstants>
+    </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(TargetFramework)' == 'net40'">
+        <DefineConstants>NET40;NETFULL</DefineConstants>
+    </PropertyGroup>
+    
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
         <PlatformTarget>AnyCPU</PlatformTarget>
         <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
@@ -69,6 +77,35 @@
         <OutputPath>bin\AnyCPU\Release\net461\</OutputPath>
     </PropertyGroup>
     
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net45|AnyCPU'">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
+        <OutputPath>bin\AnyCPU\Debug\net45\</OutputPath>
+        <WarningLevel>4</WarningLevel>
+        <DebugType>full</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net45|AnyCPU'">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
+        <OutputPath>bin\AnyCPU\Release\net45\</OutputPath>
+    </PropertyGroup>
+    
+        <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net40|AnyCPU'">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
+        <OutputPath>bin\AnyCPU\Debug\net40\</OutputPath>
+        <WarningLevel>4</WarningLevel>
+        <DebugType>full</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net40|AnyCPU'">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
+        <OutputPath>bin\AnyCPU\Release\net40\</OutputPath>
+    </PropertyGroup>
     
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|x86'">
         <PlatformTarget>x86</PlatformTarget>
@@ -100,7 +137,36 @@
         <OutputPath>bin\x86\Release\net461\</OutputPath>
     </PropertyGroup>
     
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net45|x86'">
+        <PlatformTarget>x86</PlatformTarget>
+        <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
+        <OutputPath>bin\x86\Debug\net45\</OutputPath>
+        <WarningLevel>4</WarningLevel>
+        <DebugType>full</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net45|x86'">
+        <PlatformTarget>x86</PlatformTarget>
+        <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
+        <OutputPath>bin\x86\Release\net45\</OutputPath>
+    </PropertyGroup>
     
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net40|x86'">
+        <PlatformTarget>x86</PlatformTarget>
+        <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
+        <OutputPath>bin\x86\Debug\net40\</OutputPath>
+        <WarningLevel>4</WarningLevel>
+        <DebugType>full</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net40|x86'">
+        <PlatformTarget>x86</PlatformTarget>
+        <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
+        <OutputPath>bin\x86\Release\net40\</OutputPath>
+    </PropertyGroup>
+      
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|x64'">
         <PlatformTarget>x64</PlatformTarget>
         <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
@@ -129,6 +195,36 @@
         <PlatformTarget>x64</PlatformTarget>
         <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
         <OutputPath>bin\x64\Release\net461\</OutputPath>
+    </PropertyGroup>
+    
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net45|x64'">
+        <PlatformTarget>x64</PlatformTarget>
+        <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
+        <OutputPath>bin\x64\Debug\net45\</OutputPath>
+        <WarningLevel>4</WarningLevel>
+        <DebugType>full</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net45|x64'">
+        <PlatformTarget>x64</PlatformTarget>
+        <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
+        <OutputPath>bin\x64\Release\net45\</OutputPath>
+    </PropertyGroup>
+    
+        <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net40|x64'">
+        <PlatformTarget>x64</PlatformTarget>
+        <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
+        <OutputPath>bin\x64\Debug\net40\</OutputPath>
+        <WarningLevel>4</WarningLevel>
+        <DebugType>full</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net40|x64'">
+        <PlatformTarget>x64</PlatformTarget>
+        <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
+        <OutputPath>bin\x64\Release\net40\</OutputPath>
     </PropertyGroup>
 
     <ItemGroup>

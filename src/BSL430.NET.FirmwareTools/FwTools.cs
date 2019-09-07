@@ -428,7 +428,7 @@ namespace BSL430_NET
 
             /// <summary>
             /// Convert firmware TI-TXT, Intel-HEX or ELF format (auto detected) to firmware in TI-TX or Intel-HEX format.
-            /// Returned fw is firmware and format is useful for auto-detect feedback.
+            /// Returned Fw is firmware and Format is useful for auto-detect feedback, indicates input format.
             /// <para/>FillFF is optional parameter forcing to fill missing addr nodes with 0xFF 
             /// and return monolithic piece of code, which is usefull for crc calc or overwriting whole memory in mcu.
             /// <para/>LineLength defines amount of data bytes per one text row. When = 0, default values are set
@@ -464,8 +464,8 @@ namespace BSL430_NET
             }
 
             /// <summary>
-            /// Read and parse firmware file (format auto-detected) and return BSL password 
-            /// (last 16 bytes of interrupt vector table 0xFFE0 - 0xFFFF)
+            /// [MSP430 specific] Read and parse firmware file (format auto-detected) and return BSL password 
+            /// (last 16 bytes of interrupt vector table 0xFFE0 - 0xFFFF).
             /// </summary>
             public static byte[] GetPassword(string FirmwarePath)
             {
@@ -507,7 +507,7 @@ namespace BSL430_NET
             /// <summary>
             /// Combines two firmware files into single one with format specified. Usually, main firmware
             /// and EEPROM file is done this way, or main firmware and Info A flash content is merged.
-            /// Returned fw is firmware and format1 with format2 are useful for auto-detect feedback.
+            /// Returned Fw is firmware and Format1 with Format2 are useful for auto-detect feedback, indicates input formats.
             /// <para/>FillFF is optional parameter forcing to fill missing addr nodes with 0xFF 
             /// and return monolithic piece of code, which is usefull for crc calc or overwriting whole memory in mcu.
             /// <para/>LineLength defines amount of data bytes per one text row. When = 0, default values are set
