@@ -12,7 +12,7 @@
 * convert, combine, validate, hex edit TI-TXT, Intel-HEX, SREC or ELF (WPF GUI / Console only)
 
 
-# <img src="https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/logo/logo_fw_tools.png" alt="BSL430.NET.FirmwareTools" width="80" height="80" style="padding-right: 10px;">BSL430.NET.FirmwareTools
+# <img src="https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/logo/logo_fw.png" alt="BSL430.NET.FirmwareTools" width="80" height="80" style="padding-right: 10px;">BSL430.NET.FirmwareTools
 [![Github tag (BSL430.NET)](https://img.shields.io/github/v/release/parezj/BSL430.NET?include_prereleases&color=orange)](https://github.com/parezj/BSL430.NET/releases/latest)
 [![NuGet version (BSL430.NET)](https://img.shields.io/nuget/v/BSL430.NET.svg)](https://www.nuget.org/packages/BSL430.NET.FirmwareTools/)
 [![fuget version (BSL430.NET)](https://www.fuget.org/packages/BSL430.NET/badge.svg)](https://www.fuget.org/packages/BSL430.NET.FirmwareTools)
