@@ -20,4 +20,4 @@
 
 > Firmware Tools
 
-* convert, combine, validate, hex edit, create, parse, compare TI-TXT, Intel-HEX, SREC or ELF
+* convert, combine, validate, create, parse, compare files with TI-TXT, Intel-HEX, SREC or ELF format
