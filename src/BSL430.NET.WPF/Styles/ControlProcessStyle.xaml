@@ -384,7 +384,7 @@
                                                 <Setter Property="Foreground" Value="#ea9f33"/>
                                                 <Style.Triggers>
                                                     <DataTrigger Binding="{Binding ControlProcess.State}" Value="{x:Static ViewModels:ProcessState.SUCCESS}">
-                                                        <Setter Property="Foreground" Value="LimeGReen"/>
+                                                        <Setter Property="Foreground" Value="Green"/>
                                                     </DataTrigger>
                                                     <DataTrigger Binding="{Binding ControlProcess.State}" Value="{x:Static ViewModels:ProcessState.FAILED}">
                                                         <Setter Property="Foreground" Value="Red"/>

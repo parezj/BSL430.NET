@@ -259,9 +259,9 @@ namespace BSL430_NET
                 public int SizeCode { get; set; } = 0;
                 /// <summary>CRC-16-CCITT is 16-bit crc value of all data bytes in firmware.</summary>
                 public int Crc16 { get; set; } = 0;
-                /// <summary>Reset vector is address (value) located usually at 16-bit address 0xFFFE.</summary>
+                /// <summary>[MSP430 specific] Reset vector is address (value) located usually at 16-bit address 0xFFFE.</summary>
                 public long? ResetVector { get; set; } = 0;
-                /// <summary>Help property for later firmware manipulation, like slicing in buffer blocks.</summary>
+                /// <summary>[MSP430 specific] Help property for later firmware manipulation, like slicing in buffer blocks.</summary>
                 public int SizeBuffer { get; set; } = 0;
                 /// <summary>
                 /// When parsing FW, FillFF can be set, to output code in single piece. Addresses, that dont belong to 
@@ -556,13 +556,13 @@ namespace BSL430_NET
                 }
 
                 var matches = Firmware2.Nodes.Intersect(Firmware1.Nodes, new FwNodeComparer());
-                int fwCnt = (Firmware1.Nodes.Count > Firmware1.Nodes.Count) ? Firmware1.Nodes.Count : Firmware2.Nodes.Count;
+                int fwCnt = (Firmware1.Nodes.Count > Firmware2.Nodes.Count) ? Firmware1.Nodes.Count : Firmware2.Nodes.Count;
                 int matchCnt = matches.Count();
 
                 if (matches == null)
                     return (false, 0.0, fwCnt);
                 if (matchCnt != Firmware1.Nodes.Count || matchCnt != Firmware2.Nodes.Count)
-                    return (false, matchCnt / (double)fwCnt, matchCnt);
+                    return (false, matchCnt / (double)fwCnt, fwCnt - matchCnt);
 
                 return (true, 1.0, 0);
             }

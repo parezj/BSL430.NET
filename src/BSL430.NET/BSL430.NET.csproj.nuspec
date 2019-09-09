@@ -2,7 +2,7 @@
 <package >
     <metadata>
         <id>BSL430.NET</id>
-        <version>1.3.0</version>
+        <version>1.3.1</version>
         <authors>Jakub Parez</authors>
         <owners>Jakub Parez</owners>
         <projectUrl>https://github.com/parezj/BSL430.NET</projectUrl>
@@ -14,7 +14,7 @@
         <license type="expression">MIT</license>
         <tags>MSP430 Texas Instruments MSP 430 firmware MCU BSL bootloader flash memory toolchain BSL430 BSL430.NET download upload erase FTDI FT232 Serial COM USB Intel HEX TI-TXT SREC ELF</tags>
         <dependencies>
-            <dependency id="BSL430.NET.FirmwareTools" version="1.3.0" />
+            <dependency id="BSL430.NET.FirmwareTools" version="1.3.1" />
             <dependency id="HidSharp" version="2.1.0" />
             <dependency id="LibUsbDotNet" version="2.2.29" />
             <dependency id="SerialPortStream" version="2.2.0" />

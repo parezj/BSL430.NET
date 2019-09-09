@@ -28,7 +28,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Grid.Row="0" Margin="5,0" VerticalAlignment="Center" HorizontalAlignment="Stretch">
-            <Label Content="Firmware status" Margin="15,0,0,0" FontWeight="Normal" FontSize="20"></Label>
+            <Label Content="{Binding FwName}" Margin="15,0,0,0" FontWeight="Normal" FontSize="20"></Label>
             <Border Margin="15,0" CornerRadius="7" BorderThickness="0" BorderBrush="Black" Background="{DynamicResource BasicHover}">
                 <Grid Margin="0">
                     <Grid.RowDefinitions>
@@ -71,7 +71,7 @@
                     <Label Grid.Row="1" Grid.Column="4" FontSize="20" Content="Last Address:" Margin="2" FontWeight="Thin" ToolTip="First and last 16-bit address in firmware."/>
 
                     <Label Grid.Row="2" Grid.Column="1" FontSize="20" Content="Size (Code/Full):" Margin="2" FontWeight="Thin" ToolTip="Full: Total length of firmware, count of all bytes from first address to last address.&#x0a;Code: Real count of all bytes in firmware parsed from file.&#x0a;When there is 'K' postfix present, it means, that real value is in multiples of 1024."/>
-                    <Label Grid.Row="2" Grid.Column="4" FontSize="20" Content="Reset Vector:" Margin="2" FontWeight="Thin" ToolTip="Reset vector is 16-bit address (value) located usually at address 0xFFFE. It is MSP430 architecture specific property."/>
+                    <Label Grid.Row="2" Grid.Column="4" FontSize="20" Content="Reset Vector:" Margin="2" FontWeight="Thin" ToolTip="[MSP430 specific] Reset vector is 16-bit address (value) located usually at address 0xFFFE. It is MSP430 architecture specific property."/>
 
                     <TextBox Grid.Row="0" Grid.Column="2" FontSize="22" Text="{Binding ValidateData.Format, Mode=OneWay, Converter={StaticResource FwFormatEnumConverter}}" 
                              Margin="2" FontWeight="DemiBold" IsReadOnly="True" BorderThickness="0" 
@@ -162,23 +162,46 @@
                     Style="{DynamicResource AccentedSquareButtonStyle}" 
                     cal:Message.Attach="ValidateClose"/>
 
-            <Button x:Name="Log" 
+            <Button x:Name="Compare" 
                     Margin="10,0" 
-                    Width="250" 
+                    Width="180" 
                     Padding="20, 10"
                     FontWeight="Bold"
                     FontSize="22" 
                     Cursor="Hand"
+                    BorderThickness="1"
+                    HorizontalAlignment="Center"
+                    Style="{DynamicResource SquareButtonStyle}"
+                    Controls:ControlsHelper.ContentCharacterCasing="Normal"
+                    cal:Message.Attach="Compare">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <iconPacks:PackIconFontAwesome Margin="0,0,10,0" 
+                                                   Kind="BalanceScaleSolid" 
+                                                   VerticalAlignment="Center" 
+                                                   Width="22" 
+                                                   Height="22"/>
+                    <TextBlock Text="Compare" VerticalAlignment="Center" FontWeight="Thin" FontSize="22" Padding="0,0,0,1"/>
+                </StackPanel>
+            </Button>
+
+            <Button x:Name="Log" 
+                    Margin="10,0" 
+                    Width="180" 
+                    Padding="20, 10"
+                    FontWeight="Bold"
+                    FontSize="22" 
+                    Cursor="Hand"
+                    BorderThickness="1"
                     HorizontalAlignment="Center"
                     Controls:ControlsHelper.ContentCharacterCasing="Normal"
                     cal:Message.Attach="DisplayParseLog">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                     <iconPacks:PackIconFontAwesome Margin="0,0,10,0" 
-                                                                  Kind="InfoSolid" 
-                                                                  VerticalAlignment="Center" 
-                                                                  Width="22" 
-                                                                  Height="22"/>
-                    <TextBlock Text="Show Parse Log" VerticalAlignment="Center" FontWeight="Thin" FontSize="22" Padding="0,0,0,1"/>
+                                                   Kind="InfoSolid" 
+                                                   VerticalAlignment="Center" 
+                                                   Width="22" 
+                                                   Height="22"/>
+                    <TextBlock Text="Parse Log" VerticalAlignment="Center" FontWeight="Thin" FontSize="22" Padding="0,0,0,1"/>
                 </StackPanel>
                 <Button.Style>
                     <Style TargetType="Button" BasedOn="{StaticResource SquareButtonStyle}">

@@ -246,6 +246,9 @@
         <member name="P:BSL430_NET.StatusEx.BSLVersion">
             <summary>Null, 4-byte or 10-byte array, meaning differs, please see TI BSL doc (slau319t.pdf).</summary>
         </member>
+        <member name="P:BSL430_NET.StatusEx.BSLVersionString">
+            <summary>String representation of BSLVersion. Meaning differs, please see TI BSL doc (slau319t.pdf).</summary>
+        </member>
         <member name="P:BSL430_NET.StatusEx.Reports">
             <summary>Report List.</summary>
         </member>

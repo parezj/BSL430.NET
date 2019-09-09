@@ -98,6 +98,7 @@ namespace BSL430_NET_WPF.ViewModels
             {
                 _TabSelectedIndex = value;
                 BslSettings.Instance.GeneralTabSelectedIndex = value;
+                IcontrolProcess.ResetState();
                 NotifyOfPropertyChange(() => TabSelectedIndex);
             }
         }

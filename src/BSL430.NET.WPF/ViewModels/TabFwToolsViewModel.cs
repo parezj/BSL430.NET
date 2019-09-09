@@ -221,6 +221,7 @@ namespace BSL430_NET_WPF.ViewModels
                     StringWriter sw = new StringWriter();
                     this.ValidateData = FwTools.Validate(this.FwPath, sw);
                     this.FwParseLog = sw.ToString();
+                    this.FwName = Path.GetFileName(this.FwPath);
                 }
                 catch (Exception ex)
                 {
@@ -433,6 +434,31 @@ namespace BSL430_NET_WPF.ViewModels
         {
             MessageBox.Show(this.FwParseLog, "BSL430.NET", MessageBoxButton.OK, MessageBoxImage.Information);
         }
+        public void Compare()
+        {
+            string initPath = "";
+            try
+            {
+                initPath = Path.GetDirectoryName(this.FwPath);
+            }
+            catch (Exception) { }
+
+            var ret = Helpers.Dialogs.OpenFileDialog(initPath, "Select Second Firmware Path", true, "", FW_PATH_FILTER);
+            if (ret != "")
+            {
+                try
+                {
+                    var (Equal, Match, BytesDiff) = FwTools.Compare(this.FwPath, ret);
+                    MessageBox.Show($"Firmwares are {((Equal) ? "" : "NOT")} equal!\n\n" +
+                                    $"Match:       {(Match * 100.0):F1} %\nBytes Diff:  {BytesDiff}", "BSL430.NET",
+                                    MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.GetExceptionMsg(), "BSL430.NET", MessageBoxButton.OK, MessageBoxImage.Error);
+                }         
+            }
+        }
         #endregion
 
         #region Public Interface
@@ -463,7 +489,16 @@ namespace BSL430_NET_WPF.ViewModels
                 NotifyOfPropertyChange(() => FwParseLog);
             }
         }
-
+        private string _FwName;
+        public string FwName
+        {
+            get => _FwName;
+            set
+            {
+                _FwName = value;
+                NotifyOfPropertyChange(() => FwName);
+            }
+        }
         private string _FwPath = BslSettings.Instance.FwToolsFwPath;
         public string FwPath
         {

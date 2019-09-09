@@ -27,16 +27,17 @@
         MinHeight="10" 
         Width="800"
         MinWidth="800"
-        Closing="MetroWindow_Closing">
+        Closing="MetroWindow_Closing"
+        PreviewMouseWheel="MetroWindow_PreviewMouseWheel">
     
     <Grid>
         <avalonEdit:TextEditor x:Name="avalon"
                                FontFamily="Consolas"
-                               FontSize="13pt"
+                               FontSize="12pt"
                                SyntaxHighlighting="XML"
                                IsReadOnly="True"
                                ShowLineNumbers="True"
-                               HorizontalScrollBarVisibility="Auto"
+                               HorizontalScrollBarVisibility="Visible"
                                VerticalScrollBarVisibility="Visible"
                                MouseDoubleClick="Avalon_MouseDoubleClick">
         </avalonEdit:TextEditor>

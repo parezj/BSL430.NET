@@ -87,6 +87,7 @@
                     FontWeight="Bold" 
                     FontSize="22" 
                     Cursor="Hand"
+                    BorderThickness="1"
                     HorizontalAlignment="Center" 
                     Controls:ControlsHelper.ContentCharacterCasing="Normal" 
                     Style="{DynamicResource SquareButtonStyle}" 

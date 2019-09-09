@@ -65,6 +65,7 @@ namespace BSL430_NET_WPF.ViewModels
     public interface IControlProcessViewModel
     {
         void CurrentTabHeader(string header);
+        void ResetState();
         event EventHandler InProgressChanged;
     }
     public interface IThemeProvider

@@ -190,7 +190,7 @@
                    Grid.Column="0" 
                    FontWeight="Thin" 
                    FontSize="20" 
-                   Content=" Validate firmware file integrity and display brief info (format, sizes, addresses)"/>
+                   Content=" Validate (also Compare) firmware and display info (format, sizes, addresses)"/>
         </WrapPanel>
         <Button Grid.Row="3" 
                 Grid.Column="1"

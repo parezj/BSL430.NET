@@ -38,22 +38,24 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using MahApps.Metro.Controls;
-
-using BSL430_NET_WPF.ViewModels;
 using System.IO;
 using System.Reflection;
+
+using MahApps.Metro.Controls;
+using BSL430_NET_WPF.ViewModels;
+
 
 namespace BSL430_NET_WPF.Views
 {
     public partial class LogView : MetroWindow
     {
-        private IOnLogClose callback;
-        private LogViewModel logViewModel;
+        private readonly IOnLogClose callback;
+        private readonly LogViewModel logViewModel;
 
-
-        private readonly string xmlDarkUri = "BSL430_NET_WPF.Resources.XML_dark.xshd";
-        private readonly string xmlLightUri = "BSL430_NET_WPF.Resources.XML_light.xshd";
+        private readonly double FONT_MAX_SIZE = 60d;
+        private readonly double FONT_MIN_SIZE = 5d;
+        private readonly string XML_DARK_URI = "BSL430_NET_WPF.Resources.XML_dark.xshd";
+        private readonly string XML_LIGHT_URI = "BSL430_NET_WPF.Resources.XML_light.xshd";
 
         public LogView(IOnLogClose _callback, LogViewModel _logViewModel, bool darkMode)
         {
@@ -62,8 +64,8 @@ namespace BSL430_NET_WPF.Views
             InitializeComponent();
 
 
-            using (Stream stream_d = Assembly.GetExecutingAssembly().GetManifestResourceStream(this.xmlDarkUri))
-            using (Stream stream_l = Assembly.GetExecutingAssembly().GetManifestResourceStream(this.xmlLightUri))
+            using (Stream stream_d = Assembly.GetExecutingAssembly().GetManifestResourceStream(this.XML_DARK_URI))
+            using (Stream stream_l = Assembly.GetExecutingAssembly().GetManifestResourceStream(this.XML_LIGHT_URI))
             {
                 using (var reader_d = new System.Xml.XmlTextReader(stream_d))
                 using (var reader_l = new System.Xml.XmlTextReader(stream_l))
@@ -80,8 +82,11 @@ namespace BSL430_NET_WPF.Views
 
 
             avalon.Text = logViewModel.LogData;
+            ICSharpCode.AvalonEdit.Search.SearchPanel.Install(avalon);
+
             if (logViewModel.LogData.Length > 0)
             {
+                avalon.Focus();
                 avalon.CaretOffset = logViewModel.LogData.Length - 1;
                 avalon.TextArea.Caret.BringCaretToView();
                 avalon.ScrollToEnd();
@@ -122,6 +127,39 @@ namespace BSL430_NET_WPF.Views
                 }
                 catch (Exception) { }
                 this.Close();
+            }
+        }
+        private void MetroWindow_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            bool ctrl = Keyboard.Modifiers == ModifierKeys.Control;
+            if (ctrl)
+            {
+                this.UpdateFontSize(e.Delta > 0);
+                e.Handled = true;
+            }
+        }
+        public void UpdateFontSize(bool increase)
+        {
+            if (avalon != null)
+            {
+                double currentSize = avalon.FontSize;
+
+                if (increase)
+                {
+                    if (currentSize < FONT_MAX_SIZE)
+                    {
+                        double newSize = Math.Min(FONT_MAX_SIZE, currentSize + 1);
+                        avalon.FontSize = newSize;
+                    }
+                }
+                else
+                {
+                    if (currentSize > FONT_MIN_SIZE)
+                    {
+                        double newSize = Math.Max(FONT_MIN_SIZE, currentSize - 1);
+                        avalon.FontSize = newSize;
+                    }
+                }
             }
         }
     }

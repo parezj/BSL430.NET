@@ -103,6 +103,11 @@ namespace BSL430_NET_WPF.ViewModels
             this.logViewModel.LogData = "";
             this.logView = null;
         }
+        public void ResetState()
+        {
+            this.State = ProcessState.UNKNOWN;
+            this.Progress = 0.0;
+        }
         #endregion
 
         #region Interface Events

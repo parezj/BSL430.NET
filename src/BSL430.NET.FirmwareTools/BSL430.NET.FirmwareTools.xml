@@ -167,10 +167,10 @@
             <summary>CRC-16-CCITT is 16-bit crc value of all data bytes in firmware.</summary>
         </member>
         <member name="P:BSL430_NET.FirmwareTools.FwTools.FwInfo.ResetVector">
-            <summary>Reset vector is address (value) located usually at 16-bit address 0xFFFE.</summary>
+            <summary>[MSP430 specific] Reset vector is address (value) located usually at 16-bit address 0xFFFE.</summary>
         </member>
         <member name="P:BSL430_NET.FirmwareTools.FwTools.FwInfo.SizeBuffer">
-            <summary>Help property for later firmware manipulation, like slicing in buffer blocks.</summary>
+            <summary>[MSP430 specific] Help property for later firmware manipulation, like slicing in buffer blocks.</summary>
         </member>
         <member name="P:BSL430_NET.FirmwareTools.FwTools.FwInfo.FilledFFAddr">
             <summary>

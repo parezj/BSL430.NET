@@ -105,6 +105,7 @@ namespace BSL430_NET
                     UartStatus = status.UartStatus,
                     Reports = reports.OrderBy(r => r.Timestamp).ToList(),
                     BSLVersion = version,
+                    BSLVersionString = version.ToHexString(),
                     BytesProcessed = bytes,
                     InnerStatus = status.InnerStatus
                 };

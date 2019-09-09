@@ -311,6 +311,8 @@ namespace BSL430_NET
         public int BytesProcessed { get; set; } = -1;
         /// <summary>Null, 4-byte or 10-byte array, meaning differs, please see TI BSL doc (slau319t.pdf).</summary>
         public byte[] BSLVersion { get; set; } = null;
+        /// <summary>String representation of BSLVersion. Meaning differs, please see TI BSL doc (slau319t.pdf).</summary>
+        public string BSLVersionString { get; set; } = null;
         /// <summary>Report List.</summary>
         public List<Report> Reports { get; set; } = null;
 
