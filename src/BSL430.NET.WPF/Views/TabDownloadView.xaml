@@ -199,7 +199,7 @@
                     <StackPanel Grid.Column="0" 
                                 Margin="0,0,5,0"
                                 VerticalAlignment="Center"
-                                ToolTip="Output firmware file format. Currently is supported only TI-TXT and Intel-HEX.">
+                                ToolTip="Output firmware file format. Currently is supported only TI-TXT, Intel-HEX and SREC">
                         <Label Content="Output Format" Margin="0,0,0,-4" FontWeight="Normal" FontSize="12" ></Label>
                         <ComboBox Grid.Column="1" 
                                   ItemsSource="{Binding Source={StaticResource BSL430_NET_FwFormat}}"

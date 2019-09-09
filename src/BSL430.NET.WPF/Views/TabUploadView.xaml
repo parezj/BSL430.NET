@@ -25,7 +25,7 @@
 
                 <StackPanel Grid.Column="0" 
                             VerticalAlignment="Center" 
-                            ToolTip="Input firmware file path, that will be loaded to MCU. Supported formats are TI-TXT, Intel-HEX and ELF.">
+                            ToolTip="Input firmware file path, that will be loaded to MCU. Supported formats are TI-TXT, Intel-HEX, ELF and SREC.">
                     <Label Content="Firmware Path (TI-TXT, Intel-HEX, SREC, ELF)" Margin="0,0,0,-4" FontWeight="Normal" FontSize="12" ></Label>
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
