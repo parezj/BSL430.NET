@@ -170,7 +170,7 @@
             <summary>[MSP430 specific] Reset vector is address (value) located usually at 16-bit address 0xFFFE.</summary>
         </member>
         <member name="P:BSL430_NET.FirmwareTools.FwTools.FwInfo.SizeBuffer">
-            <summary>[MSP430 specific] Help property for later firmware manipulation, like slicing in buffer blocks.</summary>
+            <summary>[MSP430 specific] Help property for later firmware manipulation, like slicing buffer blocks.</summary>
         </member>
         <member name="P:BSL430_NET.FirmwareTools.FwTools.FwInfo.FilledFFAddr">
             <summary>
@@ -203,6 +203,22 @@
             <summary>
             Formatted important properites describing current firmware.
             </summary>
+        </member>
+        <member name="T:BSL430_NET.FirmwareTools.FwTools.BslPasswords">
+            <summary>
+            [MSP430 specific] BSL Password is required for almost any BSL operation except Mass Erase.
+            Password is last 16-byte (F543x-non-A only) or 32-byte (others) of IVT (FFE0-FFFF), if newer 5xx/6xx MCU is
+            used. If MCU from older series is used (1xx/2xx/4xx), password is exactly 20-byte long. Mostly it is 32-byte.
+            </summary>
+        </member>
+        <member name="P:BSL430_NET.FirmwareTools.FwTools.BslPasswords.Password32Byte">
+            <summary>This is the password mostly used in todays MSP430 MCUs, 5xx/6xx series except F543x (non A).</summary>
+        </member>
+        <member name="P:BSL430_NET.FirmwareTools.FwTools.BslPasswords.Password16Byte">
+            <summary>16-byte long Password used only in the very first series of 5xx, the F543x (non A).</summary>
+        </member>
+        <member name="P:BSL430_NET.FirmwareTools.FwTools.BslPasswords.Password20Byte">
+            <summary>20-byte long Password used in old 1xx/2xx/4xx series.</summary>
         </member>
         <member name="M:BSL430_NET.FirmwareTools.FwTools.Parse(System.String,BSL430_NET.FirmwareTools.FwTools.FwFormat,System.Boolean,System.IO.StringWriter)">
             <summary>
@@ -255,8 +271,9 @@
         </member>
         <member name="M:BSL430_NET.FirmwareTools.FwTools.GetPassword(System.String)">
             <summary>
-            [MSP430 specific] Read and parse firmware file (format auto-detected) and return BSL password 
-            (last 16 bytes of interrupt vector table 0xFFE0 - 0xFFFF).
+            [MSP430 specific] Read and parse firmware file (format auto-detected) and return BSL password.
+            Password is last 16-byte (F543x-non-A only) or 32-byte (others) of IVT (FFE0-FFFF), if newer 5xx/6xx MCU is
+            used. If MCU from older series is used (1xx/2xx/4xx), password is exactly 20-byte long. Mostly it is 32-byte.
             </summary>
         </member>
         <member name="M:BSL430_NET.FirmwareTools.FwTools.Validate(System.String,System.IO.StringWriter)">

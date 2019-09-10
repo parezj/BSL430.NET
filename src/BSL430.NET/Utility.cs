@@ -106,7 +106,7 @@ namespace BSL430_NET
                     Reports = reports.OrderBy(r => r.Timestamp).ToList(),
                     BSLVersion = version,
                     BSLVersionString = version.ToHexString(),
-                    BytesProcessed = bytes,
+                    BytesToProcess = bytes,
                     InnerStatus = status.InnerStatus
                 };
             }
@@ -121,13 +121,16 @@ namespace BSL430_NET
                     default: err_msg = "Unknown Error."; break;
                     case 0: err_msg = "Success."; break;
 
+                    // Property set messages
                     case 215: err_msg = "USB mode does not support Baud Rate setting."; break;
                     case 216: err_msg = "USB mode is supported only on these MCUs: F5xx, F6xx."; break;
                     case 217: err_msg = "USB mode support only manual invoking of BSL (PUR pin tied to VUSB)."; break;
                     case 218: err_msg = "USB mode support only reduced Command Set: RX Password, RX Data Fast and Load PC."; break;
-                    case 219: err_msg = "1xx 2xx 4xx protocol Change Baud Rate support is rather experimental, so I decided to dont implement it. Sorry."; break;
+                    case 219: err_msg = "1xx 2xx 4xx protocol Change Baud Rate support is rather experimental, so I decided to dont " +
+                                        "implement it. Sorry."; break;
                     case 220: err_msg = "1xx 2xx 4xx protocol does not support CRC check functionality."; break;
 
+                    // Core messages
                     case 440: err_msg = "Exception aborted execution."; break;
                     case 441: err_msg = "Parsing Response failed! at: [parse_resp()]."; break;
                     case 442: err_msg = "Building Message failed! at: [build_msg()]."; break;
@@ -149,6 +152,9 @@ namespace BSL430_NET
                     case 466: err_msg = "BSL430.NET instance was created with zero parameters, therefore can do nothing except ScanAll."; break;
                     case 469: err_msg = "BSL430.NET instance was created with different Mode than Scan was called with."; break;
                     case 468: err_msg = "Firmware address out of range - not supported address mode, try with lower address range."; break;
+                    case 470: err_msg = "BSL password wrong lenght. If newer F5xx/F6xx protocol used, only F543x (non A) has a 16-byte " +
+                                        "password, other MCUs have 32-byte password. If older 1xx/2xx/4xx protocol used, password is long " +
+                                        "exactly 20 bytes."; break;
 
                     case 801: err_msg = "build_msg() failed. wrong input parameters."; break;
                     case 802: err_msg = "parse_resp() failed. UART error message is invalid (not equal 0x00 - ACK)."; break;
@@ -157,13 +163,16 @@ namespace BSL430_NET
                     case 805: err_msg = "parse_resp() failed. Received byte array has wrong length."; break;
                     case 806: err_msg = "parse_resp() failed. CMD byte in BSL Core packet is invalid."; break;
                     case 807: err_msg = "parse_resp() failed. MSG byte in BSL Core packet is invalid."; break;
-                    case 808: err_msg = "Operation failed. MSG byte in BSL Core packet is invalid (not equal 0x00)."; break;
+                    case 808: err_msg = "Operation failed. MSG byte in BSL Core packet is not equal to zero."; break;
                     case 809: err_msg = "process_msg() failed. ACK byte is not equal 0x90 (DATA_ACK after SYNC)."; break;
                     case 810: err_msg = "parse_resp() failed. HDR byte in BSL data frame is invalid (not equal 0x80)."; break;
-                    case 811: err_msg = "Operation failed. BSL returned NAK (0xA0). This could indicate any error, since this early BSL version supports only simple protocol."; break;
+                    case 811: err_msg = "Operation failed. BSL returned NAK (0xA0). This could indicate any error, since this early BSL " +
+                                        "version supports only simple protocol."; break;
                     case 812: err_msg = "parse_resp() failed. Received byte array is invalid (has wrong length or bad data)."; break;
+                    case 821: err_msg = "BSL UART Message Error"; break; // inlined in code (Main_priv.cs :: 576)
+                    case 822: err_msg = "BSL Core Message Error"; break; // inlined in code (Main_priv.cs :: 687)
 
-                    // Core messages
+                    // Main block messages
                     case 100: err_msg = "'CHANGE BAUDRATE' BSL command failed."; break;
                     case 110: err_msg = "'MASS ERASE' BSL command failed."; break;
                     case 120: err_msg = "'RX PASSWORD' BSL command failed."; break;
@@ -171,7 +180,8 @@ namespace BSL430_NET
                     case 140: err_msg = "'RX DATA " + extra + "' BSL command failed."; break;
                     case 150: err_msg = "'TX DATA " + extra + "' BSL command failed."; break;
                     case 160: err_msg = "'CRC CHECK' BSL command failed."; break;
-                    case 161: err_msg = "'CRC CHECK' CRC mismatch error. crc16 of hex file does not match crc16 of data uploaded to device."; break;
+                    case 161: err_msg = "'CRC CHECK' CRC mismatch error. crc16 of hex file does not match crc16 of data uploaded to " +
+                                        "device."; break;
                     case 170: err_msg = "'LOAD PC' BSL command failed."; break;
                     case 180: err_msg = "Reading firmware file failed."; break;
                     case 666: err_msg = "Interrupted. Any action is invalidated, resources are released."; break;
@@ -180,8 +190,10 @@ namespace BSL430_NET
                     case 300: err_msg = "[FTD2XX SCAN] FTDI device error occured while getting devices list."; break;
                     case 301: err_msg = "[FTD2XX SCAN] Exception occured while trying to get list of FTDI devices."; break;
                     case 302: err_msg = "[FTD2XX SCAN] Timeout occured while trying to get list of FTDI devices."; break;
-                    case 323: err_msg = "[FTD2XX INIT] Missing or bad dynamic link library: FTD2XX.DLL. Download it and put it in same folder as BSL430.NET is."; break;
-                    case 333: err_msg = "[FTD2XX INIT] FTDI driver (FTDIBUS.SYS) missing or bad. Reinstall the driver from http://www.ftdichip.com/FTDrivers.htm"; break;
+                    case 323: err_msg = "[FTD2XX INIT] Missing or bad dynamic link library: FTD2XX.DLL. Download it and put it in same " +
+                                        "folder as BSL430.NET is."; break;
+                    case 333: err_msg = "[FTD2XX INIT] FTDI driver (FTDIBUS.SYS) missing or bad. Reinstall the driver from " +
+                                        "http://www.ftdichip.com/FTDrivers.htm"; break;
                     case 310: err_msg = "[FTD2XX OPEN] Cannot open FTDI device. Already opened?"; break;
                     case 311: err_msg = "[FTD2XX OPEN] Exception occured while trying to open FTDI device."; break;
                     case 312: err_msg = "[FTD2XX OPEN] Cannot open device because there is zero devices present."; break;
@@ -205,7 +217,8 @@ namespace BSL430_NET
 
                     // libftdi
                     case 501: err_msg = "[libftdi SCAN] Exception occured while trying to get list of FTDI devices."; break;
-                    case 523: err_msg = "[libftdi INIT] Missing or bad dynamic library: libftdi. Download it and put it in same folder as BSL430.NET is."; break;
+                    case 523: err_msg = "[libftdi INIT] Missing or bad dynamic library: libftdi. Download it and put it in same folder " +
+                                        "as BSL430.NET is."; break;
                     case 533: err_msg = "[libftdi INIT] Exception occured while loading libftdi."; break;
                     case 510: err_msg = "[libftdi OPEN] Cannot open FTDI device. Already opened?"; break;
                     case 511: err_msg = "[libftdi OPEN] Exception occured while trying to open FTDI device."; break;
@@ -223,7 +236,8 @@ namespace BSL430_NET
 
                     // HID USB
                     case 601: err_msg = "[USB HID SCAN] Exception occured while trying to get list of USB HID devices."; break;
-                    case 623: err_msg = "[USB HID INIT] Missing or bad dynamic library: HidSharp. Download it and put it in same folder as BSL430.NET is."; break;
+                    case 623: err_msg = "[USB HID INIT] Missing or bad dynamic library: HidSharp. Download it and put it in same folder " +
+                                        "as BSL430.NET is."; break;
                     case 633: err_msg = "[USB HID INIT] Exception occured while loading HidSharp."; break;
                     case 610: err_msg = "[USB HID OPEN] Cannot open USB HID device. Already opened?"; break;
                     case 611: err_msg = "[USB HID OPEN] Exception occured while trying to open USB HID device."; break;
@@ -241,7 +255,8 @@ namespace BSL430_NET
 
                     // Serial
                     //case 701: err_msg = "[Serial SCAN] Exception occured while trying to get list of Serial devices."; break;
-                    case 723: err_msg = "[Serial INIT] Missing or bad dynamic library: RJCP.SerialPortStream. Download it and put it in same folder as BSL430.NET is."; break;
+                    case 723: err_msg = "[Serial INIT] Missing or bad dynamic library: RJCP.SerialPortStream. Download it and put it " +
+                                        "in same folder as BSL430.NET is."; break;
                     case 733: err_msg = "[Serial INIT] Exception occured while loading RJCP.SerialPortStream."; break;
                     case 710: err_msg = "[Serial OPEN] Cannot open Serial device. Already opened?"; break;
                     case 711: err_msg = "[Serial OPEN] Exception occured while trying to open Serial device."; break;

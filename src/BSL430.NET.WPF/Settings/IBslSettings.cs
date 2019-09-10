@@ -85,7 +85,7 @@ namespace BSL430_NET_WPF.Settings
         [Option(DefaultValue = "")]
         string DownloadFwPath { get; set; }
 
-        [Option(DefaultValue = "0")]
+        [Option(DefaultValue = "32")]
         int DownloadStartAddress { get; set; }
 
         [Option(DefaultValue = "32")]
@@ -96,6 +96,9 @@ namespace BSL430_NET_WPF.Settings
 
         [Option(DefaultValue = "TI_TXT")]
         FwFormat DownloadOutputFormat { get; set; }
+
+        [Option(DefaultValue = "true")]
+        bool DownloadFirst { get; set; }
 
         // ===================================== FwToolsView
 
@@ -116,6 +119,9 @@ namespace BSL430_NET_WPF.Settings
 
         [Option(DefaultValue = "false")]
         bool FwToolsCombineFillFF { get; set; }
+
+        [Option(DefaultValue = "MSP430_F5xx")]
+        MCU FwToolsPasswordMCU { get; set; }
 
         // ===================================== Tray Icon Settings
 

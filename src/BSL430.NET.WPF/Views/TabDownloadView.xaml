@@ -41,7 +41,7 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
-                    <StackPanel Grid.Column="0" VerticalAlignment="Center" ToolTip="Start address is address of the FIRST data node of firmware, you want to download.&#x0a;Number is in decimal format. In most cases this is 0.">
+                    <StackPanel Grid.Column="0" VerticalAlignment="Center" ToolTip="Start address is address of the FIRST data node of firmware, you want to download.&#x0a;Number is in decimal format. For example MSP430F5137 starts at 0x8000 (32K).">
                         <TextBlock Margin="0,5,0,0" FontWeight="Normal" FontSize="12" >
                             <TextBlock.Style>
                                 <Style TargetType="{x:Type TextBlock}" BasedOn="{StaticResource MetroTextBlock}">

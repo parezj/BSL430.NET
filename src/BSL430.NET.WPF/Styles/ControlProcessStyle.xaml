@@ -279,8 +279,8 @@
                                                       SelectedValue="{Binding ControlProcess.InvokeMechanism, Mode=TwoWay}"/>
                                         </StackPanel>
 
-                                        <StackPanel Grid.Column="3" Margin="0" VerticalAlignment="Center" ToolTip="BSL 16 byte password is required for Download and Upload.&#x0a;If wrong or none password is entered, mass erase is auto executed as a safety measure, erasing entire flash,&#x0a;except INFO A. However, this is usually not a problem, when performing Upload.">
-                                            <TextBlock Text="Password (16 byte hex string)" Margin="0,5,0,0" FontWeight="Normal" FontSize="12"/>
+                                        <StackPanel Grid.Column="3" Margin="0" VerticalAlignment="Center" ToolTip="BSL 16, 20 or 32 byte password is required for Download (and Upload).&#x0a;If wrong or none password is entered, mass erase is auto executed as a safety measure, erasing entire flash,&#x0a;except INFO A. However, this is usually not a problem, when performing Upload. Password is last 16-byte&#x0a;(F543x-non-A only) or 32-byte (others) of IVT (FFE0-FFFF), if newer 5xx/6xx MCU is used.&#x0a;If MCU from older series is used (1xx/2xx/4xx), password is exactly 20-byte long. Mostly it is 32-byte.&#x0a;Use Firmware Tools to get the password.">
+                                            <TextBlock Text="Password (16, 20 or 32 byte hex string)" Margin="0,5,0,0" FontWeight="Normal" FontSize="12"/>
                                             <TextBox Grid.Column="3" 
                                                      x:Name="Password" 
                                                      FontWeight="Normal" 
@@ -288,12 +288,9 @@
                                                      Height="36" 
                                                      HorizontalAlignment="Stretch" 
                                                      Text="{Binding ControlProcess.Password, Mode=TwoWay}"
-                                                     MaxLength="32" 
+                                                     MaxLength="64" 
                                                      PreviewTextInput="Password_PreviewTextInput" 
                                                      CharacterCasing="Upper">
-                                                <TextBox.LayoutTransform>
-                                                    <ScaleTransform ScaleX="0.9"></ScaleTransform>
-                                                </TextBox.LayoutTransform>
                                                 <TextBox.Style>
                                                     <Style TargetType="TextBox" BasedOn="{StaticResource MetroTextBox}">
                                                         <Style.Triggers>

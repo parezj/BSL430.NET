@@ -9,6 +9,7 @@
              xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              xmlns:cal="http://www.caliburnproject.org"
              xmlns:Dialog="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro" 
+             xmlns:BSL430_NET="clr-namespace:BSL430_NET;assembly=BSL430.NET"
              xmlns:BSL430_NET_FW="clr-namespace:BSL430_NET.FirmwareTools;assembly=BSL430.NET.FirmwareTools"
              xmlns:System="clr-namespace:System;assembly=mscorlib"
              xmlns:Converters="clr-namespace:BSL430_NET_WPF.Converters"
@@ -26,7 +27,13 @@
                     <x:Type TypeName="BSL430_NET_FW:FwTools+FwFormat"/>
                 </ObjectDataProvider.MethodParameters>
             </ObjectDataProvider>
-            
+
+            <ObjectDataProvider x:Key="BSL430_NET_MCU" MethodName="GetValues" ObjectType="{x:Type System:Enum}">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="BSL430_NET:MCU"/>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+
         </Grid.Resources>
         
         <Grid.RowDefinitions>
@@ -211,7 +218,7 @@
                    Grid.Column="0" 
                    FontWeight="Thin" 
                    FontSize="20" 
-                   Content=" Open a window with hexadecimal editor and load firmware to it"/>
+                   Content=" Open a window with hexadecimal editor and load firmware file to it"/>
         </WrapPanel>
         <Button Grid.Row="4" 
                 Grid.Column="1"
@@ -232,7 +239,13 @@
                    Grid.Column="0" 
                    FontWeight="Thin" 
                    FontSize="20" 
-                   Content=" Get BSL password (last 16 bytes of Interrupt Vector Table) as hex string"/>
+                   Content=" Get BSL password required for Download of "/>
+            <ComboBox Grid.Column="0" 
+                      FontWeight="Normal" 
+                      FontSize="20" 
+                      Height="36" 
+                      ItemsSource="{Binding Source={StaticResource BSL430_NET_MCU}}" 
+                      SelectedValue="{Binding PasswordMCU, Mode=TwoWay}"/>
         </WrapPanel>
         <Button Grid.Row="5" 
                 Grid.Column="1" 

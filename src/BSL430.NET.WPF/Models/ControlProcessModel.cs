@@ -281,6 +281,25 @@ namespace BSL430_NET_WPF.Models
         }
         #endregion
 
+        #region Aux Methods
+        public bool ValidateBslPassword(int ByteLength, MCU Mcu) // true = valid
+        {
+            if (Mcu == MCU.MSP430_F1xx || 
+                Mcu == MCU.MSP430_F2xx || 
+                Mcu == MCU.MSP430_F4xx || 
+                Mcu == MCU.MSP430_G2xx3)
+            {
+                return ByteLength == 20;
+            }
+
+            if (Mcu == MCU.MSP430_F543x_NON_A)
+            {
+                return ByteLength == 16;
+            }
+            return ByteLength == 32;
+        }
+        #endregion
+
         #region XML Log
         private string GetLogPath()
         {

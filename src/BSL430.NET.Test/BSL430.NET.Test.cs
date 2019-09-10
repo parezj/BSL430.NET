@@ -347,10 +347,9 @@ namespace BSL430_NET.Test
         {
             foreach (TestData.Fw fw in fw_paths.GetFlags())
             {
-                byte[] ret = FwTools.GetPassword(TestData.GetFwPath(fw));
+                var ret = FwTools.GetPassword(TestData.GetFwPath(fw));
 
                 Assert.NotNull(ret);
-                Assert.True(ret.Length == 16);
             }
         }
 

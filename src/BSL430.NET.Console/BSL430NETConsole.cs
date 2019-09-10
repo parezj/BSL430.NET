@@ -104,7 +104,7 @@ namespace BSL430_NET_Console
             [Option('v', "validate", Required = false, HelpText = "== Main Command == Read and parse firmware file (format auto-detected; TI-TXT, Intel-HEX, SREC and ELF supported) and print information (first addr, last addr, size, crc16..) and status if firmware is valid or not.")]
             public string Validate { get; set; } = "";
 
-            [Option('r', "get-password", Required = false, HelpText = "== Main Command == Read and parse firmware file (format auto-detected; TI-TXT, Intel-HEX, SREC and ELF supported) and print BSL password (last 16 bytes of interrupt vector table 0xFFE0 - 0xFFFF).")]
+            [Option('r', "get-password", Required = false, HelpText = "== Main Command == Read and parse firmware file (format auto-detected; TI-TXT, Intel-HEX, SREC and ELF supported) and print BSL password (last 16/20/32 bytes of interrupt vector table 0xFFE0 - 0xFFFF).")]
             public string GetPassword { get; set; } = "";
 
             [Option('k', "compare", Required = false, HelpText = "== Main Command == Compare two firmware files (format auto-detected; TI-TXT, Intel-HEX, SREC and ELF supported) and print result (Equal - True/False, Match - percentage [0.0 ; 100.0] %, BytesDiff - count of different byte nodes).")]
@@ -118,7 +118,7 @@ namespace BSL430_NET_Console
             [Option('j', "second-file", Required = false, HelpText = "Full or relative path to another firmware file, usually for Combine or Compare. (TI-TXT, Intel-HEX, SREC or ELF).")]
             public string SecondFile { get; set; } = "";
 
-            [Option('p', "password", Required = false, HelpText = "BSL password is 16 bytes long. Enter 32 chars long hex string. For upload and erase this is optional.")]
+            [Option('p', "password", Required = false, HelpText = "BSL password is 16/20/32 bytes long. Enter 32 chars long hex string. For upload and erase this is optional.")]
             public string Password { get; set; } = "";
 
             [Option('a', "addrstart", Required = false, HelpText = "(Download only) start download from 16bit address specified. eg. '0F00'")]
@@ -170,7 +170,7 @@ namespace BSL430_NET_Console
                 new Example($"-\nConvert firmware to monolithic TI-TXT", new Options { Convert = "fw_elf.out", File = "fw_ti.txt",  OutputFormat = "TI_TXT", FillFF = true, FwLineLength = 32 }),
                 new Example($"-\nCombine TI-TXT firmware with INTEL-HEX firmware", new Options { Combine = "fw_ti.txt", SecondFile = "fw_intel.hex", File = "fw_combined_ti.txt",  OutputFormat = "TI_TXT" }),
                 new Example($"-\nCompare ELF firmware with TI-TXT firmware", new Options { Compare = "fw_elf.out", SecondFile = "fw_ti.txt" }),
-                new Example($"-\nGet BSL password from firmware", new Options { GetPassword = "fw_elf.out" }),
+                new Example($"-\nGet BSL password from firmware", new Options { GetPassword = "fw_elf.out", MCU = "MSP430_F5xx" }),
                 new Example($"-\nValidate firmware file", new Options { Validate = "fw_elf.out" })
             };
             public static void PrintEnumsAndInfo()
@@ -379,7 +379,7 @@ namespace BSL430_NET_Console
                         Status status_invoke = dev.SetInvokeMechanism(invoke.invoke);
 
                         ValidateSetters(status_baud, status_mcu, status_invoke, baud.stat, mcu.stat, invoke.stat);
-                        byte[] pw = ValidatePassword(options.Password, false);
+                        byte[] pw = ValidatePassword(options.Password, false, mcu.mcu);
 
                         if ((status_baud.OK || options.BaudRate == "") && 
                             (status_mcu.OK || options.MCU == "") && 
@@ -391,7 +391,7 @@ namespace BSL430_NET_Console
                             StatusEx result = dev.Upload(options.File, Password: pw);
                             timer.Dispose();
                             Thread.Sleep(100);
-                            PrintReportFooter(result, result.BytesProcessed, sw.Elapsed.TotalMilliseconds / 1000.0, dev.GetMCU());
+                            PrintReportFooter(result, result.BytesToProcess, sw.Elapsed.TotalMilliseconds / 1000.0, dev.GetMCU());
                             WriteXML(result, "Upload", options.Xml);
                             sw.Stop();
                         }
@@ -412,7 +412,8 @@ namespace BSL430_NET_Console
                 int addr_start = -1;
                 int data_size = -1;
 
-                byte[] password = ValidatePassword(options.Password, true);
+                var mcu = ValidateMCU(options.MCU);
+                byte[] password = ValidatePassword(options.Password, true, mcu.mcu);
                 Int32.TryParse(options.AddrStart, NumberStyles.HexNumber, null, out addr_start);
                 Int32.TryParse(options.DataSize, NumberStyles.HexNumber, null, out data_size);
 
@@ -441,7 +442,6 @@ namespace BSL430_NET_Console
                         dev.ProgressChanged += new Bsl430NetEventHandler(ProgressChanged);
 
                         var baud = ValidateBaudrate(options.BaudRate);
-                        var mcu = ValidateMCU(options.MCU);
                         var invoke = ValidateInvokeMech(options.InvokeMech);
                         var fw_format = ValidateFwFormats(options.OutputFormat);
 
@@ -463,7 +463,7 @@ namespace BSL430_NET_Console
                             sw.Start();
                             StatusEx result = dev.Download(password, addr_start, data_size, out List<byte> data);
                             timer.Dispose();
-                            PrintReportFooter(result, result.BytesProcessed, sw.Elapsed.TotalMilliseconds / 1000.0, dev.GetMCU());
+                            PrintReportFooter(result, result.BytesToProcess, sw.Elapsed.TotalMilliseconds / 1000.0, dev.GetMCU());
                             if (result.OK)
                                 WriteFirmware(data, addr_start, options.File, fw_format.fw_format, options.FwLineLength);
                             WriteXML(result, "Download", options.Xml);
@@ -508,7 +508,7 @@ namespace BSL430_NET_Console
                             sw.Start();
                             StatusEx result = dev.Erase();
                             timer.Dispose();
-                            PrintReportFooter(result, result.BytesProcessed, sw.Elapsed.TotalMilliseconds / 1000.0, dev.GetMCU());
+                            PrintReportFooter(result, result.BytesToProcess, sw.Elapsed.TotalMilliseconds / 1000.0, dev.GetMCU());
                             WriteXML(result, "Erase", options.Xml);
                             sw.Stop();
                         }
@@ -597,14 +597,38 @@ namespace BSL430_NET_Console
                 Console.WriteLine();
                 try
                 {
-                    byte[] pw = FwTools.GetPassword(options.GetPassword);
+                    var mcu = ValidateMCU(options.MCU);
+                    if (mcu.stat != "")
+                        Console.WriteLine(mcu.stat);
 
-                    if (pw == null || pw.Length != 16)
-                        throw new Exception("Unknown error occured while reading BSL password.\n");
+                    var pw = FwTools.GetPassword(options.GetPassword);
 
-                    string password = BitConverter.ToString(pw).Replace("-", " ");
+                    if (pw == null)
+                        throw new Exception("Unknown error occured while reading BSL password, or firmware does not contain required data.\n");
 
-                    Console.WriteLine($"BSL password:");
+                    string password;
+                    string pw_header;
+
+                    if (mcu.mcu == MCU.MSP430_F1xx ||
+                        mcu.mcu == MCU.MSP430_F2xx ||
+                        mcu.mcu == MCU.MSP430_F4xx ||
+                        mcu.mcu == MCU.MSP430_G2xx3)
+                    {
+                        pw_header = "20-byte old 1xx/2xx/4xx BSL password: ";
+                        password = BitConverter.ToString(pw.Password20Byte).Replace("-", " ");
+                    }
+                    else if (mcu.mcu == MCU.MSP430_F543x_NON_A)
+                    {
+                        pw_header = "16-byte special F543x (non A) BSL password: ";
+                        password = BitConverter.ToString(pw.Password16Byte).Replace("-", "");
+                    }
+                    else
+                    {
+                        pw_header = "32-byte standard 5xx/6xx BSL password: ";
+                        password = BitConverter.ToString(pw.Password32Byte).Replace("-", "");
+                    }
+
+                    Console.WriteLine(pw_header);
                     ConsoleColor _color = Console.ForegroundColor;
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine(password);
@@ -1046,9 +1070,28 @@ namespace BSL430_NET_Console
             if (stat_invoke != "" && !(options.InvokeMech == "" && !status_invoke.OK))
                 Console.WriteLine(stat_invoke);
         }
-        private byte[] ValidatePassword(string password, bool force_input)
+        private byte[] ValidatePassword(string password, bool force_input, MCU mcu)
         {
-            if (options.Password.Length == 32)
+            int pw_len = 0;
+
+            if (mcu == MCU.MSP430_F1xx ||
+                mcu == MCU.MSP430_F2xx ||
+                mcu == MCU.MSP430_F4xx ||
+                mcu == MCU.MSP430_G2xx3)
+            {
+                pw_len = 40;
+            }
+            else if (mcu == MCU.MSP430_F543x_NON_A)
+            {
+                pw_len = 32;
+            }
+            else
+            {
+                pw_len = 64;
+            }
+
+
+            if (options.Password.Length != pw_len)
             {
                 try
                 {
@@ -1060,18 +1103,19 @@ namespace BSL430_NET_Console
                 catch(Exception)
                 {
                     if (force_input)
-                        Console.WriteLine("ERROR. Invalid 16B BSL password.");
+                        Console.WriteLine($"ERROR. Exception while parsing password. Invalid {pw_len / 2}B BSL password.");
                     else
-                        Console.WriteLine("Invalid 16B BSL password. Overiding with default (erase -> blank pw).");
+                        Console.WriteLine($"Exception while parsing password..Invalid {pw_len / 2}B BSL password. " +
+                                          $"Overiding with default (erase -> blank pw).");
                     return null;
                 }
             }
             else if (options.Password != "")
             {
                 if (force_input)
-                    Console.WriteLine("ERROR. Invalid 16B BSL password.");
+                    Console.WriteLine($"ERROR. Invalid {pw_len / 2}B BSL password.");
                 else
-                    Console.WriteLine("Invalid 16B BSL password. Overiding with default (erase -> blank pw).");
+                    Console.WriteLine($"Invalid {pw_len / 2}B BSL password. Overiding with default (erase -> blank pw).");
                 return null;
             }
             else

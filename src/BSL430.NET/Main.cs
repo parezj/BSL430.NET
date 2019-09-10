@@ -317,17 +317,28 @@ namespace BSL430_NET
                     {
                         BlockStart("#PASSWORD (CUSTOM)", 35);
 
-                        Result<Data_Void> result_password = ParseResp<Data_Void>(ProcessMsg(BuildMsg(Command.Password, pw)));
-
-                        if (!result_password.ok)
+                        if (pw_overide &&
+                            ((protocol == Protocol.UART_1_2_4 && pw.Length == 20) ||
+                             ((mcu == MCU.MSP430_F543x_NON_A && pw.Length == 16) || pw.Length == 32)))
                         {
-                            BlockEnd(ReportResult.FAILED);
-                            CommClose(true);
-                            Task.Delay(Const.DELAY_ERR_RET).Wait();
-                            return Utils.StatusCreateEx(120, result_password.status, reports, report, bsl_version, fw_info.SizeFull);
+                            Result<Data_Void> result_password = ParseResp<Data_Void>(ProcessMsg(BuildMsg(Command.Password, pw)));
+
+                            if (!result_password.ok)
+                            {
+                                BlockEnd(ReportResult.FAILED);
+                                CommClose(true);
+                                Task.Delay(Const.DELAY_ERR_RET).Wait();
+                                return Utils.StatusCreateEx(120, result_password.status, reports, report, bsl_version, fw_info.SizeFull);
+                            }
+                            else
+                            {
+                                pw_overide = true;
+                            }
                         }
                         else
-                            pw_overide = true;
+                        {
+                            return Utils.StatusCreateEx(470, reports, report, bsl_version, fw_info.SizeFull);
+                        }
 
                         Task.Delay(Const.BSL430_DELAY_BETWEEN_CMDS).Wait();
 
@@ -671,21 +682,32 @@ namespace BSL430_NET
             {
                 if (mode == Mode.USB_HID &&
                     (mcu != MCU.MSP430_F5xx && 
-                     mcu != MCU.MSP430_F543x &&
+                     mcu != MCU.MSP430_F543x_A &&
+                     mcu != MCU.MSP430_F543x_NON_A &&
                      mcu != MCU.MSP430_F6xx))
+                {
                     return Utils.StatusCreate(216);
+                }
+
                 mcu = _mcu;
+
                 if (mode == Mode.USB_HID)
+                {
                     protocol = Protocol.USB_5_6;
+                }
                 else
                 {
                     if (_mcu == MCU.MSP430_F1xx || 
                         _mcu == MCU.MSP430_F2xx ||
                         _mcu == MCU.MSP430_F4xx || 
                         _mcu == MCU.MSP430_G2xx3)
+                    {
                         protocol = Protocol.UART_1_2_4;
+                    }
                     else
+                    {
                         protocol = Protocol.UART_5_6;
+                    }
                 }
                 return Utils.StatusCreate(0);
             }

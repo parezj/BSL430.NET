@@ -43,7 +43,10 @@ namespace BSL430_NET_WPF.ViewModels
     {
         public ControlProcessViewModel ControlProcess { get; private set; }
 
-        private const string ERR1 = "Password must be either 0 or 32 hex chars long!";
+        private const string ERR1 = "Password must be either 0 (auto erase all first) or with valid lenght!\n\n" +
+                                    "Password is last 16-byte (F543x-non-A only) or 32-byte (others) of IVT (FFE0-FFFF), " +
+                                    "if newer 5xx/6xx MCU is used. If MCU from older series is used (1xx/2xx/4xx), " +
+                                    "password is exactly 20-byte long. Mostly it is 32-byte.\n\nUse Firmware Tools.\n";
         private const string ERR2 = "Firmware Path is missing or invalid!";
 
         public TabUploadViewModel(ControlProcessViewModel _ctrlprc_vm, Dictionary<string, string> args)
@@ -62,8 +65,11 @@ namespace BSL430_NET_WPF.ViewModels
         {
             string err = "";
 
-            if (this.ControlProcess.Password.Length > 0 && this.ControlProcess.Password.Length < 32)
+            if (this.ControlProcess.Password.Length != 0 && 
+                !this.ControlProcess.ValidateBslPassword(this.ControlProcess.Password.Length/2, this.ControlProcess.MCU))
+            {
                 err += $"{ERR1}\n";
+            }
 
             if (this.FwPath == "" || !File.Exists(this.FwPath))
                 err += $"{ERR2}\n";

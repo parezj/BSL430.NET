@@ -67,52 +67,55 @@
             </summary>
         </member>
         <member name="F:BSL430_NET.MCU.MSP430_F1xx">
-            <summary>MSP430 F1xx</summary>
+            <summary>MSP430 F1xx ('1xx, 2xx, 4xx' protocol, 20B password)</summary>
         </member>
         <member name="F:BSL430_NET.MCU.MSP430_F2xx">
-            <summary>MSP430 F2xx</summary>
+            <summary>MSP430 F2xx ('1xx, 2xx, 4xx' protocol, 20B password)</summary>
         </member>
         <member name="F:BSL430_NET.MCU.MSP430_F4xx">
-            <summary>MSP430 F4xx</summary>
+            <summary>MSP430 F4xx ('1xx, 2xx, 4xx' protocol, 20B password)</summary>
         </member>
         <member name="F:BSL430_NET.MCU.MSP430_G2xx3">
-            <summary>MSP430 G2xx3</summary>
+            <summary>MSP430 G2xx3 ('1xx, 2xx, 4xx' protocol, 20B password)</summary>
         </member>
         <member name="F:BSL430_NET.MCU.MSP430_F5xx">
-            <summary>MSP430 F5xx</summary>
+            <summary>MSP430 F5xx ('5xx, 6xx' protocol, 32B password)</summary>
         </member>
-        <member name="F:BSL430_NET.MCU.MSP430_F543x">
-            <summary>MSP430 F543x</summary>
+        <member name="F:BSL430_NET.MCU.MSP430_F543x_A">
+            <summary>MSP430 F543x [with A] ('5xx, 6xx' protocol, 32B password)</summary>
+        </member>
+        <member name="F:BSL430_NET.MCU.MSP430_F543x_NON_A">
+            <summary>MSP430 F543x [non A] ('5xx, 6xx' protocol, 16B password)</summary>
         </member>
         <member name="F:BSL430_NET.MCU.MSP430_F6xx">
-            <summary>MSP430 F6xx</summary>
+            <summary>MSP430 F6xx ('5xx, 6xx' protocol, 32B password)</summary>
         </member>
         <member name="F:BSL430_NET.MCU.MSP430_FR5xx">
-            <summary>MSP430 FR5xx</summary>
+            <summary>MSP430 FR5xx ('5xx, 6xx' protocol, 32B password)</summary>
         </member>
         <member name="F:BSL430_NET.MCU.MSP430_FR6xx">
-            <summary>MSP430 FR6xx</summary>
+            <summary>MSP430 FR6xx ('5xx, 6xx' protocol, 32B password)</summary>
         </member>
         <member name="F:BSL430_NET.MCU.MSP430_FR2x33">
-            <summary>MSP430 FR2x33</summary>
+            <summary>MSP430 FR2x33 ('5xx, 6xx' protocol, 32B password)</summary>
         </member>
         <member name="F:BSL430_NET.MCU.MSP430_FR231x">
-            <summary>MSP430 FR231x</summary>
+            <summary>MSP430 FR231x ('5xx, 6xx' protocol, 32B password)</summary>
         </member>
         <member name="F:BSL430_NET.MCU.MSP430_FR235x">
-            <summary>MSP430 FR235x</summary>
+            <summary>MSP430 FR235x ('5xx, 6xx' protocol, 32B password)</summary>
         </member>
         <member name="F:BSL430_NET.MCU.MSP430_FR215x">
-            <summary>MSP430 FR215x</summary>
+            <summary>MSP430 FR215x ('5xx, 6xx' protocol, 32B password)</summary>
         </member>
         <member name="F:BSL430_NET.MCU.MSP430_FR413x">
-            <summary>MSP430 FR413x</summary>
+            <summary>MSP430 FR413x ('5xx, 6xx' protocol, 32B password)</summary>
         </member>
         <member name="F:BSL430_NET.MCU.MSP430_FR211x">
-            <summary>MSP430 FR211x</summary>
+            <summary>MSP430 FR211x ('5xx, 6xx' protocol, 32B password)</summary>
         </member>
         <member name="F:BSL430_NET.MCU.MSP432_P401R">
-            <summary>MSP432 P401R</summary>
+            <summary>MSP432 P401R ('5xx, 6xx' protocol, 32B password)</summary>
         </member>
         <member name="T:BSL430_NET.ScanOptions">
             <summary>
@@ -240,8 +243,8 @@
             StatusEx is Status extended with Report List, returned as a result of main public methods.
             </summary>
         </member>
-        <member name="P:BSL430_NET.StatusEx.BytesProcessed">
-            <summary>Number of bytes that were processed (uploaded/downloaded to/from target MCU).</summary>
+        <member name="P:BSL430_NET.StatusEx.BytesToProcess">
+            <summary>Number of bytes that need to be processed (uploaded/downloaded to/from target MCU).</summary>
         </member>
         <member name="P:BSL430_NET.StatusEx.BSLVersion">
             <summary>Null, 4-byte or 10-byte array, meaning differs, please see TI BSL doc (slau319t.pdf).</summary>
@@ -499,18 +502,24 @@
             <summary>
             Uploads data from firmware_path to target MCU. Supported file formats are TI-TXT, Intel-HEX and ELF.
             If none, null or invalid password is entered, mass erase is executed first.
+            Password is last 16-byte (F543x-non-A only) or 32-byte (others) of IVT (FFE0-FFFF), if newer 5xx/6xx MCU is
+            used. If MCU from older series is used (1xx/2xx/4xx), password is exactly 20-byte long. Mostly it is 32-byte.
             </summary>
         </member>
         <member name="M:BSL430_NET.BSL430NET.Upload(System.String,System.String,System.Byte[])">
             <summary>
             Uploads data from firmware_path to target MCU. Supported file formats are TI-TXT, Intel-HEX and ELF.
             If none, null or invalid password is entered, mass erase is executed first. device_name case dont matter.
+            Password is last 16-byte (F543x-non-A only) or 32-byte (others) of IVT (FFE0-FFFF), if newer 5xx/6xx MCU is
+            used. If MCU from older series is used (1xx/2xx/4xx), password is exactly 20-byte long. Mostly it is 32-byte.
             </summary>
         </member>
         <member name="M:BSL430_NET.BSL430NET.Download(System.Byte[],System.Int32,System.Int32,System.Collections.Generic.List{System.Byte}@,BSL430_NET.Bsl430NetDevice)">
             <summary>
             Downloads bytes from target MCU starting from address 'addr_start' to 'addr_start' + 'data_size'.
             If wrong password is entered, mass erase is auto executed as a safety measure, erasing entire flash.
+            Password is last 16-byte (F543x-non-A only) or 32-byte (others) of IVT (FFE0-FFFF), if newer 5xx/6xx MCU is
+            used. If MCU from older series is used (1xx/2xx/4xx), password is exactly 20-byte long. Mostly it is 32-byte.
             </summary>
         </member>
         <member name="M:BSL430_NET.BSL430NET.Download(System.Byte[],System.Int32,System.Int32,System.Collections.Generic.List{System.Byte}@,System.String)">
@@ -518,6 +527,8 @@
             Downloads bytes from target MCU starting from address 'addr_start' to 'addr_start' + 'data_size'.
             If wrong password is entered, mass erase is auto executed as a safety measure, erasing entire flash.
             device_name case dont matter.
+            Password is last 16-byte (F543x-non-A only) or 32-byte (others) of IVT (FFE0-FFFF), if newer 5xx/6xx MCU is
+            used. If MCU from older series is used (1xx/2xx/4xx), password is exactly 20-byte long. Mostly it is 32-byte.
             </summary>
         </member>
         <member name="M:BSL430_NET.BSL430NET.SetBaudRate(BSL430_NET.BaudRate)">
@@ -763,6 +774,8 @@
             <summary>
             Uploads data from firmware_path to target MCU. Supported file formats are TI-TXT, Intel-HEX and ELF.
             If none, null or invalid password is entered, mass erase is executed first.
+            Password is last 16-byte (F543x-non-A only) or 32-byte (others) of IVT (FFE0-FFFF), if newer 5xx/6xx MCU is
+            used. If MCU from older series is used (1xx/2xx/4xx), password is exactly 20-byte long. Mostly it is 32-byte.
             </summary>
             <exception cref="T:BSL430_NET.Bsl430NetException"></exception>
         </member>
@@ -770,6 +783,8 @@
             <summary>
             Uploads data from firmware_path to target MCU. Supported file formats are TI-TXT, Intel-HEX and ELF.
             If none, null or invalid password is entered, mass erase is executed first. device_name case dont matter.
+            Password is last 16-byte (F543x-non-A only) or 32-byte (others) of IVT (FFE0-FFFF), if newer 5xx/6xx MCU is
+            used. If MCU from older series is used (1xx/2xx/4xx), password is exactly 20-byte long. Mostly it is 32-byte.
             </summary>
             <exception cref="T:BSL430_NET.Bsl430NetException"></exception>
         </member>
@@ -777,6 +792,8 @@
             <summary>
             Downloads bytes from target MCU starting from address 'addr_start' to 'addr_start' + 'data_size'.
             If wrong password is entered, mass erase is auto executed as a safety measure, erasing entire flash.
+            Password is last 16-byte (F543x-non-A only) or 32-byte (others) of IVT (FFE0-FFFF), if newer 5xx/6xx MCU is
+            used. If MCU from older series is used (1xx/2xx/4xx), password is exactly 20-byte long. Mostly it is 32-byte.
             </summary>
             <exception cref="T:BSL430_NET.Bsl430NetException"></exception>
         </member>
@@ -785,6 +802,8 @@
             Downloads bytes from target MCU starting from address 'addr_start' to 'addr_start' + 'data_size'.
             If wrong password is entered, mass erase is auto executed as a safety measure, erasing entire flash.
             device_name case dont matter.
+            Password is last 16-byte (F543x-non-A only) or 32-byte (others) of IVT (FFE0-FFFF), if newer 5xx/6xx MCU is
+            used. If MCU from older series is used (1xx/2xx/4xx), password is exactly 20-byte long. Mostly it is 32-byte.
             </summary>
             <exception cref="T:BSL430_NET.Bsl430NetException"></exception>
         </member>

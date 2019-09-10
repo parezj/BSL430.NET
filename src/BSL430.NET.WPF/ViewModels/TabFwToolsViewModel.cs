@@ -78,7 +78,7 @@ namespace BSL430_NET_WPF.ViewModels
         private const string ERR1 = "Firmware Path is missing or invalid!";
         private const string ERR2 = "Second Firmware Path is missing or invalid!";
         private const string ERR3 = "Destination Firmware Path is missing or invalid!";
-        private const string ERR4 = "This firmware does not contain 16 byte long BSL password.";
+        private const string ERR4 = "This firmware does not contain 16, 20 or 32 byte long BSL password.";
         #endregion
 
         #region Constructor
@@ -303,14 +303,31 @@ namespace BSL430_NET_WPF.ViewModels
             {
                 try
                 {
-                    byte[] pw = FwTools.GetPassword(this.FwPath);
-                    if (pw == null || pw.Length != 16)
+                    var password = FwTools.GetPassword(this.FwPath);
+                    if (password == null)
                     {
                         MessageBox.Show(ERR4, "BSL430.NET", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                     else
-                    {
-                        this.PasswordData = BitConverter.ToString(pw).Replace("-", "");
+                    {                        
+                        if (this.PasswordMCU == MCU.MSP430_F1xx ||
+                            this.PasswordMCU == MCU.MSP430_F2xx ||
+                            this.PasswordMCU == MCU.MSP430_F4xx ||
+                            this.PasswordMCU == MCU.MSP430_G2xx3)
+                        {
+                            this.PasswordHeader = "20-byte old 1xx/2xx/4xx BSL password";
+                            this.PasswordData = BitConverter.ToString(password.Password20Byte).Replace("-", "");
+                        }
+                        else if (this.PasswordMCU == MCU.MSP430_F543x_NON_A)
+                        {
+                            this.PasswordHeader = "16-byte special F543x (non A) BSL password";
+                            this.PasswordData = BitConverter.ToString(password.Password16Byte).Replace("-", "");
+                        }
+                        else
+                        {
+                            this.PasswordHeader = "32-byte standard 5xx/6xx BSL password";
+                            this.PasswordData = BitConverter.ToString(password.Password32Byte).Replace("-", "");
+                        }                
                         this.IsDialogOpen = true;
                         await coordinator.ShowMetroDialogAsync(this, dialogGetPassword, dialogSettings);
                     }
@@ -603,6 +620,27 @@ namespace BSL430_NET_WPF.ViewModels
             {
                 _PasswordData = value;
                 NotifyOfPropertyChange(() => PasswordData);
+            }
+        }
+        private string _PasswordHeader = "";
+        public string PasswordHeader
+        {
+            get => _PasswordHeader;
+            set
+            {
+                _PasswordHeader = value;
+                NotifyOfPropertyChange(() => PasswordHeader);
+            }
+        }
+        private MCU _PasswordMCU = BslSettings.Instance.FwToolsPasswordMCU;
+        public MCU PasswordMCU
+        {
+            get => _PasswordMCU;
+            set
+            {
+                _PasswordMCU = value;
+                BslSettings.Instance.FwToolsPasswordMCU = value;
+                NotifyOfPropertyChange(() => PasswordMCU);
             }
         }
         #endregion

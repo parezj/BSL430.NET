@@ -104,38 +104,40 @@ namespace BSL430_NET
     [DefaultValue(MSP430_F5xx)]
     public enum MCU : byte
     {
-        /// <summary>MSP430 F1xx</summary>
+        /// <summary>MSP430 F1xx ('1xx, 2xx, 4xx' protocol, 20B password)</summary>
         MSP430_F1xx = 0,
-        /// <summary>MSP430 F2xx</summary>
+        /// <summary>MSP430 F2xx ('1xx, 2xx, 4xx' protocol, 20B password)</summary>
         MSP430_F2xx = 1,
-        /// <summary>MSP430 F4xx</summary>
+        /// <summary>MSP430 F4xx ('1xx, 2xx, 4xx' protocol, 20B password)</summary>
         MSP430_F4xx = 2,
-        /// <summary>MSP430 G2xx3</summary>
+        /// <summary>MSP430 G2xx3 ('1xx, 2xx, 4xx' protocol, 20B password)</summary>
         MSP430_G2xx3 = 3,
-        /// <summary>MSP430 F5xx</summary>
+        /// <summary>MSP430 F5xx ('5xx, 6xx' protocol, 32B password)</summary>
         MSP430_F5xx = 4,
-        /// <summary>MSP430 F543x</summary>
-        MSP430_F543x = 5,
-        /// <summary>MSP430 F6xx</summary>
-        MSP430_F6xx = 6,
-        /// <summary>MSP430 FR5xx</summary>
-        MSP430_FR5xx = 7,
-        /// <summary>MSP430 FR6xx</summary>
-        MSP430_FR6xx = 8,
-        /// <summary>MSP430 FR2x33</summary>
-        MSP430_FR2x33 = 9,
-        /// <summary>MSP430 FR231x</summary>
-        MSP430_FR231x = 10,
-        /// <summary>MSP430 FR235x</summary>
-        MSP430_FR235x = 11,
-        /// <summary>MSP430 FR215x</summary>
-        MSP430_FR215x = 12,
-        /// <summary>MSP430 FR413x</summary>
-        MSP430_FR413x = 13,
-        /// <summary>MSP430 FR211x</summary>
-        MSP430_FR211x = 14,
-        /// <summary>MSP432 P401R</summary>
-        MSP432_P401R = 15
+        /// <summary>MSP430 F543x [with A] ('5xx, 6xx' protocol, 32B password)</summary>
+        MSP430_F543x_A = 5,
+        /// <summary>MSP430 F543x [non A] ('5xx, 6xx' protocol, 16B password)</summary>
+        MSP430_F543x_NON_A = 6,
+        /// <summary>MSP430 F6xx ('5xx, 6xx' protocol, 32B password)</summary>
+        MSP430_F6xx = 7,
+        /// <summary>MSP430 FR5xx ('5xx, 6xx' protocol, 32B password)</summary>
+        MSP430_FR5xx = 8,
+        /// <summary>MSP430 FR6xx ('5xx, 6xx' protocol, 32B password)</summary>
+        MSP430_FR6xx = 9,
+        /// <summary>MSP430 FR2x33 ('5xx, 6xx' protocol, 32B password)</summary>
+        MSP430_FR2x33 = 10,
+        /// <summary>MSP430 FR231x ('5xx, 6xx' protocol, 32B password)</summary>
+        MSP430_FR231x = 11,
+        /// <summary>MSP430 FR235x ('5xx, 6xx' protocol, 32B password)</summary>
+        MSP430_FR235x = 12,
+        /// <summary>MSP430 FR215x ('5xx, 6xx' protocol, 32B password)</summary>
+        MSP430_FR215x = 13,
+        /// <summary>MSP430 FR413x ('5xx, 6xx' protocol, 32B password)</summary>
+        MSP430_FR413x = 14,
+        /// <summary>MSP430 FR211x ('5xx, 6xx' protocol, 32B password)</summary>
+        MSP430_FR211x = 15,
+        /// <summary>MSP432 P401R ('5xx, 6xx' protocol, 32B password)</summary>
+        MSP432_P401R = 16
     }
 
     /// <summary>
@@ -213,7 +215,8 @@ namespace BSL430_NET
         [Description("BSL Locked. The correct password has not yet been supplied to unlock the BSL.")]
         BSLLocked = 0x04,
         /// <summary>BSL Password Error. An incorrect password was supplied to the BSL when attempting an unlock.</summary>
-        [Description("BSL Password Error. An incorrect password was supplied to the BSL when attempting an unlock.")]
+        [Description("BSL Password Error. An incorrect password was supplied to the BSL when attempting an unlock. " +
+                     "Most likely entire memory, except Info A, was ERASED as a security measure!")]
         BSLPasswordError = 0x05,
         /// <summary>Byte Write Forbidden. This error is returned when a byte write is attempted in a flash area.</summary>
         [Description("Byte Write Forbidden. This error is returned when a byte write is attempted in a flash area.")]
@@ -268,9 +271,9 @@ namespace BSL430_NET
             if (Stat.Extra != "")
                 ret += $"\n\n{Stat.Extra.Replace(';', '\n')}";
             if (Stat.CoreStatus != BslCoreMessage.NotAvailable)
-                ret += $"\n\nCoreStatus: {Stat.CoreStatus.GetEnumDescription()}";
+                ret += $"\n\nBSL Core Status: {Stat.CoreStatus.GetEnumDescription()}\n";
             if (Stat.UartStatus != BslUartMessage.NotAvailable)
-                ret += $"\nUartStatus: {Stat.UartStatus.GetEnumDescription()}";
+                ret += $"\nBSL UART Status: {Stat.UartStatus.GetEnumDescription()}";
             return ret;
         }
 
@@ -307,8 +310,8 @@ namespace BSL430_NET
     [Serializable]
     public class StatusEx : Status
     {
-        /// <summary>Number of bytes that were processed (uploaded/downloaded to/from target MCU).</summary>
-        public int BytesProcessed { get; set; } = -1;
+        /// <summary>Number of bytes that need to be processed (uploaded/downloaded to/from target MCU).</summary>
+        public int BytesToProcess { get; set; } = -1;
         /// <summary>Null, 4-byte or 10-byte array, meaning differs, please see TI BSL doc (slau319t.pdf).</summary>
         public byte[] BSLVersion { get; set; } = null;
         /// <summary>String representation of BSLVersion. Meaning differs, please see TI BSL doc (slau319t.pdf).</summary>
@@ -331,8 +334,8 @@ namespace BSL430_NET
                 if (prev == null || (stat != null && prev.Msg != stat.Msg))
                 {
                     ret += FormattedString(stat, (cnt == 0 && stat.InnerStatus != null && stat.InnerStatus.Msg != stat.Msg));
-                    if (cnt == 0 && this.BytesProcessed != -1)
-                        ret += $"\nProcessed Bytes: {this.BytesProcessed}";
+                    if (cnt == 0 && this.BytesToProcess != -1)
+                        ret += $"\nProcessed Bytes: {this.BytesToProcess}";
                     if (cnt == 0 && this.BSLVersion != null && this.BSLVersion.Length > 0)
                         ret += $"\nBSL Version: {this.BSLVersion.ToHexString()}";
                     if (stat.InnerStatus != null)
@@ -787,6 +790,8 @@ namespace BSL430_NET
         /// <summary>
         /// Uploads data from firmware_path to target MCU. Supported file formats are TI-TXT, Intel-HEX and ELF.
         /// If none, null or invalid password is entered, mass erase is executed first.
+        /// Password is last 16-byte (F543x-non-A only) or 32-byte (others) of IVT (FFE0-FFFF), if newer 5xx/6xx MCU is
+        /// used. If MCU from older series is used (1xx/2xx/4xx), password is exactly 20-byte long. Mostly it is 32-byte.
         /// </summary>
         public StatusEx Upload(string FirmwarePath, Bsl430NetDevice Device = null, byte[] Password = null)
         {
@@ -796,6 +801,8 @@ namespace BSL430_NET
         /// <summary>
         /// Uploads data from firmware_path to target MCU. Supported file formats are TI-TXT, Intel-HEX and ELF.
         /// If none, null or invalid password is entered, mass erase is executed first. device_name case dont matter.
+        /// Password is last 16-byte (F543x-non-A only) or 32-byte (others) of IVT (FFE0-FFFF), if newer 5xx/6xx MCU is
+        /// used. If MCU from older series is used (1xx/2xx/4xx), password is exactly 20-byte long. Mostly it is 32-byte.
         /// </summary>
         public StatusEx Upload(string FirmwarePath, string DeviceName, byte[] Password = null)
         {
@@ -805,6 +812,8 @@ namespace BSL430_NET
         /// <summary>
         /// Downloads bytes from target MCU starting from address 'addr_start' to 'addr_start' + 'data_size'.
         /// If wrong password is entered, mass erase is auto executed as a safety measure, erasing entire flash.
+        /// Password is last 16-byte (F543x-non-A only) or 32-byte (others) of IVT (FFE0-FFFF), if newer 5xx/6xx MCU is
+        /// used. If MCU from older series is used (1xx/2xx/4xx), password is exactly 20-byte long. Mostly it is 32-byte.
         /// </summary>
         public StatusEx Download(byte[] Password, int AddrStart, int DataSize, out List<byte> Data, Bsl430NetDevice Device = null)
         {
@@ -815,6 +824,8 @@ namespace BSL430_NET
         /// Downloads bytes from target MCU starting from address 'addr_start' to 'addr_start' + 'data_size'.
         /// If wrong password is entered, mass erase is auto executed as a safety measure, erasing entire flash.
         /// device_name case dont matter.
+        /// Password is last 16-byte (F543x-non-A only) or 32-byte (others) of IVT (FFE0-FFFF), if newer 5xx/6xx MCU is
+        /// used. If MCU from older series is used (1xx/2xx/4xx), password is exactly 20-byte long. Mostly it is 32-byte.
         /// </summary>
         public StatusEx Download(byte[] Password, int AddrStart, int DataSize, out List<byte> Data, string DeviceName)
         {

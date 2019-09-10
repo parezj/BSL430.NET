@@ -822,6 +822,37 @@ namespace BSL430_NET
                     throw new FirmwareToolsException(481, ERR_481);
                 }
             }
+            private static BslPasswords GetBslPassword(string FirmwarePath)
+            {
+                List<byte> ret = new List<byte>();
+                uint start_addr = 0xFFE0;
+
+                Firmware fw = ParseAutoDetect(FirmwarePath, true, null);
+
+                if (fw == null || fw.Nodes == null || fw.Nodes.Count < 32)
+                    return null;
+
+                foreach (FwNode nod in fw.Nodes)
+                {
+                    if (nod.Addr == start_addr)
+                    {
+                        ret.Add(nod.Data);
+                        start_addr++;
+
+                        if (ret.Count == 32)
+                            break;
+                    }
+                }
+                if (ret.Count != 32)
+                    return null;
+
+                return new BslPasswords()
+                {
+                    Password32Byte = ret.ToArray(),
+                    Password20Byte = ret.Take(20).ToArray(),
+                    Password16Byte = ret.Take(16).ToArray()
+                };
+            }
             #endregion
         }
     }

@@ -84,6 +84,8 @@ namespace BSL430_NET
         /// <summary>
         /// Uploads data from firmware_path to target MCU. Supported file formats are TI-TXT, Intel-HEX and ELF.
         /// If none, null or invalid password is entered, mass erase is executed first.
+        /// Password is last 16-byte (F543x-non-A only) or 32-byte (others) of IVT (FFE0-FFFF), if newer 5xx/6xx MCU is
+        /// used. If MCU from older series is used (1xx/2xx/4xx), password is exactly 20-byte long. Mostly it is 32-byte.
         /// </summary>
         /// <exception cref="Bsl430NetException"></exception>
         StatusEx Upload(string FirmwarePath, Bsl430NetDevice Device = null, byte[] Password = null);
@@ -91,6 +93,8 @@ namespace BSL430_NET
         /// <summary>
         /// Uploads data from firmware_path to target MCU. Supported file formats are TI-TXT, Intel-HEX and ELF.
         /// If none, null or invalid password is entered, mass erase is executed first. device_name case dont matter.
+        /// Password is last 16-byte (F543x-non-A only) or 32-byte (others) of IVT (FFE0-FFFF), if newer 5xx/6xx MCU is
+        /// used. If MCU from older series is used (1xx/2xx/4xx), password is exactly 20-byte long. Mostly it is 32-byte.
         /// </summary>
         /// <exception cref="Bsl430NetException"></exception>
         StatusEx Upload(string FirmwarePath, string DeviceName, byte[] Password = null);
@@ -98,6 +102,8 @@ namespace BSL430_NET
         /// <summary>
         /// Downloads bytes from target MCU starting from address 'addr_start' to 'addr_start' + 'data_size'.
         /// If wrong password is entered, mass erase is auto executed as a safety measure, erasing entire flash.
+        /// Password is last 16-byte (F543x-non-A only) or 32-byte (others) of IVT (FFE0-FFFF), if newer 5xx/6xx MCU is
+        /// used. If MCU from older series is used (1xx/2xx/4xx), password is exactly 20-byte long. Mostly it is 32-byte.
         /// </summary>
         /// <exception cref="Bsl430NetException"></exception>
         StatusEx Download(byte[] Password, int AddrStart, int DataSize, out List<byte> Data, Bsl430NetDevice Device = null);
@@ -106,6 +112,8 @@ namespace BSL430_NET
         /// Downloads bytes from target MCU starting from address 'addr_start' to 'addr_start' + 'data_size'.
         /// If wrong password is entered, mass erase is auto executed as a safety measure, erasing entire flash.
         /// device_name case dont matter.
+        /// Password is last 16-byte (F543x-non-A only) or 32-byte (others) of IVT (FFE0-FFFF), if newer 5xx/6xx MCU is
+        /// used. If MCU from older series is used (1xx/2xx/4xx), password is exactly 20-byte long. Mostly it is 32-byte.
         /// </summary>
         /// <exception cref="Bsl430NetException"></exception>
         StatusEx Download(byte[] Password, int AddrStart, int DataSize, out List<byte> Data, string DeviceName);

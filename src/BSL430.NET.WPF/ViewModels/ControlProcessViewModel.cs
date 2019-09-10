@@ -323,6 +323,13 @@ namespace BSL430_NET_WPF.ViewModels
         }
         #endregion
 
+        #region Public Aux Methods
+        public bool ValidateBslPassword(int ByteLength, MCU Mcu) // true = valid
+        {
+            return this.model.ValidateBslPassword(ByteLength, Mcu);
+        }
+        #endregion
+
         #region Private Methods
         private void OnThemeChanged(object sender, EventArgs e)
         {

@@ -51,7 +51,10 @@ namespace BSL430_NET_WPF.ViewModels
     {
         public ControlProcessViewModel ControlProcess { get; private set; }
 
-        private const string ERR1 = "Password must be 32 hex chars long!";
+        private const string ERR1 = "Password must be either 0 (auto erase all first) or with valid lenght!\n\n" +
+                                    "Password is last 16-byte (F543x-non-A only) or 32-byte (others) of IVT (FFE0-FFFF), " +
+                                    "if newer 5xx/6xx MCU is used. If MCU from older series is used (1xx/2xx/4xx), " +
+                                    "password is exactly 20-byte long. Mostly it is 32-byte.\n\nUse Firmware Tools.\n";
         private const string ERR2 = "Destination Firmware Path is missing or invalid!";
         private const string ERR3 = "Byte Size must be a positive number!";
 
@@ -78,8 +81,10 @@ namespace BSL430_NET_WPF.ViewModels
         {
             string err = "";
 
-            if (this.ControlProcess.Password.Length != 32)
+            if (!this.ControlProcess.ValidateBslPassword(this.ControlProcess.Password.Length / 2, this.ControlProcess.MCU))
+            {
                 err += $"{ERR1}\n";
+            }
 
             if (this.FwPath == "" || !Directory.Exists(Path.GetDirectoryName(this.FwPath)))
                 err += $"{ERR2}\n";
@@ -92,10 +97,25 @@ namespace BSL430_NET_WPF.ViewModels
                 MessageBox.Show(err.TrimEnd('\n'), "BSL430.NET", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            else
+
+            if (this.FirstDownload)
             {
-                this.ControlProcess?.StartStop();
+                var result = MessageBox.Show("As this is your first download, you must known, that incorrectly entered password is " +
+                    "considered as attack and so it is handled with.\n\nBSL versions 2.0 and higher with default settings executes " +
+                    "Mass Erase command after single wrong password attempt as a security measure, so entire memory is erased except " +
+                    "Info A.\n\nDo you still want to continue?", "BSL430.NET", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    this.FirstDownload = false;
+                }
+                else
+                {
+                    return;
+                }
             }
+
+            this.ControlProcess?.StartStop();
         }
         public void OpenLog()
         {
@@ -123,6 +143,16 @@ namespace BSL430_NET_WPF.ViewModels
         #endregion
 
         #region Properties
+        private bool _FirstDownload = BslSettings.Instance.DownloadFirst;
+        public bool FirstDownload
+        {
+            get => _FirstDownload;
+            set
+            {
+                _FirstDownload = value;
+                BslSettings.Instance.DownloadFirst = value;
+            }
+        }
         private double _RangeMaxD;
         public double RangeMaxD
         {

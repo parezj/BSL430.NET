@@ -560,8 +560,7 @@ namespace BSL430_NET
                             }
 
                             if (Enum.IsDefined(typeof(BslUartMessage), answer.data[0]))
-                                result.status.UartStatus = (BslUartMessage)Enum.ToObject(typeof(BslUartMessage), 
-                                                                                          answer.data[0]);
+                                result.status.UartStatus = (BslUartMessage)Enum.ToObject(typeof(BslUartMessage), answer.data[0]);
 
                             if (!answer.status.OK)
                             {
@@ -572,6 +571,9 @@ namespace BSL430_NET
                             if (result.status.UartStatus != BslUartMessage.ACK)
                             {
                                 result.status = Utils.StatusCreate(802, result.status);
+                                result.status.InnerStatus.Error = 821;
+                                result.status.InnerStatus.OK = false;
+                                result.status.InnerStatus.Msg = "BSL UART Message Error";
                                 return result;
                             }
 
@@ -668,18 +670,23 @@ namespace BSL430_NET
                                     result.data = (T)(object)new Data_Void();
 
                                     if (Enum.IsDefined(typeof(BslCoreMessage), answer.data[data_start_offset]))
+                                    {
                                         result.status.CoreStatus = (BslCoreMessage)Enum.ToObject(typeof(BslCoreMessage), 
-                                                                                                  answer.data[data_start_offset]);
+                                                                                                 answer.data[data_start_offset]);
+                                    }
                                     else
                                     {
                                         result.status = Utils.StatusCreate(807, result.status);
-                                        return result;
                                     }
+                                        
                                     if (result.status.CoreStatus != BslCoreMessage.Success)
                                     {
                                         result.status = Utils.StatusCreate(808, result.status);
+                                        result.status.InnerStatus.Error = 822;
+                                        result.status.InnerStatus.OK = false;
+                                        result.status.InnerStatus.Msg = "BSL Core Message Error";
                                         return result;
-                                    }
+                                    }     
                                 }
                                 break;
                         }
@@ -917,7 +924,7 @@ namespace BSL430_NET
                     pw_size = Const.BSL_SIZE124__PASSWORD;
                 else
                 {
-                    if (mcu != MCU.MSP430_F543x)
+                    if (mcu != MCU.MSP430_F543x_NON_A)
                         pw_size = Const.BSL_SIZE56__PASSWORD;
                     else
                         pw_size = Const.BSL_SIZE56__PASSWORD / 2;
