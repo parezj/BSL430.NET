@@ -228,7 +228,11 @@
                         </Grid>
 
                         <Grid Grid.Row="2">
-                            <Border Margin="20,0,20,5" CornerRadius="7" BorderThickness="0" BorderBrush="Black" Background="{DynamicResource BasicHover}">
+                            <Border Margin="20,0,20,5" 
+                                    CornerRadius="7" 
+                                    BorderThickness="0" 
+                                    BorderBrush="Black" 
+                                    Background="{DynamicResource BasicHover}">
                                 <Grid Margin="15,0,15,15">
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="Auto"/>
@@ -280,7 +284,26 @@
                                         </StackPanel>
 
                                         <StackPanel Grid.Column="3" Margin="0" VerticalAlignment="Center" ToolTip="BSL 16, 20 or 32 byte password is required for Download (and Upload).&#x0a;If wrong or none password is entered, mass erase is auto executed as a safety measure, erasing entire flash,&#x0a;except INFO A. However, this is usually not a problem, when performing Upload. Password is last 16-byte&#x0a;(F543x-non-A only) or 32-byte (others) of IVT (FFE0-FFFF), if newer 5xx/6xx MCU is used.&#x0a;If MCU from older series is used (1xx/2xx/4xx), password is exactly 20-byte long. Mostly it is 32-byte.&#x0a;Use Firmware Tools to get the password.">
-                                            <TextBlock Text="Password (16, 20 or 32 byte hex string)" Margin="0,5,0,0" FontWeight="Normal" FontSize="12"/>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="1*"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                
+                                                <TextBlock Grid.Column="0" 
+                                                           Text="Password (16, 20 or 32 byte hex string)" 
+                                                           Margin="0,5,0,0" 
+                                                           FontWeight="Normal" 
+                                                           FontSize="12"/>
+                                                <TextBlock Grid.Column="2" 
+                                                           Text="{Binding ControlProcess.Password.Length}" 
+                                                           TextAlignment="Justify" 
+                                                           Margin="0,5,0,0" 
+                                                           FontWeight="Normal" 
+                                                           FontSize="12"/>
+                                            </Grid>
+                                            
                                             <TextBox Grid.Column="3" 
                                                      x:Name="Password" 
                                                      FontWeight="Normal" 

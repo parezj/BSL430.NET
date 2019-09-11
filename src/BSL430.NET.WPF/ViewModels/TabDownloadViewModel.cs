@@ -54,7 +54,8 @@ namespace BSL430_NET_WPF.ViewModels
         private const string ERR1 = "Password must be either 0 (auto erase all first) or with valid lenght!\n\n" +
                                     "Password is last 16-byte (F543x-non-A only) or 32-byte (others) of IVT (FFE0-FFFF), " +
                                     "if newer 5xx/6xx MCU is used. If MCU from older series is used (1xx/2xx/4xx), " +
-                                    "password is exactly 20-byte long. Mostly it is 32-byte.\n\nUse Firmware Tools.\n";
+                                    "password is exactly 20-byte long. Mostly it is 32-byte, and if you enter blank or " +
+                                    "incorrect password, memory will be auto-erased as a security measure!\n\nUse Firmware Tools.\n";
         private const string ERR2 = "Destination Firmware Path is missing or invalid!";
         private const string ERR3 = "Byte Size must be a positive number!";
 
@@ -203,6 +204,12 @@ namespace BSL430_NET_WPF.ViewModels
                 this.ByteSize = this.RangeUpperValue - value;
                 this.ByteSizeMaximum = (this.SizeInDecimal) ? this.RangeMaxD - this.StartAddress : this.RangeMaxK - this.StartAddress;
                 this.ControlProcess.StartAddress = (this.SizeInDecimal) ? (int)this.StartAddress : (int)this.StartAddress * 1024;
+
+                this.AddrLabelStartVal = this.ControlProcess.StartAddress;
+                this.AddrLabelStart = (int)value;
+                this.AddrLabelEnd = (int)this.RangeUpperValue;
+                this.AddrLabelEndVal = this.ControlProcess.StartAddress + this.ControlProcess.ByteSize;
+
                 NotifyOfPropertyChange(() => StartAddress);
             }
         }
@@ -216,6 +223,10 @@ namespace BSL430_NET_WPF.ViewModels
                 BslSettings.Instance.DownloadByteSize = (int)value;
                 this._RangeUpperValue = value + this.StartAddress;          
                 this.ControlProcess.ByteSize = (this.SizeInDecimal) ? (int)this.ByteSize : (int)this.ByteSize * 1024;
+
+                this.AddrLabelEndVal = this.ControlProcess.StartAddress + this.ControlProcess.ByteSize;
+                this.AddrLabelEnd = (int)this._RangeUpperValue;
+
                 NotifyOfPropertyChange(() => RangeUpperValue);
                 NotifyOfPropertyChange(() => ByteSize);
             }
@@ -228,6 +239,7 @@ namespace BSL430_NET_WPF.ViewModels
             {
                 if (_SizeInDecimal == false && value == true)
                 {
+                    _SizeInDecimal = value;
                     this._RangeUpperValue *= 1024;
                     this._ByteSize *= 1024;
                     this.StartAddress *= 1024;
@@ -235,15 +247,14 @@ namespace BSL430_NET_WPF.ViewModels
                 }
                 else if (_SizeInDecimal == true && value == false)
                 {
+                    _SizeInDecimal = value;
                     this._RangeUpperValue /= 1024;
                     this._ByteSize /= 1024;
                     this.StartAddress /= 1024;
 
-
                     if (this.ByteSize < 1)
                         this.ByteSize = 1;
                 }
-                _SizeInDecimal = value;
                 BslSettings.Instance.DownloadSizeInDecimal = value;
                 NotifyOfPropertyChange(() => ByteSizeMaximum);
                 NotifyOfPropertyChange(() => SizeInDecimal);
@@ -258,8 +269,8 @@ namespace BSL430_NET_WPF.ViewModels
             set
             {
                 _RangeUpperValue = value;
-                this._ByteSize = value - this.StartAddress;
-                BslSettings.Instance.DownloadByteSize = (int)this._ByteSize;
+                this.ByteSize = value - this.StartAddress;
+                BslSettings.Instance.DownloadByteSize = (int)this.ByteSize;
                 NotifyOfPropertyChange(() => ByteSize);
                 NotifyOfPropertyChange(() => RangeUpperValue);
             }
@@ -287,6 +298,50 @@ namespace BSL430_NET_WPF.ViewModels
                 BslSettings.Instance.DownloadOutputFormat = value;
                 this.ControlProcess.OutputFormat = this.OutputFormat;
                 NotifyOfPropertyChange(() => OutputFormat);
+            }
+        }
+        public int RangeSliderWidth { get; set; } = 540;
+
+        private int _AddrLabelStart = 0;
+        public int AddrLabelStart
+        {
+            get => _AddrLabelStart;
+            set
+            {
+                double x = (double)value / ((this.SizeInDecimal) ? (int)this.RangeMaxD : (int)this.RangeMaxK); 
+                _AddrLabelStart = (int)(x * RangeSliderWidth) + 49;
+                NotifyOfPropertyChange(() => AddrLabelStart);
+            }
+        }
+        private int _AddrLabelEnd = 0;
+        public int AddrLabelEnd
+        {
+            get => _AddrLabelEnd;
+            set
+            {
+                double x = (double)value / ((this.SizeInDecimal) ? (int)this.RangeMaxD : (int)this.RangeMaxK);
+                _AddrLabelEnd = (int)((x * RangeSliderWidth) - this.AddrLabelStart) + 30;
+                NotifyOfPropertyChange(() => AddrLabelEnd);
+            }
+        }
+        private int _AddrLabelStartVal = 0;
+        public int AddrLabelStartVal
+        {
+            get => _AddrLabelStartVal;
+            set
+            {
+                _AddrLabelStartVal = value;
+                NotifyOfPropertyChange(() => AddrLabelStartVal);
+            }
+        }
+        private int _AddrLabelEndVal = 0;
+        public int AddrLabelEndVal
+        {
+            get => _AddrLabelEndVal;
+            set
+            {
+                _AddrLabelEndVal = value - 1;
+                NotifyOfPropertyChange(() => AddrLabelEndVal);
             }
         }
         #endregion

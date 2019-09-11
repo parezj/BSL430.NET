@@ -441,7 +441,7 @@ namespace BSL430_NET_WPF.ViewModels
         }
         public void Loaded()
         {
-            if (this.argsHandled)
+            if (!this.argsHandled)
             {
                 this.argsHandled = true;
                 HandleArgs(this.args);

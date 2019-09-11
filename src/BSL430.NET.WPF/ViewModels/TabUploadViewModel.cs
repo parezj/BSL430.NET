@@ -46,7 +46,8 @@ namespace BSL430_NET_WPF.ViewModels
         private const string ERR1 = "Password must be either 0 (auto erase all first) or with valid lenght!\n\n" +
                                     "Password is last 16-byte (F543x-non-A only) or 32-byte (others) of IVT (FFE0-FFFF), " +
                                     "if newer 5xx/6xx MCU is used. If MCU from older series is used (1xx/2xx/4xx), " +
-                                    "password is exactly 20-byte long. Mostly it is 32-byte.\n\nUse Firmware Tools.\n";
+                                    "password is exactly 20-byte long.\n\nMostly it is 32-byte, but if you want to overwrite " +
+                                    "all memory (typical upload), just use blank password.\n";
         private const string ERR2 = "Firmware Path is missing or invalid!";
 
         public TabUploadViewModel(ControlProcessViewModel _ctrlprc_vm, Dictionary<string, string> args)

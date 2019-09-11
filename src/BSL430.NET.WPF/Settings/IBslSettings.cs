@@ -128,7 +128,7 @@ namespace BSL430_NET_WPF.Settings
         [Option(DefaultValue = "0")]
         int FwWriteLineLength { get; set; }
 
-        [Option(DefaultValue = "120")]
+        [Option(DefaultValue = "128")]
         int DownloadSizeRange { get; set; }
 
         [Option(DefaultValue = "false")]

@@ -82,11 +82,40 @@
                     </StackPanel>
 
                     <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                        <TextBlock Text="" Margin="0,5,0,0" FontWeight="Normal" FontSize="12" ></TextBlock>
+                        <Grid HorizontalAlignment="Stretch" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Column="0"
+                                       Panel.ZIndex="1000"
+                                       Width="{Binding AddrLabelStart}" 
+                                       MinWidth="50"
+                                       TextAlignment="Right" 
+                                       Text="{Binding AddrLabelStartVal, StringFormat={}0x{0:X4}}" 
+                                       Margin="0,0,0,1" 
+                                       ToolTip="First Address"
+                                       FontWeight="Normal" 
+                                       TextWrapping="NoWrap"
+                                       FontSize="12"/>
+                            <TextBlock Grid.Column="1"
+                                       Panel.ZIndex="1000"
+                                       Width="{Binding AddrLabelEnd}" 
+                                       MinWidth="50"
+                                       TextAlignment="Right" 
+                                       Text="{Binding AddrLabelEndVal, StringFormat='{}0x{0:X4} '}" 
+                                       Margin="0,0,0,1" 
+                                       ToolTip="Last Address"
+                                       FontWeight="Normal" 
+                                       TextWrapping="NoWrap"
+                                       FontSize="12"/>
+                        </Grid>
                         <Controls:RangeSlider Grid.Column="1" 
                                               x:Name="Range"
                                               Controls:SliderHelper.EnableMouseWheel="MouseHover"
-                                              Margin="10,0" 
+                                              Margin="0" 
                                               IsSnapToTickEnabled="True" 
                                               IsMoveToPointEnabled="True" 
                                               ExtendedMode="True" 
@@ -95,6 +124,7 @@
                                               Minimum="0"
                                               SmallChange="1"
                                               LargeChange="2" 
+                                              Width="540"
                                               MinRange="1"
                                               MinRangeWidth="5"
                                               LowerValue="{Binding StartAddress, Mode=TwoWay}"
@@ -102,6 +132,7 @@
                                               IsEnabled="{Binding ControlProcess.InProgress, Converter={StaticResource BoolNegationConverter}}"
                                               Orientation="Horizontal"
                                               VerticalAlignment="Center"
+                                              HorizontalAlignment="Stretch"
                                               TickPlacement="TopLeft">
                             <Controls:RangeSlider.Style>
                                 <Style TargetType="{x:Type Controls:RangeSlider}" BasedOn="{StaticResource MahApps.Metro.Styles.RangeSlider.Win10}">

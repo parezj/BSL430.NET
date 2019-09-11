@@ -233,7 +233,7 @@ namespace BSL430_NET
                                 if (!inputReceiver.IsRunning)
                                     return Utils.StatusCreate(646);
 
-                                // ANOTHER METHOD TO READ
+                                // ANOTHER METHOD TO READ - TODO test
                                 //int read = usb.Read(buffer, 0, toread);
                                 //if (read >= toread)
                                 //{
@@ -268,7 +268,7 @@ namespace BSL430_NET
                                                     return Utils.StatusCreate(0);
                                                 }
                                             }
-                                            //for (int valueIndex = 0; valueIndex < valueCount; valueIndex++)
+                                            //for (int valueIndex = 0; valueIndex < valueCount; valueIndex++)  - TODO test
                                             //{
                                             //    var dataValue = inputParser.GetValue(valueIndex);
                                             //      Console.Write(string.Format("  {0}: {1}",

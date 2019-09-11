@@ -235,7 +235,7 @@ namespace BSL430_NET
                             if (BSL430NET.Interrupted)
                                 throw new Bsl430NetException(666);
 
-                            timeout -= TIMEOUT_READ;
+                            timeout -= DELAY_READ;
                             Task.Delay(DELAY_READ).Wait();
                         }
                         return Utils.StatusCreate(795);  // timeout

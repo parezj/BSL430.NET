@@ -111,7 +111,7 @@
                                   FontSize="16"
                                   TextBlock.FontWeight="Thin">
                             
-                            <MenuItem Header="120 K"
+                            <MenuItem Header="256 K"
                                       Style="{StaticResource MenuItemStyle}"
                                       Tag="None"
                                       IsCheckable="True"
@@ -120,9 +120,9 @@
                                       IsChecked="{Binding Path=DownloadSizeMax, 
                                                   Mode=TwoWay, 
                                                   Converter={StaticResource MenuItemIsCheckedConverter}, 
-                                                  ConverterParameter=120}"/>
+                                                  ConverterParameter=256}"/>
                             
-                            <MenuItem Header="60 K"
+                            <MenuItem Header="128 K"
                                       Style="{StaticResource MenuItemStyle}"
                                       Tag="None"
                                       IsCheckable="True"
@@ -131,9 +131,9 @@
                                       IsChecked="{Binding Path=DownloadSizeMax, 
                                                   Mode=TwoWay, 
                                                   Converter={StaticResource MenuItemIsCheckedConverter}, 
-                                                  ConverterParameter=60}"/>
+                                                  ConverterParameter=128}"/>
                             
-                            <MenuItem Header="48 K"
+                            <MenuItem Header="64 K"
                                       Style="{StaticResource MenuItemStyle}"
                                       Tag="None"
                                       IsCheckable="True"
@@ -142,7 +142,7 @@
                                       IsChecked="{Binding Path=DownloadSizeMax, 
                                                   Mode=TwoWay, 
                                                   Converter={StaticResource MenuItemIsCheckedConverter}, 
-                                                  ConverterParameter=48}"/>
+                                                  ConverterParameter=64}"/>
                             
                             <MenuItem Header="32 K"
                                       Style="{StaticResource MenuItemStyle}"
