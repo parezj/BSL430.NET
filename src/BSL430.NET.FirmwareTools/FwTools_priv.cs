@@ -62,7 +62,7 @@ namespace BSL430_NET
                 }
                 catch (Exception ex)
                 {
-                    throw new FirmwareToolsException(474, $"{ERR_474} {ex.Message}");
+                    throw new FirmwareToolsException(474, $"{ERR_474} {ex.Message}", ex);
                 }
 
                 if (data_binary != null &&
@@ -179,7 +179,7 @@ namespace BSL430_NET
                     if (ex is FirmwareToolsException)
                         throw ex;
                     else
-                        throw new FirmwareToolsException(444, $"{ERR_444} {ex}");
+                        throw new FirmwareToolsException(444, $"{ERR_444} {ex.Message}", ex);
                 }
             }
 
@@ -202,7 +202,7 @@ namespace BSL430_NET
                         }
                         catch (Exception ex)
                         {
-                            throw new FirmwareToolsException(474, $"{ERR_474} {ex.Message}");
+                            throw new FirmwareToolsException(474, $"{ERR_474} {ex.Message}", ex);
                         }
                     }
                     else data = _data;
@@ -261,7 +261,7 @@ namespace BSL430_NET
                     if (ex is FirmwareToolsException)
                         throw ex;
                     else
-                        throw new FirmwareToolsException(444, $"{ERR_444} {ex}");
+                        throw new FirmwareToolsException(444, $"{ERR_444} {ex.Message}", ex);
                 }
             }
 
@@ -283,7 +283,7 @@ namespace BSL430_NET
                         }
                         catch (Exception ex)
                         {
-                            throw new FirmwareToolsException(474, $"{ERR_474} {ex}");
+                            throw new FirmwareToolsException(474, $"{ERR_474} {ex.Message}", ex);
                         }
                     }
                     else data = _data;
@@ -354,7 +354,7 @@ namespace BSL430_NET
                     if (ex is FirmwareToolsException)
                         throw ex;
                     else
-                        throw new FirmwareToolsException(444, $"{ERR_444} {ex}");
+                        throw new FirmwareToolsException(444, $"{ERR_444} {ex.Message}", ex);
                 }
             }
 
@@ -379,7 +379,7 @@ namespace BSL430_NET
                         }
                         catch (Exception ex)
                         {
-                            throw new FirmwareToolsException(474, $"{ERR_474} {ex}");
+                            throw new FirmwareToolsException(474, $"{ERR_474} {ex.Message}", ex);
                         }
                     }
                     else data = _data;
@@ -562,7 +562,7 @@ namespace BSL430_NET
                     if (ex is FirmwareToolsException)
                         throw ex;
                     else
-                        throw new FirmwareToolsException(444, $"{ERR_444} {ex}");
+                        throw new FirmwareToolsException(444, $"{ERR_444} {ex.Message}", ex);
                 }
             }
             private static (List<FwNode> Data, List<long> FilledFFAddr) FillGapsWithFF(List<FwNode> code)
@@ -656,7 +656,7 @@ namespace BSL430_NET
                     if (ex is FirmwareToolsException)
                         throw ex;
                     else
-                        throw new FirmwareToolsException(470, $"{ERR_470} {ex}");
+                        throw new FirmwareToolsException(470, $"{ERR_470} {ex.Message}", ex);
                 }
             }
             private static string CreateSrec(ICollection<FwNode> data, int _lineLength = 0)
@@ -745,7 +745,7 @@ namespace BSL430_NET
                     if (ex is FirmwareToolsException)
                         throw ex;
                     else
-                        throw new FirmwareToolsException(470, $"{ERR_470} {ex}");
+                        throw new FirmwareToolsException(470, $"{ERR_470} {ex.Message}", ex);
                 }
             }
 
@@ -799,7 +799,7 @@ namespace BSL430_NET
                     if (ex is FirmwareToolsException)
                         throw ex;
                     else
-                        throw new FirmwareToolsException(470, $"{ERR_470} {ex}");
+                        throw new FirmwareToolsException(470, $"{ERR_470} {ex.Message}", ex);
                 }
             }
             private static ICollection<FwNode> CombineFw(Firmware fw1, Firmware fw2, bool fillFF = false)

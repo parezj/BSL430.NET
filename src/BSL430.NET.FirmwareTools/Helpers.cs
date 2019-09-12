@@ -102,7 +102,7 @@ namespace BSL430_NET
                 /// <summary>
                 /// FirmwareToolsException constructor
                 /// </summary>
-                public FirmwareToolsException(int Error, string Msg) : base(Msg)
+                public FirmwareToolsException(int Error, string Msg, Exception innerEx = null) : base(Msg, innerEx)
                 {
                     this.Msg = Msg;
                     this.Error = Error;

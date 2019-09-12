@@ -357,7 +357,7 @@
         <member name="P:BSL430_NET.FirmwareTools.Helpers.FirmwareToolsException.Msg">
             <summary>String representation of status.</summary>
         </member>
-        <member name="M:BSL430_NET.FirmwareTools.Helpers.FirmwareToolsException.#ctor(System.Int32,System.String)">
+        <member name="M:BSL430_NET.FirmwareTools.Helpers.FirmwareToolsException.#ctor(System.Int32,System.String,System.Exception)">
             <summary>
             FirmwareToolsException constructor
             </summary>

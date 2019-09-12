@@ -369,7 +369,8 @@ namespace BSL430_NET_WPF.ViewModels
         {
             Exception e = (Exception)args.ExceptionObject;
             //MessageBox.Show($"{e.Message}\n\n{e.InnerException}\n\n{e.StackTrace}", "Exception", MessageBoxButton.OK, MessageBoxImage.Error);
-            MessageBox.Show($"{e.Message}\n\n{e.InnerException}", "Exception", MessageBoxButton.OK, MessageBoxImage.Error);
+            //MessageBox.Show($"{e.Message}\n\n{e.InnerException}", "Exception", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show($"{e.Message}", "Exception", MessageBoxButton.OK, MessageBoxImage.Error);
         }
         #endregion
     }

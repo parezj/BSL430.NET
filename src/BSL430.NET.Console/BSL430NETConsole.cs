@@ -177,7 +177,7 @@ namespace BSL430_NET_Console
             {
                 Console.WriteLine($"\nSupported baud rates:\n{Str('-', 21)}\n{GetEnumInfo<BaudRate, int>('\n', ": ", 13)}");
                 Console.WriteLine($"\nSupported invoke mechanisms:\n{Str('-', 28)}\n{GetEnumInfo<InvokeMechanism, byte>('\n', ": ", 16)}");
-                Console.WriteLine($"\nSupported MCU families:\n{Str('-', 23)}\n{GetEnumInfo<MCU, byte>('\n', ": ", 15)}");
+                Console.WriteLine($"\nSupported MCU families:\n{Str('-', 23)}\n{GetEnumInfo<MCU, byte>('\n', ": ", 20)}");
                 Console.WriteLine($"\nSupported firmware formats:\n{Str('-', 27)}\n{GetEnumInfo<FwTools.FwFormat, byte>('\n', ": ", 12)}");
 
                 Console.WriteLine();
@@ -1188,6 +1188,8 @@ namespace BSL430_NET_Console
         }
         public static string Str(char ch, int count)
         {
+            if (count < 0)
+                count = 1;
             return new String(ch, count);
         }
         public static IEnumerable<T> ToEnumerable<T>(params T[] items)

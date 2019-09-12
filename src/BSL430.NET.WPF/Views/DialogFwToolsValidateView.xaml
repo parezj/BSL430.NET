@@ -171,7 +171,6 @@
                     Cursor="Hand"
                     BorderThickness="1"
                     HorizontalAlignment="Center"
-                    Style="{DynamicResource SquareButtonStyle}"
                     Controls:ControlsHelper.ContentCharacterCasing="Normal"
                     cal:Message.Attach="Compare">
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
@@ -182,6 +181,16 @@
                                                    Height="22"/>
                     <TextBlock Text="Compare" VerticalAlignment="Center" FontWeight="Thin" FontSize="22" Padding="0,0,0,1"/>
                 </StackPanel>
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource SquareButtonStyle}">
+                        <Setter Property="Visibility" Value="Visible"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=State, Path=Text}"  Value="INVALID">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
 
             <Button x:Name="Log" 

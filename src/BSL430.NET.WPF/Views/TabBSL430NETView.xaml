@@ -30,7 +30,7 @@
                              BorderThickness="0"/>
 
                     <TextBox FontSize="20" 
-                             Text="TI MSP430 bootloader (BSL) .NET toolchain" 
+                             Text="TI MSP430 Bootloader (BSL) .NET Toolchain" 
                              Background="Transparent" 
                              FontWeight="SemiBold" 
                              IsReadOnly="True" 

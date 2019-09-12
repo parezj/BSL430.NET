@@ -237,7 +237,7 @@
     </ItemGroup>
 
     <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-        <Exec Command="%25windir%25\system32\xcopy /R /Y &quot;$(TargetDir)*.*&quot; &quot;$(SolutionDir)..\build\BSL430.NET.FirmwareTools\$(Platform)\$(TargetFramework)\*.*&quot;" />
+        <Exec Command="%25windir%25\system32\xcopy /R /Y &quot;$(TargetDir)*.*&quot; &quot;$(SolutionDir)\..\build\BSL430.NET.FirmwareTools\$(Platform)\$(TargetFramework)\*.*&quot;" />
     </Target>
 
 </Project>
