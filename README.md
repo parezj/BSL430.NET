@@ -4,8 +4,7 @@
 [![fuget version (BSL430.NET)](https://www.fuget.org/packages/BSL430.NET/badge.svg)](https://www.fuget.org/packages/BSL430.NET)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-> **[DOWNLOAD HERE](https://github.com/parezj/BSL430.NET/releases)**
-> TI MSP430 Bootloader (BSL) .NET Cross-Platform Toolchain
+> **[DOWNLOAD HERE](https://github.com/parezj/BSL430.NET/releases)** - TI MSP430 Bootloader (BSL) .NET Cross-Platform Toolchain
 
 * replace expensive original MSP FET programmer with cheap FTDI FT232 or Serial COM port
 * upload, download or erase MSP430 memory with minimal effort with generic UART convertes
@@ -19,7 +18,6 @@
 [![fuget version (BSL430.NET.FirmwareTools)](https://www.fuget.org/packages/BSL430.NET.FirmwareTools/badge.svg)](https://www.fuget.org/packages/BSL430.NET.FirmwareTools)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-> **[DOWNLOAD HERE](https://github.com/parezj/BSL430.NET/releases)**
-> Firmware Tools
+> **[DOWNLOAD HERE](https://github.com/parezj/BSL430.NET/releases)** - Firmware Tools
 
 * convert, combine, validate, create, parse, compare files with TI-TXT, Intel-HEX, SREC or ELF format
