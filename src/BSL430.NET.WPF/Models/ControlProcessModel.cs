@@ -66,6 +66,7 @@ namespace BSL430_NET_WPF.Models
         public bool logError = false;
         public readonly string logPath = "";
         public string logOveride = "";
+        public int LOG_MAX_SIZE = 2000000; // bytes
         #endregion
 
         #region Private Data
@@ -90,7 +91,10 @@ namespace BSL430_NET_WPF.Models
         {
             this.viewModel = viewModel;
             this.devices = new List<Bsl430NetDevice>();
+
             this.logPath = GetLogPath();
+            CheckLogSize(this.logPath);
+
             this.xmlNs.Add("", "");
             this.xmlHead = $"{xmlDecl}\n\n{xmlRoot}\n\n";
         }
@@ -392,6 +396,33 @@ namespace BSL430_NET_WPF.Models
                 }
             }
             catch (Exception) { }
+        }
+        #endregion
+
+        #region Private Methods
+        public void CheckLogSize(string path)
+        {
+            try
+            {
+                if (new System.IO.FileInfo(path).Length >= LOG_MAX_SIZE)
+                {
+                    string dir = Path.Combine(Path.GetDirectoryName(path), "log_backup");
+                    string filename = Path.GetFileName(path).Replace(".log", $"_{DateTime.Now.ToString("yyyyMMdd_HHmmss")}.log");
+                    Directory.CreateDirectory(dir);
+                    string newPath = Path.Combine(dir, filename);
+                    File.Move(path, newPath);
+                    Task.Delay(500).ContinueWith(t => LogSizeOverflowMsg(newPath));
+                }
+            }
+            catch (Exception) { }
+        }
+        private void LogSizeOverflowMsg(string newPath)
+        {
+            System.Windows.Application.Current.Dispatcher.Invoke((System.Action)(() =>
+            {
+                MessageBox.Show($"Log file was too large for optimal use, so it was moved as backup to:\n{newPath}",
+                                "BSL430.NET", MessageBoxButton.OK, MessageBoxImage.Information);
+            }));
         }
         #endregion
 
