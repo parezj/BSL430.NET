@@ -10,7 +10,7 @@
 * upload, download or erase MSP430 memory with minimal effort with generic UART convertes
 * fexible way how to upgrade device firmware with .NET library that can be integrated to any app
 * convert, combine, validate, hex edit TI-TXT, Intel-HEX, SREC or ELF (WPF GUI / Console only)
-* original pure C# code implementing TI bootloader protocols 5xx/6xx and 1xx/2xx/4xx [(TI doc)](https://raw.githubusercontent.com/parezj/BSL430.NET/master/doc/slau319z.pdf)
+* original pure C# code implementing TI bootloader protocols 5xx/6xx and 1xx/2xx/4xx [(TI doc)](https://raw.githubusercontent.com/parezj/BSL430.NET/master/docs/slau319z.pdf)
 
 
 # <img src="https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/logo/logo_fw.png" alt="BSL430.NET.FirmwareTools" width="80" height="80">Firmware Tools
