@@ -810,7 +810,7 @@ namespace BSL430_NET
         }
 
         /// <summary>
-        /// Downloads bytes from target MCU starting from address 'addr_start' to 'addr_start' + 'data_size'.
+        /// Downloads bytes from target MCU starting from address AddrStart to AddrStart + DataSize.
         /// If wrong password is entered, mass erase is auto executed as a safety measure, erasing entire flash.
         /// Password is last 16-byte (F543x-non-A only) or 32-byte (others) of IVT (FFE0-FFFF), if newer 5xx/6xx MCU is
         /// used. If MCU from older series is used (1xx/2xx/4xx), password is exactly 20-byte long. Mostly it is 32-byte.
@@ -821,7 +821,7 @@ namespace BSL430_NET
         }
 
         /// <summary>
-        /// Downloads bytes from target MCU starting from address 'addr_start' to 'addr_start' + 'data_size'.
+        /// Downloads bytes from target MCU starting from address AddrStart to AddrStart + DataSize.
         /// If wrong password is entered, mass erase is auto executed as a safety measure, erasing entire flash.
         /// device_name case dont matter.
         /// Password is last 16-byte (F543x-non-A only) or 32-byte (others) of IVT (FFE0-FFFF), if newer 5xx/6xx MCU is
