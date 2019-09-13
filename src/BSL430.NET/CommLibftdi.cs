@@ -110,7 +110,7 @@ namespace BSL430_NET
             {
                 try
                 {
-                    Bsl430NetDevice _device = null;
+                    Bsl430NetDevice _device = device;
 
                     if (device == null)
                         _device = DefaultDevice;

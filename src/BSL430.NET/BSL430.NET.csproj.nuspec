@@ -2,14 +2,14 @@
 <package >
     <metadata>
         <id>BSL430.NET</id>
-        <version>1.3.2</version>
+        <version>1.3.3</version>
         <authors>Jakub Parez</authors>
         <owners>Jakub Parez</owners>
         <projectUrl>https://github.com/parezj/BSL430.NET</projectUrl>
         <iconUrl>https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/logo/logo2.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>TI MSP430 Bootloader (BSL) .NET Cross-Platform Toolchain. With generic UART converter can easily manipulate with MCU memory. Intel-HEX, TI-TXT, ELF, SREC support.</description>
-        <releaseNotes>First public release of package. Win x86/amd64 tested. FTDI, Serial port (5xx protocol) tested.</releaseNotes>
+        <description>TI MSP430 Bootloader (BSL) Cross-Platform Toolchain. The cheapest way to flash MSP430, with FTDI/Serial/UART converters. Intel-HEX, TI-TXT, ELF, SREC support. Dont use AnyCPU!</description>
+        <releaseNotes>Fixed small bug concerning DefaultDevice overiding Device when Opening connection.</releaseNotes>
         <copyright>Copyright (c) 2019 Jakub Parez</copyright>
         <license type="expression">MIT</license>
         <tags>MSP430 Texas Instruments MSP 430 firmware MCU BSL bootloader flash memory toolchain BSL430 BSL430.NET download upload erase FTDI FT232 Serial COM USB Intel HEX TI-TXT SREC ELF</tags>

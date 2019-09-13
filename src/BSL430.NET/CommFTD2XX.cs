@@ -128,7 +128,7 @@ namespace BSL430_NET
 
                     ftStatus = FTDI.FT_STATUS.FT_OK;
 
-                    Bsl430NetDevice _device = null;
+                    Bsl430NetDevice _device = device;
 
                     if (device == null)
                         _device = DefaultDevice;
