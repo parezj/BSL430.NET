@@ -27,6 +27,7 @@
         <PackageTags>firmware fw tools MCU BSL430 BSL430.NET Intel HEX TI TXT SREC ELF convert combine validate parse create</PackageTags>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryType>Github</RepositoryType>
+        <IncludeSymbols>true</IncludeSymbols>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <AssemblyName>BSL430.NET.FirmwareTools</AssemblyName> 
     </PropertyGroup>

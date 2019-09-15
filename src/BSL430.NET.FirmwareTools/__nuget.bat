@@ -1,2 +1,2 @@
-..\..\..\__nuget\nuget.exe pack -IncludeReferencedProjects -properties Configuration=Debug .\BSL430.NET.FirmwareTools.csproj.nuspec
+..\..\..\__nuget\nuget.exe pack -IncludeReferencedProjects -Symbols -properties Configuration=Debug .\BSL430.NET.FirmwareTools.csproj.nuspec
 pause

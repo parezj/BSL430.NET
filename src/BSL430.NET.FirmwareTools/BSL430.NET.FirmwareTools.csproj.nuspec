@@ -19,12 +19,21 @@
     </metadata>
     <files>
         <file src="bin\AnyCPU\Debug\netstandard2.0\BSL430.NET.FirmwareTools.dll" target="lib/netstandard2.0" />
+        <file src="bin\AnyCPU\Debug\netstandard2.0\BSL430.NET.FirmwareTools.pdb" target="lib/netstandard2.0" />
         <file src="bin\AnyCPU\Debug\netstandard2.0\BSL430.NET.FirmwareTools.xml" target="lib/netstandard2.0" />
+        
         <file src="bin\AnyCPU\Debug\net461\BSL430.NET.FirmwareTools.dll" target="lib/net461" />
+        <file src="bin\AnyCPU\Debug\net461\BSL430.NET.FirmwareTools.pdb" target="lib/net461" />
         <file src="bin\AnyCPU\Debug\net461\BSL430.NET.FirmwareTools.xml" target="lib/net461" />
+        
         <file src="bin\AnyCPU\Debug\net45\BSL430.NET.FirmwareTools.dll" target="lib/net45" />
+        <file src="bin\AnyCPU\Debug\net45\BSL430.NET.FirmwareTools.pdb" target="lib/net45" />
         <file src="bin\AnyCPU\Debug\net45\BSL430.NET.FirmwareTools.xml" target="lib/net45" />
+        
         <file src="bin\AnyCPU\Debug\net40\BSL430.NET.FirmwareTools.dll" target="lib/net40" />
+        <file src="bin\AnyCPU\Debug\net40\BSL430.NET.FirmwareTools.pdb" target="lib/net40" />
         <file src="bin\AnyCPU\Debug\net40\BSL430.NET.FirmwareTools.xml" target="lib/net40" />
+        
+        <file src="**\*.cs" target="src" />
     </files>
 </package>
