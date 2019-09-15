@@ -2,14 +2,14 @@
 <package >
     <metadata>
         <id>BSL430.NET.FirmwareTools</id>
-        <version>1.3.2</version>
+        <version>1.3.4</version>
         <authors>Jakub Parez</authors>
         <owners>Jakub Parez</owners>
         <projectUrl>https://github.com/parezj/BSL430.NET#Firmware-Tools</projectUrl>
         <iconUrl>https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/logo/logo_fw.png</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Firmware Tools - convert, parse, create, combine, validate and compare Intel-HEX, TI-TXT, ELF and SREC firmware files.</description>
-        <releaseNotes>First public release of package.</releaseNotes>
+        <releaseNotes>Added support for Portable PDBs and also snupkg Symbols</releaseNotes>
         <copyright>Copyright (c) 2019 Jakub Parez</copyright>
         <license type="expression">MIT</license>
         <tags>firmware fw tools tool Intel HEX TI TXT SREC S19 ELF BSL430 BSL430.NET micro microcontroller MCU convert combine validate parse create compare</tags>
