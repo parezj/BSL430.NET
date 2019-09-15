@@ -53,7 +53,7 @@
         <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
         <OutputPath>bin\AnyCPU\Debug\netstandard2.0\</OutputPath>
         <WarningLevel>4</WarningLevel>
-        <DebugType>full</DebugType>
+        <DebugType>portable</DebugType>
         <DebugSymbols>true</DebugSymbols>
     </PropertyGroup>
 
@@ -68,7 +68,7 @@
         <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
         <OutputPath>bin\AnyCPU\Debug\net461\</OutputPath>
         <WarningLevel>4</WarningLevel>
-        <DebugType>full</DebugType>
+        <DebugType>portable</DebugType>
         <DebugSymbols>true</DebugSymbols>
     </PropertyGroup>
 
@@ -83,7 +83,7 @@
         <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
         <OutputPath>bin\AnyCPU\Debug\net45\</OutputPath>
         <WarningLevel>4</WarningLevel>
-        <DebugType>full</DebugType>
+        <DebugType>portable</DebugType>
         <DebugSymbols>true</DebugSymbols>
     </PropertyGroup>
 
@@ -98,7 +98,7 @@
         <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
         <OutputPath>bin\AnyCPU\Debug\net40\</OutputPath>
         <WarningLevel>4</WarningLevel>
-        <DebugType>full</DebugType>
+        <DebugType>portable</DebugType>
         <DebugSymbols>true</DebugSymbols>
     </PropertyGroup>
 
@@ -113,7 +113,7 @@
         <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
         <OutputPath>bin\x86\Debug\netstandard2.0\</OutputPath>
         <WarningLevel>4</WarningLevel>
-        <DebugType>full</DebugType>
+        <DebugType>portable</DebugType>
         <DebugSymbols>true</DebugSymbols>
     </PropertyGroup>
 
@@ -128,7 +128,7 @@
         <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
         <OutputPath>bin\x86\Debug\net461\</OutputPath>
         <WarningLevel>4</WarningLevel>
-        <DebugType>full</DebugType>
+        <DebugType>portable</DebugType>
         <DebugSymbols>true</DebugSymbols>
     </PropertyGroup>
 
@@ -143,7 +143,7 @@
         <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
         <OutputPath>bin\x86\Debug\net45\</OutputPath>
         <WarningLevel>4</WarningLevel>
-        <DebugType>full</DebugType>
+        <DebugType>portable</DebugType>
         <DebugSymbols>true</DebugSymbols>
     </PropertyGroup>
 
@@ -158,7 +158,7 @@
         <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
         <OutputPath>bin\x86\Debug\net40\</OutputPath>
         <WarningLevel>4</WarningLevel>
-        <DebugType>full</DebugType>
+        <DebugType>portable</DebugType>
         <DebugSymbols>true</DebugSymbols>
     </PropertyGroup>
 
@@ -173,7 +173,7 @@
         <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
         <OutputPath>bin\x64\Debug\netstandard2.0\</OutputPath>
         <WarningLevel>4</WarningLevel>
-        <DebugType>full</DebugType>
+        <DebugType>portable</DebugType>
         <DebugSymbols>true</DebugSymbols>
     </PropertyGroup>
 
@@ -188,7 +188,7 @@
         <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
         <OutputPath>bin\x64\Debug\net461\</OutputPath>
         <WarningLevel>4</WarningLevel>
-        <DebugType>full</DebugType>
+        <DebugType>portable</DebugType>
         <DebugSymbols>true</DebugSymbols>
     </PropertyGroup>
 
@@ -203,7 +203,7 @@
         <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
         <OutputPath>bin\x64\Debug\net45\</OutputPath>
         <WarningLevel>4</WarningLevel>
-        <DebugType>full</DebugType>
+        <DebugType>portable</DebugType>
         <DebugSymbols>true</DebugSymbols>
     </PropertyGroup>
 
@@ -218,7 +218,7 @@
         <DocumentationFile>BSL430.NET.FirmwareTools.xml</DocumentationFile>
         <OutputPath>bin\x64\Debug\net40\</OutputPath>
         <WarningLevel>4</WarningLevel>
-        <DebugType>full</DebugType>
+        <DebugType>portable</DebugType>
         <DebugSymbols>true</DebugSymbols>
     </PropertyGroup>
 
