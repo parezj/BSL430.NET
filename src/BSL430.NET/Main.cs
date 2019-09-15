@@ -569,7 +569,7 @@ namespace BSL430_NET
                     BlockEnd();
                     Task.Delay(Const.DELAY_OK_RET).Wait();
 
-                    return Utils.StatusCreateEx(0, reports, report, bsl_version, fw_info.SizeFull);
+                    return Utils.StatusCreateEx(0, reports, null, bsl_version, fw_info.SizeFull);
                 }
                 catch (Exception ex)
                 {
