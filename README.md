@@ -9,12 +9,12 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 > **[DOWNLOAD HERE](https://github.com/parezj/BSL430.NET/releases)** - TI MSP430 Bootloader (BSL) .NET Cross-Platform Toolchain 
-<br>  
+<br>
 
-- [Main Features](#1-Main-Features)
-- [GUI App (Windows)](#2-GUI-App-Windows)
-- [Console App (Windows, Linux)](#3-Console-App-Windows-Linux)
-- [Library](#4-Library)
+1. [Main Features](#1-Main-Features)
+2. [GUI App (Windows)](#2-GUI-App-Windows)
+3. [Console App (Windows, Linux)](#3-Console-App-Windows-Linux)
+4. [Library](#4-Library)
 
 ## 1. Main Features
 * replace expensive original MSP FET programmer with cheap FTDI FT232 or Serial COM port
@@ -22,11 +22,11 @@
 * fexible way how to upgrade device firmware with .NET library that can be integrated to any app
 * convert, combine, validate, hex edit TI-TXT, Intel-HEX, SREC or ELF (WPF GUI / Console only)
 * original pure C# code implementing TI bootloader protocols 5xx/6xx and 1xx/2xx/4xx [(TI doc)](https://raw.githubusercontent.com/parezj/BSL430.NET/master/docs/slau319z.pdf)
-<br>  
+<br>
   
 ## 2. GUI App (Windows)
 > **[Wiki docs](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.GUI-App)** - First start quick go-through for ease of use
-  
+<br>  
   
 - **Download code from MCU**:  
 ![Download](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_download2.png)
@@ -39,23 +39,23 @@
 
 - **Shell Extension & Association**:  
 ![Shell](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_shell_extensions.png)
-  
+<br>  
   
 ## 3. Console App (Windows, Linux)
 
 > **[Wiki docs](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.Console-App)** - Tutorials how to use console app
+<br>  
   
-  
-**`Upload firmware to MCU`**  
+- **Upload firmware to MCU**:  
 ![Upload](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/console_upload.png)
 
-**`Scan for available devices`**  
+- **Scan for available devices**:  
 ![Scan](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/console_scan.png)
-  
+<br>  
   
 ## 4. Library
 > **[Wiki docs](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.Library)** - Documentation and code samples for easy copy & paste
-  
+<br>  
   
 ```csharp
 public interface IBsl430Net
@@ -82,7 +82,7 @@ public interface IBsl430Net
     Mode GetMode();
 }
 ```
-  
+<br>  
   
 # <img src="https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/logo/logo_fw.png" alt="BSL430.NET.FirmwareTools" width="80" height="80">Firmware Tools
 [![Github tag (BSL430.NET)](https://img.shields.io/github/v/release/parezj/BSL430.NET?include_prereleases&color=orange)](https://github.com/parezj/BSL430.NET/releases/latest)
@@ -91,17 +91,17 @@ public interface IBsl430Net
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 > **[DOWNLOAD HERE](https://github.com/parezj/BSL430.NET/releases)** - Firmware Tools
+<br>  
   
-  
-- [Main Features](#5-Main-Features)
-- [GUI  & Console App](#6-GUI---Console-App)
-- [Library](#7-Library)
-  
+5. [Main Features](#5-Main-Features)
+6. [GUI  & Console App](#6-GUI---Console-App)
+7. [Library](#7-Library)
+<br>  
   
 ## 5. Main Features
 * convert, combine, validate, create, parse, compare firmware files
 * TI-TXT, Intel-HEX, SREC and ELF format support
-  
+<br>  
   
 ## 6. GUI  & Console App
 > **[Wiki docs](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.GUI-App)** - BSL430.NET GUI App docs and tutorials
@@ -109,18 +109,18 @@ public interface IBsl430Net
 ```
 BSL430.NET and Firmware Tools are integrated into single GUI and Console App!
 ```
+<br>  
   
-  
-**`Firmware Tools main menu`**  
+- **Firmware Tools main menu**:  
 ![Firmware Tools](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_fw_tools_dark.png)
 
-**`Firmware Hex Edit`**  
+- **Firmware Hex Edit**:  
 ![Firmware Hex Edit](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_fw_tools_hex_edit.png)
-  
+<br>  
   
 ## 7. Library
 > **[Wiki docs](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.FirmwareTools.Library)** - Ready to use code samples
-  
+<br>  
   
 ```csharp
 public static Firmware Parse(string FirmwarePath, FwFormat Format, bool FillFF,StringWriter Log)
