@@ -26,7 +26,7 @@
   
 ## 2. GUI App (Windows)
 > **[Wiki docs](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.GUI-App)** - First start quick go-through for ease of use
-<br>
+
 - **Download code from MCU**:  
 ![Download](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_download2.png)
 
@@ -43,7 +43,6 @@
 ## 3. Console App (Windows, Linux)
 
 > **[Wiki docs](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.Console-App)** - Tutorials how to use console app
-<br>  
   
 - **Upload firmware to MCU**:  
 ![Upload](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/console_upload.png)
@@ -95,7 +94,6 @@ public interface IBsl430Net
 5. [Main Features](#5-Main-Features)
 6. [GUI  & Console App](#6-GUI---Console-App)
 7. [Library](#7-Library)
-<br>  
   
 ## 5. Main Features
 * convert, combine, validate, create, parse, compare firmware files
@@ -108,7 +106,6 @@ public interface IBsl430Net
 ```
 BSL430.NET and Firmware Tools are integrated into single GUI and Console App!
 ```
-<br>  
   
 - **Firmware Tools main menu**:  
 ![Firmware Tools](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_fw_tools_dark.png)
