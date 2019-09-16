@@ -18,13 +18,13 @@
 5. [Firmware Tools](#Firmware-Tools)
 
 ## 1. Main Features
-* replace expensive original *MSP FET* programmer with **cheap** FTDI **FT232** or Serial **COM** port
-* **upload**, **download** or **erase** MSP430 memory with minimal effort with generic UART convertes
-* fexible way how to upgrade device firmware with .NET library that can be integrated into any app
-* convert, combine, validate, hex edit **TI-TXT**, **Intel-HEX**, **SREC** or **ELF** (WPF GUI / Console only)
-* *original* pure C# code implementing TI bootloader protocols 5xx/6xx and 1xx/2xx/4xx [(TI doc)](https://raw.githubusercontent.com/parezj/BSL430.NET/master/docs/slau319z.pdf)
+* Replace expensive original *MSP FET* programmer with **cheap** FTDI **FT232** or Serial **COM** port
+* **Upload**, **Download** or **Erase** MSP430 MCU memory with minimal effort via generic UART converter
+* Fexible way how to upgrade device firmware with .NET library, integrable into any app (also production)
+* Most common firmware format support: **TI-TXT**, **Intel-HEX**, **SREC**, **ELF**
+* *Original* C# code implementing TI bootloader protocols *5xx/6xx* and *1xx/2xx/4xx* [(TI doc)](https://raw.githubusercontent.com/parezj/BSL430.NET/master/docs/slau319z.pdf)
 ```
-Note: old 1xx/2xx/4xx bootloader protocol not tested yet
+Note: Old 1xx/2xx/4xx bootloader protocol not tested yet!
 ```
 <br>
   
@@ -107,11 +107,11 @@ public interface IBsl430Net
 7. [Library](#7-FirmwareTools-Library)
   
 ## 5. Main Features
-* **TI-TXT**, **Intel-HEX**, **SREC** and **ELF** format support
-* **parse** (from file) and **create** (write to file) most common firwmare formats
-* **convert**, **combine** and **compare** between any of these formats
-* **validate** firmware file and get information like addresses, crc, sizes..
-* *[MSP430 specific]* get **BSL password** used to correctly download by BSL430.NET
+* Multiple firmware format support: **TI-TXT**, **Intel-HEX**, **SREC**, **ELF** 
+* **Parse** (read from file) and **Create** (write to file or string) 
+* **Convert**, **Combine** and **Compare** between any of these formats
+* **Validate** firmware file and get information like addresses, CRC, sizes..
+* *[MSP430 only]* **Get BSL password** used to correctly download fw by BSL430.NET
 
 <br>  
   
@@ -119,13 +119,13 @@ public interface IBsl430Net
 > **[Wiki docs](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.GUI-App)** - BSL430.NET GUI App docs and tutorials
   
 ```
-Note: BSL430.NET and Firmware Tools are integrated into single GUI and Console App!
+Note: BSL430.NET and Firmware Tools are integrated into single GUI and Console Apps!
 ```
   
 - **Firmware Tools (Dark Mode)**:  
 ![Firmware Tools](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_fw_tools_dark.png)
 
-- **Firmware Hex Edit**:  
+- **Firmware Hex-Edit**:  
 ![Firmware Hex Edit](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_fw_tools_hex_edit.png)
 <br>  
   
