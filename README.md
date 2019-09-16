@@ -14,7 +14,7 @@
 1. [Main Features](#1-Main-Features)
 2. [GUI App (Windows)](#2-GUI-App-Windows)
 3. [Console App (Windows, Linux)](#3-Console-App-Windows-Linux)
-4. [Library](#4-BSL430.NET-Library)
+4. [Library](#4-BSL430NET-Library)
 
 ## 1. Main Features
 * replace expensive original MSP FET programmer with cheap FTDI FT232 or Serial COM port
@@ -82,11 +82,10 @@ public interface IBsl430Net
 <br>
 <br>
   
-<div align="center" margin="0" padding="0">
-<img src="https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/logo/logo_fw.png" alt="BSL430.NET.FirmwareTools" width="200" height="200">
-</div>
-
 <h1 id="Firmware-Tools">
+    <div align="center" margin="0" padding="0">
+        <img src="https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/logo/logo_fw.png" alt="BSL430.NET.FirmwareTools" width="200" height="200">
+    </div>
   FirmwareTools - Firmware manipulation made easy
 </h1>
 
