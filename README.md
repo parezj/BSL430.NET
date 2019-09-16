@@ -26,8 +26,8 @@
   
 ## 2. GUI App (Windows)
 > **[Wiki docs](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.GUI-App)** - First start quick go-through for ease of use
-<br>  
-  
+<br>
+
 - **Download code from MCU**:  
 ![Download](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_download2.png)
 
