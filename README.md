@@ -14,7 +14,7 @@
 1. [Main Features](#1-Main-Features)
 2. [GUI App (Windows)](#2-GUI-App-Windows)
 3. [Console App (Windows, Linux)](#3-Console-App-Windows-Linux)
-4. [Library](#4-Library)
+4. [Library](#4-BSL430.NET-Library)
 
 ## 1. Main Features
 * replace expensive original MSP FET programmer with cheap FTDI FT232 or Serial COM port
@@ -51,7 +51,7 @@
 ![Scan](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/console_scan.png)
 <br>  
   
-## 4. Library
+## 4. BSL430.NET Library
 > **[Wiki docs](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.Library)** - Documentation and code samples for easy start and copy & paste
   
 ```csharp
@@ -100,7 +100,7 @@ public interface IBsl430Net
   
 5. [Main Features](#5-Main-Features)
 6. [GUI  & Console App](#6-GUI---Console-App)
-7. [Library](#7-Library)
+7. [Library](#7-FirmwareTools-Library)
   
 ## 5. Main Features
 * TI-TXT, Intel-HEX, SREC and ELF format support
@@ -125,7 +125,7 @@ BSL430.NET and Firmware Tools are integrated into single GUI and Console App!
 ![Firmware Hex Edit](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_fw_tools_hex_edit.png)
 <br>  
   
-## 7. Library
+## 7. FirmwareTools Library
 > **[Wiki docs](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.FirmwareTools.Library)** - Ready to use code samples and tutorials 
   
 ```csharp
