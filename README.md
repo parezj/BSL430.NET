@@ -10,10 +10,10 @@
 
 > **[DOWNLOAD HERE](https://github.com/parezj/BSL430.NET/releases)** - TI MSP430 Bootloader (BSL) .NET Cross-Platform Toolchain
   
-  
+<br>  
 - [Main Features](#1-Main-Features)
-- [GUI App (Windows)](#2-GUI-App-(Windows-only))
-- [Console App (Windows, Linux)](#3-Console-App-(Windows,-Linux))
+- [GUI App (Windows)](#2-GUI-App-Windows)
+- [Console App (Windows, Linux)](#3-Console-App-Windows-Linux)
 - [Library](#4-Library)
 
 ## 1. Main Features
@@ -28,16 +28,16 @@
 > **[Wiki docs](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.GUI-App)** - First start quick go-through for ease of use
   
   
-- **`Download code from MCU`**  
+- **Download code from MCU**:  
 ![Download](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_download2.png)
 
-- **`Upload firmware to MCU`**  
+- **Upload firmware to MCU**:  
 ![Upload](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_upload_dark.png)
 
-- **`Erase whole MCU`**  
+- **Erase whole MCU**:  
 ![Erase](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_erase.png)
 
-- **`Shell Extension & Association`**  
+- **Shell Extension & Association**:  
 ![Shell](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_shell_extensions.png)
   
   
@@ -94,7 +94,7 @@ public interface IBsl430Net
   
   
 - [Main Features](#5-Main-Features)
-- [GUI  & Console App](#6-GUI-&-Console-App)
+- [GUI  & Console App](#6-GUI---Console-App)
 - [Library](#7-Library)
   
   
@@ -130,9 +130,10 @@ public static string Create(IEnumerable<byte> Data, int AddrStart, FwFormat Form
 public static string Create(ICollection<FwNode> Data, FwFormat Format, int LineLength)
 
 public static (string Fw, FwFormat Format) Convert(string FirmwarePath, FwFormat Format, bool FillFF, int LineLength)
+public static (string Fw, FwFormat Format1, FwFormat Format2) Combine(string FirmwarePath1, string FirmwarePath2, FwFormat Format, bool FillFF, int LineLength)
+
 public static BslPasswords GetPassword(string FirmwarePath)
 public static FwInfo Validate(string FirmwarePath, StringWriter Log)
-public static (string Fw, FwFormat Format1, FwFormat Format2) Combine(string FirmwarePath1, string FirmwarePath2, FwFormat Format, bool FillFF, int LineLength)
 
 public static (bool Equal, double Match, int BytesDiff) Compare(string FirmwarePath1, string FirmwarePath2)
 public static (bool Equal, double Match, int BytesDiff) Compare(Firmware Firmware1, Firmware Firmware2)
