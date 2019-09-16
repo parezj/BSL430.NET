@@ -88,7 +88,7 @@ public interface IBsl430Net
     <div align="center" margin="0" padding="0">
         <img src="https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/logo/logo_fw.png" alt="BSL430.NET.FirmwareTools" width="200" height="200">
     </div>
-  FirmwareTools - Firmware manipulation made easy
+  BSL430.NET.FirmwareTools - FW manipulation made easy
 </h1>
 
 [![Github tag (BSL430.NET)](https://img.shields.io/github/v/release/parezj/BSL430.NET?include_prereleases&color=orange)](https://github.com/parezj/BSL430.NET/releases/latest)
