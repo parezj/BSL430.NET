@@ -8,9 +8,9 @@
 [![fuget version (BSL430.NET)](https://www.fuget.org/packages/BSL430.NET/badge.svg)](https://www.fuget.org/packages/BSL430.NET)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-> **[DOWNLOAD HERE](https://github.com/parezj/BSL430.NET/releases)** - TI MSP430 Bootloader (BSL) .NET Cross-Platform Toolchain
-  
+> **[DOWNLOAD HERE](https://github.com/parezj/BSL430.NET/releases)** - TI MSP430 Bootloader (BSL) .NET Cross-Platform Toolchain 
 <br>  
+
 - [Main Features](#1-Main-Features)
 - [GUI App (Windows)](#2-GUI-App-Windows)
 - [Console App (Windows, Linux)](#3-Console-App-Windows-Linux)
@@ -22,7 +22,7 @@
 * fexible way how to upgrade device firmware with .NET library that can be integrated to any app
 * convert, combine, validate, hex edit TI-TXT, Intel-HEX, SREC or ELF (WPF GUI / Console only)
 * original pure C# code implementing TI bootloader protocols 5xx/6xx and 1xx/2xx/4xx [(TI doc)](https://raw.githubusercontent.com/parezj/BSL430.NET/master/docs/slau319z.pdf)
-  
+<br>  
   
 ## 2. GUI App (Windows)
 > **[Wiki docs](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.GUI-App)** - First start quick go-through for ease of use
