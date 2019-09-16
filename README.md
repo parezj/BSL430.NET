@@ -15,6 +15,7 @@
 2. [GUI App (Windows)](#2-GUI-App-Windows)
 3. [Console App (Windows, Linux)](#3-Console-App-Windows-Linux)
 4. [Library](#4-BSL430NET-Library)
+- [Firmware Tools](#Firmware-Tools)
 
 ## 1. Main Features
 * replace expensive original MSP FET programmer with cheap FTDI FT232 or Serial COM port
@@ -73,6 +74,7 @@ public interface IBsl430Net
     Status SetBaudRate(BaudRate BaudRate);
     Status SetInvokeMechanism(InvokeMechanism InvokeMechanism);
     Status SetMCU(MCU Mcu);
+    
     BaudRate GetBaudRate();
     InvokeMechanism GetInvokeMechanism();
     MCU GetMCU();
