@@ -130,18 +130,18 @@ BSL430.NET and Firmware Tools are integrated into single GUI and Console App!
 > **[Wiki docs](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.FirmwareTools.Library)** - Ready to use code samples and tutorials 
   
 ```csharp
-public static Firmware Parse(string FirmwarePath, FwFormat Format, bool FillFF,StringWriter Log)
+public static Firmware Parse(string FirmwarePath, FwFormat Format, bool FillFF,StringWriter Log);
 
-public static string Create(Firmware Firmware, FwFormat Format, int LineLength)
-public static string Create(IEnumerable<byte> Data, int AddrStart, FwFormat Format, int LineLength)
-public static string Create(ICollection<FwNode> Data, FwFormat Format, int LineLength)
+public static string Create(Firmware Firmware, FwFormat Format, int LineLength);
+public static string Create(IEnumerable<byte> Data, int AddrStart, FwFormat Format, int LineLength);
+public static string Create(ICollection<FwNode> Data, FwFormat Format, int LineLength);
 
-public static (string Fw, FwFormat Format) Convert(string FirmwarePath, FwFormat Format, bool FillFF, int LineLength)
-public static (string Fw, FwFormat Format1, FwFormat Format2) Combine(string FirmwarePath1, string FirmwarePath2, FwFormat Format, bool FillFF, int LineLength)
+public static (string Fw, FwFormat Format) Convert(string FirmwarePath, FwFormat Format, bool FillFF, int LineLength);
+public static (string Fw, FwFormat Format1, FwFormat Format2) Combine(string FirmwarePath1, string FirmwarePath2, FwFormat Format, bool FillFF, int LineLength);
 
-public static BslPasswords GetPassword(string FirmwarePath)
-public static FwInfo Validate(string FirmwarePath, StringWriter Log)
+public static BslPasswords GetPassword(string FirmwarePath);
+public static FwInfo Validate(string FirmwarePath, StringWriter Log);
 
-public static (bool Equal, double Match, int BytesDiff) Compare(string FirmwarePath1, string FirmwarePath2)
-public static (bool Equal, double Match, int BytesDiff) Compare(Firmware Firmware1, Firmware Firmware2)
+public static (bool Equal, double Match, int BytesDiff) Compare(string FirmwarePath1, string FirmwarePath2);
+public static (bool Equal, double Match, int BytesDiff) Compare(Firmware Firmware1, Firmware Firmware2);
 ```
