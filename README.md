@@ -30,7 +30,7 @@
 - **Download code from MCU**:  
 ![Download](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_download2.png)
 
-- **Upload firmware to MCU**:  
+- **Upload firmware to MCU (Dark Mode)**:  
 ![Upload](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_upload_dark.png)
 
 - **Erase whole MCU**:  
@@ -52,8 +52,7 @@
 <br>  
   
 ## 4. Library
-> **[Wiki docs](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.Library)** - Documentation and code samples for easy copy & paste
-<br>  
+> **[Wiki docs](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.Library)** - Documentation and code samples for easy start and copy & paste
   
 ```csharp
 public interface IBsl430Net
@@ -82,13 +81,17 @@ public interface IBsl430Net
 ```
 <br>  
   
-# <img src="https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/logo/logo_fw.png" alt="BSL430.NET.FirmwareTools" width="80" height="80">Firmware Tools
+<div align="center" margin="0" padding="0">
+<img src="https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/logo/logo_fw.png" alt="BSL430.NET.FirmwareTools" width="200" height="200">
+</div>
+
+# BSL430.NET.FirmwareTools - Firmware manipulation made easy
 [![Github tag (BSL430.NET)](https://img.shields.io/github/v/release/parezj/BSL430.NET?include_prereleases&color=orange)](https://github.com/parezj/BSL430.NET/releases/latest)
 [![NuGet version (BSL430.NET.FirmwareTools)](https://img.shields.io/nuget/v/BSL430.NET.FirmwareTools.svg)](https://www.nuget.org/packages/BSL430.NET.FirmwareTools/)
 [![fuget version (BSL430.NET.FirmwareTools)](https://www.fuget.org/packages/BSL430.NET.FirmwareTools/badge.svg)](https://www.fuget.org/packages/BSL430.NET.FirmwareTools)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-> **[DOWNLOAD HERE](https://github.com/parezj/BSL430.NET/releases)** - Firmware Tools
+> **[DOWNLOAD HERE](https://github.com/parezj/BSL430.NET/releases)** - Firmware Tools as BSL430.NET sub package
 <br>  
   
 5. [Main Features](#5-Main-Features)
@@ -96,8 +99,13 @@ public interface IBsl430Net
 7. [Library](#7-Library)
   
 ## 5. Main Features
-* convert, combine, validate, create, parse, compare firmware files
 * TI-TXT, Intel-HEX, SREC and ELF format support
+* unified class Firmware and FwInfo for versatile use across applications
+* parse (from file) and create (write to file) most common firwmare formats
+* convert, combine and compare between any of these formats
+* validate firmware file and get information like addresses, crc, sizes..
+* [MSP430 specific] get BSL password used to correctly download by BSL430.NET
+
 <br>  
   
 ## 6. GUI  & Console App
@@ -107,7 +115,7 @@ public interface IBsl430Net
 BSL430.NET and Firmware Tools are integrated into single GUI and Console App!
 ```
   
-- **Firmware Tools main menu**:  
+- **Firmware Tools (Dark Mode)**:  
 ![Firmware Tools](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_fw_tools_dark.png)
 
 - **Firmware Hex Edit**:  
@@ -115,8 +123,7 @@ BSL430.NET and Firmware Tools are integrated into single GUI and Console App!
 <br>  
   
 ## 7. Library
-> **[Wiki docs](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.FirmwareTools.Library)** - Ready to use code samples
-<br>  
+> **[Wiki docs](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.FirmwareTools.Library)** - Ready to use code samples and tutorials 
   
 ```csharp
 public static Firmware Parse(string FirmwarePath, FwFormat Format, bool FillFF,StringWriter Log)
