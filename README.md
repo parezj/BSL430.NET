@@ -16,7 +16,8 @@
 3. [Console App (Windows, Linux)](#3-Console-App-Windows-Linux)
 4. [Wiring diagram](#4-Wiring-Diagram)
 5. [Library](#5-BSL430NET-Library)
-6. [Firmware Tools](#Firmware-Tools)
+6. [References](#6-References)
+7. [Firmware Tools](#Firmware-Tools)
 
 ## 1. Main Features
 * Replace expensive original *MSP FET* programmer with **cheap** FTDI **FT232** or Serial **COM** port
@@ -27,21 +28,21 @@
 ```
 Note: Old 1xx/2xx/4xx bootloader protocol not tested yet!
 ```
-BSL430.NET project started back in 2016, when I worked on my "Wireless Weather Station" project based on CC430 MCU (F5xxX), 
-connected on PCB to FT232. And I wanted to implement automatic firmware upgrade feature, while PC controll app was already
+BSL430.NET project started back in 2016, when I worked on my *Wireless Weather Station* project based on **CC430** MCU (F5xxX), 
+connected on PCB to FT232. And I wanted to implement automatic firmware upgrade feature, while PC control app was already
 written in C# (WPF). So I started to study TI docs and coding, but soon I realized, that there is nothing like this (except
-C++ TI BS430 library or Python MSP430 Tools), that is both versatile and multifunctional. So today, after weather station
-project already have finished, I changed my direction to BSL430.NET, and want to encourage other developers and enthusiats
-to use this app/library, which I had completely open-sourced, and morover I made some cool Win GUI App for everyday use.
+C++ **TI BS430** library or **Python MSP430 Tools**), that is both versatile and multifunctional. So today, after weather station
+project already have finished, I changed my direction to **BSL430.NET**, and want to encourage other developers and enthusiats
+to use this app/library, which I had completely *open-sourced*, and moreover I made some nice Win GUI App for simple use.
 
 Library can be integrated into any MSP430 based project, even commercial, to enable **automatic firmware upgrades**.
 Communication with MCU is handled by 4 different ways. **FTDI** (FT232) is Windows only approach and requires *FT2XX drivers*
 installed on target PC. Another approch is called **Libftdi** and this works on Windows and also Linux, because rather on 
 FT2XX original FTDI drivers it depends on open-sourced alternative libftdfi. Both ways use unmanaged libraries for low-level
-communication, thoser libraris are provided in folder *lib* or just integrated into Win GUI App. Another simple approch is 
-to use standard **Serial** port (COM) with RS232/UART converter, or the last one, **USB** with F5xx/F6xx USB enabled MCUs. These 2
-ways use managed libraries so you dont need to worry about anything. Also *dont forget* to connect RST/TEST pins to DTR/RTS
-according to *Wiring Diagram* and specific MCU family.
+communication, those libraris are provided in folder *lib* or just integrated into Win GUI App. Another simple approch is 
+to use standard **Serial** port (COM) with RS232/UART converter, or the last one, **USB** with F5xx/F6xx USB enabled MCUs.
+These 2 ways use managed libraries so you dont need to worry about anything, plus they are also multiplatform. Also *dont forget* 
+to connect RST/TEST pins to DTR/RTS according to **Wiring Diagram** and specific MCU family.
 <br>
   
 ## 2. GUI App (Windows)
@@ -71,7 +72,7 @@ according to *Wiring Diagram* and specific MCU family.
 ![Scan](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/console_scan.png)
 <br>  
 
-## 4. Wiring-Diagram
+## 4. Wiring Diagram
 ![Wiring](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/wiring_diagram.png)
 <br>
 
@@ -105,6 +106,28 @@ public interface IBsl430Net
 }
 ```
 <br>
+
+## 6. References
+I would like to say *thank you* to each of these developers (or companies), because this project use all of them in some kind of way and
+without them, there will be no BSL430.NET:
+
+- [Texas Instruments](http://www.ti.com/)
+- [MahApps.Metro](https://mahapps.com)
+- [MahApps.IconPack](https://mahapps.com)
+- [Caliburn.Micro](https://caliburnmicro.com)
+- [Config.Net](https://github.com/aloneguid/config)
+- [Newtonsoft.Json](https://www.newtonsoft.com/json)
+- [Fody.Costura](https://www.github.com/Fody/Costura)
+- [Hardcodet.NotifyIcon](https://hardcodet.net/wpf-notifyicon)
+- [AvalonEdit](http://avalonedit.net/)
+- [WpfHexEditor](https://github.com/abbaye/WpfHexEditorControl)
+- [HidSharp](https://www.zer7.com/software/hidsharp)
+- [LibUsbDotNet](https://www.github.com/LibUsbDotNet)
+- [SerialPortStream](www.github.com/jcurl/SerialPortStream/SerialPortStream)
+- [FTD2XX](https://www.ftdichip.com/Drivers/D2XX.htm)
+- [libftdi](https://www.intra2net.com/en/developer/libftdi/)
+- [libusb](https://libusb.info/)
+<br>
 <br>
   
 <h1 id="Firmware-Tools">
@@ -122,11 +145,11 @@ public interface IBsl430Net
 > **[DOWNLOAD HERE](https://github.com/parezj/BSL430.NET/releases)** - Firmware Tools as BSL430.NET sub package
 <br>  
   
-6. [Main Features](#6-Main-Features)
-7. [GUI  & Console App](#7-GUI---Console-App)
-8. [Library](#8-FirmwareTools-Library)
+7. [Main Features](#7-Main-Features)
+8. [GUI  & Console App](#8-GUI---Console-App)
+9. [Library](#9-FirmwareTools-Library)
   
-## 6. Main Features
+## 7. Main Features
 * Multiple firmware format support: **TI-TXT**, **Intel-HEX**, **SREC**, **ELF** 
 * **Parse** (read from file) and **Create** (write to file or string) 
 * **Convert**, **Combine** and **Compare** between any of these formats
@@ -135,7 +158,7 @@ public interface IBsl430Net
 
 <br>  
   
-## 7. GUI  & Console App
+## 8. GUI  & Console App
 > **[Wiki docs](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.GUI-App)** - BSL430.NET GUI App docs and tutorials
   
 ```
@@ -149,7 +172,7 @@ Note: BSL430.NET and Firmware Tools are integrated into single GUI and Console A
 ![Firmware Hex Edit](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_fw_tools_hex_edit.png)
 <br>  
   
-## 8. FirmwareTools Library
+## 9. FirmwareTools Library
 > **[Wiki docs](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.FirmwareTools.Library)** - Ready to use code samples and tutorials 
   
 ```csharp
