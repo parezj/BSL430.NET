@@ -14,8 +14,9 @@
 1. [Main Features](#1-Main-Features)
 2. [GUI App (Windows)](#2-GUI-App-Windows)
 3. [Console App (Windows, Linux)](#3-Console-App-Windows-Linux)
-4. [Library](#4-BSL430NET-Library)
-5. [Firmware Tools](#Firmware-Tools)
+4. [Wiring diagram](#4-Wiring-Diagram)
+5. [Library](#5-BSL430NET-Library)
+6. [Firmware Tools](#Firmware-Tools)
 
 ## 1. Main Features
 * Replace expensive original *MSP FET* programmer with **cheap** FTDI **FT232** or Serial **COM** port
@@ -26,6 +27,21 @@
 ```
 Note: Old 1xx/2xx/4xx bootloader protocol not tested yet!
 ```
+BSL430.NET project started back in 2016, when I worked on my "Wireless Weather Station" project based on CC430 MCU (F5xxX), 
+connected on PCB to FT232. And I wanted to implement automatic firmware upgrade feature, while PC controll app was already
+written in C# (WPF). So I started to study TI docs and coding, but soon I realized, that there is nothing like this (except
+C++ TI BS430 library or Python MSP430 Tools), that is both versatile and multifunctional. So today, after weather station
+project already have finished, I changed my direction to BSL430.NET, and want to encourage other developers and enthusiats
+to use this app/library, which I had completely open-sourced, and morover I made some cool Win GUI App for everyday use.
+
+Library can be integrated into any MSP430 based project, even commercial, to enable **automatic firmware upgrades**.
+Communication with MCU is handled by 4 different ways. **FTDI** (FT232) is Windows only approach and requires *FT2XX drivers*
+installed on target PC. Another approch is called **Libftdi** and this works on Windows and also Linux, because rather on 
+FT2XX original FTDI drivers it depends on open-sourced alternative libftdfi. Both ways use unmanaged libraries for low-level
+communication, thoser libraris are provided in folder *lib* or just integrated into Win GUI App. Another simple approch is 
+to use standard **Serial** port (COM) with RS232/UART converter, or the last one, **USB** with F5xx/F6xx USB enabled MCUs. These 2
+ways use managed libraries so you dont need to worry about anything. Also *dont forget* to connect RST/TEST pins to DTR/RTS
+according to *Wiring Diagram* and specific MCU family.
 <br>
   
 ## 2. GUI App (Windows)
@@ -54,8 +70,12 @@ Note: Old 1xx/2xx/4xx bootloader protocol not tested yet!
 - **Scan for available devices**:  
 ![Scan](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/console_scan.png)
 <br>  
-  
-## 4. BSL430.NET Library
+
+## 4. Wiring-Diagram
+![Wiring](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/wiring_diagram.png)
+<br>
+
+## 5. BSL430.NET Library
 > **[Wiki docs](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.Library)** - Documentation and code samples for easy start and copy & paste
   
 ```csharp
@@ -102,11 +122,11 @@ public interface IBsl430Net
 > **[DOWNLOAD HERE](https://github.com/parezj/BSL430.NET/releases)** - Firmware Tools as BSL430.NET sub package
 <br>  
   
-5. [Main Features](#5-Main-Features)
-6. [GUI  & Console App](#6-GUI---Console-App)
-7. [Library](#7-FirmwareTools-Library)
+6. [Main Features](#6-Main-Features)
+7. [GUI  & Console App](#7-GUI---Console-App)
+8. [Library](#8-FirmwareTools-Library)
   
-## 5. Main Features
+## 6. Main Features
 * Multiple firmware format support: **TI-TXT**, **Intel-HEX**, **SREC**, **ELF** 
 * **Parse** (read from file) and **Create** (write to file or string) 
 * **Convert**, **Combine** and **Compare** between any of these formats
@@ -115,7 +135,7 @@ public interface IBsl430Net
 
 <br>  
   
-## 6. GUI  & Console App
+## 7. GUI  & Console App
 > **[Wiki docs](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.GUI-App)** - BSL430.NET GUI App docs and tutorials
   
 ```
@@ -129,7 +149,7 @@ Note: BSL430.NET and Firmware Tools are integrated into single GUI and Console A
 ![Firmware Hex Edit](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_fw_tools_hex_edit.png)
 <br>  
   
-## 7. FirmwareTools Library
+## 8. FirmwareTools Library
 > **[Wiki docs](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.FirmwareTools.Library)** - Ready to use code samples and tutorials 
   
 ```csharp
