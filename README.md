@@ -57,8 +57,8 @@ More at [Wiki Homepage](https://github.com/parezj/BSL430.NET/wiki/), [Wiki Libra
 - **Shell Extension & Association**:  
 ![Shell](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_shell_extensions.png)
 
-- **Tray Icon Settings**:  
-![Tray](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_tray.png)
+- **Tray Icon Settings (Dark Mode)**:  
+![Tray](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_tray_dark.png)
 <br>  
   
 ## 3. Console App (Windows, Linux)
@@ -167,8 +167,11 @@ Note: BSL430.NET and Firmware Tools are integrated into single GUI and Console A
 - **Firmware Tools (Dark Mode)**:  
 ![Firmware Tools](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_fw_tools_dark.png)
 
-- **Firmware Hex-Edit**:  
-![Firmware Hex Edit](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_fw_tools_hex_edit.png)
+- **Validate**:  
+![Validate](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_fw_tools_validate.png)
+
+- **Hex-Edit**:  
+![Hex-Edit](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_fw_tools_hex_edit.png)
 <br>  
   
 ## 9. FirmwareTools Library
