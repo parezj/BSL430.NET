@@ -128,7 +128,6 @@ without them, there will be no BSL430.NET:
 - [libftdi](https://www.intra2net.com/en/developer/libftdi/)
 - [libusb](https://libusb.info/)
 <br>
-<br>
   
 <h1 id="Firmware-Tools">
     <div align="center" margin="0" padding="0">
