@@ -26,8 +26,9 @@
 * Most common firmware format support: **TI-TXT**, **Intel-HEX**, **SREC**, **ELF**
 * *Original* C# code implementing TI bootloader protocols *5xx/6xx* and *1xx/2xx/4xx* [(TI doc)](https://raw.githubusercontent.com/parezj/BSL430.NET/master/docs/slau319z.pdf)
 ```
-Note: Old *1xx/2xx/4xx* bootloader protocol not tested yet!
-Warning: Old *1xx/2xx/4xx* bootloader protocol handle **Erase** or incorrectly entered password as complete memory wipe including Info A (with **calibration** data), if *LOCK A* bit is not set!
+Note:    Old *1xx/2xx/4xx* bootloader protocol not tested yet!
+Warning: Old *1xx/2xx/4xx* bootloader protocol handle **Erase** or incorrectly entered password 
+         as complete memory wipe including Info A (with **calibration** data), if *LOCK A* bit is not set!
 ```
 BSL430.NET project started back in 2016, when I worked on my *Wireless Weather Station* project based on **CC430** MCU (F5xxX), 
 connected on PCB to FT232. And I wanted to implement automatic firmware upgrade feature, while PC control app was already
@@ -55,6 +56,9 @@ More at [Wiki Homepage](https://github.com/parezj/BSL430.NET/wiki/), [Wiki Libra
 
 - **Shell Extension & Association**:  
 ![Shell](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_shell_extensions.png)
+
+- **Tray Icon Settings**:  
+![Tray](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_tray.png)
 <br>  
   
 ## 3. Console App (Windows, Linux)
@@ -188,5 +192,6 @@ public static (bool Equal, double Match, int BytesDiff) Compare(Firmware Firmwar
 ```
 
 ```
-Note: Author is not responsible for any kind of damage, that could arise from wrong use or misuse of this library and apps!
+Note: Author is not responsible for any kind of damage, that could arise 
+      from wrong use or misuse of this library or apps!
 ```
