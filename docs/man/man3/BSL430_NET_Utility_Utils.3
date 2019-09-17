@@ -1,4 +1,4 @@
-.TH "BSL430_NET.Utility.Utils" 3 "Sat Jun 22 2019" "Version 1.2.1" "BSL430.NET" \" -*- nroff -*-
+.TH "BSL430_NET.Utility.Utils" 3 "Tue Sep 17 2019" "Version 1.3.4" "BSL430.NET" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -31,7 +31,10 @@ BSL430_NET.Utility.Utils
 .RI "static \fBStatusEx\fP \fBStatusCreateEx\fP (int value, \fBStatus\fP stat, string extra, List< \fBReport\fP > reports, \fBReport\fP report, byte[] version, int bytes)"
 .br
 .ti -1c
-.RI "static \fBStatus\fP \fBStatusCreate\fP (int value, \fBStatus\fP stat, string extra, byte[] data_tx, byte[] data_rx)"
+.RI "static \fBStatusEx\fP \fBStatusCreateEx\fP (\fBStatus\fP status, List< \fBReport\fP > reports, \fBReport\fP report, byte[] version, int bytes)"
+.br
+.ti -1c
+.RI "static \fBStatus\fP \fBStatusCreate\fP (int value, \fBStatus\fP stat=null, string extra='', byte[] data_tx=null, byte[] data_rx=null)"
 .br
 .in -1c
 

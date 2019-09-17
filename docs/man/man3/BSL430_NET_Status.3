@@ -1,4 +1,4 @@
-.TH "BSL430_NET.Status" 3 "Sat Jun 22 2019" "Version 1.2.1" "BSL430.NET" \" -*- nroff -*-
+.TH "BSL430_NET.Status" 3 "Tue Sep 17 2019" "Version 1.3.4" "BSL430.NET" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -9,6 +9,18 @@ BSL430_NET.Status \- \fBStatus\fP class is an Error Cluster with int, bool and s
 .PP
 .PP
 Inherited by \fBBSL430_NET\&.StatusEx\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "string \fBFormattedString\fP (\fBStatus\fP Stat, bool TopLevel=false)"
+.br
+.RI "Formatted status from single object\&. "
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "Formatted \fBStatus\fP chain, that is built from Msg and InnerStatus Msg properties, with Extra and optional Core/Uart \fBStatus\fP\&. "
+.in -1c
 .SS "Properties"
 
 .in +1c
@@ -21,9 +33,13 @@ Inherited by \fBBSL430_NET\&.StatusEx\fP\&.
 .br
 .RI "Boolean representation of status, true means OK, false means ERROR\&. "
 .ti -1c
-.RI "string \fBMsg\fP = 'unknown error'\fC [get, set]\fP"
+.RI "string \fBMsg\fP = 'unknown'\fC [get, set]\fP"
 .br
 .RI "String representation of status\&. "
+.ti -1c
+.RI "string \fBExtra\fP = ''\fC [get, set]\fP"
+.br
+.RI "Additional info, that can be used for detailed problem analysis\&. "
 .ti -1c
 .RI "\fBBslCoreMessage\fP \fBCoreStatus\fP = \fBBslCoreMessage\&.NotAvailable\fP\fC [get, set]\fP"
 .br
@@ -32,12 +48,26 @@ Inherited by \fBBSL430_NET\&.StatusEx\fP\&.
 .RI "\fBBslUartMessage\fP \fBUartStatus\fP = \fBBslUartMessage\&.NotAvailable\fP\fC [get, set]\fP"
 .br
 .RI "BslUartMessage status\&. "
+.ti -1c
+.RI "\fBStatus\fP \fBInnerStatus\fP = null\fC [get, set]\fP"
+.br
+.RI "Inner \fBStatus\fP like inner exception can contain the previous \fBStatus\fP, usually with error\&. "
 .in -1c
 .SH "Detailed Description"
 .PP 
 \fBStatus\fP class is an Error Cluster with int, bool and string status with Core and UART messages\&. 
 
 
+.SH "Member Function Documentation"
+.PP 
+.SS "string BSL430_NET\&.Status\&.FormattedString (\fBStatus\fP Stat, bool TopLevel = \fCfalse\fP)"
+
+.PP
+Formatted status from single object\&. 
+.SS "override string BSL430_NET\&.Status\&.ToString ()"
+
+.PP
+Formatted \fBStatus\fP chain, that is built from Msg and InnerStatus Msg properties, with Extra and optional Core/Uart \fBStatus\fP\&. 
 .SH "Property Documentation"
 .PP 
 .SS "\fBBslCoreMessage\fP BSL430_NET\&.Status\&.CoreStatus = \fBBslCoreMessage\&.NotAvailable\fP\fC [get]\fP, \fC [set]\fP"
@@ -48,7 +78,15 @@ BslCoreMessage status\&.
 
 .PP
 Numeric representation of status, any value other then 0 indicates an error\&. 
-.SS "string BSL430_NET\&.Status\&.Msg = 'unknown error'\fC [get]\fP, \fC [set]\fP"
+.SS "string BSL430_NET\&.Status\&.Extra = ''\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Additional info, that can be used for detailed problem analysis\&. 
+.SS "\fBStatus\fP BSL430_NET\&.Status\&.InnerStatus = null\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Inner \fBStatus\fP like inner exception can contain the previous \fBStatus\fP, usually with error\&. 
+.SS "string BSL430_NET\&.Status\&.Msg = 'unknown'\fC [get]\fP, \fC [set]\fP"
 
 .PP
 String representation of status\&. 

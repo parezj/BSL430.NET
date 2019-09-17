@@ -1,8 +1,8 @@
-.TH "BSL430_NET.Comm.USB_HID_Device" 3 "Sat Jun 22 2019" "Version 1.2.1" "BSL430.NET" \" -*- nroff -*-
+.TH "BSL430_NET.Comm.USB_HID_Device" 3 "Tue Sep 17 2019" "Version 1.3.4" "BSL430.NET" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-BSL430_NET.Comm.USB_HID_Device \- USB HID Device node extends generic \fBBsl430NetDevice\fP\&. Use requires libraries: HidSharp, LibUsbDotNet\&.  
+BSL430_NET.Comm.USB_HID_Device \- USB HID Device node extends generic \fBBsl430NetDevice\fP\&. Use requires libraries: HidSharp\&.  
 
 .SH SYNOPSIS
 .br
@@ -13,64 +13,82 @@ Inherits \fBBSL430_NET\&.Bsl430NetDevice\fP\&.
 
 .in +1c
 .ti -1c
-.RI "\fBUSB_HID_Device\fP (int _vid, int _pid, string _serial, string _manufacturer, string _product_name, string name, string desc, string fulldesc, \fBMode\fP mode)"
+.RI "\fBUSB_HID_Device\fP (int \fBVid\fP, int \fBPid\fP, string \fBSerial\fP, string \fBManufacturer\fP, string \fBProductName\fP, string \fBName\fP, string Desc, string FullDesc, \fBMode\fP \fBMode\fP)"
 .br
 .RI "\fBUSB_HID_Device\fP constructor\&. "
+.ti -1c
+.RI "\fBUSB_HID_Device\fP ()"
+.br
+.RI "\fBUSB_HID_Device\fP parameterless constructor for serialization\&. "
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "Short string general information about this device\&. "
 .in -1c
-.SS "Public Attributes"
+.SS "Properties"
 
 .in +1c
 .ti -1c
-.RI "readonly int \fBvid\fP"
+.RI "int \fBVid\fP\fC [get, set]\fP"
 .br
 .RI "USB HID device VID\&. "
 .ti -1c
-.RI "readonly int \fBpid\fP"
+.RI "int \fBPid\fP\fC [get, set]\fP"
 .br
 .RI "USB HID device PID\&. "
 .ti -1c
-.RI "readonly string \fBserial\fP"
+.RI "string \fBSerial\fP\fC [get, set]\fP"
 .br
 .RI "USB HID device serial number\&. "
 .ti -1c
-.RI "readonly string \fBmanufacturer\fP"
+.RI "string \fBManufacturer\fP\fC [get, set]\fP"
 .br
 .RI "USB HID device manufacturer\&. "
 .ti -1c
-.RI "readonly string \fBproduct_name\fP"
+.RI "string \fBProductName\fP\fC [get, set]\fP"
 .br
 .RI "USB HID device product name\&. "
 .in -1c
 .SH "Detailed Description"
 .PP 
-USB HID Device node extends generic \fBBsl430NetDevice\fP\&. Use requires libraries: HidSharp, LibUsbDotNet\&. 
+USB HID Device node extends generic \fBBsl430NetDevice\fP\&. Use requires libraries: HidSharp\&. 
 
 
 .SH "Constructor & Destructor Documentation"
 .PP 
-.SS "BSL430_NET\&.Comm\&.USB_HID_Device\&.USB_HID_Device (int _vid, int _pid, string _serial, string _manufacturer, string _product_name, string name, string desc, string fulldesc, \fBMode\fP mode)"
+.SS "BSL430_NET\&.Comm\&.USB_HID_Device\&.USB_HID_Device (int Vid, int Pid, string Serial, string Manufacturer, string ProductName, string Name, string Desc, string FullDesc, \fBMode\fP Mode)"
 
 .PP
 \fBUSB_HID_Device\fP constructor\&. 
-.SH "Member Data Documentation"
+.SS "BSL430_NET\&.Comm\&.USB_HID_Device\&.USB_HID_Device ()"
+
+.PP
+\fBUSB_HID_Device\fP parameterless constructor for serialization\&. 
+.SH "Member Function Documentation"
 .PP 
-.SS "readonly string BSL430_NET\&.Comm\&.USB_HID_Device\&.manufacturer"
+.SS "override string BSL430_NET\&.Comm\&.USB_HID_Device\&.ToString ()"
+
+.PP
+Short string general information about this device\&. 
+.SH "Property Documentation"
+.PP 
+.SS "string BSL430_NET\&.Comm\&.USB_HID_Device\&.Manufacturer\fC [get]\fP, \fC [set]\fP"
 
 .PP
 USB HID device manufacturer\&. 
-.SS "readonly int BSL430_NET\&.Comm\&.USB_HID_Device\&.pid"
+.SS "int BSL430_NET\&.Comm\&.USB_HID_Device\&.Pid\fC [get]\fP, \fC [set]\fP"
 
 .PP
 USB HID device PID\&. 
-.SS "readonly string BSL430_NET\&.Comm\&.USB_HID_Device\&.product_name"
+.SS "string BSL430_NET\&.Comm\&.USB_HID_Device\&.ProductName\fC [get]\fP, \fC [set]\fP"
 
 .PP
 USB HID device product name\&. 
-.SS "readonly string BSL430_NET\&.Comm\&.USB_HID_Device\&.serial"
+.SS "string BSL430_NET\&.Comm\&.USB_HID_Device\&.Serial\fC [get]\fP, \fC [set]\fP"
 
 .PP
 USB HID device serial number\&. 
-.SS "readonly int BSL430_NET\&.Comm\&.USB_HID_Device\&.vid"
+.SS "int BSL430_NET\&.Comm\&.USB_HID_Device\&.Vid\fC [get]\fP, \fC [set]\fP"
 
 .PP
 USB HID device VID\&. 

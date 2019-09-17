@@ -1,0 +1,217 @@
+.TH "BSL430_NET.Constants.Const" 3 "Tue Sep 17 2019" "Version 1.3.4" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BSL430_NET.Constants.Const
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const bool \fBIS_DEBUG\fP = false"
+.br
+.ti -1c
+.RI "const int \fBTIMEOUT_OPEN\fP = 1000"
+.br
+.ti -1c
+.RI "const int \fBTIMEOUT_SCAN\fP = 2000"
+.br
+.ti -1c
+.RI "const int \fBTIMEOUT_READ\fP = 4000"
+.br
+.ti -1c
+.RI "const int \fBDELAY_ERR_RET\fP = 200"
+.br
+.ti -1c
+.RI "const int \fBDELAY_OK_RET\fP = 50"
+.br
+.ti -1c
+.RI "const int \fBDEV_STR_MAX_LEN\fP = 70"
+.br
+.ti -1c
+.RI "const uint \fBMSP430_RESET_VECTOR_ADDR\fP = 0xFFFE"
+.br
+.ti -1c
+.RI "const int \fBBSL430_DELAY_BETWEEN_CMDS\fP = 10"
+.br
+.ti -1c
+.RI "const byte \fBBSL_CMD56__RX_DATA_BLOCK\fP = 0x10"
+.br
+.ti -1c
+.RI "const byte \fBBSL_CMD56__RX_DATA_BLOCK_FAST\fP = 0x1B"
+.br
+.ti -1c
+.RI "const byte \fBBSL_CMD56__RX_PASSWORD\fP = 0x11"
+.br
+.ti -1c
+.RI "const byte \fBBSL_CMD56__ERASE_SEGMENT\fP = 0x12"
+.br
+.ti -1c
+.RI "const byte \fBBSL_CMD56__LOCK_INFO\fP = 0x13"
+.br
+.ti -1c
+.RI "const byte \fBBSL_CMD56__MASS_ERASE\fP = 0x15"
+.br
+.ti -1c
+.RI "const byte \fBBSL_CMD56__CRC_CHECK\fP = 0x16"
+.br
+.ti -1c
+.RI "const byte \fBBSL_CMD56__LOAD_PC\fP = 0x17"
+.br
+.ti -1c
+.RI "const byte \fBBSL_CMD56__TX_DATA_BLOCK\fP = 0x18"
+.br
+.ti -1c
+.RI "const byte \fBBSL_CMD56__TX_BSL_VERSION\fP = 0x19"
+.br
+.ti -1c
+.RI "const byte \fBBSL_CMD56__TX_BUFFER_SIZE\fP = 0x1A"
+.br
+.ti -1c
+.RI "const byte \fBBSL_CMD56__CHANGE_BAUD_RATE\fP = 0x52"
+.br
+.ti -1c
+.RI "const byte \fBBSL_CMD56__RESP_HEAD1\fP = 0x3A"
+.br
+.ti -1c
+.RI "const byte \fBBSL_CMD56__RESP_HEAD2\fP = 0x3B"
+.br
+.ti -1c
+.RI "const byte \fBBSL_BAUD56__9600\fP = 0x02"
+.br
+.ti -1c
+.RI "const byte \fBBSL_BAUD56__19200\fP = 0x03"
+.br
+.ti -1c
+.RI "const byte \fBBSL_BAUD56__38400\fP = 0x04"
+.br
+.ti -1c
+.RI "const byte \fBBSL_BAUD56__57600\fP = 0x05"
+.br
+.ti -1c
+.RI "const byte \fBBSL_BAUD56__115200\fP = 0x06"
+.br
+.ti -1c
+.RI "const byte \fBBSL_HEADER56__UART\fP = 0x80"
+.br
+.ti -1c
+.RI "const byte \fBBSL_HEADER56__USB\fP = 0x3F"
+.br
+.ti -1c
+.RI "const byte \fBBSL_SIZE56__HEADER_UART\fP = 6"
+.br
+.ti -1c
+.RI "const byte \fBBSL_SIZE56__HEADER_USB\fP = 2"
+.br
+.ti -1c
+.RI "const byte \fBBSL_SIZE56__CMD\fP = 1"
+.br
+.ti -1c
+.RI "const byte \fBBSL_SIZE56__DATA_CHANGE_BAUD_RATE\fP = 0"
+.br
+.ti -1c
+.RI "const byte \fBBSL_SIZE56__DATA_TX_BSL_VERSION\fP = 4"
+.br
+.ti -1c
+.RI "const byte \fBBSL_SIZE56__DATA_MASS_ERASE\fP = 1"
+.br
+.ti -1c
+.RI "const byte \fBBSL_SIZE56__DATA_CRC_CHECK\fP = 2"
+.br
+.ti -1c
+.RI "const byte \fBBSL_SIZE56__DATA_RX_PASSWORD\fP = 1"
+.br
+.ti -1c
+.RI "const byte \fBBSL_SIZE56__DATA_RX_DATA_BLOCK\fP = 1"
+.br
+.ti -1c
+.RI "const byte \fBBSL_SIZE56__DATA_TX_DATA_BLOCK\fP = 1"
+.br
+.ti -1c
+.RI "const int \fBBSL_SIZE56__DATA_LOAD_PC\fP = \-1"
+.br
+.ti -1c
+.RI "const byte \fBBSL_SIZE56__PASSWORD\fP = 32"
+.br
+.ti -1c
+.RI "const byte \fBBSL_SIZE56__RX_BLOCK_OVERHEAD\fP = 4"
+.br
+.ti -1c
+.RI "const byte \fBBSL_SIZE124__PASSWORD\fP = 20"
+.br
+.ti -1c
+.RI "const byte \fBBSL_SIZE124__RX_BLOCK_OVERHEAD\fP = 4"
+.br
+.ti -1c
+.RI "const byte \fBBSL_SIZE124__DEFAULT_RX\fP = 1"
+.br
+.ti -1c
+.RI "const byte \fBBSL_SIZE124__FRAME_OVERHEAD\fP = 6"
+.br
+.ti -1c
+.RI "const byte \fBBSL_SIZE124__BSL_VERSION\fP = 10"
+.br
+.ti -1c
+.RI "const byte \fBBSL_GENERAL124__SYNC\fP = 0x80"
+.br
+.ti -1c
+.RI "const byte \fBBSL_GENERAL124__ACK\fP = 0x90"
+.br
+.ti -1c
+.RI "const byte \fBBSL_GENERAL124__NAK\fP = 0xA0"
+.br
+.ti -1c
+.RI "const byte \fBBSL_DATA124__DEFAULT_L1_L2\fP = 0x04"
+.br
+.ti -1c
+.RI "const byte \fBBSL_DATA124__PW_L1_L2\fP = 0x24"
+.br
+.ti -1c
+.RI "const byte \fBBSL_DATA124__DUMMY\fP = 0xFF"
+.br
+.ti -1c
+.RI "const byte \fBBSL_DATA124__MASS_ERASE_LL\fP = 0x06"
+.br
+.ti -1c
+.RI "const byte \fBBSL_DATA124__MASS_ERASE_LH\fP = 0xA5"
+.br
+.ti -1c
+.RI "const byte \fBBSL_CMD124__RX_DATA_BLOCK\fP = 0x12"
+.br
+.ti -1c
+.RI "const byte \fBBSL_CMD124__RX_PASSWORD\fP = 0x10"
+.br
+.ti -1c
+.RI "const byte \fBBSL_CMD124__ERASE_SEGMENT\fP = 0x16"
+.br
+.ti -1c
+.RI "const byte \fBBSL_CMD124__ERASE_MAIN_OR_INFO\fP = 0x16"
+.br
+.ti -1c
+.RI "const byte \fBBSL_CMD124__MASS_ERASE\fP = 0x18"
+.br
+.ti -1c
+.RI "const byte \fBBSL_CMD124__ERASE_CHECK\fP = 0x1C"
+.br
+.ti -1c
+.RI "const byte \fBBSL_CMD124__CHANGE_BAUD_RATE\fP = 0x20"
+.br
+.ti -1c
+.RI "const byte \fBBSL_CMD124__SET_MEM_OFFSET\fP = 0x21"
+.br
+.ti -1c
+.RI "const byte \fBBSL_CMD124__LOAD_PC\fP = 0x1A"
+.br
+.ti -1c
+.RI "const byte \fBBSL_CMD124__TX_DATA_BLOCK\fP = 0x14"
+.br
+.ti -1c
+.RI "const byte \fBBSL_CMD124__TX_BSL_VERSION\fP = 0x1E"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.
