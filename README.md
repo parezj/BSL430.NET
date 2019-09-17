@@ -26,7 +26,8 @@
 * Most common firmware format support: **TI-TXT**, **Intel-HEX**, **SREC**, **ELF**
 * *Original* C# code implementing TI bootloader protocols *5xx/6xx* and *1xx/2xx/4xx* [(TI doc)](https://raw.githubusercontent.com/parezj/BSL430.NET/master/docs/slau319z.pdf)
 ```
-Note: Old 1xx/2xx/4xx bootloader protocol not tested yet!
+Note: Old *1xx/2xx/4xx* bootloader protocol not tested yet!
+Warning: Old *1xx/2xx/4xx* bootloader protocol handle **Erase** or incorrectly entered password as complete memory wipe including Info A (with **calibration** data), if *LOCK A* bit is not set!
 ```
 BSL430.NET project started back in 2016, when I worked on my *Wireless Weather Station* project based on **CC430** MCU (F5xxX), 
 connected on PCB to FT232. And I wanted to implement automatic firmware upgrade feature, while PC control app was already
@@ -34,15 +35,10 @@ written in C# (WPF). So I started to study TI docs and coding, but soon I realiz
 C++ **TI BS430** library or **Python MSP430 Tools**), that is both versatile and multifunctional. So today, after weather station
 project already have finished, I changed my direction to **BSL430.NET**, and want to encourage other developers and enthusiats
 to use this app/library, which I had completely *open-sourced*, and moreover I made some nice Win GUI App for simple use.
-
-Library can be integrated into any MSP430 based project, even commercial, to enable **automatic firmware upgrades**.
-Communication with MCU is handled by 4 different ways. **FTDI** (FT232) is Windows only approach and requires *FT2XX drivers*
-installed on target PC. Another approch is called **Libftdi** and this works on Windows and also Linux, because rather on 
-FT2XX original FTDI drivers it depends on open-sourced alternative libftdfi. Both ways use unmanaged libraries for low-level
-communication, those libraris are provided in folder *lib* or just integrated into Win GUI App. Another simple approch is 
-to use standard **Serial** port (COM) with RS232/UART converter, or the last one, **USB** with F5xx/F6xx USB enabled MCUs.
-These 2 ways use managed libraries so you dont need to worry about anything, plus they are also multiplatform. Also *dont forget* 
-to connect RST/TEST pins to DTR/RTS according to **Wiring Diagram** and specific MCU family.
+Library can now be integrated into any MSP430 based project, even commercial, to enable **automatic firmware upgrades**.
+More at [Wiki Homepage](https://github.com/parezj/BSL430.NET/wiki/), [Wiki Library](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.Library),
+[Wiki GUI App](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.GUI-App), [Wiki Console App](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.Console-App) or 
+[Wiki Firmware Tools](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.FirmwareTools.Library)
 <br>
   
 ## 2. GUI App (Windows)
@@ -189,4 +185,8 @@ public static FwInfo Validate(string FirmwarePath, StringWriter Log);
 
 public static (bool Equal, double Match, int BytesDiff) Compare(string FirmwarePath1, string FirmwarePath2);
 public static (bool Equal, double Match, int BytesDiff) Compare(Firmware Firmware1, Firmware Firmware2);
+```
+
+```
+Note: Author is not responsible for any kind of damage, that could arise from wrong use or misuse of this library and apps!
 ```

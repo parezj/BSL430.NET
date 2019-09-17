@@ -75,6 +75,11 @@ namespace BSL430_NET_WPF.Settings
         [Option(DefaultValue = "")]
         string MainPassword { get; set; }
 
+        // ===================================== EraseView
+
+        [Option(DefaultValue = "true")]
+        bool EraseFirst { get; set; }
+
         // ===================================== UploadView
 
         [Option(DefaultValue = "")]

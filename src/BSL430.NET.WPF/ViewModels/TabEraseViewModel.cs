@@ -30,7 +30,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
+using BSL430_NET;
+using BSL430_NET_WPF.Settings;
 using Caliburn.Micro;
 
 namespace BSL430_NET_WPF.ViewModels
@@ -51,11 +54,41 @@ namespace BSL430_NET_WPF.ViewModels
         }
         public void StartStop()
         {
+            MCU mcu = this.ControlProcess.MCU;
+            if (this.FirstErase && (mcu == MCU.MSP430_F1xx || mcu == MCU.MSP430_F2xx || mcu == MCU.MSP430_F4xx || mcu == MCU.MSP430_G2xx3))
+            {
+                var result = MessageBox.Show("As this is your first erase, and you are targetting old 1xx/2xx/4xx protocol, you should be careful." +
+                    "Old 1xx/2xx/4xx bootloader protocols erase complete memory including Info A (with CALIBRATION data) if Mass Erase is executed, " +
+                    "provided LOCK A bit is not set.\n\nDo you still want to continue?", "BSL430.NET", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    this.FirstErase = false;
+                }
+                else
+                {
+                    return;
+                }
+            }
+
             this.ControlProcess?.StartStop();
         }
         public void OpenLog()
         {
             this.ControlProcess?.OpenLog();
+        }
+        #endregion
+
+        #region Properties
+        private bool _FirstErase = BslSettings.Instance.EraseFirst;
+        public bool FirstErase
+        {
+            get => _FirstErase;
+            set
+            {
+                _FirstErase = value;
+                BslSettings.Instance.EraseFirst = value;
+            }
         }
         #endregion
     }

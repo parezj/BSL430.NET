@@ -104,7 +104,9 @@ namespace BSL430_NET_WPF.ViewModels
                 var result = MessageBox.Show("As this is your first download, you must known, that incorrectly entered password is " +
                     "considered as attack and so it is handled with.\n\nBSL versions 2.0 and higher with default settings executes " +
                     "Mass Erase command after single wrong password attempt as a security measure, so entire memory is erased except " +
-                    "Info A.\n\nDo you still want to continue?", "BSL430.NET", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                    "Info A.\n\nOld 1xx/2xx/4xx bootloader protocols erase complete memory including Info A (with CALIBRATION data) if " + 
+                    "Mass Erase is executed or if incorrect password is entered, provided LOCK A bit is not set.\n\nDo you still want to continue?", 
+                    "BSL430.NET", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
                 if (result == MessageBoxResult.Yes)
                 {
