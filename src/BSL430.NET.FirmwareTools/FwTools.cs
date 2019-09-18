@@ -247,7 +247,7 @@ namespace BSL430_NET
             {
                 /// <summary>If firmware is invalid, Valid = false. Otherwise Valid = True.</summary>
                 public bool Valid { get; } = false;
-                /// <summary>Firmware format. TI-TXT, Intel-HEX or ELF is supported.</summary>
+                /// <summary>Firmware format. TI-TXT, Intel-HEX, ELF or SREC are supported.</summary>
                 public FwFormat Format { get; set; } = FwFormat.AUTO;
                 /// <summary>First address in firmware, max 32-bit, usually 16-bit.</summary>
                 public long AddrFirst { get; set; } = 0;
