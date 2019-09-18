@@ -11,6 +11,7 @@
 > **[DOWNLOAD HERE](https://github.com/parezj/BSL430.NET/releases)** - TI MSP430 Bootloader (BSL) .NET Cross-Platform Toolchain 
 <br>
 
+0. [Wiki](https://github.com/parezj/BSL430.NET/wiki/)
 1. [Main Features](#1-Main-Features)
 2. [GUI App (Windows)](#2-GUI-App-Windows)
 3. [Console App (Windows, Linux)](#3-Console-App-Windows-Linux)
