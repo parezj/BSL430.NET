@@ -156,6 +156,11 @@ without them, there will be no BSL430.NET:
 * **Validate** firmware file and get information like addresses, CRC, sizes..
 * *[MSP430 only]* **Get BSL password** used to correctly download fw by BSL430.NET
 
+BSL430.NET.FirmwareTools is *Cross-Platform* library created as a part of BSL430.NET and then, after growing a little bit, 
+made standalone sub package. First motivation to create Firmware Tools was when I needed to unify parsing methods which 
+precede Erase, Download and Upload blocks in BSL430.NET. Intel-HEX and TI-TXT was supported from the begining, SREC and 
+ELF was added a while after. Today this library offers **basic firmare manipulation** with few, but powerful, static methods.
+
 <br>  
   
 ## 8. GUI  & Console App
