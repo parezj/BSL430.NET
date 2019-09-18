@@ -1,0 +1,40 @@
+.TH "BSL430_NET.FirmwareTools.FwTools.FwNode" 3 "Tue Sep 17 2019" "Version 1.3.4" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BSL430_NET.FirmwareTools.FwTools.FwNode \- Atomic unit which every firmware consits of representated by single byte with max 32-bit long address\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "byte \fBData\fP = 0xFF\fC [get, set]\fP"
+.br
+.RI "Data is single data byte with associated 16-bit address Addr\&. "
+.ti -1c
+.RI "long \fBAddr\fP = 0\fC [get, set]\fP"
+.br
+.RI "Addr is address of Data byte, max 32-bit length is supported\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Atomic unit which every firmware consits of representated by single byte with max 32-bit long address\&. 
+
+
+.SH "Property Documentation"
+.PP 
+.SS "long BSL430_NET\&.FirmwareTools\&.FwTools\&.FwNode\&.Addr = 0\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Addr is address of Data byte, max 32-bit length is supported\&. 
+.SS "byte BSL430_NET\&.FirmwareTools\&.FwTools\&.FwNode\&.Data = 0xFF\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Data is single data byte with associated 16-bit address Addr\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

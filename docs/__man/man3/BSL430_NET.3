@@ -1,0 +1,349 @@
+.TH "BSL430_NET" 3 "Tue Sep 17 2019" "Version 1.3.4" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BSL430_NET
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBBSL430NET\fP"
+.br
+.RI "BSL430\&.NET is cross-platform toolkit to manage memory of MSP430 MCUs via UART (FTDI, libftdi), USB or Serial (COM) port\&. It is a cheap replacement for stock TI MSP-FET programmer without debug capability\&. It can Upload, Download, Erase and Scan\&. "
+.ti -1c
+.RI "class \fBBsl430NetDevice\fP"
+.br
+.RI "BSL430\&.NET Device node serve as a generic device indentificator with field 'Name' as a key\&. "
+.ti -1c
+.RI "class \fBBsl430NetEventArgs\fP"
+.br
+.RI "BSL430\&.NET Event Args\&. Progress is double percentage and \fBReport\fP is current action\&. "
+.ti -1c
+.RI "class \fBBsl430NetException\fP"
+.br
+.RI "BSL430\&.NET Exception is generic Exception extended with \fBStatus\fP object\&. "
+.ti -1c
+.RI "class \fBExtensions\fP"
+.br
+.RI "Extension class with some helpful methods\&. "
+.ti -1c
+.RI "interface \fBIBsl430Net\fP"
+.br
+.RI "Public interface of BSL430\&.NET library\&. "
+.ti -1c
+.RI "class \fBReport\fP"
+.br
+.RI "\fBReport\fP is result of an action block with Name, Result and Timestamp\&. "
+.ti -1c
+.RI "class \fBScanAllResult\fP"
+.br
+.RI "Scan All Result wraps \fBStatus\fP and List of Devices - \fBBsl430NetDevice\fP childs (FTDI, Libftdi, Serial, USB)\&. "
+.ti -1c
+.RI "class \fBScanResult\fP"
+.br
+.RI "Scan Result wraps \fBStatus\fP and List of Devices - \fBBsl430NetDevice\fP childs (FTDI / Libftdi / Serial / USB)\&. "
+.ti -1c
+.RI "class \fBStatus\fP"
+.br
+.RI "\fBStatus\fP class is an Error Cluster with int, bool and string status with Core and UART messages\&. "
+.ti -1c
+.RI "class \fBStatusEx\fP"
+.br
+.RI "\fBStatusEx\fP is \fBStatus\fP extended with \fBReport\fP List, returned as a result of main public methods\&. "
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBMode\fP : byte { \fBMode\&.UART_FTD2XX\fP, \fBMode\&.UART_libftdi\fP, \fBMode\&.UART_Serial\fP, \fBMode\&.USB_HID\fP }"
+.br
+.RI "Main mode which each library instance can operate in, explicitly stated in constructor or derived from device\&. 
+.PP
+First word UART/USB declares the target MCU data interface\&. Please see MCU datasheet for more info\&. 
+.PP
+Second word declares the library, which handles communication\&. This library needs to be present\&. "
+.ti -1c
+.RI "enum \fBBaudRate\fP : int { \fBBaudRate\&.BAUD_9600\fP = 9600, \fBBaudRate\&.BAUD_19200\fP = 19200, \fBBaudRate\&.BAUD_38400\fP = 38400, \fBBaudRate\&.BAUD_57600\fP = 57600, \fBBaudRate\&.BAUD_115200\fP = 115200 }"
+.br
+.RI "Baud rate value\&. Default is 9600 bps (9600)\&. Setting other than default is supported only by some BSL versions\&. "
+.ti -1c
+.RI "enum \fBInvokeMechanism\fP : byte { \fBInvokeMechanism\&.SHARED_JTAG\fP = 0, \fBInvokeMechanism\&.DEDICATED_JTAG\fP = 1, \fBInvokeMechanism\&.MANUAL\fP = 2 }"
+.br
+.RI "Entry sequence on MCU pins which forces the target to start program execution at the BSL RESET vector\&. Default is SHARED_JTAG (0) - DTR to RST and RTS to TEST pin\&. "
+.ti -1c
+.RI "enum \fBMCU\fP : byte { \fBMCU\&.MSP430_F1xx\fP = 0, \fBMCU\&.MSP430_F2xx\fP = 1, \fBMCU\&.MSP430_F4xx\fP = 2, \fBMCU\&.MSP430_G2xx3\fP = 3, \fBMCU\&.MSP430_F5xx\fP = 4, \fBMCU\&.MSP430_F543x_A\fP = 5, \fBMCU\&.MSP430_F543x_NON_A\fP = 6, \fBMCU\&.MSP430_F6xx\fP = 7, \fBMCU\&.MSP430_FR5xx\fP = 8, \fBMCU\&.MSP430_FR6xx\fP = 9, \fBMCU\&.MSP430_FR2x33\fP = 10, \fBMCU\&.MSP430_FR231x\fP = 11, \fBMCU\&.MSP430_FR235x\fP = 12, \fBMCU\&.MSP430_FR215x\fP = 13, \fBMCU\&.MSP430_FR413x\fP = 14, \fBMCU\&.MSP430_FR211x\fP = 15, \fBMCU\&.MSP432_P401R\fP = 16 }"
+.br
+.RI "MSP430/432 MCU device family\&. Default is MSP430_F5xx (4)\&. "
+.ti -1c
+.RI "enum \fBScanOptions\fP : byte { \fBScanOptions\&.None\fP = 0x0, \fBScanOptions\&.UsbHid_IgnoreTexasVid\fP = 0x1, \fBScanOptions\&.Ftdi_IgnoreUnknownDev\fP = 0x2 }"
+.br
+.RI "[Flags] Scan Options adjust scanner behavior, use it like this: (UsbHid_IgnoreTexasVid | Ftdi_IgnoreUnknownDev) 
+.PP
+'UsbHid_IgnoreTexasVid' forces scanner to ignore TI VID(0x2047) and get all USB HID devices present in system\&. 
+.PP
+'Ftdi_IgnoreUnknownDev' forces scanner to ignore 'unknown' type devices, that are most likely already connected\&. "
+.ti -1c
+.RI "enum \fBBslUartMessage\fP : byte { \fBBslUartMessage\&.ACK\fP = 0x00, \fBBslUartMessage\&.HeaderIncorrect\fP = 0x51, \fBBslUartMessage\&.ChecksumIncorrect\fP = 0x52, \fBBslUartMessage\&.PacketSizeZero\fP = 0x53, \fBBslUartMessage\&.PacketSizeOverflow\fP = 0x54, \fBBslUartMessage\&.UnknownError\fP = 0x55, \fBBslUartMessage\&.UnknownBaudRate\fP = 0x56, \fBBslUartMessage\&.NotAvailable\fP = 0xFF }"
+.br
+.RI "BLS UART Message\&. If there are any errors with the data transmission, an error message is sent back\&. This message is sent only when 5xx or 6xx protocol version is used\&. "
+.ti -1c
+.RI "enum \fBBslCoreMessage\fP : byte { \fBBslCoreMessage\&.Success\fP = 0x00, \fBBslCoreMessage\&.FlashWriteCheckFail\fP = 0x01, \fBBslCoreMessage\&.FlashFailBitSet\fP = 0x02, \fBBslCoreMessage\&.VoltageChanged\fP = 0x03, \fBBslCoreMessage\&.BSLLocked\fP = 0x04, \fBBslCoreMessage\&.BSLPasswordError\fP = 0x05, \fBBslCoreMessage\&.ByteWriteForbidden\fP = 0x06, \fBBslCoreMessage\&.UnknownCommand\fP = 0x07, \fBBslCoreMessage\&.PacketLengthOverflow\fP = 0x08, \fBBslCoreMessage\&.NotAvailable\fP = 0xFF }"
+.br
+.RI "BSL Core Message is a response to Erase or Download action\&. (Mass Erase, TX Data Block) This message is sent only when 5xx or 6xx protocol version is used\&. "
+.ti -1c
+.RI "enum \fBReportResult\fP { \fBReportResult\&.SUCCESS\fP, \fBReportResult\&.SKIPPED\fP, \fBReportResult\&.FAILED\fP, \fBReportResult\&.PENDING\fP }"
+.br
+.RI "Report result\&. "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "delegate void \fBBsl430NetEventHandler\fP (object source, \fBBsl430NetEventArgs\fP e)"
+.br
+.RI "BSL430\&.NET Event handler\&. "
+.in -1c
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBBSL430_NET\&.BaudRate\fP : int\fC [strong]\fP"
+
+.PP
+Baud rate value\&. Default is 9600 bps (9600)\&. Setting other than default is supported only by some BSL versions\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIBAUD_9600 \fP\fP
+9600 bps 
+.TP
+\fB\fIBAUD_19200 \fP\fP
+19200 bps 
+.TP
+\fB\fIBAUD_38400 \fP\fP
+38400 bps 
+.TP
+\fB\fIBAUD_57600 \fP\fP
+57600 bps 
+.TP
+\fB\fIBAUD_115200 \fP\fP
+115200 bps 
+.SS "enum \fBBSL430_NET\&.BslCoreMessage\fP : byte\fC [strong]\fP"
+
+.PP
+BSL Core Message is a response to Erase or Download action\&. (Mass Erase, TX Data Block) This message is sent only when 5xx or 6xx protocol version is used\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fISuccess \fP\fP
+Operation Successful\&. 
+.TP
+\fB\fIFlashWriteCheckFail \fP\fP
+Flash Write Check Failed\&. After programming, a CRC is run on the programmed data\&. If the CRC does not match the expected result, this error is returned\&. 
+.TP
+\fB\fIFlashFailBitSet \fP\fP
+Flash Fail Bit Set\&. An operation set the FAIL bit in the flash controller (see the MSP430x5xx and MSP430x6xx Family User's Guide for more details on the flash fail bit)\&. 
+.TP
+\fB\fIVoltageChanged \fP\fP
+Voltage Change During Program\&. The VPE was set during the requested write operation (see the MSP430x5xx and MSP430x6xx Family User's Guide for more details on the VPE bit)\&. 
+.TP
+\fB\fIBSLLocked \fP\fP
+BSL Locked\&. The correct password has not yet been supplied to unlock the BSL\&. 
+.TP
+\fB\fIBSLPasswordError \fP\fP
+BSL Password Error\&. An incorrect password was supplied to the BSL when attempting an unlock\&. 
+.TP
+\fB\fIByteWriteForbidden \fP\fP
+Byte Write Forbidden\&. This error is returned when a byte write is attempted in a flash area\&. 
+.TP
+\fB\fIUnknownCommand \fP\fP
+Unknown Command\&. The command given to the BSL was not recognized\&. 
+.TP
+\fB\fIPacketLengthOverflow \fP\fP
+Packet Length Exceeds Buffer Size\&. The supplied packet length value is too large to be held in the BSL receive buffer\&. 
+.TP
+\fB\fINotAvailable \fP\fP
+BSL Core Message is not available\&. 
+.SS "enum \fBBSL430_NET\&.BslUartMessage\fP : byte\fC [strong]\fP"
+
+.PP
+BLS UART Message\&. If there are any errors with the data transmission, an error message is sent back\&. This message is sent only when 5xx or 6xx protocol version is used\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIACK \fP\fP
+ACK - Success\&. 
+.TP
+\fB\fIHeaderIncorrect \fP\fP
+Header incorrect\&. The packet did not begin with the required 0x80 value\&. 
+.TP
+\fB\fIChecksumIncorrect \fP\fP
+Checksum incorrect\&. The packet did not have the correct checksum value\&. 
+.TP
+\fB\fIPacketSizeZero \fP\fP
+Packet size zero\&. The size for the BSL core command was given as 0\&. 
+.TP
+\fB\fIPacketSizeOverflow \fP\fP
+Packet size exceeds buffer\&. The packet size given is too big for the RX buffer\&. 
+.TP
+\fB\fIUnknownError \fP\fP
+Unknown UART error\&. 
+.TP
+\fB\fIUnknownBaudRate \fP\fP
+Unknown baud rate\&. The supplied data for baud rate change is not a known value\&. 
+.TP
+\fB\fINotAvailable \fP\fP
+BSL UART Message is not available\&. 
+.SS "enum \fBBSL430_NET\&.InvokeMechanism\fP : byte\fC [strong]\fP"
+
+.PP
+Entry sequence on MCU pins which forces the target to start program execution at the BSL RESET vector\&. Default is SHARED_JTAG (0) - DTR to RST and RTS to TEST pin\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fISHARED_JTAG \fP\fP
+Only UART mode and MCU with shared JTAG pins\&. Tie DTR to RST and RTS to TEST pin\&. 
+.TP
+\fB\fIDEDICATED_JTAG \fP\fP
+Only UART mode and MCU with dedicated JTAG pins\&. Tie DTR to RST and RTS to TCK pin\&. 
+.TP
+\fB\fIMANUAL \fP\fP
+Only USB mode, where BSL is invoked either of the following conditions are met: 
+.PP
+The MCU is powered up by USB and the reset vector is blank\&. 
+.PP
+The MCU powers up with PUR pin tied to VUSB\&. 
+.SS "enum \fBBSL430_NET\&.MCU\fP : byte\fC [strong]\fP"
+
+.PP
+MSP430/432 MCU device family\&. Default is MSP430_F5xx (4)\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIMSP430_F1xx \fP\fP
+MSP430 F1xx ('1xx, 2xx, 4xx' protocol, 20B password) 
+.TP
+\fB\fIMSP430_F2xx \fP\fP
+MSP430 F2xx ('1xx, 2xx, 4xx' protocol, 20B password) 
+.TP
+\fB\fIMSP430_F4xx \fP\fP
+MSP430 F4xx ('1xx, 2xx, 4xx' protocol, 20B password) 
+.TP
+\fB\fIMSP430_G2xx3 \fP\fP
+MSP430 G2xx3 ('1xx, 2xx, 4xx' protocol, 20B password) 
+.TP
+\fB\fIMSP430_F5xx \fP\fP
+MSP430 F5xx ('5xx, 6xx' protocol, 32B password) 
+.TP
+\fB\fIMSP430_F543x_A \fP\fP
+MSP430 F543x [with A] ('5xx, 6xx' protocol, 32B password) 
+.TP
+\fB\fIMSP430_F543x_NON_A \fP\fP
+MSP430 F543x [non A] ('5xx, 6xx' protocol, 16B password) 
+.TP
+\fB\fIMSP430_F6xx \fP\fP
+MSP430 F6xx ('5xx, 6xx' protocol, 32B password) 
+.TP
+\fB\fIMSP430_FR5xx \fP\fP
+MSP430 FR5xx ('5xx, 6xx' protocol, 32B password) 
+.TP
+\fB\fIMSP430_FR6xx \fP\fP
+MSP430 FR6xx ('5xx, 6xx' protocol, 32B password) 
+.TP
+\fB\fIMSP430_FR2x33 \fP\fP
+MSP430 FR2x33 ('5xx, 6xx' protocol, 32B password) 
+.TP
+\fB\fIMSP430_FR231x \fP\fP
+MSP430 FR231x ('5xx, 6xx' protocol, 32B password) 
+.TP
+\fB\fIMSP430_FR235x \fP\fP
+MSP430 FR235x ('5xx, 6xx' protocol, 32B password) 
+.TP
+\fB\fIMSP430_FR215x \fP\fP
+MSP430 FR215x ('5xx, 6xx' protocol, 32B password) 
+.TP
+\fB\fIMSP430_FR413x \fP\fP
+MSP430 FR413x ('5xx, 6xx' protocol, 32B password) 
+.TP
+\fB\fIMSP430_FR211x \fP\fP
+MSP430 FR211x ('5xx, 6xx' protocol, 32B password) 
+.TP
+\fB\fIMSP432_P401R \fP\fP
+MSP432 P401R ('5xx, 6xx' protocol, 32B password) 
+.SS "enum \fBBSL430_NET\&.Mode\fP : byte\fC [strong]\fP"
+
+.PP
+\fBMain\fP mode which each library instance can operate in, explicitly stated in constructor or derived from device\&. 
+.PP
+First word UART/USB declares the target MCU data interface\&. Please see MCU datasheet for more info\&. 
+.PP
+Second word declares the library, which handles communication\&. This library needs to be present\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIUART_FTD2XX \fP\fP
+UART mode via proprietary FTD2XX library requires ftdibus\&.sys driver 
+.TP
+\fB\fIUART_libftdi \fP\fP
+UART mode via opensource libftdi library requires libusb 
+.TP
+\fB\fIUART_Serial \fP\fP
+UART mode via SerialPortStream library 
+.TP
+\fB\fIUSB_HID \fP\fP
+USB mode via HidSharp and LibUsbDotNet library 
+.SS "enum \fBBSL430_NET\&.ReportResult\fP\fC [strong]\fP"
+
+.PP
+\fBReport\fP result\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fISUCCESS \fP\fP
+Action headlined by \fBReport\fP Name completed successfully\&. 
+.TP
+\fB\fISKIPPED \fP\fP
+Action headlined by \fBReport\fP Name was skipped\&. 
+.TP
+\fB\fIFAILED \fP\fP
+Action headlined by \fBReport\fP Name failed\&. 
+.TP
+\fB\fIPENDING \fP\fP
+Action headlined by \fBReport\fP Name is currently in progress\&. 
+.SS "enum \fBBSL430_NET\&.ScanOptions\fP : byte\fC [strong]\fP"
+
+.PP
+[Flags] Scan Options adjust scanner behavior, use it like this: (UsbHid_IgnoreTexasVid | Ftdi_IgnoreUnknownDev) 
+.PP
+'UsbHid_IgnoreTexasVid' forces scanner to ignore TI VID(0x2047) and get all USB HID devices present in system\&. 
+.PP
+'Ftdi_IgnoreUnknownDev' forces scanner to ignore 'unknown' type devices, that are most likely already connected\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINone \fP\fP
+[Flag] Default value None has zero effect on scanner\&. 
+.TP
+\fB\fIUsbHid_IgnoreTexasVid \fP\fP
+[Flag] Forces scanner to ignore TI VID(0x2047) and get all USB HID devices present in system\&. 
+.TP
+\fB\fIFtdi_IgnoreUnknownDev \fP\fP
+[Flag] Forces scanner to ignore 'unknown' type devices, that are most likely already connected\&. 
+.SH "Function Documentation"
+.PP 
+.SS "delegate void BSL430_NET\&.Bsl430NetEventHandler (object source, \fBBsl430NetEventArgs\fP e)"
+
+.PP
+BSL430\&.NET Event handler\&. 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

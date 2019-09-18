@@ -1,0 +1,322 @@
+.TH "FTD2XX_NET.FTDI.FT_XSERIES_EEPROM_STRUCTURE" 3 "Sat Jun 22 2019" "Version 1.2.1" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+FTD2XX_NET.FTDI.FT_XSERIES_EEPROM_STRUCTURE \- EEPROM structure specific to X-Series devices\&. Inherits from \fBFT_EEPROM_DATA\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBFTD2XX_NET\&.FTDI\&.FT_EEPROM_DATA\fP\&.
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBPullDownEnable\fP = false"
+.br
+.RI "Determines if IOs are pulled down when the device is in suspend "
+.ti -1c
+.RI "bool \fBSerNumEnable\fP = true"
+.br
+.RI "Determines if the serial number is enabled "
+.ti -1c
+.RI "bool \fBUSBVersionEnable\fP = true"
+.br
+.RI "Determines if the USB version number is enabled "
+.ti -1c
+.RI "UInt16 \fBUSBVersion\fP = 0x0200"
+.br
+.RI "The USB version number: 0x0200 (USB 2\&.0) "
+.ti -1c
+.RI "byte \fBACSlowSlew\fP"
+.br
+.RI "Determines if AC pins have a slow slew rate "
+.ti -1c
+.RI "byte \fBACSchmittInput\fP"
+.br
+.RI "Determines if the AC pins have a Schmitt input "
+.ti -1c
+.RI "byte \fBACDriveCurrent\fP"
+.br
+.RI "Determines the AC pins drive current in mA\&. Valid values are FT_DRIVE_CURRENT_4MA, FT_DRIVE_CURRENT_8MA, FT_DRIVE_CURRENT_12MA or FT_DRIVE_CURRENT_16MA "
+.ti -1c
+.RI "byte \fBADSlowSlew\fP"
+.br
+.RI "Determines if AD pins have a slow slew rate "
+.ti -1c
+.RI "byte \fBADSchmittInput\fP"
+.br
+.RI "Determines if AD pins have a schmitt input "
+.ti -1c
+.RI "byte \fBADDriveCurrent\fP"
+.br
+.RI "Determines the AD pins drive current in mA\&. Valid values are FT_DRIVE_CURRENT_4MA, FT_DRIVE_CURRENT_8MA, FT_DRIVE_CURRENT_12MA or FT_DRIVE_CURRENT_16MA "
+.ti -1c
+.RI "byte \fBCbus0\fP"
+.br
+.RI "Sets the function of the CBUS0 pin for FT232H devices\&. Valid values are FT_CBUS_TRISTATE, FT_CBUS_RXLED, FT_CBUS_TXLED, FT_CBUS_TXRXLED, FT_CBUS_PWREN, FT_CBUS_SLEEP, FT_CBUS_DRIVE_0, FT_CBUS_DRIVE_1, FT_CBUS_GPIO, FT_CBUS_TXDEN, FT_CBUS_CLK24, FT_CBUS_CLK12, FT_CBUS_CLK6, FT_CBUS_BCD_CHARGER, FT_CBUS_BCD_CHARGER_N, FT_CBUS_VBUS_SENSE, FT_CBUS_BITBANG_WR, FT_CBUS_BITBANG_RD, FT_CBUS_TIME_STAMP, FT_CBUS_KEEP_AWAKE "
+.ti -1c
+.RI "byte \fBCbus1\fP"
+.br
+.RI "Sets the function of the CBUS1 pin for FT232H devices\&. Valid values are FT_CBUS_TRISTATE, FT_CBUS_RXLED, FT_CBUS_TXLED, FT_CBUS_TXRXLED, FT_CBUS_PWREN, FT_CBUS_SLEEP, FT_CBUS_DRIVE_0, FT_CBUS_DRIVE_1, FT_CBUS_GPIO, FT_CBUS_TXDEN, FT_CBUS_CLK24, FT_CBUS_CLK12, FT_CBUS_CLK6, FT_CBUS_BCD_CHARGER, FT_CBUS_BCD_CHARGER_N, FT_CBUS_VBUS_SENSE, FT_CBUS_BITBANG_WR, FT_CBUS_BITBANG_RD, FT_CBUS_TIME_STAMP, FT_CBUS_KEEP_AWAKE "
+.ti -1c
+.RI "byte \fBCbus2\fP"
+.br
+.RI "Sets the function of the CBUS2 pin for FT232H devices\&. Valid values are FT_CBUS_TRISTATE, FT_CBUS_RXLED, FT_CBUS_TXLED, FT_CBUS_TXRXLED, FT_CBUS_PWREN, FT_CBUS_SLEEP, FT_CBUS_DRIVE_0, FT_CBUS_DRIVE_1, FT_CBUS_GPIO, FT_CBUS_TXDEN, FT_CBUS_CLK24, FT_CBUS_CLK12, FT_CBUS_CLK6, FT_CBUS_BCD_CHARGER, FT_CBUS_BCD_CHARGER_N, FT_CBUS_VBUS_SENSE, FT_CBUS_BITBANG_WR, FT_CBUS_BITBANG_RD, FT_CBUS_TIME_STAMP, FT_CBUS_KEEP_AWAKE "
+.ti -1c
+.RI "byte \fBCbus3\fP"
+.br
+.RI "Sets the function of the CBUS3 pin for FT232H devices\&. Valid values are FT_CBUS_TRISTATE, FT_CBUS_RXLED, FT_CBUS_TXLED, FT_CBUS_TXRXLED, FT_CBUS_PWREN, FT_CBUS_SLEEP, FT_CBUS_DRIVE_0, FT_CBUS_DRIVE_1, FT_CBUS_GPIO, FT_CBUS_TXDEN, FT_CBUS_CLK24, FT_CBUS_CLK12, FT_CBUS_CLK6, FT_CBUS_BCD_CHARGER, FT_CBUS_BCD_CHARGER_N, FT_CBUS_VBUS_SENSE, FT_CBUS_BITBANG_WR, FT_CBUS_BITBANG_RD, FT_CBUS_TIME_STAMP, FT_CBUS_KEEP_AWAKE "
+.ti -1c
+.RI "byte \fBCbus4\fP"
+.br
+.RI "Sets the function of the CBUS4 pin for FT232H devices\&. Valid values are FT_CBUS_TRISTATE, FT_CBUS_RXLED, FT_CBUS_TXLED, FT_CBUS_TXRXLED, FT_CBUS_PWREN, FT_CBUS_SLEEP, FT_CBUS_DRIVE_0, FT_CBUS_DRIVE_1, FT_CBUS_TXDEN, FT_CBUS_CLK24, FT_CBUS_CLK12, FT_CBUS_CLK6, FT_CBUS_BCD_CHARGER, FT_CBUS_BCD_CHARGER_N, FT_CBUS_VBUS_SENSE, FT_CBUS_BITBANG_WR, FT_CBUS_BITBANG_RD, FT_CBUS_TIME_STAMP, FT_CBUS_KEEP_AWAKE "
+.ti -1c
+.RI "byte \fBCbus5\fP"
+.br
+.RI "Sets the function of the CBUS5 pin for FT232H devices\&. Valid values are FT_CBUS_TRISTATE, FT_CBUS_RXLED, FT_CBUS_TXLED, FT_CBUS_TXRXLED, FT_CBUS_PWREN, FT_CBUS_SLEEP, FT_CBUS_DRIVE_0, FT_CBUS_DRIVE_1, FT_CBUS_TXDEN, FT_CBUS_CLK24, FT_CBUS_CLK12, FT_CBUS_CLK6, FT_CBUS_BCD_CHARGER, FT_CBUS_BCD_CHARGER_N, FT_CBUS_VBUS_SENSE, FT_CBUS_BITBANG_WR, FT_CBUS_BITBANG_RD, FT_CBUS_TIME_STAMP, FT_CBUS_KEEP_AWAKE "
+.ti -1c
+.RI "byte \fBCbus6\fP"
+.br
+.RI "Sets the function of the CBUS6 pin for FT232H devices\&. Valid values are FT_CBUS_TRISTATE, FT_CBUS_RXLED, FT_CBUS_TXLED, FT_CBUS_TXRXLED, FT_CBUS_PWREN, FT_CBUS_SLEEP, FT_CBUS_DRIVE_0, FT_CBUS_DRIVE_1, FT_CBUS_TXDEN, FT_CBUS_CLK24, FT_CBUS_CLK12, FT_CBUS_CLK6, FT_CBUS_BCD_CHARGER, FT_CBUS_BCD_CHARGER_N, FT_CBUS_VBUS_SENSE, FT_CBUS_BITBANG_WR, FT_CBUS_BITBANG_RD, FT_CBUS_TIME_STAMP, FT_CBUS_KEEP_AWAKE "
+.ti -1c
+.RI "byte \fBInvertTXD\fP"
+.br
+.RI "Inverts the sense of the TXD line "
+.ti -1c
+.RI "byte \fBInvertRXD\fP"
+.br
+.RI "Inverts the sense of the RXD line "
+.ti -1c
+.RI "byte \fBInvertRTS\fP"
+.br
+.RI "Inverts the sense of the RTS line "
+.ti -1c
+.RI "byte \fBInvertCTS\fP"
+.br
+.RI "Inverts the sense of the CTS line "
+.ti -1c
+.RI "byte \fBInvertDTR\fP"
+.br
+.RI "Inverts the sense of the DTR line "
+.ti -1c
+.RI "byte \fBInvertDSR\fP"
+.br
+.RI "Inverts the sense of the DSR line "
+.ti -1c
+.RI "byte \fBInvertDCD\fP"
+.br
+.RI "Inverts the sense of the DCD line "
+.ti -1c
+.RI "byte \fBInvertRI\fP"
+.br
+.RI "Inverts the sense of the RI line "
+.ti -1c
+.RI "byte \fBBCDEnable\fP"
+.br
+.RI "Determines whether the Battery Charge Detection option is enabled\&. "
+.ti -1c
+.RI "byte \fBBCDForceCbusPWREN\fP"
+.br
+.RI "Asserts the power enable signal on CBUS when charging port detected\&. "
+.ti -1c
+.RI "byte \fBBCDDisableSleep\fP"
+.br
+.RI "Forces the device never to go into sleep mode\&. "
+.ti -1c
+.RI "ushort \fBI2CSlaveAddress\fP"
+.br
+.RI "I2C slave device address\&. "
+.ti -1c
+.RI "UInt32 \fBI2CDeviceId\fP"
+.br
+.RI "I2C device ID "
+.ti -1c
+.RI "byte \fBI2CDisableSchmitt\fP"
+.br
+.RI "Disable I2C Schmitt trigger\&. "
+.ti -1c
+.RI "byte \fBFT1248Cpol\fP"
+.br
+.RI "FT1248 clock polarity - clock idle high (1) or clock idle low (0) "
+.ti -1c
+.RI "byte \fBFT1248Lsb\fP"
+.br
+.RI "FT1248 data is LSB (1) or MSB (0) "
+.ti -1c
+.RI "byte \fBFT1248FlowControl\fP"
+.br
+.RI "FT1248 flow control enable\&. "
+.ti -1c
+.RI "byte \fBRS485EchoSuppress\fP"
+.br
+.RI "Enable RS485 Echo Suppression "
+.ti -1c
+.RI "byte \fBPowerSaveEnable\fP"
+.br
+.RI "Enable Power Save mode\&. "
+.ti -1c
+.RI "byte \fBIsVCP\fP"
+.br
+.RI "Determines whether the VCP driver is loaded\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+EEPROM structure specific to X-Series devices\&. Inherits from \fBFT_EEPROM_DATA\fP\&. 
+
+
+.SH "Member Data Documentation"
+.PP 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.ACDriveCurrent"
+
+.PP
+Determines the AC pins drive current in mA\&. Valid values are FT_DRIVE_CURRENT_4MA, FT_DRIVE_CURRENT_8MA, FT_DRIVE_CURRENT_12MA or FT_DRIVE_CURRENT_16MA 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.ACSchmittInput"
+
+.PP
+Determines if the AC pins have a Schmitt input 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.ACSlowSlew"
+
+.PP
+Determines if AC pins have a slow slew rate 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.ADDriveCurrent"
+
+.PP
+Determines the AD pins drive current in mA\&. Valid values are FT_DRIVE_CURRENT_4MA, FT_DRIVE_CURRENT_8MA, FT_DRIVE_CURRENT_12MA or FT_DRIVE_CURRENT_16MA 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.ADSchmittInput"
+
+.PP
+Determines if AD pins have a schmitt input 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.ADSlowSlew"
+
+.PP
+Determines if AD pins have a slow slew rate 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.BCDDisableSleep"
+
+.PP
+Forces the device never to go into sleep mode\&. 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.BCDEnable"
+
+.PP
+Determines whether the Battery Charge Detection option is enabled\&. 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.BCDForceCbusPWREN"
+
+.PP
+Asserts the power enable signal on CBUS when charging port detected\&. 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.Cbus0"
+
+.PP
+Sets the function of the CBUS0 pin for FT232H devices\&. Valid values are FT_CBUS_TRISTATE, FT_CBUS_RXLED, FT_CBUS_TXLED, FT_CBUS_TXRXLED, FT_CBUS_PWREN, FT_CBUS_SLEEP, FT_CBUS_DRIVE_0, FT_CBUS_DRIVE_1, FT_CBUS_GPIO, FT_CBUS_TXDEN, FT_CBUS_CLK24, FT_CBUS_CLK12, FT_CBUS_CLK6, FT_CBUS_BCD_CHARGER, FT_CBUS_BCD_CHARGER_N, FT_CBUS_VBUS_SENSE, FT_CBUS_BITBANG_WR, FT_CBUS_BITBANG_RD, FT_CBUS_TIME_STAMP, FT_CBUS_KEEP_AWAKE 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.Cbus1"
+
+.PP
+Sets the function of the CBUS1 pin for FT232H devices\&. Valid values are FT_CBUS_TRISTATE, FT_CBUS_RXLED, FT_CBUS_TXLED, FT_CBUS_TXRXLED, FT_CBUS_PWREN, FT_CBUS_SLEEP, FT_CBUS_DRIVE_0, FT_CBUS_DRIVE_1, FT_CBUS_GPIO, FT_CBUS_TXDEN, FT_CBUS_CLK24, FT_CBUS_CLK12, FT_CBUS_CLK6, FT_CBUS_BCD_CHARGER, FT_CBUS_BCD_CHARGER_N, FT_CBUS_VBUS_SENSE, FT_CBUS_BITBANG_WR, FT_CBUS_BITBANG_RD, FT_CBUS_TIME_STAMP, FT_CBUS_KEEP_AWAKE 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.Cbus2"
+
+.PP
+Sets the function of the CBUS2 pin for FT232H devices\&. Valid values are FT_CBUS_TRISTATE, FT_CBUS_RXLED, FT_CBUS_TXLED, FT_CBUS_TXRXLED, FT_CBUS_PWREN, FT_CBUS_SLEEP, FT_CBUS_DRIVE_0, FT_CBUS_DRIVE_1, FT_CBUS_GPIO, FT_CBUS_TXDEN, FT_CBUS_CLK24, FT_CBUS_CLK12, FT_CBUS_CLK6, FT_CBUS_BCD_CHARGER, FT_CBUS_BCD_CHARGER_N, FT_CBUS_VBUS_SENSE, FT_CBUS_BITBANG_WR, FT_CBUS_BITBANG_RD, FT_CBUS_TIME_STAMP, FT_CBUS_KEEP_AWAKE 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.Cbus3"
+
+.PP
+Sets the function of the CBUS3 pin for FT232H devices\&. Valid values are FT_CBUS_TRISTATE, FT_CBUS_RXLED, FT_CBUS_TXLED, FT_CBUS_TXRXLED, FT_CBUS_PWREN, FT_CBUS_SLEEP, FT_CBUS_DRIVE_0, FT_CBUS_DRIVE_1, FT_CBUS_GPIO, FT_CBUS_TXDEN, FT_CBUS_CLK24, FT_CBUS_CLK12, FT_CBUS_CLK6, FT_CBUS_BCD_CHARGER, FT_CBUS_BCD_CHARGER_N, FT_CBUS_VBUS_SENSE, FT_CBUS_BITBANG_WR, FT_CBUS_BITBANG_RD, FT_CBUS_TIME_STAMP, FT_CBUS_KEEP_AWAKE 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.Cbus4"
+
+.PP
+Sets the function of the CBUS4 pin for FT232H devices\&. Valid values are FT_CBUS_TRISTATE, FT_CBUS_RXLED, FT_CBUS_TXLED, FT_CBUS_TXRXLED, FT_CBUS_PWREN, FT_CBUS_SLEEP, FT_CBUS_DRIVE_0, FT_CBUS_DRIVE_1, FT_CBUS_TXDEN, FT_CBUS_CLK24, FT_CBUS_CLK12, FT_CBUS_CLK6, FT_CBUS_BCD_CHARGER, FT_CBUS_BCD_CHARGER_N, FT_CBUS_VBUS_SENSE, FT_CBUS_BITBANG_WR, FT_CBUS_BITBANG_RD, FT_CBUS_TIME_STAMP, FT_CBUS_KEEP_AWAKE 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.Cbus5"
+
+.PP
+Sets the function of the CBUS5 pin for FT232H devices\&. Valid values are FT_CBUS_TRISTATE, FT_CBUS_RXLED, FT_CBUS_TXLED, FT_CBUS_TXRXLED, FT_CBUS_PWREN, FT_CBUS_SLEEP, FT_CBUS_DRIVE_0, FT_CBUS_DRIVE_1, FT_CBUS_TXDEN, FT_CBUS_CLK24, FT_CBUS_CLK12, FT_CBUS_CLK6, FT_CBUS_BCD_CHARGER, FT_CBUS_BCD_CHARGER_N, FT_CBUS_VBUS_SENSE, FT_CBUS_BITBANG_WR, FT_CBUS_BITBANG_RD, FT_CBUS_TIME_STAMP, FT_CBUS_KEEP_AWAKE 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.Cbus6"
+
+.PP
+Sets the function of the CBUS6 pin for FT232H devices\&. Valid values are FT_CBUS_TRISTATE, FT_CBUS_RXLED, FT_CBUS_TXLED, FT_CBUS_TXRXLED, FT_CBUS_PWREN, FT_CBUS_SLEEP, FT_CBUS_DRIVE_0, FT_CBUS_DRIVE_1, FT_CBUS_TXDEN, FT_CBUS_CLK24, FT_CBUS_CLK12, FT_CBUS_CLK6, FT_CBUS_BCD_CHARGER, FT_CBUS_BCD_CHARGER_N, FT_CBUS_VBUS_SENSE, FT_CBUS_BITBANG_WR, FT_CBUS_BITBANG_RD, FT_CBUS_TIME_STAMP, FT_CBUS_KEEP_AWAKE 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.FT1248Cpol"
+
+.PP
+FT1248 clock polarity - clock idle high (1) or clock idle low (0) 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.FT1248FlowControl"
+
+.PP
+FT1248 flow control enable\&. 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.FT1248Lsb"
+
+.PP
+FT1248 data is LSB (1) or MSB (0) 
+.SS "UInt32 FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.I2CDeviceId"
+
+.PP
+I2C device ID 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.I2CDisableSchmitt"
+
+.PP
+Disable I2C Schmitt trigger\&. 
+.SS "ushort FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.I2CSlaveAddress"
+
+.PP
+I2C slave device address\&. 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.InvertCTS"
+
+.PP
+Inverts the sense of the CTS line 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.InvertDCD"
+
+.PP
+Inverts the sense of the DCD line 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.InvertDSR"
+
+.PP
+Inverts the sense of the DSR line 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.InvertDTR"
+
+.PP
+Inverts the sense of the DTR line 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.InvertRI"
+
+.PP
+Inverts the sense of the RI line 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.InvertRTS"
+
+.PP
+Inverts the sense of the RTS line 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.InvertRXD"
+
+.PP
+Inverts the sense of the RXD line 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.InvertTXD"
+
+.PP
+Inverts the sense of the TXD line 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.IsVCP"
+
+.PP
+Determines whether the VCP driver is loaded\&. 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.PowerSaveEnable"
+
+.PP
+Enable Power Save mode\&. 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.PullDownEnable = false"
+
+.PP
+Determines if IOs are pulled down when the device is in suspend 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.RS485EchoSuppress"
+
+.PP
+Enable RS485 Echo Suppression 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.SerNumEnable = true"
+
+.PP
+Determines if the serial number is enabled 
+.SS "UInt16 FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.USBVersion = 0x0200"
+
+.PP
+The USB version number: 0x0200 (USB 2\&.0) 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT_XSERIES_EEPROM_STRUCTURE\&.USBVersionEnable = true"
+
+.PP
+Determines if the USB version number is enabled 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

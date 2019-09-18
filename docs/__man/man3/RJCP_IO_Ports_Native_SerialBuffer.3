@@ -1,0 +1,147 @@
+.TH "RJCP.IO.Ports.Native.SerialBuffer" 3 "Sat Jun 22 2019" "Version 1.2.1" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+RJCP.IO.Ports.Native.SerialBuffer \- Manages two buffers, for reading and writing, between a Stream and a \fBNative\fP Serial object\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IDisposable, \fBRJCP\&.IO\&.Ports\&.Native\&.ISerialBufferSerialData\fP, and \fBRJCP\&.IO\&.Ports\&.Native\&.ISerialBufferStreamData\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSerialBuffer\fP (int readBuffer, int writeBuffer)"
+.br
+.RI "Initializes a new instance of the \fBSerialBuffer\fP class, where the buffer is not pinned\&. "
+.ti -1c
+.RI "\fBSerialBuffer\fP (int readBuffer, int writeBuffer, bool pinned)"
+.br
+.RI "Initializes a new instance of the \fBSerialBuffer\fP class\&. "
+.ti -1c
+.RI "void \fBDispose\fP ()"
+.br
+.RI "Releases unmanaged and - optionally - managed resources\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBDispose\fP (bool disposing)"
+.br
+.RI "Releases unmanaged and - optionally - managed resources\&. "
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBISerialBufferSerialData\fP \fBSerial\fP\fC [get]\fP"
+.br
+.RI "Access to properties and methods specific to the native serial object\&. "
+.ti -1c
+.RI "\fBISerialBufferStreamData\fP \fBStream\fP\fC [get]\fP"
+.br
+.RI "Access to properties and methods specific to the native serial object\&. "
+.ti -1c
+.RI "object \fBReadLock\fP\fC [get]\fP"
+.br
+.RI "Object to use for locking access to the byte read buffer\&. "
+.ti -1c
+.RI "object \fBWriteLock\fP\fC [get]\fP"
+.br
+.RI "Object to use for locking access to the byte write buffer\&. "
+.in -1c
+.SS "Events"
+
+.in +1c
+.ti -1c
+.RI "EventHandler \fBWriteEvent\fP"
+.br
+.RI "Event raised when data is available to write\&. This could be used to abort an existing connection\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Manages two buffers, for reading and writing, between a Stream and a \fBNative\fP Serial object\&. 
+
+This class is used to help implement streams with time out functionality when the actual object that reads and writes data doesn't support streams, but simply reads and writes data using low level APIs\&. 
+.PP
+It is to be expected that this object is only used by one reader and one writer\&. The reader and writer may be different threads\&. That is, the properties under SerialData are accessed only by one thread, the properties under StreamData are accessed only by one single (but may be different to SerialData) thread\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "RJCP\&.IO\&.Ports\&.Native\&.SerialBuffer\&.SerialBuffer (int readBuffer, int writeBuffer)"
+
+.PP
+Initializes a new instance of the \fBSerialBuffer\fP class, where the buffer is not pinned\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreadBuffer\fP The read buffer size in bytes\&.
+.br
+\fIwriteBuffer\fP The write buffer size in bytes\&.
+.RE
+.PP
+.PP
+Allocates buffer space for reading and writing (accessible via the \fBSerial\fP and \fBStream\fP properties)\&. The buffers are not pinned, meaning they should not be used for native methods (unless pinned explicitly)\&. 
+.SS "RJCP\&.IO\&.Ports\&.Native\&.SerialBuffer\&.SerialBuffer (int readBuffer, int writeBuffer, bool pinned)"
+
+.PP
+Initializes a new instance of the \fBSerialBuffer\fP class\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIreadBuffer\fP The read buffer size in bytes\&.
+.br
+\fIwriteBuffer\fP The write buffer size in bytes\&.
+.br
+\fIpinned\fP if set to \fCtrue\fP then the read and write buffers are pinned\&.
+.RE
+.PP
+.PP
+Allocates buffer space for reading and writing (accessible via the \fBSerial\fP and \fBStream\fP properties)\&. If specified, the buffers can be pinned\&. THis causes the buffers to not move for the duration of the program\&. The usual warnings apply with pinning buffers, you must be careful to avoid memory problems as the GC will not be able to reallocate or free space\&. Note, you must pin the buffers if you intend to use overlapped I/O\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "void RJCP\&.IO\&.Ports\&.Native\&.SerialBuffer\&.Dispose ()"
+
+.PP
+Releases unmanaged and - optionally - managed resources\&. 
+.SS "virtual void RJCP\&.IO\&.Ports\&.Native\&.SerialBuffer\&.Dispose (bool disposing)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Releases unmanaged and - optionally - managed resources\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdisposing\fP \fCtrue\fP to release both managed and unmanaged resources; \fCfalse\fP to release only unmanaged resources\&.
+.RE
+.PP
+
+.SH "Property Documentation"
+.PP 
+.SS "object RJCP\&.IO\&.Ports\&.Native\&.SerialBuffer\&.ReadLock\fC [get]\fP"
+
+.PP
+Object to use for locking access to the byte read buffer\&. The object to use for locking access to the byte read buffer\&. 
+.SS "\fBISerialBufferSerialData\fP RJCP\&.IO\&.Ports\&.Native\&.SerialBuffer\&.Serial\fC [get]\fP"
+
+.PP
+Access to properties and methods specific to the native serial object\&. Access to properties and methods specific to the native serial object\&. 
+.SS "\fBISerialBufferStreamData\fP RJCP\&.IO\&.Ports\&.Native\&.SerialBuffer\&.Stream\fC [get]\fP"
+
+.PP
+Access to properties and methods specific to the native serial object\&. Access to properties and methods specific to the native serial object\&. 
+.SS "object RJCP\&.IO\&.Ports\&.Native\&.SerialBuffer\&.WriteLock\fC [get]\fP"
+
+.PP
+Object to use for locking access to the byte write buffer\&. The object to use for locking access to the byte write buffer\&. 
+.SH "Event Documentation"
+.PP 
+.SS "EventHandler RJCP\&.IO\&.Ports\&.Native\&.SerialBuffer\&.WriteEvent"
+
+.PP
+Event raised when data is available to write\&. This could be used to abort an existing connection\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

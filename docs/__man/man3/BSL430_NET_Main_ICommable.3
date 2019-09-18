@@ -1,0 +1,42 @@
+.TH "BSL430_NET.Main.ICommable" 3 "Tue Sep 17 2019" "Version 1.3.4" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BSL430_NET.Main.ICommable
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBBSL430_NET\&.Main\&.Core\fP, and \fBBSL430_NET\&.Main\&.Core\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBCommOpen\fP (\fBBsl430NetDevice\fP device)"
+.br
+.ti -1c
+.RI "void \fBCommSet\fP (\fBBaudRate\fP baud_rate)"
+.br
+.ti -1c
+.RI "void \fBCommDtr\fP (bool val, bool ignore_err=false)"
+.br
+.ti -1c
+.RI "void \fBCommRts\fP (bool val, bool ignore_err=false)"
+.br
+.ti -1c
+.RI "void \fBCommClrBuff\fP ()"
+.br
+.ti -1c
+.RI "void \fBCommClose\fP (bool ignore_err=false)"
+.br
+.ti -1c
+.RI "\fBBsl430NetDevice\fP \fBCommGetDefaultDevice\fP ()"
+.br
+.ti -1c
+.RI "\fBStatus\fP \fBCommXfer\fP (out byte[] msg_rx, byte[] msg_tx, int rx_size)"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

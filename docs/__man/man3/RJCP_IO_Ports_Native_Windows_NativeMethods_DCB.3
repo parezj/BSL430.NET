@@ -1,0 +1,128 @@
+.TH "RJCP.IO.Ports.Native.Windows.NativeMethods.DCB" 3 "Sat Jun 22 2019" "Version 1.2.1" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+RJCP.IO.Ports.Native.Windows.NativeMethods.DCB \- Defines the control setting for a serial communications device  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBDCBLength\fP"
+.br
+.RI "Length of the structure in bytes "
+.ti -1c
+.RI "uint \fBBaudRate\fP"
+.br
+.RI "Baud rate at which the communications device operates "
+.ti -1c
+.RI "DcbFlags \fBFlags\fP"
+.br
+.RI "Various flags that define operation "
+.ti -1c
+.RI "ushort \fBXonLim\fP"
+.br
+.RI "Transmit XON threshold "
+.ti -1c
+.RI "ushort \fBXoffLim\fP"
+.br
+.RI "Transmit XOFF threshold "
+.ti -1c
+.RI "byte \fBByteSize\fP"
+.br
+.RI "Number of bits in the bytes transmitted and received "
+.ti -1c
+.RI "byte \fBParity\fP"
+.br
+.RI "The parity scheme to be used "
+.ti -1c
+.RI "byte \fBStopBits\fP"
+.br
+.RI "Number of stop bits to use "
+.ti -1c
+.RI "byte \fBXonChar\fP"
+.br
+.RI "Value of the XON character for both transmission and reception "
+.ti -1c
+.RI "byte \fBXoffChar\fP"
+.br
+.RI "Value of the XOFF character for both transmission and reception "
+.ti -1c
+.RI "byte \fBErrorChar\fP"
+.br
+.RI "Value of the character to use when replacing bytes with a parity error "
+.ti -1c
+.RI "byte \fBEofChar\fP"
+.br
+.RI "Character to use to signal end of data "
+.ti -1c
+.RI "byte \fBEvtChar\fP"
+.br
+.RI "Character to use to signal an event "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Defines the control setting for a serial communications device 
+
+
+.SH "Member Data Documentation"
+.PP 
+.SS "uint RJCP\&.IO\&.Ports\&.Native\&.Windows\&.NativeMethods\&.DCB\&.BaudRate"
+
+.PP
+Baud rate at which the communications device operates 
+.SS "byte RJCP\&.IO\&.Ports\&.Native\&.Windows\&.NativeMethods\&.DCB\&.ByteSize"
+
+.PP
+Number of bits in the bytes transmitted and received 
+.SS "int RJCP\&.IO\&.Ports\&.Native\&.Windows\&.NativeMethods\&.DCB\&.DCBLength"
+
+.PP
+Length of the structure in bytes 
+.SS "byte RJCP\&.IO\&.Ports\&.Native\&.Windows\&.NativeMethods\&.DCB\&.EofChar"
+
+.PP
+Character to use to signal end of data 
+.SS "byte RJCP\&.IO\&.Ports\&.Native\&.Windows\&.NativeMethods\&.DCB\&.ErrorChar"
+
+.PP
+Value of the character to use when replacing bytes with a parity error 
+.SS "byte RJCP\&.IO\&.Ports\&.Native\&.Windows\&.NativeMethods\&.DCB\&.EvtChar"
+
+.PP
+Character to use to signal an event 
+.SS "DcbFlags RJCP\&.IO\&.Ports\&.Native\&.Windows\&.NativeMethods\&.DCB\&.Flags"
+
+.PP
+Various flags that define operation 
+.SS "byte RJCP\&.IO\&.Ports\&.Native\&.Windows\&.NativeMethods\&.DCB\&.Parity"
+
+.PP
+The parity scheme to be used 
+.SS "byte RJCP\&.IO\&.Ports\&.Native\&.Windows\&.NativeMethods\&.DCB\&.StopBits"
+
+.PP
+Number of stop bits to use 
+.SS "byte RJCP\&.IO\&.Ports\&.Native\&.Windows\&.NativeMethods\&.DCB\&.XoffChar"
+
+.PP
+Value of the XOFF character for both transmission and reception 
+.SS "ushort RJCP\&.IO\&.Ports\&.Native\&.Windows\&.NativeMethods\&.DCB\&.XoffLim"
+
+.PP
+Transmit XOFF threshold 
+.SS "byte RJCP\&.IO\&.Ports\&.Native\&.Windows\&.NativeMethods\&.DCB\&.XonChar"
+
+.PP
+Value of the XON character for both transmission and reception 
+.SS "ushort RJCP\&.IO\&.Ports\&.Native\&.Windows\&.NativeMethods\&.DCB\&.XonLim"
+
+.PP
+Transmit XON threshold 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

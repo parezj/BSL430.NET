@@ -1,0 +1,83 @@
+.TH "RJCP.Datastructures.ReusableList< T >" 3 "Sat Jun 22 2019" "Version 1.2.1" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+RJCP.Datastructures.ReusableList< T > \- Array of elements which can be reused\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IList< T >\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBReusableList\fP (int minCapacity, int maxCapacity)"
+.br
+.ti -1c
+.RI "void \fBAdd\fP (T item)"
+.br
+.ti -1c
+.RI "void \fBClear\fP ()"
+.br
+.ti -1c
+.RI "bool \fBContains\fP (T item)"
+.br
+.ti -1c
+.RI "void \fBCopyTo\fP (T[] array, int arrayIndex)"
+.br
+.ti -1c
+.RI "IEnumerator< T > \fBGetEnumerator\fP ()"
+.br
+.ti -1c
+.RI "int \fBIndexOf\fP (T item)"
+.br
+.ti -1c
+.RI "void \fBInsert\fP (int index, T item)"
+.br
+.ti -1c
+.RI "bool \fBRemove\fP (T item)"
+.br
+.ti -1c
+.RI "void \fBRemoveAt\fP (int index)"
+.br
+.ti -1c
+.RI "T [] \fBToArray\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "T \fBthis[int index]\fP\fC [get, set]\fP"
+.br
+.ti -1c
+.RI "int \fBCount\fP\fC [get]\fP"
+.br
+.ti -1c
+.RI "bool \fBIsReadOnly\fP\fC [get]\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Array of elements which can be reused\&. 
+
+
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP The element type that is to be kept\&.
+.RE
+.PP
+.PP
+Behave like a list, that when we convert to an array we don't allocate new objects on the heap like List{T}\&. 
+.PP
+\fBType Constraints\fP
+.TP
+\fIT\fP : \fIclass\fP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

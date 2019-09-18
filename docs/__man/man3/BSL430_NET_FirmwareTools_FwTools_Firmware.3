@@ -1,0 +1,132 @@
+.TH "BSL430_NET.FirmwareTools.FwTools.Firmware" 3 "Tue Sep 17 2019" "Version 1.3.4" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BSL430_NET.FirmwareTools.FwTools.Firmware \- \fBFirmware\fP object representation\&. Nodes is collection of \fBFwNode\fP (Addr + Data) and Info is \fBFwInfo\fP class\&. ToString, Equal and Euqality Operators (==, !=) overides are available\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFirmware\fP (List< \fBFwNode\fP > Data, \fBFwFormat\fP Format, int SizeBuffer=0, long ResetVectorAddr=\-1, ICollection< long > FilledFFAddr=null)"
+.br
+.RI "Init \fBFirmware\fP with simple data Nodes and new \fBFwInfo\fP class based on valid input data\&. "
+.ti -1c
+.RI "\fBFirmware\fP (\fBStream\fP Data, \fBFwFormat\fP Format, long FirstAddress, int SizeBuffer=0, long ResetVectorAddr=\-1, ICollection< long > FilledFFAddr=null)"
+.br
+.RI "Init \fBFirmware\fP with raw memory stream bytes and new \fBFwInfo\fP class based on valid input data\&. "
+.ti -1c
+.RI "long? \fBSetResetVector\fP (long ResetVectorAddr)"
+.br
+.RI "Sets Reset Vector property to valid data, calculated from Nodes\&. ResetVectorAddr is usually 0xFFFE\&. "
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "Formatted important properites describing current \fBFirmware\fP, taken from \fBFwInfo\fP class\&. "
+.ti -1c
+.RI "override bool \fBEquals\fP (object value)"
+.br
+.RI "True if two Firmwares are the same, meaning ale nodes (Address and Data) are the same, else false\&. Returns false if any or even if both Firmwares are null\&. "
+.ti -1c
+.RI "override int \fBGetHashCode\fP ()"
+.br
+.RI "Hash Code created by XORing Address and Data from all Nodes of \fBFirmware\fP\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBoperator==\fP (\fBFirmware\fP Fw1, \fBFirmware\fP Fw2)"
+.br
+.RI "Equality operator for comparing two Firmwares via overiden Equals and so public Compare\&. Unlikely in Equals and also Compare, here two null Firmwares return True\&. "
+.ti -1c
+.RI "static bool \fBoperator!=\fP (\fBFirmware\fP Fw1, \fBFirmware\fP Fw2)"
+.br
+.RI "Not Equality operator for comparing two Firmwares via overiden Equals and so public Compare\&. Unlikely in Equals, here two null Firmwares return True\&. "
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBFwInfo\fP \fBInfo\fP\fC [get]\fP"
+.br
+.RI "\fBFwInfo\fP provides info about firmware, like first and last addresses, CRC, code size and reset vector\&. "
+.ti -1c
+.RI "List< \fBFwNode\fP > \fBNodes\fP\fC [get]\fP"
+.br
+.RI "List of \fBFwNode\fP, what firmware consits of, representated by single byte with max 32-bit, usually 16-bit address\&. "
+.ti -1c
+.RI "MemoryStream \fBMemoryStream\fP\fC [get]\fP"
+.br
+.RI "Memory Stream is sequence of raw bytes\&. "
+.ti -1c
+.RI "Stream \fBStream\fP\fC [get]\fP"
+.br
+.RI "Stream is sequence of raw bytes\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBFirmware\fP object representation\&. Nodes is collection of \fBFwNode\fP (Addr + Data) and Info is \fBFwInfo\fP class\&. ToString, Equal and Euqality Operators (==, !=) overides are available\&. 
+
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "BSL430_NET\&.FirmwareTools\&.FwTools\&.Firmware\&.Firmware (List< \fBFwNode\fP > Data, \fBFwFormat\fP Format, int SizeBuffer = \fC0\fP, long ResetVectorAddr = \fC\-1\fP, ICollection< long > FilledFFAddr = \fCnull\fP)"
+
+.PP
+Init \fBFirmware\fP with simple data Nodes and new \fBFwInfo\fP class based on valid input data\&. 
+.SS "BSL430_NET\&.FirmwareTools\&.FwTools\&.Firmware\&.Firmware (\fBStream\fP Data, \fBFwFormat\fP Format, long FirstAddress, int SizeBuffer = \fC0\fP, long ResetVectorAddr = \fC\-1\fP, ICollection< long > FilledFFAddr = \fCnull\fP)"
+
+.PP
+Init \fBFirmware\fP with raw memory stream bytes and new \fBFwInfo\fP class based on valid input data\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "override bool BSL430_NET\&.FirmwareTools\&.FwTools\&.Firmware\&.Equals (object value)"
+
+.PP
+True if two Firmwares are the same, meaning ale nodes (Address and Data) are the same, else false\&. Returns false if any or even if both Firmwares are null\&. 
+.SS "override int BSL430_NET\&.FirmwareTools\&.FwTools\&.Firmware\&.GetHashCode ()"
+
+.PP
+Hash Code created by XORing Address and Data from all Nodes of \fBFirmware\fP\&. 
+.SS "static bool BSL430_NET\&.FirmwareTools\&.FwTools\&.Firmware\&.operator!= (\fBFirmware\fP Fw1, \fBFirmware\fP Fw2)\fC [static]\fP"
+
+.PP
+Not Equality operator for comparing two Firmwares via overiden Equals and so public Compare\&. Unlikely in Equals, here two null Firmwares return True\&. 
+.SS "static bool BSL430_NET\&.FirmwareTools\&.FwTools\&.Firmware\&.operator== (\fBFirmware\fP Fw1, \fBFirmware\fP Fw2)\fC [static]\fP"
+
+.PP
+Equality operator for comparing two Firmwares via overiden Equals and so public Compare\&. Unlikely in Equals and also Compare, here two null Firmwares return True\&. 
+.SS "long? BSL430_NET\&.FirmwareTools\&.FwTools\&.Firmware\&.SetResetVector (long ResetVectorAddr)"
+
+.PP
+Sets Reset Vector property to valid data, calculated from Nodes\&. ResetVectorAddr is usually 0xFFFE\&. 
+.SS "override string BSL430_NET\&.FirmwareTools\&.FwTools\&.Firmware\&.ToString ()"
+
+.PP
+Formatted important properites describing current \fBFirmware\fP, taken from \fBFwInfo\fP class\&. 
+.SH "Property Documentation"
+.PP 
+.SS "\fBFwInfo\fP BSL430_NET\&.FirmwareTools\&.FwTools\&.Firmware\&.Info\fC [get]\fP"
+
+.PP
+\fBFwInfo\fP provides info about firmware, like first and last addresses, CRC, code size and reset vector\&. 
+.SS "MemoryStream BSL430_NET\&.FirmwareTools\&.FwTools\&.Firmware\&.MemoryStream\fC [get]\fP"
+
+.PP
+Memory Stream is sequence of raw bytes\&. 
+.SS "List<\fBFwNode\fP> BSL430_NET\&.FirmwareTools\&.FwTools\&.Firmware\&.Nodes\fC [get]\fP"
+
+.PP
+List of \fBFwNode\fP, what firmware consits of, representated by single byte with max 32-bit, usually 16-bit address\&. 
+.SS "Stream BSL430_NET\&.FirmwareTools\&.FwTools\&.Firmware\&.Stream\fC [get]\fP"
+
+.PP
+Stream is sequence of raw bytes\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

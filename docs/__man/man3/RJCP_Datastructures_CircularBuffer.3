@@ -1,0 +1,542 @@
+.TH "RJCP.Datastructures.CircularBuffer< T >" 3 "Sat Jun 22 2019" "Version 1.2.1" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+RJCP.Datastructures.CircularBuffer< T > \- A simple datastructure to manage an array as a circular buffer\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCircularBuffer\fP (int capacity)"
+.br
+.RI "Allocate an Array of type T[] of particular capacity\&. "
+.ti -1c
+.RI "\fBCircularBuffer\fP (T[] array)"
+.br
+.RI "Circular buffer based on an already allocated array\&. "
+.ti -1c
+.RI "\fBCircularBuffer\fP (T[] array, int count)"
+.br
+.RI "Circular buffer based on an already allocated array\&. "
+.ti -1c
+.RI "\fBCircularBuffer\fP (T[] array, int offset, int count)"
+.br
+.RI "Circular buffer based on an already allocated array\&. "
+.ti -1c
+.RI "int \fBToArrayIndex\fP (int index)"
+.br
+.RI "Convert an index from the start of the data to read to an array index\&. "
+.ti -1c
+.RI "int \fBGetReadBlock\fP (int offset)"
+.br
+.RI "Given an offset, calculate the length of data that can be read until the end of the block\&. "
+.ti -1c
+.RI "void \fBConsume\fP (int length)"
+.br
+.RI "Consume array elements (freeing space from the beginning) updating pointers in the circular buffer\&. "
+.ti -1c
+.RI "void \fBProduce\fP (int length)"
+.br
+.RI "Produce bytes (allocating space at the end) updating pointers in the circular buffer\&. "
+.ti -1c
+.RI "void \fBRevert\fP (int length)"
+.br
+.RI "Revert elements produced to the end of the circular buffer\&. "
+.ti -1c
+.RI "void \fBReset\fP ()"
+.br
+.RI "Reset the pointers in the circular buffer, effectively noting the circular buffer as empty\&. "
+.ti -1c
+.RI "int \fBAppend\fP (T[] array)"
+.br
+.RI "Copy data from array to the end of this circular buffer and update the length\&. "
+.ti -1c
+.RI "int \fBAppend\fP (T[] array, int offset, int count)"
+.br
+.RI "Copy data from array to the end of this circular buffer and update the length\&. "
+.ti -1c
+.RI "int \fBAppend\fP (\fBCircularBuffer\fP< T > buffer)"
+.br
+.RI "Copy data from the circular buffer to the end of this circular buffer\&. "
+.ti -1c
+.RI "int \fBAppend\fP (\fBCircularBuffer\fP< T > buffer, int count)"
+.br
+.RI "Copy data from the circular buffer to the end of this circular buffer\&. "
+.ti -1c
+.RI "int \fBAppend\fP (\fBCircularBuffer\fP< T > buffer, int offset, int count)"
+.br
+.RI "Copy data from the circular buffer to the end of this circular buffer\&. "
+.ti -1c
+.RI "int \fBAppend\fP (T element)"
+.br
+.RI "Append a single element to the end of the Circular Buffer\&. "
+.ti -1c
+.RI "T \fBPop\fP ()"
+.br
+.RI "Retrieve a single element from the Circular buffer and consume it\&. "
+.ti -1c
+.RI "int \fBMoveTo\fP (T[] array)"
+.br
+.RI "Copy data from the circular buffer to the array and then consume the data from the circular buffer\&. "
+.ti -1c
+.RI "int \fBMoveTo\fP (T[] array, int offset, int count)"
+.br
+.RI "Copy data from the circular buffer to the array and then consume the data from the circular buffer\&. "
+.ti -1c
+.RI "int \fBCopyTo\fP (T[] array)"
+.br
+.RI "Copy data from the circular buffer to the array\&. "
+.ti -1c
+.RI "int \fBCopyTo\fP (T[] array, int offset, int count)"
+.br
+.RI "Copy data from the circular buffer to the array\&. "
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "int \fBStart\fP\fC [get]\fP"
+.br
+.RI "Get start index into array where data begins\&. "
+.ti -1c
+.RI "int \fBEnd\fP\fC [get]\fP"
+.br
+.RI "Get end index into array where data ends\&. "
+.ti -1c
+.RI "int \fBLength\fP\fC [get]\fP"
+.br
+.RI "Get total length of data in array\&. "
+.ti -1c
+.RI "int \fBFree\fP\fC [get]\fP"
+.br
+.RI "Get total free data in array\&. "
+.ti -1c
+.RI "int \fBCapacity\fP\fC [get]\fP"
+.br
+.RI "Get the total capacity of the array\&. "
+.ti -1c
+.RI "int \fBWriteLength\fP\fC [get]\fP"
+.br
+.RI "Get length of continuous available space from the current position to the end of the array or until the buffer is full\&. "
+.ti -1c
+.RI "int \fBReadLength\fP\fC [get]\fP"
+.br
+.RI "Get the length of the continuous amount of data that can be read in a single copy operation from the start of the buffer data\&. "
+.ti -1c
+.RI "T [] \fBArray\fP\fC [get]\fP"
+.br
+.RI "Get the reference to the array that's allocated\&. "
+.ti -1c
+.RI "T \fBthis[int index]\fP\fC [get, set]\fP"
+.br
+.RI "Access an element in the array using the Start as index 0\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A simple datastructure to manage an array as a circular buffer\&. 
+
+This class provides simple methods for abstracting a circular buffer\&. A circular buffer allows for faster access of data by avoiding potential copy operations for data that is at the beginning\&. 
+.PP
+Stream data structures can benefit from this data structure by allocating a single block on the heap of an arbitrary size\&. If the stream is long-lived the benefits are larger\&. In the \&.NET framework (4\&.0 and earlier), all allocations of data structures that are 80kb and larger are automatically allocated on the heap\&. The heap is not garbage collected like smaller objects\&. Instead, new elements are added to the heap in an incremental fashion\&. It is theoretically possible to exhaust all memory in an application by allocating and deallocating regularly on a heap if such a new heap element requires space and there is not a single block large enough\&. By using the \fBCircularBuffer<T>\fP with the type \fCT\fP as \fCbyte\fP, you can preallocate a buffer for a stream of any reasonable size (as a simple example 5MB)\&. That block is allocated once and remains for the lifetime of the stream\&. No time will be allocated for compacting or garbage collection\&.
+.PP
+\fBTemplate Parameters:\fP
+.RS 4
+\fIT\fP Type to use for the array\&.
+.RE
+.PP
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "\fBRJCP\&.Datastructures\&.CircularBuffer\fP< T >\&.\fBCircularBuffer\fP (int capacity)"
+
+.PP
+Allocate an Array of type T[] of particular capacity\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcapacity\fP Size of array to allocate\&.
+.RE
+.PP
+
+.SS "\fBRJCP\&.Datastructures\&.CircularBuffer\fP< T >\&.\fBCircularBuffer\fP (T [] array)"
+
+.PP
+Circular buffer based on an already allocated array\&. The array is used as the storage for the circular buffer\&. No copy of the array is made\&. The initial index in the circular buffer is index 0 in the array\&. The array is assumed to be completely used (i\&.e\&. it is initialised with zero bytes Free)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIarray\fP Array (zero indexed) to allocate\&.
+.RE
+.PP
+
+.SS "\fBRJCP\&.Datastructures\&.CircularBuffer\fP< T >\&.\fBCircularBuffer\fP (T [] array, int count)"
+
+.PP
+Circular buffer based on an already allocated array\&. The array is used as the storage for the circular buffer\&. No copy of the array is made, only a reference\&. The initial index in the array is 0\&. The value \fCcount\fP sets the initial length of the array\&. So an initial \fCcount\fP of zero would imply an empty circular buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIarray\fP Array (zero indexed) to allocate\&.
+.br
+\fIcount\fP Length of data in array, beginning from offset 0\&.
+.RE
+.PP
+
+.SS "\fBRJCP\&.Datastructures\&.CircularBuffer\fP< T >\&.\fBCircularBuffer\fP (T [] array, int offset, int count)"
+
+.PP
+Circular buffer based on an already allocated array\&. The array is used as the storage for the circular buffer\&. No copy of the array is made, only a reference\&. The \fCoffset\fP is defined to be the first entry in the circular buffer\&. This may be any value from zero to the last index (\fCArray\&.Length - 1\fP)\&. The value \fCcount\fP is the amount of data in the array, and it may cause wrapping (so that by setting offset near the end, a value of count may be set so that data can be considered at the end and beginning of the array given)\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIarray\fP Array (zero indexed) to allocate\&.
+.br
+\fIoffset\fP Offset of first byte in the array\&.
+.br
+\fIcount\fP Length of data in array, wrapping to the start of the array\&.
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "int \fBRJCP\&.Datastructures\&.CircularBuffer\fP< T >\&.Append (T [] array)"
+
+.PP
+Copy data from array to the end of this circular buffer and update the length\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIarray\fP Array to copy from\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of bytes copied\&.
+.RE
+.PP
+.PP
+Data is copied to the end of the Circular Buffer\&. The amount of data that could be copied is dependent on the amount of free space\&. The result is the number of elements from the \fCbuffer\fP array that is copied into the Circular Buffer\&. Pointers in the circular buffer are updated appropriately\&. 
+.SS "int \fBRJCP\&.Datastructures\&.CircularBuffer\fP< T >\&.Append (T [] array, int offset, int count)"
+
+.PP
+Copy data from array to the end of this circular buffer and update the length\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIarray\fP Array to copy from\&.
+.br
+\fIoffset\fP Offset to copy data from\&.
+.br
+\fIcount\fP Length of data to copy\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of bytes copied\&.
+.RE
+.PP
+.PP
+Data is copied to the end of the Circular Buffer\&. The amount of data that could be copied is dependent on the amount of free space\&. The result is the number of elements from the \fCbuffer\fP array that is copied into the Circular Buffer\&. Pointers in the circular buffer are updated appropriately\&. 
+.SS "int \fBRJCP\&.Datastructures\&.CircularBuffer\fP< T >\&.Append (\fBCircularBuffer\fP< T > buffer)"
+
+.PP
+Copy data from the circular buffer to the end of this circular buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP Buffer to append\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Amount of data appended\&.
+.RE
+.PP
+.PP
+Data is copied to the end of the Circular Buffer\&. The amount of data that could be copied is dependent on the amount of free space\&. The result is the number of elements from the \fCbuffer\fP array that is copied into the Circular Buffer\&. Pointers in the circular buffer are updated appropriately\&. 
+.SS "int \fBRJCP\&.Datastructures\&.CircularBuffer\fP< T >\&.Append (\fBCircularBuffer\fP< T > buffer, int count)"
+
+.PP
+Copy data from the circular buffer to the end of this circular buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP Buffer to append\&.
+.br
+\fIcount\fP Number of bytes to append\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Amount of data appended\&.
+.RE
+.PP
+.PP
+Data is copied to the end of the Circular Buffer\&. The amount of data that could be copied is dependent on the amount of free space\&. The result is the number of elements from the \fCbuffer\fP array that is copied into the Circular Buffer\&. Pointers in the circular buffer are updated appropriately\&. 
+.SS "int \fBRJCP\&.Datastructures\&.CircularBuffer\fP< T >\&.Append (\fBCircularBuffer\fP< T > buffer, int offset, int count)"
+
+.PP
+Copy data from the circular buffer to the end of this circular buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIbuffer\fP Buffer to append\&.
+.br
+\fIcount\fP Number of bytes to append\&.
+.br
+\fIoffset\fP Offset into the buffer to start appending\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Amount of data appended\&.
+.RE
+.PP
+.PP
+Data is copied to the end of the Circular Buffer\&. The amount of data that could be copied is dependent on the amount of free space\&. The result is the number of elements from the \fCbuffer\fP array that is copied into the Circular Buffer\&. Pointers in the circular buffer are updated appropriately\&. 
+.SS "int \fBRJCP\&.Datastructures\&.CircularBuffer\fP< T >\&.Append (T element)"
+
+.PP
+Append a single element to the end of the Circular Buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIelement\fP The element to add at the end of the buffer\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Amount of data appended\&. 1 if successful, 0 if no space available\&.
+.RE
+.PP
+
+.SS "void \fBRJCP\&.Datastructures\&.CircularBuffer\fP< T >\&.Consume (int length)"
+
+.PP
+Consume array elements (freeing space from the beginning) updating pointers in the circular buffer\&. This method advances the internal pointers for \fIStart\fP based on the \fIlength\fP that should be consumed\&. The pointer \fIEnd\fP does not change\&. It is important that this method does not \fI\fBReset()\fP\fP the buffer in case that all data is consumed\&. A common scenario with Streams is to write into the buffer using asynchronous I/O\&. If a \fI\fBReset()\fP\fP occurs during an asynchronous I/O \fIReadFile()\fP, the \fIEnd\fP pointer is also changed, so that when a \fI\fBProduce()\fP\fP occurs on completion of the \fIReadFile()\fP operation, the pointers are updated, but not using the pointers before the \fI\fBReset()\fP\fP\&. No crash would occur (so long as the underlying array is pinned), but data corruption would occur if this method were not used in this particular scenario\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlength\fP Amount of data to consume\&.
+.RE
+.PP
+
+.SS "int \fBRJCP\&.Datastructures\&.CircularBuffer\fP< T >\&.CopyTo (T [] array)"
+
+.PP
+Copy data from the circular buffer to the array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIarray\fP The array to copy the data to\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of bytes that were copied\&.
+.RE
+.PP
+.PP
+Data is copied from the first element in the array, up to the length of the array\&. The data from the Circular Buffer is \fInot\fP consumed\&. You must do this yourself\&. Else use the \fBMoveTo()\fP method\&. 
+.SS "int \fBRJCP\&.Datastructures\&.CircularBuffer\fP< T >\&.CopyTo (T [] array, int offset, int count)"
+
+.PP
+Copy data from the circular buffer to the array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIarray\fP The array to copy the data to\&.
+.br
+\fIoffset\fP Offset into the array to copy to\&.
+.br
+\fIcount\fP Amount of data to copy to\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of bytes that were copied\&.
+.RE
+.PP
+.PP
+Data is copied from the circular buffer into the array specified, at the offset given\&. The data from the Circular Buffer is \fInot\fP consumed\&. You must do this yourself\&. Else use the \fBMoveTo()\fP method\&. 
+.SS "int \fBRJCP\&.Datastructures\&.CircularBuffer\fP< T >\&.GetReadBlock (int offset)"
+
+.PP
+Given an offset, calculate the length of data that can be read until the end of the block\&. Similar to the property \fCReadLength\fP, this function takes an argument \fCoffset\fP which is used to determine the length of data that can be read from that offset, until either the end of the block, or the end of the buffer\&. 
+.PP
+This function is useful if you want to read a block of data, not starting from the offset 0 (and you don't want to consume the data before hand to reach an offset of zero)\&.
+.PP
+The example below, will calculate a checksum from the third byte in the block for the length of data\&. If the block to read from offset 3 can be done in one operation, it will do so\&. Else it must be done in two operations, first from offset 3 to the end, then from offset 0 for the remaining data\&.
+.PP
+UInt16 crc; if (buffer\&.GetReadBlock(3) >= length - 3) { crc = crc16\&.Compute(buffer\&.Array, buffer\&.ToArrayIndex(3), length - 3); } else { crc = crc16\&.Compute(buffer\&.Array, buffer\&.ToArrayIndex(3), buffer\&.ReadLength - 3); crc = crc16\&.Compute(crc, buffer\&.Array, 0, length - buffer\&.ReadLength); } 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoffset\fP Offset\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Length\&.
+.RE
+.PP
+
+.SS "int \fBRJCP\&.Datastructures\&.CircularBuffer\fP< T >\&.MoveTo (T [] array)"
+
+.PP
+Copy data from the circular buffer to the array and then consume the data from the circular buffer\&. Data is copied to the first element in the array, up to the length of the array\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIarray\fP The array to copy the data to\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of bytes that were moved\&.
+.RE
+.PP
+
+.SS "int \fBRJCP\&.Datastructures\&.CircularBuffer\fP< T >\&.MoveTo (T [] array, int offset, int count)"
+
+.PP
+Copy data from the circular buffer to the array and then consume the data from the circular buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIarray\fP The array to copy the data to\&.
+.br
+\fIoffset\fP Offset into the array to copy to\&.
+.br
+\fIcount\fP Amount of data to copy to\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The number of bytes that were moved\&.
+.RE
+.PP
+.PP
+This method is very similar to the CopyTo(T[], int, int) method, but it will also consume the data that was copied also\&. 
+.SS "T \fBRJCP\&.Datastructures\&.CircularBuffer\fP< T >\&.Pop ()"
+
+.PP
+Retrieve a single element from the Circular buffer and consume it\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+The value at index 0\&.
+.RE
+.PP
+
+.SS "void \fBRJCP\&.Datastructures\&.CircularBuffer\fP< T >\&.Produce (int length)"
+
+.PP
+Produce bytes (allocating space at the end) updating pointers in the circular buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlength\fP The number of bytes to indicate that have been added from the index \fBEnd\fP to the end of the array and possibly again from the start of the array if overlapped\&.
+.RE
+.PP
+
+.SS "void \fBRJCP\&.Datastructures\&.CircularBuffer\fP< T >\&.Reset ()"
+
+.PP
+Reset the pointers in the circular buffer, effectively noting the circular buffer as empty\&. 
+.SS "void \fBRJCP\&.Datastructures\&.CircularBuffer\fP< T >\&.Revert (int length)"
+
+.PP
+Revert elements produced to the end of the circular buffer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlength\fP The number of bytes to remove from the end of the array, moving the \fBEnd\fP property to the left, leaving the \fBStart\fP property untouched\&.
+.RE
+.PP
+.PP
+This method can be used to remove data that has been added to the end of the circular buffer\&. When using this data structure for streams, you would not use this property to ensure consistency of your stream (the \fCRead\fP operation would consume from your circular buffer and \fCWrite\fP would produce data to your circular buffer\&. 
+.SS "int \fBRJCP\&.Datastructures\&.CircularBuffer\fP< T >\&.ToArrayIndex (int index)"
+
+.PP
+Convert an index from the start of the data to read to an array index\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP Index in circular buffer, where an index of 0 is equivalent to the \fBStart\fP property\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Index in array that can be used in array based operations\&.
+.RE
+.PP
+
+.SH "Property Documentation"
+.PP 
+.SS "T [] \fBRJCP\&.Datastructures\&.CircularBuffer\fP< T >\&.Array\fC [get]\fP"
+
+.PP
+Get the reference to the array that's allocated\&. This property allows you to access the content of the data in the circular buffer in an efficient manner\&. You can then use this property along with \fBStart\fP, \fBReadLength\fP, \fBEnd\fP and \fBWriteLength\fP for knowing where in the buffer to read and write\&. 
+.SS "int \fBRJCP\&.Datastructures\&.CircularBuffer\fP< T >\&.Capacity\fC [get]\fP"
+
+.PP
+Get the total capacity of the array\&. Get the total number of elements allocated for the underlying array of the circular buffer\&. The following rule applies: \fBLength\fP + \fBFree\fP = \fBCapacity\fP\&. 
+.SS "int \fBRJCP\&.Datastructures\&.CircularBuffer\fP< T >\&.End\fC [get]\fP"
+
+.PP
+Get end index into array where data ends\&. This property is useful to know from what element in the underlying array that data can be written to\&. 
+.SS "int \fBRJCP\&.Datastructures\&.CircularBuffer\fP< T >\&.Free\fC [get]\fP"
+
+.PP
+Get total free data in array\&. Returns the total amount of free elements in the circular buffer\&. The following rule applies: \fBLength\fP + \fBFree\fP = \fBCapacity\fP\&. 
+.SS "int \fBRJCP\&.Datastructures\&.CircularBuffer\fP< T >\&.Length\fC [get]\fP"
+
+.PP
+Get total length of data in array\&. Returns the amount of allocated data in the circular buffer\&. The following rule applies: \fBLength\fP + \fBFree\fP = \fBCapacity\fP\&. 
+.SS "int \fBRJCP\&.Datastructures\&.CircularBuffer\fP< T >\&.ReadLength\fC [get]\fP"
+
+.PP
+Get the length of the continuous amount of data that can be read in a single copy operation from the start of the buffer data\&. This function is useful if you need to pass the array to another function that will use the contents of the array\&. You would pass \fBStart\fP as the offset for reading data and \fBReadLength\fP as the count\&. Then based on the amount of data operated on, you would free space with \fC\fBConsume\fP(ReadLength)\&.\fP 
+.SS "int \fBRJCP\&.Datastructures\&.CircularBuffer\fP< T >\&.Start\fC [get]\fP"
+
+.PP
+Get start index into array where data begins\&. 
+.SS "T \fBRJCP\&.Datastructures\&.CircularBuffer\fP< T >\&.this[int index]\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Access an element in the array using the Start as index 0\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIindex\fP Index into the array referenced from \fIStart\fP\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Contents of the array\&.
+.RE
+.PP
+
+.SS "int \fBRJCP\&.Datastructures\&.CircularBuffer\fP< T >\&.WriteLength\fC [get]\fP"
+
+.PP
+Get length of continuous available space from the current position to the end of the array or until the buffer is full\&. This function is useful if you need to pass the array to another function that will then fill the contents of the buffer\&. You would pass \fBEnd\fP as the offset for where writing the data should start, and \fBWriteLength\fP as the length of buffer space available until the end of the array buffer\&. After the read operation that writes in to your buffer, the array is completely full, or until the end of the array\&. 
+.PP
+Such a property is necessary in case that the free space wraps around the buffer\&. Where below \fCX\fP is your stream you wish to read from, \fCb\fP is the circular buffer instantiated as the type \fC\fBCircularBuffer\fP{T}\fP\&. 
+.PP
+.nf
+c = X\&.Read(b\&.Array, b\&.End, b\&.WriteLength);
+b\&.Produce(c);
+
+.fi
+.PP
+ If the property \fBWriteLength\fP is not zero, then there is space in the buffer to read data\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

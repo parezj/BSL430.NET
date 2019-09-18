@@ -1,0 +1,55 @@
+.TH "libftdinet" 3 "Sat Jun 22 2019" "Version 1.2.1" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+libftdinet
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBftdi_context\fP"
+.br
+.ti -1c
+.RI "struct \fBftdi_eeprom\fP"
+.br
+.ti -1c
+.RI "class \fBFTDIContext\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBChipType\fP { \fBTYPE_AM\fP =0, \fBTYPE_BM\fP =1, \fBTYPE_2232C\fP =2, \fBTYPE_R\fP =3, \fBTYPE_2232H\fP =4, \fBTYPE_4232H\fP =5 }"
+.br
+.ti -1c
+.RI "enum \fBParityType\fP { \fBNONE\fP =0, \fBODD\fP =1, \fBEVEN\fP =2, \fBMARK\fP =3, \fBSPACE\fP =4 }"
+.br
+.ti -1c
+.RI "enum \fBStopBitsType\fP { \fBSTOP_BIT_1\fP =0, \fBSTOP_BIT_15\fP =1, \fBSTOP_BIT_2\fP =2 }"
+.br
+.ti -1c
+.RI "enum \fBBitsType\fP { \fBBITS_7\fP =7, \fBBITS_8\fP =8 }"
+.br
+.ti -1c
+.RI "enum \fBBreakType\fP { \fBBREAK_OFF\fP =0, \fBBREAK_ON\fP =1 }"
+.br
+.ti -1c
+.RI "enum \fBMpsseMode\fP : uint { \fBBITMODE_RESET\fP = 0x00, \fBBITMODE_BITBANG\fP = 0x01, \fBBITMODE_MPSSE\fP = 0x02, \fBBITMODE_SYNCBB\fP = 0x04, \fBBITMODE_MCU\fP = 0x08, \fBBITMODE_OPTO\fP = 0x10, \fBBITMODE_CBUS\fP = 0x20 }"
+.br
+.ti -1c
+.RI "enum \fBInterface\fP : uint { \fBINTERFACE_ANY\fP = 0, \fBINTERFACE_A\fP = 1, \fBINTERFACE_B\fP = 2, \fBINTERFACE_C\fP = 3, \fBINTERFACE_D\fP = 4 }"
+.br
+.ti -1c
+.RI "enum \fBMPSSEShiftCmds\fP { \fBMPSSE_WRITE_NEG\fP = 0x01, \fBMPSSE_BITMODE\fP = 0x02, \fBMPSSE_READ_NEG\fP = 0x04, \fBMPSSE_LSB\fP = 0x08, \fBMPSSE_DO_WRITE\fP = 0x10, \fBMPSSE_DO_READ\fP = 0x20, \fBMPSSE_WRITE_TMS\fP = 0x40 }"
+.br
+.ti -1c
+.RI "enum \fBMPSSECommands\fP { \fBSET_BITS_LOW\fP = 0x80, \fBSET_BITS_HIGH\fP = 0x82, \fBGET_BITS_LOW\fP = 0x81, \fBGET_BITS_HIGH\fP = 0x83, \fBLOOPBACK_START\fP = 0x84, \fBLOOPBACK_END\fP = 0x85, \fBTCK_DIVISOR\fP = 0x86, \fBSEND_IMMEDIATE\fP = 0x87, \fBWAIT_ON_HIGH\fP = 0x88, \fBWAIT_ON_LOW\fP = 0x89, \fBREAD_SHORT\fP = 0x90, \fBREAD_EXTENDED\fP = 0x91, \fBWRITE_SHORT\fP = 0x92, \fBWRITE_EXTENDED\fP = 0x93 }"
+.br
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

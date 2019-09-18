@@ -1,0 +1,152 @@
+.TH "BSL430_NET.FirmwareTools.FwTools.FwInfo" 3 "Tue Sep 17 2019" "Version 1.3.4" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BSL430_NET.FirmwareTools.FwTools.FwInfo \- \fBFwInfo\fP provides info about firmware, like format, first and last addresses, CRC, code size and reset vector\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFwInfo\fP ()"
+.br
+.RI "Init all property to defaults\&. "
+.ti -1c
+.RI "\fBFwInfo\fP (long \fBAddrFirst\fP, long \fBAddrLast\fP, int \fBSizeFull\fP, int \fBSizeBuffer\fP=0, ICollection< long > \fBFilledFFAddr\fP=null)"
+.br
+.RI "Init fake info with values specified as parameters, the rest is init to zero\&. "
+.ti -1c
+.RI "\fBFwInfo\fP (ICollection< \fBFwNode\fP > Nodes, \fBFwFormat\fP \fBFormat\fP, int \fBSizeBuffer\fP=0, long ResetVectorAddr=\-1, ICollection< long > \fBFilledFFAddr\fP=null)"
+.br
+.RI "Init info class to values calculated from valid firmware data\&. size_buffer is optional flag and ResetVectorAddr is usually 0xFFFE, address where reset vector is, and its also optional\&. "
+.ti -1c
+.RI "long? \fBSetResetVector\fP (ICollection< \fBFwNode\fP > Nodes, long ResetVectorAddr)"
+.br
+.RI "Sets Reset Vector property to valid data, calculated from nodes\&. ResetVectorAddr is usually 0xFFFE\&. "
+.ti -1c
+.RI "override string \fBToString\fP ()"
+.br
+.RI "Formatted important properites describing current firmware\&. "
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "bool \fBValid\fP = false\fC [get]\fP"
+.br
+.RI "If firmware is invalid, Valid = false\&. Otherwise Valid = True\&. "
+.ti -1c
+.RI "\fBFwFormat\fP \fBFormat\fP = \fBFwFormat\&.AUTO\fP\fC [get, set]\fP"
+.br
+.RI "\fBFirmware\fP format\&. TI-TXT, Intel-HEX or ELF is supported\&. "
+.ti -1c
+.RI "long \fBAddrFirst\fP = 0\fC [get, set]\fP"
+.br
+.RI "First address in firmware, max 32-bit, usually 16-bit\&. "
+.ti -1c
+.RI "long \fBAddrLast\fP = 0\fC [get, set]\fP"
+.br
+.RI "Last address in firmware, max 32-bit, usually 16-bit\&. "
+.ti -1c
+.RI "int \fBSizeFull\fP = 0\fC [get, set]\fP"
+.br
+.RI "Total length of firmware, count of all bytes from first address to last address\&. "
+.ti -1c
+.RI "int \fBSizeCode\fP = 0\fC [get, set]\fP"
+.br
+.RI "Real count of all bytes in firmware parsed from file\&. "
+.ti -1c
+.RI "int \fBCrc16\fP = 0\fC [get, set]\fP"
+.br
+.RI "CRC-16-CCITT is 16-bit crc value of all data bytes in firmware\&. "
+.ti -1c
+.RI "long? \fBResetVector\fP = 0\fC [get, set]\fP"
+.br
+.RI "[MSP430 specific] Reset vector is address (value) located usually at 16-bit address 0xFFFE\&. "
+.ti -1c
+.RI "int \fBSizeBuffer\fP = 0\fC [get, set]\fP"
+.br
+.RI "[MSP430 specific] Help property for later firmware manipulation, like slicing buffer blocks\&. "
+.ti -1c
+.RI "List< long > \fBFilledFFAddr\fP\fC [get, set]\fP"
+.br
+.RI "When parsing FW, FillFF can be set, to output code in single piece\&. Addresses, that dont belong to original FW, are in this list\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBFwInfo\fP provides info about firmware, like format, first and last addresses, CRC, code size and reset vector\&. 
+
+
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "BSL430_NET\&.FirmwareTools\&.FwTools\&.FwInfo\&.FwInfo ()"
+
+.PP
+Init all property to defaults\&. 
+.SS "BSL430_NET\&.FirmwareTools\&.FwTools\&.FwInfo\&.FwInfo (long AddrFirst, long AddrLast, int SizeFull, int SizeBuffer = \fC0\fP, ICollection< long > FilledFFAddr = \fCnull\fP)"
+
+.PP
+Init fake info with values specified as parameters, the rest is init to zero\&. 
+.SS "BSL430_NET\&.FirmwareTools\&.FwTools\&.FwInfo\&.FwInfo (ICollection< \fBFwNode\fP > Nodes, \fBFwFormat\fP Format, int SizeBuffer = \fC0\fP, long ResetVectorAddr = \fC\-1\fP, ICollection< long > FilledFFAddr = \fCnull\fP)"
+
+.PP
+Init info class to values calculated from valid firmware data\&. size_buffer is optional flag and ResetVectorAddr is usually 0xFFFE, address where reset vector is, and its also optional\&. 
+.SH "Member Function Documentation"
+.PP 
+.SS "long? BSL430_NET\&.FirmwareTools\&.FwTools\&.FwInfo\&.SetResetVector (ICollection< \fBFwNode\fP > Nodes, long ResetVectorAddr)"
+
+.PP
+Sets Reset Vector property to valid data, calculated from nodes\&. ResetVectorAddr is usually 0xFFFE\&. 
+.SS "override string BSL430_NET\&.FirmwareTools\&.FwTools\&.FwInfo\&.ToString ()"
+
+.PP
+Formatted important properites describing current firmware\&. 
+.SH "Property Documentation"
+.PP 
+.SS "long BSL430_NET\&.FirmwareTools\&.FwTools\&.FwInfo\&.AddrFirst = 0\fC [get]\fP, \fC [set]\fP"
+
+.PP
+First address in firmware, max 32-bit, usually 16-bit\&. 
+.SS "long BSL430_NET\&.FirmwareTools\&.FwTools\&.FwInfo\&.AddrLast = 0\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Last address in firmware, max 32-bit, usually 16-bit\&. 
+.SS "int BSL430_NET\&.FirmwareTools\&.FwTools\&.FwInfo\&.Crc16 = 0\fC [get]\fP, \fC [set]\fP"
+
+.PP
+CRC-16-CCITT is 16-bit crc value of all data bytes in firmware\&. 
+.SS "List<long> BSL430_NET\&.FirmwareTools\&.FwTools\&.FwInfo\&.FilledFFAddr\fC [get]\fP, \fC [set]\fP"
+
+.PP
+When parsing FW, FillFF can be set, to output code in single piece\&. Addresses, that dont belong to original FW, are in this list\&. 
+.SS "\fBFwFormat\fP BSL430_NET\&.FirmwareTools\&.FwTools\&.FwInfo\&.Format = \fBFwFormat\&.AUTO\fP\fC [get]\fP, \fC [set]\fP"
+
+.PP
+\fBFirmware\fP format\&. TI-TXT, Intel-HEX or ELF is supported\&. 
+.SS "long? BSL430_NET\&.FirmwareTools\&.FwTools\&.FwInfo\&.ResetVector = 0\fC [get]\fP, \fC [set]\fP"
+
+.PP
+[MSP430 specific] Reset vector is address (value) located usually at 16-bit address 0xFFFE\&. 
+.SS "int BSL430_NET\&.FirmwareTools\&.FwTools\&.FwInfo\&.SizeBuffer = 0\fC [get]\fP, \fC [set]\fP"
+
+.PP
+[MSP430 specific] Help property for later firmware manipulation, like slicing buffer blocks\&. 
+.SS "int BSL430_NET\&.FirmwareTools\&.FwTools\&.FwInfo\&.SizeCode = 0\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Real count of all bytes in firmware parsed from file\&. 
+.SS "int BSL430_NET\&.FirmwareTools\&.FwTools\&.FwInfo\&.SizeFull = 0\fC [get]\fP, \fC [set]\fP"
+
+.PP
+Total length of firmware, count of all bytes from first address to last address\&. 
+.SS "bool BSL430_NET\&.FirmwareTools\&.FwTools\&.FwInfo\&.Valid = false\fC [get]\fP"
+
+.PP
+If firmware is invalid, Valid = false\&. Otherwise Valid = True\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

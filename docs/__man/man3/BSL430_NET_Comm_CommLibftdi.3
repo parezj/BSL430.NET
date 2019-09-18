@@ -1,0 +1,94 @@
+.TH "BSL430_NET.Comm.CommLibftdi" 3 "Tue Sep 17 2019" "Version 1.3.4" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BSL430_NET.Comm.CommLibftdi
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBBSL430_NET\&.Main\&.Core\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCommLibftdi\fP (\fBBSL430NET\fP root=null, \fBBsl430NetDevice\fP device=null)"
+.br
+.ti -1c
+.RI "override void \fBCommOpen\fP (\fBBsl430NetDevice\fP device)"
+.br
+.ti -1c
+.RI "override void \fBCommSet\fP (\fBBaudRate\fP baud_rate)"
+.br
+.ti -1c
+.RI "override void \fBCommDtr\fP (bool val, bool ignore_err=false)"
+.br
+.ti -1c
+.RI "override void \fBCommRts\fP (bool val, bool ignore_err=false)"
+.br
+.ti -1c
+.RI "override void \fBCommClrBuff\fP ()"
+.br
+.ti -1c
+.RI "override void \fBCommClose\fP (bool ignore_err)"
+.br
+.ti -1c
+.RI "override \fBStatus\fP \fBCommXfer\fP (out byte[] msg_rx, byte[] msg_tx, int rx_size)"
+.br
+.ti -1c
+.RI "override \fBStatus\fP \fBScan< Libftdi_Device >\fP (out List< \fBLibftdi_Device\fP > device_list, \fBScanOptions\fP scan_opt=\fBScanOptions\&.None\fP)"
+.br
+.ti -1c
+.RI "override \fBBsl430NetDevice\fP \fBCommGetDefaultDevice\fP ()"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const string \fBDEVICE_PREFIX\fP = 'libftdi'"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "override \fBBsl430NetDevice\fP \fBDefaultDevice\fP = null\fC [get, set]\fP"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBLibftdiCheckLibrary\fP ()"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "readonly Dictionary< string, \fBLibftdi_Device\fP > \fBdevices\fP = new Dictionary<string, \fBLibftdi_Device\fP>()"
+.br
+.ti -1c
+.RI "FTDIContext \fBftdi\fP"
+.br
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "const int \fBDELAY_READ\fP = 10"
+.br
+.ti -1c
+.RI "const int \fBBUFFER_SIZE\fP = 512"
+.br
+.ti -1c
+.RI "const int \fBFTDI_VID\fP = 0x0403"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

@@ -1,0 +1,210 @@
+.TH "FTD2XX_NET.FTDI.FT2232H_EEPROM_STRUCTURE" 3 "Sat Jun 22 2019" "Version 1.2.1" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+FTD2XX_NET.FTDI.FT2232H_EEPROM_STRUCTURE \- EEPROM structure specific to FT2232H devices\&. Inherits from \fBFT_EEPROM_DATA\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBFTD2XX_NET\&.FTDI\&.FT_EEPROM_DATA\fP\&.
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBPullDownEnable\fP = false"
+.br
+.RI "Determines if IOs are pulled down when the device is in suspend "
+.ti -1c
+.RI "bool \fBSerNumEnable\fP = true"
+.br
+.RI "Determines if the serial number is enabled "
+.ti -1c
+.RI "bool \fBALSlowSlew\fP = false"
+.br
+.RI "Determines if AL pins have a slow slew rate "
+.ti -1c
+.RI "bool \fBALSchmittInput\fP = false"
+.br
+.RI "Determines if the AL pins have a Schmitt input "
+.ti -1c
+.RI "byte \fBALDriveCurrent\fP = \fBFT_DRIVE_CURRENT\&.FT_DRIVE_CURRENT_4MA\fP"
+.br
+.RI "Determines the AL pins drive current in mA\&. Valid values are FT_DRIVE_CURRENT_4MA, FT_DRIVE_CURRENT_8MA, FT_DRIVE_CURRENT_12MA or FT_DRIVE_CURRENT_16MA "
+.ti -1c
+.RI "bool \fBAHSlowSlew\fP = false"
+.br
+.RI "Determines if AH pins have a slow slew rate "
+.ti -1c
+.RI "bool \fBAHSchmittInput\fP = false"
+.br
+.RI "Determines if the AH pins have a Schmitt input "
+.ti -1c
+.RI "byte \fBAHDriveCurrent\fP = \fBFT_DRIVE_CURRENT\&.FT_DRIVE_CURRENT_4MA\fP"
+.br
+.RI "Determines the AH pins drive current in mA\&. Valid values are FT_DRIVE_CURRENT_4MA, FT_DRIVE_CURRENT_8MA, FT_DRIVE_CURRENT_12MA or FT_DRIVE_CURRENT_16MA "
+.ti -1c
+.RI "bool \fBBLSlowSlew\fP = false"
+.br
+.RI "Determines if BL pins have a slow slew rate "
+.ti -1c
+.RI "bool \fBBLSchmittInput\fP = false"
+.br
+.RI "Determines if the BL pins have a Schmitt input "
+.ti -1c
+.RI "byte \fBBLDriveCurrent\fP = \fBFT_DRIVE_CURRENT\&.FT_DRIVE_CURRENT_4MA\fP"
+.br
+.RI "Determines the BL pins drive current in mA\&. Valid values are FT_DRIVE_CURRENT_4MA, FT_DRIVE_CURRENT_8MA, FT_DRIVE_CURRENT_12MA or FT_DRIVE_CURRENT_16MA "
+.ti -1c
+.RI "bool \fBBHSlowSlew\fP = false"
+.br
+.RI "Determines if BH pins have a slow slew rate "
+.ti -1c
+.RI "bool \fBBHSchmittInput\fP = false"
+.br
+.RI "Determines if the BH pins have a Schmitt input "
+.ti -1c
+.RI "byte \fBBHDriveCurrent\fP = \fBFT_DRIVE_CURRENT\&.FT_DRIVE_CURRENT_4MA\fP"
+.br
+.RI "Determines the BH pins drive current in mA\&. Valid values are FT_DRIVE_CURRENT_4MA, FT_DRIVE_CURRENT_8MA, FT_DRIVE_CURRENT_12MA or FT_DRIVE_CURRENT_16MA "
+.ti -1c
+.RI "bool \fBIFAIsFifo\fP = false"
+.br
+.RI "Determines if channel A is in FIFO mode "
+.ti -1c
+.RI "bool \fBIFAIsFifoTar\fP = false"
+.br
+.RI "Determines if channel A is in FIFO target mode "
+.ti -1c
+.RI "bool \fBIFAIsFastSer\fP = false"
+.br
+.RI "Determines if channel A is in fast serial mode "
+.ti -1c
+.RI "bool \fBAIsVCP\fP = true"
+.br
+.RI "Determines if channel A loads the VCP driver "
+.ti -1c
+.RI "bool \fBIFBIsFifo\fP = false"
+.br
+.RI "Determines if channel B is in FIFO mode "
+.ti -1c
+.RI "bool \fBIFBIsFifoTar\fP = false"
+.br
+.RI "Determines if channel B is in FIFO target mode "
+.ti -1c
+.RI "bool \fBIFBIsFastSer\fP = false"
+.br
+.RI "Determines if channel B is in fast serial mode "
+.ti -1c
+.RI "bool \fBBIsVCP\fP = true"
+.br
+.RI "Determines if channel B loads the VCP driver "
+.ti -1c
+.RI "bool \fBPowerSaveEnable\fP = false"
+.br
+.RI "For self-powered designs, keeps the FT2232H in low power state until BCBUS7 is high "
+.in -1c
+.SH "Detailed Description"
+.PP 
+EEPROM structure specific to FT2232H devices\&. Inherits from \fBFT_EEPROM_DATA\fP\&. 
+
+
+.SH "Member Data Documentation"
+.PP 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT2232H_EEPROM_STRUCTURE\&.AHDriveCurrent = \fBFT_DRIVE_CURRENT\&.FT_DRIVE_CURRENT_4MA\fP"
+
+.PP
+Determines the AH pins drive current in mA\&. Valid values are FT_DRIVE_CURRENT_4MA, FT_DRIVE_CURRENT_8MA, FT_DRIVE_CURRENT_12MA or FT_DRIVE_CURRENT_16MA 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT2232H_EEPROM_STRUCTURE\&.AHSchmittInput = false"
+
+.PP
+Determines if the AH pins have a Schmitt input 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT2232H_EEPROM_STRUCTURE\&.AHSlowSlew = false"
+
+.PP
+Determines if AH pins have a slow slew rate 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT2232H_EEPROM_STRUCTURE\&.AIsVCP = true"
+
+.PP
+Determines if channel A loads the VCP driver 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT2232H_EEPROM_STRUCTURE\&.ALDriveCurrent = \fBFT_DRIVE_CURRENT\&.FT_DRIVE_CURRENT_4MA\fP"
+
+.PP
+Determines the AL pins drive current in mA\&. Valid values are FT_DRIVE_CURRENT_4MA, FT_DRIVE_CURRENT_8MA, FT_DRIVE_CURRENT_12MA or FT_DRIVE_CURRENT_16MA 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT2232H_EEPROM_STRUCTURE\&.ALSchmittInput = false"
+
+.PP
+Determines if the AL pins have a Schmitt input 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT2232H_EEPROM_STRUCTURE\&.ALSlowSlew = false"
+
+.PP
+Determines if AL pins have a slow slew rate 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT2232H_EEPROM_STRUCTURE\&.BHDriveCurrent = \fBFT_DRIVE_CURRENT\&.FT_DRIVE_CURRENT_4MA\fP"
+
+.PP
+Determines the BH pins drive current in mA\&. Valid values are FT_DRIVE_CURRENT_4MA, FT_DRIVE_CURRENT_8MA, FT_DRIVE_CURRENT_12MA or FT_DRIVE_CURRENT_16MA 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT2232H_EEPROM_STRUCTURE\&.BHSchmittInput = false"
+
+.PP
+Determines if the BH pins have a Schmitt input 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT2232H_EEPROM_STRUCTURE\&.BHSlowSlew = false"
+
+.PP
+Determines if BH pins have a slow slew rate 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT2232H_EEPROM_STRUCTURE\&.BIsVCP = true"
+
+.PP
+Determines if channel B loads the VCP driver 
+.SS "byte FTD2XX_NET\&.FTDI\&.FT2232H_EEPROM_STRUCTURE\&.BLDriveCurrent = \fBFT_DRIVE_CURRENT\&.FT_DRIVE_CURRENT_4MA\fP"
+
+.PP
+Determines the BL pins drive current in mA\&. Valid values are FT_DRIVE_CURRENT_4MA, FT_DRIVE_CURRENT_8MA, FT_DRIVE_CURRENT_12MA or FT_DRIVE_CURRENT_16MA 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT2232H_EEPROM_STRUCTURE\&.BLSchmittInput = false"
+
+.PP
+Determines if the BL pins have a Schmitt input 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT2232H_EEPROM_STRUCTURE\&.BLSlowSlew = false"
+
+.PP
+Determines if BL pins have a slow slew rate 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT2232H_EEPROM_STRUCTURE\&.IFAIsFastSer = false"
+
+.PP
+Determines if channel A is in fast serial mode 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT2232H_EEPROM_STRUCTURE\&.IFAIsFifo = false"
+
+.PP
+Determines if channel A is in FIFO mode 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT2232H_EEPROM_STRUCTURE\&.IFAIsFifoTar = false"
+
+.PP
+Determines if channel A is in FIFO target mode 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT2232H_EEPROM_STRUCTURE\&.IFBIsFastSer = false"
+
+.PP
+Determines if channel B is in fast serial mode 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT2232H_EEPROM_STRUCTURE\&.IFBIsFifo = false"
+
+.PP
+Determines if channel B is in FIFO mode 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT2232H_EEPROM_STRUCTURE\&.IFBIsFifoTar = false"
+
+.PP
+Determines if channel B is in FIFO target mode 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT2232H_EEPROM_STRUCTURE\&.PowerSaveEnable = false"
+
+.PP
+For self-powered designs, keeps the FT2232H in low power state until BCBUS7 is high 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT2232H_EEPROM_STRUCTURE\&.PullDownEnable = false"
+
+.PP
+Determines if IOs are pulled down when the device is in suspend 
+.SS "bool FTD2XX_NET\&.FTDI\&.FT2232H_EEPROM_STRUCTURE\&.SerNumEnable = true"
+
+.PP
+Determines if the serial number is enabled 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

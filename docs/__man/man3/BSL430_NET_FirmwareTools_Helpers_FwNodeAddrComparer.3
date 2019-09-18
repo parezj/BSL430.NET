@@ -1,0 +1,42 @@
+.TH "BSL430_NET.FirmwareTools.Helpers.FwNodeAddrComparer" 3 "Tue Sep 17 2019" "Version 1.3.4" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BSL430_NET.FirmwareTools.Helpers.FwNodeAddrComparer \- Compares Firmware Node addresses only\&. Useful when searching for fw addr overlap between two files\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IEqualityComparer< FwTools\&.FwNode >\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBEquals\fP (\fBFwTools\&.FwNode\fP fw1, \fBFwTools\&.FwNode\fP fw2)"
+.br
+.RI "True if addresses match\&. "
+.ti -1c
+.RI "int \fBGetHashCode\fP (\fBFwTools\&.FwNode\fP obj)"
+.br
+.RI "Hash Code created from Address\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Compares Firmware Node addresses only\&. Useful when searching for fw addr overlap between two files\&. 
+
+
+.SH "Member Function Documentation"
+.PP 
+.SS "bool BSL430_NET\&.FirmwareTools\&.Helpers\&.FwNodeAddrComparer\&.Equals (\fBFwTools\&.FwNode\fP fw1, \fBFwTools\&.FwNode\fP fw2)"
+
+.PP
+True if addresses match\&. 
+.SS "int BSL430_NET\&.FirmwareTools\&.Helpers\&.FwNodeAddrComparer\&.GetHashCode (\fBFwTools\&.FwNode\fP obj)"
+
+.PP
+Hash Code created from Address\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

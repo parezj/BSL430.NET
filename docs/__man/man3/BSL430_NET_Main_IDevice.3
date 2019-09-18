@@ -1,0 +1,57 @@
+.TH "BSL430_NET.Main.IDevice" 3 "Tue Sep 17 2019" "Version 1.3.4" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BSL430_NET.Main.IDevice
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits IDisposable\&.
+.PP
+Inherited by \fBBSL430_NET\&.Main\&.Core\fP, and \fBBSL430_NET\&.Main\&.Core\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBStatus\fP \fBScan< Tdev >\fP (out List< Tdev > device_list, \fBScanOptions\fP scan_opt=\fBScanOptions\&.None\fP)"
+.br
+.ti -1c
+.RI "\fBStatusEx\fP \fBErase\fP (\fBBsl430NetDevice\fP device)"
+.br
+.ti -1c
+.RI "\fBStatusEx\fP \fBUpload\fP (\fBBsl430NetDevice\fP device, string firmware, byte[] password)"
+.br
+.ti -1c
+.RI "\fBStatusEx\fP \fBDownload\fP (\fBBsl430NetDevice\fP device, byte[] password, int addr_start, int data_size, out List< byte > data)"
+.br
+.ti -1c
+.RI "\fBStatus\fP \fBChangeBaudRate\fP (\fBBaudRate\fP baud)"
+.br
+.ti -1c
+.RI "\fBStatus\fP \fBSetInvoke\fP (\fBInvokeMechanism\fP _invoke)"
+.br
+.ti -1c
+.RI "\fBStatus\fP \fBSetMCU\fP (\fBMCU\fP mcu)"
+.br
+.ti -1c
+.RI "\fBBaudRate\fP \fBGetBaudRate\fP ()"
+.br
+.ti -1c
+.RI "\fBInvokeMechanism\fP \fBGetInvoke\fP ()"
+.br
+.ti -1c
+.RI "\fBMCU\fP \fBGetMCU\fP ()"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBBsl430NetDevice\fP \fBDefaultDevice\fP\fC [get, set]\fP"
+.br
+.in -1c
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

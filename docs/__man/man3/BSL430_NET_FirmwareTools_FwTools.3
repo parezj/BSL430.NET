@@ -1,0 +1,377 @@
+.TH "BSL430_NET.FirmwareTools.FwTools" 3 "Tue Sep 17 2019" "Version 1.3.4" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+BSL430_NET.FirmwareTools.FwTools \- \fBFwTools\fP class provides basic manipulation (Parse, Create, Convert, Combine, Validate, Compare) with Intel-HEX, TI-TXT, SREC and ELF firmware formatted files\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBBslPasswords\fP"
+.br
+.RI "[MSP430 specific] BSL Password is required for almost any BSL operation except Mass Erase\&. Password is last 16-byte (F543x-non-A only) or 32-byte (others) of IVT (FFE0-FFFF), if newer 5xx/6xx MCU is used\&. If MCU from older series is used (1xx/2xx/4xx), password is exactly 20-byte long\&. Mostly it is 32-byte\&. "
+.ti -1c
+.RI "class \fBFirmware\fP"
+.br
+.RI "\fBFirmware\fP object representation\&. Nodes is collection of \fBFwNode\fP (Addr + Data) and Info is \fBFwInfo\fP class\&. ToString, Equal and Euqality Operators (==, !=) overides are available\&. "
+.ti -1c
+.RI "class \fBFwInfo\fP"
+.br
+.RI "\fBFwInfo\fP provides info about firmware, like format, first and last addresses, CRC, code size and reset vector\&. "
+.ti -1c
+.RI "class \fBFwNode\fP"
+.br
+.RI "Atomic unit which every firmware consits of representated by single byte with max 32-bit long address\&. "
+.in -1c
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBFwFormat\fP : byte { \fBFwFormat\&.AUTO\fP = 0, \fBFwFormat\&.TI_TXT\fP = 1, \fBFwFormat\&.INTEL_HEX\fP = 2, \fBFwFormat\&.SREC\fP = 3, \fBFwFormat\&.ELF\fP = 4 }"
+.br
+.RI "Supported firmware formats\&. AUTO is default value\&. When chosen AUTO, Parse will auto detect fw format, and Create will use TI-TXT\&. ELF format is currently supported only by Parse\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBFirmware\fP \fBParse\fP (string FirmwarePath, \fBFwFormat\fP Format=\fBFwFormat\&.AUTO\fP, bool FillFF=false, StringWriter Log=null)"
+.br
+.RI "Parse firmware file from FirmwarePath in TI-TXT, Intel-HEX or ELF format and returns List of \fBFwNode\fP (Data+Addr) and Info\&. Auto Mode reads data and based on some particular characters determine what firmare format it should be\&. 
+.PP
+FillFF is optional parameter forcing to fill missing addr nodes with 0xFF and return monolithic piece of code, which is usefull for crc calc or overwriting whole memory in mcu\&. 
+.PP
+Log writes text (new line formatted) output only when parsing ELF firmware file\&. "
+.ti -1c
+.RI "static string \fBCreate\fP (\fBFirmware\fP \fBFirmware\fP, \fBFwFormat\fP Format=\fBFwFormat\&.AUTO\fP, int LineLength=0)"
+.br
+.RI "Create firmware multi-line string in TI-TXT or Intel-HEX format\&. ELF is not supported yet\&. AUTO format will force TI-TXT format\&. 
+.PP
+LineLength defines amount of data bytes per one text row\&. When = 0, default values are set (TI-TXT = 16, Intel-HEX = 32, SREC = 32)\&. "
+.ti -1c
+.RI "static string \fBCreate\fP (IEnumerable< byte > Data, int AddrStart, \fBFwFormat\fP Format=\fBFwFormat\&.AUTO\fP, int LineLength=0)"
+.br
+.RI "Create firmware multi-line string in TI-TXT or Intel-HEX format\&. ELF is not supported yet\&. AUTO format will force TI-TXT format\&. AddrStart is address of first byte in data collection\&. 
+.PP
+LineLength defines amount of data bytes per one text row\&. When = 0, default values are set (TI-TXT = 16, Intel-HEX = 32, SREC = 32)\&. "
+.ti -1c
+.RI "static string \fBCreate\fP (ICollection< \fBFwNode\fP > Data, \fBFwFormat\fP Format=\fBFwFormat\&.AUTO\fP, int LineLength=0)"
+.br
+.RI "Create firmware multi-line string in TI-TXT or Intel-HEX format\&. ELF is not supported yet\&. AUTO format will force TI-TXT format\&. 
+.PP
+LineLength defines amount of data bytes per one text row\&. When = 0, default values are set (TI-TXT = 16, Intel-HEX = 32, SREC = 32)\&. "
+.ti -1c
+.RI "static \fBBslPasswords\fP \fBGetPassword\fP (string FirmwarePath)"
+.br
+.RI "[MSP430 specific] Read and parse firmware file (format auto-detected) and return BSL password\&. Password is last 16-byte (F543x-non-A only) or 32-byte (others) of IVT (FFE0-FFFF), if newer 5xx/6xx MCU is used\&. If MCU from older series is used (1xx/2xx/4xx), password is exactly 20-byte long\&. Mostly it is 32-byte\&. "
+.ti -1c
+.RI "static \fBFwInfo\fP \fBValidate\fP (string FirmwarePath, StringWriter Log=null)"
+.br
+.RI "Validate firmware file and return \fBFwInfo\fP class, with specific firmware information\&. ResetVector and SizeBuffer are MSP430 specifics, other properties are universal\&. 
+.PP
+Log writes text (new line formatted) output only when parsing ELF firmware file\&. "
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static string \fBFw\fP"
+.br
+.RI "Convert firmware TI-TXT, Intel-HEX or ELF format (auto detected) to firmware in TI-TX or Intel-HEX format\&. Returned Fw is firmware and Format is useful for auto-detect feedback, indicates input format\&. 
+.PP
+FillFF is optional parameter forcing to fill missing addr nodes with 0xFF and return monolithic piece of code, which is usefull for crc calc or overwriting whole memory in mcu\&. 
+.PP
+LineLength defines amount of data bytes per one text row\&. When = 0, default values are set (TI-TXT = 16, Intel-HEX = 32, SREC = 32)\&. "
+.ti -1c
+.RI "static bool \fBEqual\fP"
+.br
+.RI "Compare two \fBFirmware\fP files\&. First, auto-detects format, then parse Nodes (Address + Data) and finally run compare\&. 
+.PP
+Equal = True if both files contains exactly same set of \fBFirmware\fP Nodes, in other case result is false\&. 
+.PP
+Equal = False if any \fBFirmware\fP is null or if any \fBFirmware\fP Node count is zero\&. 
+.PP
+Match [0\&.0 ; 1\&.0] is match when 1\&.0 is full match and Equal = True, and 0\&.0 is different fw\&. 
+.PP
+BytesDiff is count of bytes (Data nodes) which both firmwares differ at\&. 0 means full match\&. "
+.in -1c
+.SS "Static Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static string \fBFwFormat\fP Format \fBConvert\fP (string FirmwarePath, \fBFwFormat\fP Format, bool FillFF=false, int LineLength=0)"
+.br
+.ti -1c
+.RI "static string \fBFwFormat\fP \fBFwFormat\fP Format2 \fBCombine\fP (string FirmwarePath1, string FirmwarePath2, \fBFwFormat\fP Format, bool FillFF=false, int LineLength=0)"
+.br
+.ti -1c
+.RI "static bool double int BytesDiff \fBCompare\fP (string FirmwarePath1, string FirmwarePath2)"
+.br
+.ti -1c
+.RI "static bool double int BytesDiff \fBCompare\fP (\fBFirmware\fP Firmware1, \fBFirmware\fP Firmware2)"
+.br
+.ti -1c
+.RI "static \fBFirmware\fP \fBParseAutoDetect\fP (string firmware_path, bool fill_FF=false, StringWriter log=null)"
+.br
+.ti -1c
+.RI "static \fBFirmware\fP \fBParseIntelHex\fP (string firmware_path, bool fill_FF=false, string _data='')"
+.br
+.ti -1c
+.RI "static \fBFirmware\fP \fBParseTiTxt\fP (string firmware_path, bool fill_FF=false, string _data='')"
+.br
+.ti -1c
+.RI "static \fBFirmware\fP \fBParseSrec\fP (string firmware_path, bool fill_FF=false, string _data='')"
+.br
+.ti -1c
+.RI "static \fBFirmware\fP \fBParseElf32\fP (string firmware_path, bool fill_FF=false, byte[] _data=null, StringWriter log=null)"
+.br
+.ti -1c
+.RI "static List< \fBFwNode\fP > List< long > FilledFFAddr \fBFillGapsWithFF\fP (List< \fBFwNode\fP > code)"
+.br
+.ti -1c
+.RI "static string \fBCreateIntelHex\fP (ICollection< \fBFwNode\fP > data, int _lineLength=0)"
+.br
+.ti -1c
+.RI "static string \fBCreateSrec\fP (ICollection< \fBFwNode\fP > data, int _lineLength=0)"
+.br
+.ti -1c
+.RI "static string \fBCreateTiTxt\fP (ICollection< \fBFwNode\fP > data, int _lineLength=0)"
+.br
+.ti -1c
+.RI "static ICollection< \fBFwNode\fP > \fBCombineFw\fP (\fBFirmware\fP fw1, \fBFirmware\fP fw2, bool fillFF=false)"
+.br
+.ti -1c
+.RI "static \fBBslPasswords\fP \fBGetBslPassword\fP (string FirmwarePath)"
+.br
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "const string \fBERR_444\fP"
+.br
+.ti -1c
+.RI "const string \fBERR_445\fP = 'Invalid or corrupted firmware file\&. Intel\-HEX, TI\-TXT, SREC and ELF formats are supported\&.'"
+.br
+.ti -1c
+.RI "const string \fBERR_470\fP = 'Failed to create firmware\&.'"
+.br
+.ti -1c
+.RI "const string \fBERR_471\fP = 'Failed to create firmware\&. Input data is empty\&.'"
+.br
+.ti -1c
+.RI "const string \fBERR_472\fP = 'ELF firmware format is not supported yet as output\&.'"
+.br
+.ti -1c
+.RI "const string \fBERR_473\fP = 'File does not exists\&.'"
+.br
+.ti -1c
+.RI "const string \fBERR_474\fP = 'Exception aborted execution while trying to read file\&.'"
+.br
+.ti -1c
+.RI "const string \fBERR_475\fP"
+.br
+.ti -1c
+.RI "const string \fBERR_476\fP = 'Only 32\-bit ELF format is supported\&.'"
+.br
+.ti -1c
+.RI "const string \fBERR_477\fP = 'Only little endian ELF format is supported\&.'"
+.br
+.ti -1c
+.RI "const string \fBERR_478\fP = 'Only executable file type ELF format is supported\&.'"
+.br
+.ti -1c
+.RI "const string \fBERR_480\fP = 'Wrong or corrupted file\&. ELF magic number (7F\-45\-4C\-46) mismatch\&.'"
+.br
+.ti -1c
+.RI "const string \fBERR_481\fP"
+.br
+.ti -1c
+.RI "static string \fBFwFormat\fP \fBFormat1\fP"
+.br
+.ti -1c
+.RI "static bool double \fBMatch\fP"
+.br
+.ti -1c
+.RI "static List< \fBFwNode\fP > \fBData\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBFwTools\fP class provides basic manipulation (Parse, Create, Convert, Combine, Validate, Compare) with Intel-HEX, TI-TXT, SREC and ELF firmware formatted files\&. 
+
+
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBBSL430_NET\&.FirmwareTools\&.FwTools\&.FwFormat\fP : byte\fC [strong]\fP"
+
+.PP
+Supported firmware formats\&. AUTO is default value\&. When chosen AUTO, Parse will auto detect fw format, and Create will use TI-TXT\&. ELF format is currently supported only by Parse\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIAUTO \fP\fP
+When chosen AUTO, Parse will auto detect fw format, and Create will use TI-TXT\&. 
+.TP
+\fB\fITI_TXT \fP\fP
+TI-TXT format described at:  HERE
+.TP
+\fB\fIINTEL_HEX \fP\fP
+Intel-HEX format described at: HERE
+.TP
+\fB\fISREC \fP\fP
+Motorola-SREC S-Record format described at:  HERE
+.TP
+\fB\fIELF \fP\fP
+ELF format described at: HERE
+.SH "Member Function Documentation"
+.PP 
+.SS "static string BSL430_NET\&.FirmwareTools\&.FwTools\&.Create (\fBFirmware\fP Firmware, \fBFwFormat\fP Format = \fC\fBFwFormat\&.AUTO\fP\fP, int LineLength = \fC0\fP)\fC [static]\fP"
+
+.PP
+Create firmware multi-line string in TI-TXT or Intel-HEX format\&. ELF is not supported yet\&. AUTO format will force TI-TXT format\&. 
+.PP
+LineLength defines amount of data bytes per one text row\&. When = 0, default values are set (TI-TXT = 16, Intel-HEX = 32, SREC = 32)\&. 
+.PP
+\fBExceptions\fP
+.RS 4
+\fIFirmwareToolsException\fP 
+.RE
+.PP
+
+.SS "static string BSL430_NET\&.FirmwareTools\&.FwTools\&.Create (ICollection< \fBFwNode\fP > Data, \fBFwFormat\fP Format = \fC\fBFwFormat\&.AUTO\fP\fP, int LineLength = \fC0\fP)\fC [static]\fP"
+
+.PP
+Create firmware multi-line string in TI-TXT or Intel-HEX format\&. ELF is not supported yet\&. AUTO format will force TI-TXT format\&. 
+.PP
+LineLength defines amount of data bytes per one text row\&. When = 0, default values are set (TI-TXT = 16, Intel-HEX = 32, SREC = 32)\&. 
+.PP
+\fBExceptions\fP
+.RS 4
+\fIFirmwareToolsException\fP 
+.RE
+.PP
+
+.SS "static string BSL430_NET\&.FirmwareTools\&.FwTools\&.Create (IEnumerable< byte > Data, int AddrStart, \fBFwFormat\fP Format = \fC\fBFwFormat\&.AUTO\fP\fP, int LineLength = \fC0\fP)\fC [static]\fP"
+
+.PP
+Create firmware multi-line string in TI-TXT or Intel-HEX format\&. ELF is not supported yet\&. AUTO format will force TI-TXT format\&. AddrStart is address of first byte in data collection\&. 
+.PP
+LineLength defines amount of data bytes per one text row\&. When = 0, default values are set (TI-TXT = 16, Intel-HEX = 32, SREC = 32)\&. 
+.PP
+\fBExceptions\fP
+.RS 4
+\fIFirmwareToolsException\fP 
+.RE
+.PP
+
+.SS "static \fBBslPasswords\fP BSL430_NET\&.FirmwareTools\&.FwTools\&.GetPassword (string FirmwarePath)\fC [static]\fP"
+
+.PP
+[MSP430 specific] Read and parse firmware file (format auto-detected) and return BSL password\&. Password is last 16-byte (F543x-non-A only) or 32-byte (others) of IVT (FFE0-FFFF), if newer 5xx/6xx MCU is used\&. If MCU from older series is used (1xx/2xx/4xx), password is exactly 20-byte long\&. Mostly it is 32-byte\&. 
+.SS "static \fBFirmware\fP BSL430_NET\&.FirmwareTools\&.FwTools\&.Parse (string FirmwarePath, \fBFwFormat\fP Format = \fC\fBFwFormat\&.AUTO\fP\fP, bool FillFF = \fCfalse\fP, StringWriter Log = \fCnull\fP)\fC [static]\fP"
+
+.PP
+Parse firmware file from FirmwarePath in TI-TXT, Intel-HEX or ELF format and returns List of \fBFwNode\fP (Data+Addr) and Info\&. Auto Mode reads data and based on some particular characters determine what firmare format it should be\&. 
+.PP
+FillFF is optional parameter forcing to fill missing addr nodes with 0xFF and return monolithic piece of code, which is usefull for crc calc or overwriting whole memory in mcu\&. 
+.PP
+Log writes text (new line formatted) output only when parsing ELF firmware file\&. 
+.PP
+\fBExceptions\fP
+.RS 4
+\fIFirmwareToolsException\fP 
+.RE
+.PP
+
+.SS "static \fBFwInfo\fP BSL430_NET\&.FirmwareTools\&.FwTools\&.Validate (string FirmwarePath, StringWriter Log = \fCnull\fP)\fC [static]\fP"
+
+.PP
+Validate firmware file and return \fBFwInfo\fP class, with specific firmware information\&. ResetVector and SizeBuffer are MSP430 specifics, other properties are universal\&. 
+.PP
+Log writes text (new line formatted) output only when parsing ELF firmware file\&. 
+.PP
+\fBExceptions\fP
+.RS 4
+\fIFirmwareToolsException\fP 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "static bool BSL430_NET\&.FirmwareTools\&.FwTools\&.Equal\fC [static]\fP"
+
+.PP
+Compare two \fBFirmware\fP files\&. First, auto-detects format, then parse Nodes (Address + Data) and finally run compare\&. 
+.PP
+Equal = True if both files contains exactly same set of \fBFirmware\fP Nodes, in other case result is false\&. 
+.PP
+Equal = False if any \fBFirmware\fP is null or if any \fBFirmware\fP Node count is zero\&. 
+.PP
+Match [0\&.0 ; 1\&.0] is match when 1\&.0 is full match and Equal = True, and 0\&.0 is different fw\&. 
+.PP
+BytesDiff is count of bytes (Data nodes) which both firmwares differ at\&. 0 means full match\&. Compare two already parsed \fBFirmware\fP objects (Address + Data)\&. 
+.PP
+Equal = True if both files contains exactly same set of \fBFirmware\fP Nodes, in other case result is false\&. 
+.PP
+Equal = False if any \fBFirmware\fP is null or if any \fBFirmware\fP Node count is zero\&. 
+.PP
+Match [0\&.0 ; 1\&.0] is match when 1\&.0 is full match and Equal = True, and 0\&.0 is different fw\&. 
+.PP
+BytesDiff is count of bytes (Data nodes) which both firmwares differ at\&. 0 means full match\&.
+.PP
+\fBExceptions\fP
+.RS 4
+\fIFirmwareToolsException\fP 
+.RE
+.PP
+
+.SS "const string BSL430_NET\&.FirmwareTools\&.FwTools\&.ERR_444\fC [static]\fP, \fC [private]\fP"
+\fBInitial value:\fP
+.PP
+.nf
+= "Parsing firmware failed! Invalid or corrupted firmware file\&. Intel-HEX, TI-TXT, SREC " +
+                                           "and ELF formats are supported\&."
+.fi
+.SS "const string BSL430_NET\&.FirmwareTools\&.FwTools\&.ERR_475\fC [static]\fP, \fC [private]\fP"
+\fBInitial value:\fP
+.PP
+.nf
+= "Auto-detect firmware format failed\&. Most likely wrong or corrupted file\&. Intel-HEX, " +
+                                           "TI-TXT, SREC and ELF formats are supported\&."
+.fi
+.SS "const string BSL430_NET\&.FirmwareTools\&.FwTools\&.ERR_481\fC [static]\fP, \fC [private]\fP"
+\fBInitial value:\fP
+.PP
+.nf
+= "Firmware address conflict\&. There is an overlap between both firmware files, combining " +
+                                           "them would result in corrupted firmware\&."
+.fi
+.SS "static string BSL430_NET\&.FirmwareTools\&.FwTools\&.Fw\fC [static]\fP"
+
+.PP
+Convert firmware TI-TXT, Intel-HEX or ELF format (auto detected) to firmware in TI-TX or Intel-HEX format\&. Returned Fw is firmware and Format is useful for auto-detect feedback, indicates input format\&. 
+.PP
+FillFF is optional parameter forcing to fill missing addr nodes with 0xFF and return monolithic piece of code, which is usefull for crc calc or overwriting whole memory in mcu\&. 
+.PP
+LineLength defines amount of data bytes per one text row\&. When = 0, default values are set (TI-TXT = 16, Intel-HEX = 32, SREC = 32)\&. Combines two firmware files into single one with format specified\&. Usually, main firmware and EEPROM file is done this way, or main firmware and Info A flash content is merged\&. Returned Fw is firmware and Format1 with Format2 are useful for auto-detect feedback, indicates input formats\&. 
+.PP
+FillFF is optional parameter forcing to fill missing addr nodes with 0xFF and return monolithic piece of code, which is usefull for crc calc or overwriting whole memory in mcu\&. 
+.PP
+LineLength defines amount of data bytes per one text row\&. When = 0, default values are set (TI-TXT = 16, Intel-HEX = 32, SREC = 32)\&.
+.PP
+\fBExceptions\fP
+.RS 4
+\fIFirmwareToolsException\fP 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

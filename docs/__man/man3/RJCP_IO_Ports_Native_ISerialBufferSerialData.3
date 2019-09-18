@@ -1,0 +1,154 @@
+.TH "RJCP.IO.Ports.Native.ISerialBufferSerialData" 3 "Sat Jun 22 2019" "Version 1.2.1" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+RJCP.IO.Ports.Native.ISerialBufferSerialData \- Container structure for properties and methods related to the \fBNative\fP Serial object\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBRJCP\&.IO\&.Ports\&.Native\&.SerialBuffer\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBReadBufferProduce\fP (int count)"
+.br
+.RI "Update the read circular queue indicating data has been received, and is available to the stream object\&. "
+.ti -1c
+.RI "void \fBWriteBufferConsume\fP (int count)"
+.br
+.RI "Update the write circular queue indicating data has been written, freeing space for more data to write\&. "
+.ti -1c
+.RI "bool \fBTxEmptyEvent\fP ()"
+.br
+.RI "Indicates that the write buffer is now empty\&. "
+.ti -1c
+.RI "void \fBPurge\fP ()"
+.br
+.RI "Purges the write buffer\&. "
+.ti -1c
+.RI "void \fBDeviceDead\fP ()"
+.br
+.RI "Indicates no read/write waits should occur, the device is dead\&. "
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "\fBCircularBuffer\fP< byte > \fBReadBuffer\fP\fC [get]\fP"
+.br
+.RI "Access the read buffer directly\&. "
+.ti -1c
+.RI "IntPtr \fBReadBufferOffsetEnd\fP\fC [get]\fP"
+.br
+.RI "Gets the read buffer offset end, used for giving to native API's\&. "
+.ti -1c
+.RI "\fBCircularBuffer\fP< byte > \fBWriteBuffer\fP\fC [get]\fP"
+.br
+.RI "Access the write buffer directly\&. "
+.ti -1c
+.RI "IntPtr \fBWriteBufferOffsetStart\fP\fC [get]\fP"
+.br
+.RI "Gets the write buffer offset start, used for giving to native API's\&. "
+.ti -1c
+.RI "bool \fBIsPinnedBuffer\fP\fC [get]\fP"
+.br
+.RI "Gets a value indicating whether this instance uses a pinned buffer\&. "
+.ti -1c
+.RI "WaitHandle \fBReadBufferNotFull\fP\fC [get]\fP"
+.br
+.RI "Gets the event handle that is signalled when the read buffer is not full\&. "
+.ti -1c
+.RI "WaitHandle \fBWriteBufferNotEmpty\fP\fC [get]\fP"
+.br
+.RI "Gets the event handle that is signalled when data is in the write buffer\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Container structure for properties and methods related to the \fBNative\fP Serial object\&. 
+
+
+.SH "Member Function Documentation"
+.PP 
+.SS "void RJCP\&.IO\&.Ports\&.Native\&.ISerialBufferSerialData\&.DeviceDead ()"
+
+.PP
+Indicates no read/write waits should occur, the device is dead\&. 
+.SS "void RJCP\&.IO\&.Ports\&.Native\&.ISerialBufferSerialData\&.Purge ()"
+
+.PP
+Purges the write buffer\&. 
+.SS "void RJCP\&.IO\&.Ports\&.Native\&.ISerialBufferSerialData\&.ReadBufferProduce (int count)"
+
+.PP
+Update the read circular queue indicating data has been received, and is available to the stream object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcount\fP The count\&.
+.RE
+.PP
+
+.SS "bool RJCP\&.IO\&.Ports\&.Native\&.ISerialBufferSerialData\&.TxEmptyEvent ()"
+
+.PP
+Indicates that the write buffer is now empty\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fCtrue\fP if the write buffer is empty\&.
+.RE
+.PP
+.PP
+Systems that return immediately after a Write before the write has been sent over the wire should call this method when the hardware indicates that data is flushed\&. 
+.PP
+Systems that only return from the Write when data is completely written, or that do not receive events when the hardware buffer is empty, should call this method immediately after the Write is done\&.
+.PP
+Typically \fBWindows\fP systems may return before the hardware buffer is completely empty, where they notify later of an empty buffer with the EV_TXEMPTY event\&.
+.SS "void RJCP\&.IO\&.Ports\&.Native\&.ISerialBufferSerialData\&.WriteBufferConsume (int count)"
+
+.PP
+Update the write circular queue indicating data has been written, freeing space for more data to write\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcount\fP The count\&.
+.RE
+.PP
+
+.SH "Property Documentation"
+.PP 
+.SS "bool RJCP\&.IO\&.Ports\&.Native\&.ISerialBufferSerialData\&.IsPinnedBuffer\fC [get]\fP"
+
+.PP
+Gets a value indicating whether this instance uses a pinned buffer\&. \fCtrue\fP if this instance uses a pinned buffer; otherwise, \fCfalse\fP\&. 
+.SS "\fBCircularBuffer\fP<byte> RJCP\&.IO\&.Ports\&.Native\&.ISerialBufferSerialData\&.ReadBuffer\fC [get]\fP"
+
+.PP
+Access the read buffer directly\&. The read buffer\&. 
+.SS "WaitHandle RJCP\&.IO\&.Ports\&.Native\&.ISerialBufferSerialData\&.ReadBufferNotFull\fC [get]\fP"
+
+.PP
+Gets the event handle that is signalled when the read buffer is not full\&. The event handle that is signalled when the read buffer is not full\&. 
+.SS "IntPtr RJCP\&.IO\&.Ports\&.Native\&.ISerialBufferSerialData\&.ReadBufferOffsetEnd\fC [get]\fP"
+
+.PP
+Gets the read buffer offset end, used for giving to native API's\&. The read buffer offset end\&. 
+.SS "\fBCircularBuffer\fP<byte> RJCP\&.IO\&.Ports\&.Native\&.ISerialBufferSerialData\&.WriteBuffer\fC [get]\fP"
+
+.PP
+Access the write buffer directly\&. The write buffer\&. 
+.SS "WaitHandle RJCP\&.IO\&.Ports\&.Native\&.ISerialBufferSerialData\&.WriteBufferNotEmpty\fC [get]\fP"
+
+.PP
+Gets the event handle that is signalled when data is in the write buffer\&. The event handle that is signalled when data is in the write buffer\&. 
+.SS "IntPtr RJCP\&.IO\&.Ports\&.Native\&.ISerialBufferSerialData\&.WriteBufferOffsetStart\fC [get]\fP"
+
+.PP
+Gets the write buffer offset start, used for giving to native API's\&. The write buffer offset start\&. 
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.

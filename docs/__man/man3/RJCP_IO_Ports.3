@@ -1,0 +1,204 @@
+.TH "RJCP.IO.Ports" 3 "Sat Jun 22 2019" "Version 1.2.1" "BSL430.NET" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+RJCP.IO.Ports
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBInternalApplicationException\fP"
+.br
+.RI "Indicates an unexpected internal error occurred in the application\&. "
+.ti -1c
+.RI "class \fBPortDescription\fP"
+.br
+.RI "A class containing information about a serial port\&. "
+.ti -1c
+.RI "class \fBSerialDataReceivedEventArgs\fP"
+.br
+.RI "EventArgs for DataReceived\&. "
+.ti -1c
+.RI "class \fBSerialErrorReceivedEventArgs\fP"
+.br
+.RI "EventArgs for ErrorReceived\&. "
+.ti -1c
+.RI "class \fBSerialPinChangedEventArgs\fP"
+.br
+.RI "EventArgs for PinChanged\&. "
+.ti -1c
+.RI "class \fBSerialPortStream\fP"
+.br
+.RI "The \fBSerialPortStream\fP is a stream class to communicate with serial port based devices\&. "
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBHandshake\fP { \fBHandshake\&.None\fP = 0, \fBHandshake\&.XOn\fP = 1, \fBHandshake\&.Rts\fP = 2, \fBHandshake\&.Dtr\fP = 4, \fBHandshake\&.RtsXOn\fP = Rts | XOn, \fBHandshake\&.DtrXOn\fP = Dtr | XOn, \fBHandshake\&.DtrRts\fP = Dtr | Rts, \fBHandshake\&.DtrRtsXOn\fP = Dtr | Rts | XOn }"
+.br
+.RI "Handshaking mode to use\&. "
+.ti -1c
+.RI "enum \fBParity\fP { \fBParity\&.None\fP = 0, \fBParity\&.Odd\fP = 1, \fBParity\&.Even\fP = 2, \fBParity\&.Mark\fP = 3, \fBParity\&.Space\fP = 4 }"
+.br
+.RI "The type of parity to use\&. "
+.ti -1c
+.RI "enum \fBSerialData\fP { \fBSerialData\&.NoData\fP = 0, \fBSerialData\&.Chars\fP = 0x0001, \fBSerialData\&.Eof\fP = 0x0002 }"
+.br
+.RI "Event related information on DataReceived "
+.ti -1c
+.RI "enum \fBSerialError\fP { \fBSerialError\&.NoError\fP = 0, \fBSerialError\&.RXOver\fP = 0x0001, \fBSerialError\&.Overrun\fP = 0x0002, \fBSerialError\&.RXParity\fP = 0x0004, \fBSerialError\&.Frame\fP = 0x0008, \fBSerialError\&.TXFull\fP = 0x0100 }"
+.br
+.RI "Event related information on ErrorReceived\&. "
+.ti -1c
+.RI "enum \fBSerialPinChange\fP { \fBSerialPinChange\&.NoChange\fP = 0, \fBSerialPinChange\&.CtsChanged\fP = 0x08, \fBSerialPinChange\&.DsrChanged\fP = 0x10, \fBSerialPinChange\&.CDChanged\fP = 0x20, \fBSerialPinChange\&.Break\fP = 0x40, \fBSerialPinChange\&.Ring\fP = 0x100 }"
+.br
+.RI "Event related data on PinChanged\&. "
+.ti -1c
+.RI "enum \fBStopBits\fP { \fBStopBits\&.One\fP = 0, \fBStopBits\&.One5\fP = 1, \fBStopBits\&.Two\fP = 2 }"
+.br
+.RI "Number of stop bits to use\&. "
+.in -1c
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBRJCP\&.IO\&.Ports\&.Handshake\fP\fC [strong]\fP"
+
+.PP
+Handshaking mode to use\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINone \fP\fP
+No handshaking\&. 
+.TP
+\fB\fIXOn \fP\fP
+Software handshaking\&. 
+.TP
+\fB\fIRts \fP\fP
+Hardware handshaking (RTS/CTS)\&. 
+.TP
+\fB\fIDtr \fP\fP
+Hardware handshaking (DTR/DSR) (uncommon)\&. 
+.TP
+\fB\fIRtsXOn \fP\fP
+RTS and Software handshaking\&. 
+.TP
+\fB\fIDtrXOn \fP\fP
+DTR and Software handshaking (uncommon)\&. 
+.TP
+\fB\fIDtrRts \fP\fP
+Hardware handshaking with RTS/CTS and DTR/DSR (uncommon)\&. 
+.TP
+\fB\fIDtrRtsXOn \fP\fP
+Hardware handshaking with RTS/CTS and DTR/DSR and Software handshaking (uncommon)\&. 
+.SS "enum \fBRJCP\&.IO\&.Ports\&.Parity\fP\fC [strong]\fP"
+
+.PP
+The type of parity to use\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINone \fP\fP
+No parity\&. 
+.TP
+\fB\fIOdd \fP\fP
+Odd parity\&. 
+.TP
+\fB\fIEven \fP\fP
+Even parity\&. 
+.TP
+\fB\fIMark \fP\fP
+Mark parity\&. 
+.TP
+\fB\fISpace \fP\fP
+Space parity\&. 
+.SS "enum \fBRJCP\&.IO\&.Ports\&.SerialData\fP\fC [strong]\fP"
+
+.PP
+Event related information on DataReceived 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINoData \fP\fP
+Indicates no data received 
+.TP
+\fB\fIChars \fP\fP
+At least a single byte has been received 
+.TP
+\fB\fIEof \fP\fP
+The EOF character has been detected 
+.SS "enum \fBRJCP\&.IO\&.Ports\&.SerialError\fP\fC [strong]\fP"
+
+.PP
+Event related information on ErrorReceived\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINoError \fP\fP
+Indicates no error\&. 
+.TP
+\fB\fIRXOver \fP\fP
+Driver buffer has reached 80% full\&. 
+.TP
+\fB\fIOverrun \fP\fP
+Driver has detected an overflow\&. 
+.TP
+\fB\fIRXParity \fP\fP
+Parity error detected\&. 
+.TP
+\fB\fIFrame \fP\fP
+Frame error detected\&. 
+.TP
+\fB\fITXFull \fP\fP
+Transmit buffer is full\&. 
+.SS "enum \fBRJCP\&.IO\&.Ports\&.SerialPinChange\fP\fC [strong]\fP"
+
+.PP
+Event related data on PinChanged\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINoChange \fP\fP
+Indicates no pin change detected\&. 
+.TP
+\fB\fICtsChanged \fP\fP
+Clear To Send signal has changed\&. 
+.TP
+\fB\fIDsrChanged \fP\fP
+Data Set Ready signal has changed\&. 
+.TP
+\fB\fICDChanged \fP\fP
+Carrier Detect signal has changed\&. 
+.TP
+\fB\fIBreak \fP\fP
+Break detected\&. 
+.TP
+\fB\fIRing \fP\fP
+Ring signal has changed\&. 
+.SS "enum \fBRJCP\&.IO\&.Ports\&.StopBits\fP\fC [strong]\fP"
+
+.PP
+Number of stop bits to use\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIOne \fP\fP
+One stop bit\&. 
+.TP
+\fB\fIOne5 \fP\fP
+1\&.5 stop bits\&. 
+.TP
+\fB\fITwo \fP\fP
+Two stop bits\&. 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for BSL430\&.NET from the source code\&.
