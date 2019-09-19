@@ -533,7 +533,7 @@ namespace BSL430_NET_Console
                     if (fw_format.stat != "")
                         Console.WriteLine(fw_format.stat);
 
-                    var output = FwTools.Convert(options.Convert, fw_format.fw_format, options.FillFF);
+                    var output = FwTools.Convert(options.Convert, fw_format.fw_format, options.FillFF, options.FwLineLength);
 
                     if (output.Fw == "")
                         throw new Exception("Unknown error occured while converting firmware.\n");
@@ -570,7 +570,7 @@ namespace BSL430_NET_Console
                     if (fw_format.stat != "")
                         Console.WriteLine(fw_format.stat);
 
-                    var output = FwTools.Combine(options.Combine, options.SecondFile, fw_format.fw_format, options.FillFF);
+                    var output = FwTools.Combine(options.Combine, options.SecondFile, fw_format.fw_format, options.FillFF, options.FwLineLength);
 
                     if (output.Fw == "")
                         throw new Exception("Unknown error occured while converting firmware.\n");
