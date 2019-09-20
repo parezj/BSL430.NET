@@ -368,7 +368,7 @@ namespace BSL430_NET
             #region Public Methods
 
             /// <summary>
-            /// Parse firmware file from FirmwarePath in TI-TXT, Intel-HEX or ELF format and returns List of FwNode 
+            /// Parse firmware file from FirmwarePath in TI-TXT, Intel-HEX, ELF or SREC format and returns List of FwNode 
             /// (Data+Addr) and Info. Auto Mode reads data and based on some particular characters determine
             /// what firmare format it should be.
             /// <para/>FillFF is optional parameter forcing to fill missing addr nodes with 0xFF 
@@ -393,7 +393,7 @@ namespace BSL430_NET
             }
 
             /// <summary>
-            /// Create firmware multi-line string in TI-TXT or Intel-HEX format. ELF is not supported yet. 
+            /// Create firmware multi-line string in TI-TXT, Intel-HEX or SREC format. ELF is not supported yet. 
             /// AUTO format will force TI-TXT format.
             /// <para/>LineLength defines amount of data bytes per one text row. When = 0, default values are set
             /// (TI-TXT = 16, Intel-HEX = 32, SREC = 32).
@@ -405,7 +405,7 @@ namespace BSL430_NET
             }
 
             /// <summary>
-            /// Create firmware multi-line string in TI-TXT or Intel-HEX format. ELF is not supported yet. 
+            /// Create firmware multi-line string in TI-TXT, Intel-HEX or SREC format. ELF is not supported yet. 
             /// AUTO format will force TI-TXT format. AddrStart is address of first byte in data collection.
             /// <para/>LineLength defines amount of data bytes per one text row. When = 0, default values are set
             /// (TI-TXT = 16, Intel-HEX = 32, SREC = 32).
@@ -422,7 +422,7 @@ namespace BSL430_NET
             }
 
             /// <summary>
-            /// Create firmware multi-line string in TI-TXT or Intel-HEX format. ELF is not supported yet. 
+            /// Create firmware multi-line string in TI-TXT, Intel-HEX or SREC format. ELF is not supported yet. 
             /// AUTO format will force TI-TXT format.
             /// <para/>LineLength defines amount of data bytes per one text row. When = 0, default values are set
             /// (TI-TXT = 16, Intel-HEX = 32, SREC = 32).
@@ -442,8 +442,8 @@ namespace BSL430_NET
             }
 
             /// <summary>
-            /// Convert firmware TI-TXT, Intel-HEX or ELF format (auto detected) to firmware in TI-TX or Intel-HEX format.
-            /// Returned Fw is firmware and Format is useful for auto-detect feedback, indicates input format.
+            /// Convert firmware TI-TXT, Intel-HEX, ELF or SREC format (auto detected) to firmware in TI-TXT, Intel-HEX 
+            /// or SREC format. Returned Fw is firmware and Format is useful for auto-detect feedback, indicates input format.
             /// <para/>FillFF is optional parameter forcing to fill missing addr nodes with 0xFF 
             /// and return monolithic piece of code, which is usefull for crc calc or overwriting whole memory in mcu.
             /// <para/>LineLength defines amount of data bytes per one text row. When = 0, default values are set
@@ -451,9 +451,9 @@ namespace BSL430_NET
             /// </summary>
             /// <exception cref="FirmwareToolsException"></exception>
             public static (string Fw, FwFormat Format) Convert(string FirmwarePath, 
-                                                               FwFormat Format, 
-                                                               bool FillFF = false, 
-                                                               int LineLength = 0)
+                                                                 FwFormat Format, 
+                                                                 bool FillFF = false, 
+                                                                 int LineLength = 0)
             { 
                 switch (Format)
                 {
