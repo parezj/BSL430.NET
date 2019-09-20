@@ -41,11 +41,11 @@ Warning: Old 1xx/2xx/4xx bootloader protocol handle Erase or incorrectly entered
 BSL430.NET project started back in 2016, when I worked on my *Wireless Weather Station* project based on **CC430** MCU (F5xxX), 
 connected on PCB to FT232. And I wanted to implement automatic firmware upgrade feature, while PC control app was already
 written in C# (WPF). So I started to study TI docs and coding, but soon I realized, that there is nothing like this (except
-C++ **TI BS430** library or **Python MSP430 Tools**), that is both versatile and multifunctional. So today, after weather station
-project already have finished, I changed my direction to **BSL430.NET**, and want to encourage other developers and enthusiats
+C++ **TI BS430** library or **Python MSP430 Tools**), that is both versatile and scalable. So today, after weather station
+project already have finished, I changed my direction to **BSL430.NET**, and want to encourage other developers and enthusiasts
 to use this app/library, which I had completely *open-sourced*, and moreover I made some nice Win GUI App for simple use.
-Library can now be integrated into any MSP430 based project, even commercial, to enable **automatic firmware upgrades**.
-More at [Wiki Homepage](https://github.com/parezj/BSL430.NET/wiki/), [Wiki Library](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.Library),
+This library can now be integrated into any MSP430 based project, even commercial, to enable **automatic firmware upgrades**.
+More intel here: [Wiki Homepage](https://github.com/parezj/BSL430.NET/wiki/), [Wiki Library](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.Library),
 [Wiki GUI App](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.GUI-App), [Wiki Console App](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.Console-App) or 
 [Wiki Firmware Tools](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.FirmwareTools.Library)
 <br>
