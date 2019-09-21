@@ -72,12 +72,18 @@ More intel here: [Wiki Homepage](https://github.com/parezj/BSL430.NET/wiki/), [W
 ## 3. Console App (Windows, Linux)
 
 > **[Wiki docs](https://github.com/parezj/BSL430.NET/wiki/BSL430.NET.Console-App)** - Tutorials how to use console app
-  
-- **Upload firmware to MCU**:  
-![Upload](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/console_upload.png)
 
-- **Scan for available devices**:  
+- **Scan for devices (FTDI)**:  
 ![Scan](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/console_scan.png)
+
+- **Upload firmware to MCU**:  
+![Upload](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/console_upload2.png)
+
+- **Download firmware from MCU**:  
+![Upload](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/console_download2.png)
+
+- **Firmware Tools - Validate**:  
+![Scan](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/console_validate.png)
 <br>  
 
 ## 4. Wiring Diagram
