@@ -65,5 +65,10 @@ namespace BSL430_NET_WPF.Views
                 OK.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
             }
         }
+
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

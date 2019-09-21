@@ -335,7 +335,7 @@ namespace BSL430_NET
                 {
                     ret += FormattedString(stat, (cnt == 0 && stat.InnerStatus != null && stat.InnerStatus.Msg != stat.Msg));
                     if (cnt == 0 && this.BytesToProcess != -1)
-                        ret += $"\nProcessed Bytes: {this.BytesToProcess}";
+                        ret += $"\n\nProcessed Bytes: {this.BytesToProcess}";
                     if (cnt == 0 && this.BSLVersion != null && this.BSLVersion.Length > 0)
                         ret += $"\nBSL Version: {this.BSLVersion.ToHexString()}";
                     if (stat.InnerStatus != null)

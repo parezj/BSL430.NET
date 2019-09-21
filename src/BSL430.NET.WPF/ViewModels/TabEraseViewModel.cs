@@ -57,7 +57,7 @@ namespace BSL430_NET_WPF.ViewModels
             MCU mcu = this.ControlProcess.MCU;
             if (this.FirstErase && (mcu == MCU.MSP430_F1xx || mcu == MCU.MSP430_F2xx || mcu == MCU.MSP430_F4xx || mcu == MCU.MSP430_G2xx3))
             {
-                var result = MessageBox.Show("As this is your first erase, and you are targetting old 1xx/2xx/4xx protocol, you should be careful." +
+                var result = MessageBox.Show("As this is your first erase, and you are targetting old 1xx/2xx/4xx protocol, you should be careful. " +
                     "Old 1xx/2xx/4xx bootloader protocols erase complete memory including Info A (with CALIBRATION data) if Mass Erase is executed, " +
                     "provided LOCK A bit is not set.\n\nDo you still want to continue?", "BSL430.NET", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 

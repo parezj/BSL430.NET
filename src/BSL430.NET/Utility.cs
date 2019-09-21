@@ -180,7 +180,7 @@ namespace BSL430_NET
                     case 140: err_msg = "'RX DATA " + extra + "' BSL command failed."; break;
                     case 150: err_msg = "'TX DATA " + extra + "' BSL command failed."; break;
                     case 160: err_msg = "'CRC CHECK' BSL command failed."; break;
-                    case 161: err_msg = "'CRC CHECK' CRC mismatch error. crc16 of hex file does not match crc16 of data uploaded to " +
+                    case 161: err_msg = "'CRC CHECK' CRC mismatch error. processed crc16 data does not match crc16 MCU memory data of " +
                                         "device."; break;
                     case 170: err_msg = "'LOAD PC' BSL command failed."; break;
                     case 180: err_msg = "Reading firmware file failed."; break;

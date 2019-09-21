@@ -32,6 +32,7 @@ using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 using BSL430_NET.Main;
 using BSL430_NET.Utility;
@@ -40,7 +41,6 @@ using BSL430_NET.Constants;
 using HidSharp;
 using HidSharp.Reports;
 using HidSharp.Reports.Input;
-
 
 namespace BSL430_NET
 {
@@ -220,11 +220,11 @@ namespace BSL430_NET
                         var inputParser = reportDescriptor.DeviceItems[0].CreateDeviceItemInputParser();
 
                         int timeout = Const.TIMEOUT_READ;
+                        Stopwatch sw = new Stopwatch();
+                        sw.Start();
 
                         while (timeout > 0) // read all reports
                         {
-                            int startTime = Environment.TickCount;
-
                             while (timeout > 0) // read one report (64b)
                             {
                                 int remaining = rx_size - data_list.Count;
@@ -283,7 +283,7 @@ namespace BSL430_NET
                                     throw new Bsl430NetException(666);
 
                                 Task.Delay(5).Wait();
-                                timeout -= (Environment.TickCount - startTime) + 5; // 5??
+                                timeout -= (int)sw.ElapsedMilliseconds;
                             }
                         }
                         return Utils.StatusCreate(695);  // timeout

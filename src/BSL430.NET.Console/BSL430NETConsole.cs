@@ -71,7 +71,7 @@ namespace BSL430_NET_Console
         private int spinner = 0;
         private string vertical = "│";
         private string horizontal = "─";
-        private char progress = '█'; // ■
+        private char progress = '■'; // █
         #endregion
 
         #region Args Options
@@ -231,14 +231,16 @@ namespace BSL430_NET_Console
             if (options == null)
                 return;
 
-            if (options.Xml != "" && !System.IO.Path.IsPathRooted(options.Xml))
-                options.Xml = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, Path.GetFileName(options.Xml));
-
-            if (options.File != "" && !System.IO.Path.IsPathRooted(options.File))
-                options.File = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, Path.GetFileName(options.File));
-
-            if (options.Convert != "" && !System.IO.Path.IsPathRooted(options.Convert))
-                options.Convert = Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, Path.GetFileName(options.Convert));
+            /*
+            options.Xml = AddRootToPath(options.Xml);
+            options.File = AddRootToPath(options.File);
+            options.SecondFile = AddRootToPath(options.SecondFile);
+            options.Convert = AddRootToPath(options.Convert);
+            options.Combine = AddRootToPath(options.Combine);
+            options.Validate = AddRootToPath(options.Validate);
+            options.GetPassword = AddRootToPath(options.GetPassword);
+            options.Compare = AddRootToPath(options.Compare);
+            */
 
             if (options.ForceAscii)
             {
@@ -1091,7 +1093,7 @@ namespace BSL430_NET_Console
             }
 
 
-            if (options.Password.Length != pw_len)
+            if (options.Password.Length == pw_len)
             {
                 try
                 {
@@ -1195,6 +1197,12 @@ namespace BSL430_NET_Console
         public static IEnumerable<T> ToEnumerable<T>(params T[] items)
         {
             return items;
+        }
+        public static string AddRootToPath(string path)
+        {
+            if (path != "" && !System.IO.Path.IsPathRooted(path))
+                return Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, Path.GetFileName(path));
+            else return path;
         }
         #endregion
     }

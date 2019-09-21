@@ -2,7 +2,7 @@
   "profiles": {
     "BSL430.NET.Console": {
       "commandName": "Project",
-      "commandLineArgs": "BSL430.NET.Console.exe -d FTDI1 -f GrowBuddy-Senzor_downloaded.hex -b 115200 -p FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF -a 8000 -z 1000 -o INTEL_HEX"
+      "commandLineArgs": "BSL430.NET.Console.exe --download COM14 -f fw.txt -o TI_TXT -m MSP430_F5xx -i SHARED_JTAG -a 8000 -z 7FFE -b 115200 -x log.xml -y 64 -p FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
     }
   }
 }

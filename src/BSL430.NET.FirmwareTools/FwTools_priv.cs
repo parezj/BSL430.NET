@@ -850,7 +850,7 @@ namespace BSL430_NET
                 {
                     Password32Byte = ret.ToArray(),
                     Password20Byte = ret.Take(20).ToArray(),
-                    Password16Byte = ret.Take(16).ToArray()
+                    Password16Byte = ret.Skip(16).Take(16).ToArray()
                 };
             }
             #endregion

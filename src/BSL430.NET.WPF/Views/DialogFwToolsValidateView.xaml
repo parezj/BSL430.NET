@@ -25,10 +25,28 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Margin="5,0" VerticalAlignment="Center" HorizontalAlignment="Stretch">
-            <Label Content="{Binding FwName}" Margin="15,0,0,0" FontWeight="Normal" FontSize="20"></Label>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Name="CloseButton" 
+                    Grid.Column="1"
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Right" 
+                    Style="{StaticResource CloseWindowButtonStyle3}" 
+                    Content="&#10006;" 
+                    Height="30"
+                    FontSize="17" 
+                    Click="CloseButton_Click" />
+        </Grid>
+
+        <StackPanel Grid.Row="1" Margin="5,0" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+            <TextBlock Foreground="{DynamicResource BasicText}" Text="{Binding FwName}" Margin="20,5,0,5" FontWeight="Normal" FontSize="20"/>
             <Border Margin="15,0" CornerRadius="7" BorderThickness="0" BorderBrush="Black" Background="{DynamicResource BasicHover}">
                 <Grid Margin="0">
                     <Grid.RowDefinitions>
@@ -44,8 +62,8 @@
             </Border>
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Margin="5,0" VerticalAlignment="Center" HorizontalAlignment="Stretch">
-            <Label Content="Firmware info" Margin="15,0,0,0" FontWeight="Normal" FontSize="20"></Label>
+        <StackPanel Grid.Row="2" Margin="5,0" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+            <TextBlock Foreground="{DynamicResource BasicText}" Text="Firmware info" Margin="20,5,0,5" FontWeight="Normal" FontSize="20"/>
             <Border Margin="15,0" CornerRadius="7" BorderThickness="0" BorderBrush="Black" Background="{DynamicResource BasicHover}">
                 <Grid Margin="15">
                     <Grid.RowDefinitions>
@@ -147,7 +165,7 @@
             </Border>
         </StackPanel>
 
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10,20,10,20" >
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10,20,10,20" >
             <Button x:Name="OK" 
                     Content="OK"
                     Margin="10,0" 

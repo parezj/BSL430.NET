@@ -31,6 +31,7 @@ using System.Text;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 using BSL430_NET.Main;
 using BSL430_NET.Utility;
@@ -208,7 +209,9 @@ namespace BSL430_NET
                         byte[] buffer = Enumerable.Repeat((byte)0xFF, BUFFER_SIZE).ToArray();
                         List<byte> data_list = new List<byte>();
                         int timeout = Const.TIMEOUT_READ;
-                        
+                        Stopwatch sw = new Stopwatch();
+                        sw.Start();
+
                         while (timeout > 0)
                         {
                             int stat = ftdi.ReadData(buffer, rx_size);
@@ -227,7 +230,7 @@ namespace BSL430_NET
                             if (BSL430NET.Interrupted)
                                 throw new Bsl430NetException(666);
 
-                            timeout -= DELAY_READ;
+                            timeout -= (int)sw.ElapsedMilliseconds;
                             Task.Delay(DELAY_READ).Wait();
                         }
                         return Utils.StatusCreate(595);  // timeout

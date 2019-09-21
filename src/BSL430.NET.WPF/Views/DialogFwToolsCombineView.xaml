@@ -13,16 +13,34 @@
                      xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
                      xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
                      PreviewKeyDown="DialogFwToolsCombineViewN_PreviewKeyDown">
-    
+
     <Grid VerticalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0" Margin="5,0" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Button Name="CloseButton" 
+                    Grid.Column="1"
+                    VerticalAlignment="Top" 
+                    HorizontalAlignment="Right" 
+                    Style="{StaticResource CloseWindowButtonStyle3}" 
+                    Content="&#10006;" 
+                    Height="30"
+                    FontSize="17" 
+                    Click="CloseButton_Click" />
+        </Grid>
+                
+        <StackPanel Grid.Row="1" Margin="5,0" VerticalAlignment="Center" HorizontalAlignment="Stretch">
             <Label Content="Second Firmware Path (TI-TXT, Intel-HEX, SREC, ELF)" Margin="15,0,0,0" FontWeight="Normal" FontSize="20"></Label>
             <Border Margin="15,0" CornerRadius="7" BorderThickness="0" BorderBrush="Black" Background="{DynamicResource BasicHover}">
                 <Grid Margin="15">
@@ -53,7 +71,7 @@
             </Border>
         </StackPanel>
 
-        <StackPanel Grid.Row="1" Margin="5,0" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+        <StackPanel Grid.Row="2" Margin="5,0" VerticalAlignment="Center" HorizontalAlignment="Stretch">
             <Label Content="Destination Path" Margin="15,0,0,0" FontWeight="Normal" FontSize="20"></Label>
             <Border Margin="15,0,15,15" CornerRadius="7" BorderThickness="0" BorderBrush="Black" Background="{DynamicResource BasicHover}">
                 <Grid Margin="15">
@@ -84,8 +102,8 @@
             </Border>
         </StackPanel>
 
-        <WrapPanel Grid.Row="2" Margin="15,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Stretch">
-            <Label Content="Force output monolithic structure as missing address nodes will be filled with 0xFF " FontWeight="Thin" FontSize="22"/>
+        <WrapPanel Grid.Row="3" Margin="15,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+            <Label Content="Force output monolithic structure, missing address nodes will be filled with 0xFF " FontWeight="Thin" FontSize="22"/>
             <Controls:ToggleSwitch x:Name="CombineFF" 
                                    IsChecked="{Binding CombineFillFF, Mode=TwoWay}" 
                                    VerticalAlignment="Center" 
@@ -97,7 +115,7 @@
                                    OnLabel="" />
         </WrapPanel>
 
-        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10,30,10,20" >
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" Margin="10,30,10,20" >
             <Button x:Name="OK" 
                     Content="Combine" 
                     Margin="10,0" 

@@ -59,6 +59,20 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="CloseWindowButtonStyle3" TargetType="{x:Type Button}" BasedOn="{StaticResource MetroWindowButtonStyle}">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Foreground" Value="{DynamicResource BasicText}"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#EB2F2F" />
+                <Setter Property="Foreground" Value="{DynamicResource WhiteBrush}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="#7C0000" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
     <Style x:Key="MinWindowButtonStyle2" TargetType="{x:Type Button}" BasedOn="{StaticResource MetroWindowButtonStyle}">
         <Setter Property="Cursor" Value="Hand"/>
         <Style.Triggers>

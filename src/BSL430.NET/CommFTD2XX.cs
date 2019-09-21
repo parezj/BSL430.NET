@@ -33,6 +33,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Globalization;
+using System.Diagnostics;
 
 using BSL430_NET.Main;
 using BSL430_NET.Utility;
@@ -268,7 +269,9 @@ namespace BSL430_NET
                         uint numBytesRead = 0;
                         int timeout = Const.TIMEOUT_READ;
                         bool timeout_flip = false;
-                        
+                        Stopwatch sw = new Stopwatch();
+                        sw.Start();
+
                         do
                         { 
                             ftStatus = ftdi.GetRxBytesAvailable(ref numBytesAvailable);
@@ -303,7 +306,8 @@ namespace BSL430_NET
                             if (timeout <= 0)
                                 timeout_flip = true;
                             else
-                                timeout -= DELAY_READ;
+                                timeout -= (int)sw.ElapsedMilliseconds;
+
                             Task.Delay(DELAY_READ).Wait();
 
                         } while (numBytesAvailable < rx_size);

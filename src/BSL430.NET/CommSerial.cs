@@ -32,6 +32,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+using System.Diagnostics;
 
 using BSL430_NET.Main;
 using BSL430_NET.Utility;
@@ -82,8 +83,8 @@ namespace BSL430_NET
 
         internal sealed class CommSerial : Core
         {
-            public const int TIMEOUT_READ = 5000;
-            public const int TIMEOUT_WRITE = 5000;
+            public const int TIMEOUT_READ = 500;
+            public const int TIMEOUT_WRITE = 500;
             private const int DELAY_READ = 10;
             public const string DEVICE_PREFIX = "COM";
 
@@ -215,7 +216,9 @@ namespace BSL430_NET
                         int buff_size = serial.ReadBufferSize; 
                         byte[] buffer = Enumerable.Repeat((byte)0xFF, buff_size).ToArray();
                         List<byte> data_list = new List<byte>();
-                        int timeout = TIMEOUT_READ;
+                        int timeout = Const.TIMEOUT_READ;
+                        Stopwatch sw = new Stopwatch();
+                        sw.Start();
 
                         while (timeout > 0)
                         {
@@ -235,7 +238,7 @@ namespace BSL430_NET
                             if (BSL430NET.Interrupted)
                                 throw new Bsl430NetException(666);
 
-                            timeout -= DELAY_READ;
+                            timeout -= (int)sw.ElapsedMilliseconds;
                             Task.Delay(DELAY_READ).Wait();
                         }
                         return Utils.StatusCreate(795);  // timeout

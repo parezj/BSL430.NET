@@ -85,6 +85,9 @@ namespace BSL430_NET_WPF.Settings
         [Option(DefaultValue = "")]
         string UploadFwPath { get; set; }
 
+        [Option(DefaultValue = "true")]
+        bool UploadFirst { get; set; }
+
         // ===================================== DownloadView
 
         [Option(DefaultValue = "")]

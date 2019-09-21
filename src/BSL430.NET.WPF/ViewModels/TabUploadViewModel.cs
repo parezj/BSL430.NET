@@ -33,8 +33,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
+using BSL430_NET;
 using BSL430_NET_WPF.Models;
 using BSL430_NET_WPF.Settings;
+
 using Caliburn.Micro;
 
 namespace BSL430_NET_WPF.ViewModels
@@ -80,10 +82,27 @@ namespace BSL430_NET_WPF.ViewModels
                 MessageBox.Show(err.TrimEnd('\n'), "BSL430.NET", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            else
+
+            MCU mcu = this.ControlProcess.MCU;
+            if (this.FirstUpload && (mcu == MCU.MSP430_F1xx || mcu == MCU.MSP430_F2xx || mcu == MCU.MSP430_F4xx || mcu == MCU.MSP430_G2xx3))
             {
-                this.ControlProcess?.StartStop();
-            }              
+                var result = MessageBox.Show("As this is your first upload, and you are targetting old 1xx/2xx/4xx protocol, you should be careful. " +
+                    "If you dont enter password, Mass Erase is executed first. This is standard procedure when targetting newer 5xx/6xx protocol. " +
+                    "However old 1xx/2xx/4xx bootloader protocols erase complete memory including Info A (with CALIBRATION data) if Mass Erase is executed " +
+                    "or incorrect password is entered, provided LOCK A bit is not set.\n\nDo you still want to continue?",
+                    "BSL430.NET", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    this.FirstUpload = false;
+                }
+                else
+                {
+                    return;
+                }
+            }
+
+            this.ControlProcess?.StartStop();             
         }
         public void OpenLog()
         {
@@ -135,6 +154,16 @@ namespace BSL430_NET_WPF.ViewModels
                 BslSettings.Instance.UploadFwPath = value;
                 this.ControlProcess.FwPathUpload = this.FwPath;
                 NotifyOfPropertyChange(() => FwPath);
+            }
+        }
+        private bool _FirstUpload = BslSettings.Instance.UploadFirst;
+        public bool FirstUpload
+        {
+            get => _FirstUpload;
+            set
+            {
+                _FirstUpload = value;
+                BslSettings.Instance.UploadFirst = value;
             }
         }
         #endregion

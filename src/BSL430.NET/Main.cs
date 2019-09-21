@@ -231,8 +231,8 @@ namespace BSL430_NET
                             return Utils.StatusCreateEx(180, parsed_fw, reports, report, bsl_version,
                                                         (fw_info == null) ? 0 : fw_info.SizeFull);
                         }
-                        BlockEnd($"FW ({fw_info.Format.ToString().Replace('_', '-')} 0x{fw_info.AddrFirst.ToString("X4")} " +
-                                 $"{(fw_info.SizeFull / 1024.0).ToString("F1", CultureInfo.InvariantCulture)}KiB)");
+                        BlockEnd($"FW {fw_info.Format.ToString().Replace('_', '-')} x{fw_info.AddrFirst.ToString("X4")} " +
+                                 $"{(fw_info.SizeFull / 1024.0).ToString("F1", CultureInfo.InvariantCulture)}K");
                     }
                     else if (cmd == Command.Download)
                     {
@@ -443,7 +443,8 @@ namespace BSL430_NET
                     }
                     else if (cmd == Command.Download)
                     {
-                        int total = (data_size ?? 0) / fw_info.SizeBuffer;
+                        int _data_size = (data_size ?? 0);
+                        int total = (_data_size + fw_info.SizeBuffer - 1) / fw_info.SizeBuffer;
                         double quantum = 50.0 / (double)total;
                         double _prg = 40;
 

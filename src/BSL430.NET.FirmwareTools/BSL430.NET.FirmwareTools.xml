@@ -149,7 +149,7 @@
             <summary>If firmware is invalid, Valid = false. Otherwise Valid = True.</summary>
         </member>
         <member name="P:BSL430_NET.FirmwareTools.FwTools.FwInfo.Format">
-            <summary>Firmware format. TI-TXT, Intel-HEX or ELF is supported.</summary>
+            <summary>Firmware format. TI-TXT, Intel-HEX, ELF or SREC are supported.</summary>
         </member>
         <member name="P:BSL430_NET.FirmwareTools.FwTools.FwInfo.AddrFirst">
             <summary>First address in firmware, max 32-bit, usually 16-bit.</summary>
@@ -222,7 +222,7 @@
         </member>
         <member name="M:BSL430_NET.FirmwareTools.FwTools.Parse(System.String,BSL430_NET.FirmwareTools.FwTools.FwFormat,System.Boolean,System.IO.StringWriter)">
             <summary>
-            Parse firmware file from FirmwarePath in TI-TXT, Intel-HEX or ELF format and returns List of FwNode 
+            Parse firmware file from FirmwarePath in TI-TXT, Intel-HEX, ELF or SREC format and returns List of FwNode 
             (Data+Addr) and Info. Auto Mode reads data and based on some particular characters determine
             what firmare format it should be.
             <para/>FillFF is optional parameter forcing to fill missing addr nodes with 0xFF 
@@ -233,7 +233,7 @@
         </member>
         <member name="M:BSL430_NET.FirmwareTools.FwTools.Create(BSL430_NET.FirmwareTools.FwTools.Firmware,BSL430_NET.FirmwareTools.FwTools.FwFormat,System.Int32)">
             <summary>
-            Create firmware multi-line string in TI-TXT or Intel-HEX format. ELF is not supported yet. 
+            Create firmware multi-line string in TI-TXT, Intel-HEX or SREC format. ELF is not supported yet. 
             AUTO format will force TI-TXT format.
             <para/>LineLength defines amount of data bytes per one text row. When = 0, default values are set
             (TI-TXT = 16, Intel-HEX = 32, SREC = 32).
@@ -242,7 +242,7 @@
         </member>
         <member name="M:BSL430_NET.FirmwareTools.FwTools.Create(System.Collections.Generic.IEnumerable{System.Byte},System.Int32,BSL430_NET.FirmwareTools.FwTools.FwFormat,System.Int32)">
             <summary>
-            Create firmware multi-line string in TI-TXT or Intel-HEX format. ELF is not supported yet. 
+            Create firmware multi-line string in TI-TXT, Intel-HEX or SREC format. ELF is not supported yet. 
             AUTO format will force TI-TXT format. AddrStart is address of first byte in data collection.
             <para/>LineLength defines amount of data bytes per one text row. When = 0, default values are set
             (TI-TXT = 16, Intel-HEX = 32, SREC = 32).
@@ -251,7 +251,7 @@
         </member>
         <member name="M:BSL430_NET.FirmwareTools.FwTools.Create(System.Collections.Generic.ICollection{BSL430_NET.FirmwareTools.FwTools.FwNode},BSL430_NET.FirmwareTools.FwTools.FwFormat,System.Int32)">
             <summary>
-            Create firmware multi-line string in TI-TXT or Intel-HEX format. ELF is not supported yet. 
+            Create firmware multi-line string in TI-TXT, Intel-HEX or SREC format. ELF is not supported yet. 
             AUTO format will force TI-TXT format.
             <para/>LineLength defines amount of data bytes per one text row. When = 0, default values are set
             (TI-TXT = 16, Intel-HEX = 32, SREC = 32).
@@ -260,8 +260,8 @@
         </member>
         <member name="M:BSL430_NET.FirmwareTools.FwTools.Convert(System.String,BSL430_NET.FirmwareTools.FwTools.FwFormat,System.Boolean,System.Int32)">
             <summary>
-            Convert firmware TI-TXT, Intel-HEX or ELF format (auto detected) to firmware in TI-TX or Intel-HEX format.
-            Returned Fw is firmware and Format is useful for auto-detect feedback, indicates input format.
+            Convert firmware TI-TXT, Intel-HEX, ELF or SREC format (auto detected) to firmware in TI-TXT, Intel-HEX 
+            or SREC format. Returned Fw is firmware and Format is useful for auto-detect feedback, indicates input format.
             <para/>FillFF is optional parameter forcing to fill missing addr nodes with 0xFF 
             and return monolithic piece of code, which is usefull for crc calc or overwriting whole memory in mcu.
             <para/>LineLength defines amount of data bytes per one text row. When = 0, default values are set
