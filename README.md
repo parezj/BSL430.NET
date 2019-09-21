@@ -22,7 +22,7 @@
 1. [Main Features](#1-Main-Features)
 2. [GUI App (Windows)](#2-GUI-App-Windows)
 3. [Console App (Windows, Linux)](#3-Console-App-Windows-Linux)
-4. [Wiring diagram](#4-Wiring-Diagram)
+4. [Wiring diagrams](#4-Wiring-Diagrams)
 5. [Library](#5-BSL430NET-Library)
 6. [References](#6-References)
 7. [Firmware Tools](#Firmware-Tools)
@@ -34,11 +34,11 @@
 * Most common firmware format support: **TI-TXT**, **Intel-HEX**, **SREC**, **ELF**
 * *Original* C# code implementing TI bootloader protocols *5xx/6xx* and *1xx/2xx/4xx* [(TI doc)](https://raw.githubusercontent.com/parezj/BSL430.NET/master/docs/slau319z.pdf)
 ```
-Note:    Old 1xx/2xx/4xx bootloader protocol not tested yet!
+Note:    USB mode not tested yet.
 Warning: Old 1xx/2xx/4xx bootloader protocol handle Erase or incorrectly entered password 
          as complete memory wipe including Info A (with calibration data), if LOCK A bit is not set!
 ```
-BSL430.NET project started back in 2016, when I worked on my *Wireless Weather Station* project based on **CC430** MCU (F5xxX), 
+BSL430.NET project started back in 2016, when I worked on my *Wireless Weather Station* project based on **CC430** MCU (F5xx), 
 connected on PCB to FT232. And I wanted to implement automatic firmware upgrade feature, while PC control app was already
 written in C# (WPF). So I started to study TI docs and coding, but soon I realized, that there is nothing like this (except
 C++ **TI BS430** library or **Python MSP430 Tools**), that is both versatile and scalable. So today, after weather station
@@ -62,7 +62,7 @@ More intel here: [Wiki Homepage](https://github.com/parezj/BSL430.NET/wiki/), [W
 - **Erase whole MCU**:  
 ![Erase](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_erase.png)
 
-- **XML Log**:  
+- **XML Log (Dark Mode)**:  
 ![Log](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_log_dark.png)
 
 - **Shell Extension & Association**:  
@@ -89,8 +89,16 @@ More intel here: [Wiki Homepage](https://github.com/parezj/BSL430.NET/wiki/), [W
 ![Validate](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/console_validate.png)
 <br>  
 
-## 4. Wiring Diagram
-![Wiring](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/wiring_diagram.png)
+## 4. Wiring Diagrams
+
+### FTDI / libftdi
+![FTDI](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/wiring/BSL430.NET.Wiring.FTDI.png)
+
+### Serial (COM)
+![Serial](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/wiring/BSL430.NET.Wiring.Serial.png)
+
+### USB
+![USB](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/wiring/BSL430.NET.Wiring.USB.png)
 <br>
 
 ## 5. BSL430.NET Library
