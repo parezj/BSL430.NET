@@ -62,6 +62,9 @@ More intel here: [Wiki Homepage](https://github.com/parezj/BSL430.NET/wiki/), [W
 - **Erase whole MCU**:  
 ![Erase](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_erase.png)
 
+- **XML Log**:  
+![Log](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_log_dark.png)
+
 - **Shell Extension & Association**:  
 ![Shell](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/wpf_gui_shell_extensions.png)
 
@@ -80,10 +83,10 @@ More intel here: [Wiki Homepage](https://github.com/parezj/BSL430.NET/wiki/), [W
 ![Upload](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/console_upload2.png)
 
 - **Download firmware from MCU**:  
-![Upload](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/console_download2.png)
+![Download](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/console_download2.png)
 
 - **Firmware Tools - Validate**:  
-![Scan](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/console_validate.png)
+![Validate](https://raw.githubusercontent.com/parezj/BSL430.NET/master/img/screenshots/console_validate.png)
 <br>  
 
 ## 4. Wiring Diagram
