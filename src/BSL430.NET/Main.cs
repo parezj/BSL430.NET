@@ -403,6 +403,14 @@ namespace BSL430_NET
                     else BlockEnd();
 
                     // --
+                    
+                    if (mode == Mode.USB_HID)
+                    {
+                        // TODO Upload RAM BSL
+                        // TODO Load PC
+                    }
+                    
+                    // --
 
                     if (cmd == Command.Upload)
                     {
